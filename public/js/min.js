@@ -7842,8 +7842,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\prefiks\Personal\portofolio\src\js\min.js */"./src/js/min.js");
-module.exports = __webpack_require__(/*! E:\prefiks\Personal\portofolio\src\sass\min.scss */"./src/sass/min.scss");
+__webpack_require__(/*! E:\prefiks\Personal\portofolio\edwardevbert\src\js\min.js */"./src/js/min.js");
+module.exports = __webpack_require__(/*! E:\prefiks\Personal\portofolio\edwardevbert\src\sass\min.scss */"./src/sass/min.scss");
 
 
 /***/ })

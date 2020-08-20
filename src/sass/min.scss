@@ -1,1 +1,12 @@
+$enable-negative-margins: true;
 @import "~bootstrap/scss/bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&display=swap');
+
+
+nav {
+	font-family: 'Poppins', sans-serif;
+}
+
+.AppMain, .ContHeader{
+	font-family: 'Poppins', sans-serif;
+}
