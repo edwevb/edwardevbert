@@ -43,6 +43,7 @@ nav {
 
 footer .list-group-item{
 	border:0;
+	font-weight: bolder;
 	text-decoration:none;
 	background: transparent;
 }
@@ -60,4 +61,10 @@ footer .list-group-item a:hover{
 
 .text-shadow{
 	text-shadow: 0.5px 2px 1px black;
+}
+@media (max-width: 575.98px) {
+	footer, footer hr {
+		text-align:center;
+		margin:auto;
+	}
 }
