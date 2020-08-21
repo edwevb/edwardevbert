@@ -5,14 +5,15 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>Edward Evbert</title>
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="/css/min.css">
+	<link rel="icon" href="/assets/img/edwevb.jpg" type="image" sizes="16x16">
+	<link rel="stylesheet" href="/assets/css/min.css">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 border-bottom mb-4">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 border-bottom mb-4 fixed-top">
 		<div class="container-fluid">
 			<a class="navbar-brand d-flex align-items-center font-weight-bold" href="#">
-				<img class="rounded-lg mr-2" height="50" src="/img/edwevb.jpg" alt="">
-				My Personal Website
+				<img class="rounded-lg" height="50" src="/assets/img/edwevb.jpg" alt="">
+				&nbsp;dward Site
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
@@ -20,7 +21,7 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="portofolio/portofolio.html">Portofolio</a>
+						<a class="nav-link" aria-current="page" href="#">Portofolio</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="#">Project</a>
@@ -35,27 +36,43 @@
 			</div>
 		</div>
 	</nav>
-	<div class="mt-n4">
-		<div class="AppMain bg-light py-2 border-bottom mb-5">
-			<h1 class="display-4 text-center">Hey Everyone!<br> My Name is <span class="font-weight-bold">Edward Evbert</span></h1>
-		</div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8">
-					<h1 class="ContHeader">My Portofolio</h1>
-				</div>
-				<div class="col-md-4">
-					<ul>
-						<h4>Find me on</h4>
-						<li><a href="">Lorem ipsum dolor.</a></li>
-						<li><a href="">Expedita, repudiandae aliquid?</a></li>
-						<li><a href="">Eveniet, sit, libero.</a></li>
-						<li><a href="">Quas, beatae, libero.</a></li>
-					</ul>
+	<div id="HeadContent">
+		<div class="AppMain bg-dark py-2 border-bottom mb-5 text-center">
+			<div class="container-fluid mt-3">
+				<button class="btn btn-secondary btn-lg" type="button" disabled>
+					<span class="spinner-grow spinner-grow-md" role="status" aria-hidden="true"></span>
+					Under Construction
+				</button>
+				<h1 class="display-4 text-light">Hey Everyone!</h1>
+				<div class="card-borderless bg-transparent mt-4">
+					<div class="col-md text-center">
+						<img id="myPict" height="200" src="/assets/img/edward.jpg" alt="edward.jpg">
+					</div>
+					<div class="card-body">
+						<p class="card-text lead text-light font-italic">&ldquo;My Name is <span class="font-weight-bold">Edward Evbert</span>
+							. I am a simple person and student at Gunadarma University - Computer Science & Information Technology. I interested in web development! I also have experiences in data management and playing contract bridge.&rdquo;
+						</p>
+						<hr class="pageHr mx-auto">
+						<a href="#" class="btn btn-light px-5">Contact Me!</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="/js/min.js"></script>
+	<div class="container">
+		<div class="col-md-8">
+			<h1 class="ContHeader">WORK EXPERIENCES</h1>
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Card title</h5>
+					<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+					<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br><br><br><br>
+<script src="/assets/js/min.js"></script>
 </body>
 </html>

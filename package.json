@@ -1,5 +1,5 @@
 {
-  "name": "portofolio",
+  "name": "edwardevbert",
   "version": "1.0.0",
   "description": "Personal website",
   "main": "index.js",
@@ -11,27 +11,27 @@
     "prod": "npm run production",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edwevb/edwardevbert.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edwevb/edwardevbert/issues"
+  },
+  "homepage": "https://github.com/edwevb/edwardevbert#readme",
   "devDependencies": {
     "cross-env": "^7.0.2",
     "laravel-mix": "^5.0.5",
     "resolve-url-loader": "^3.1.0",
     "sass": "^1.26.10",
     "sass-loader": "^8.0.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
     "bootstrap": "^5.0.0-alpha1",
     "popper.js": "^1.16.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/edwevb/edwardevbert.git"
-  },
-  "bugs": {
-    "url": "https://github.com/edwevb/edwardevbert/issues"
-  },
-  "homepage": "https://github.com/edwevb/edwardevbert#readme"
+  }
 }
