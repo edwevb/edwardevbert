@@ -19,8 +19,45 @@ nav {
 }
 
 .pageHr{
-	color: #858796;
-	border-style: solid;
-  border-width: 3px;
-  width: 150px;
+	border: 3px solid;
+	width: 150px;
+	color: gray!important;
+}
+
+.PageBackground{
+	background: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ), url(/assets/img/bg_page.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	transition: filter 0.5s;
+}
+
+.AppMain h1, .AppMain .card-text{
+	text-shadow: 0.5px 2px 1px black;
+}
+
+.AppMain h1, .AppMain a{
+	text-align: center;
+}
+
+footer .list-group-item{
+	border:0;
+	text-decoration:none;
+	background: transparent;
+}
+
+footer .list-group-item a, footer h1{
+	text-shadow: 0.5px 2px 1px black;
+	color:#f8f9fa;
+	text-decoration:none;
+	transition: color 0.5s;
+}
+
+footer .list-group-item a:hover{
+	color:#6c757d;
+}
+
+.text-shadow{
+	text-shadow: 0.5px 2px 1px black;
 }
