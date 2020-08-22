@@ -5,11 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="google-site-verification" content="tKNPD8l2Mwge5_ByIopJZ15qtCLzlSKJY8dL-OJfii4" />
 	<meta name="description" content="Personal Page">
-  <meta name="author" content="Edward Evbert Angkouw">
-  <meta name="keywords" content="Edward Evbert Angkouw, Personal Page, Personal Website">
-  <meta property="og:title" content="Personal Website" />
-  <meta property="og:image" content="/assets/img/edwevb.jpg"/>  
-  <meta property="og:description" content="Edward Evbert Angkouw, Personal Page, Personal Website" />
+	<meta name="author" content="Edward Evbert Angkouw">
+	<meta name="keywords" content="Edward Evbert Angkouw, Personal Page, Personal Website">
+	<meta property="og:title" content="Personal Website" />
+	<meta property="og:image" content="/assets/img/edwevb.jpg"/>  
+	<meta property="og:description" content="Edward Evbert Angkouw, Personal Page, Personal Website" />
 	<title>Edward Evbert</title>
 	<!-- Bootstrap CSS -->
 	<link rel="icon" href="/assets/img/edwevb.jpg" type="image" sizes="16x16">
@@ -17,28 +17,31 @@
 	<link rel="stylesheet" href="/assets/css/min.css">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 border-bottom mb-4 fixed-top">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 border-bottom">
 		<div class="container-fluid">
 			<a class="navbar-brand d-flex align-items-center font-weight-bold" href="#">
 				<img class="rounded-lg" height="50" src="/assets/img/edwevb.jpg" alt="">
 				&nbsp;dward Site
 			</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
+				<i class="fas fa-bars"></i>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#">Experiences</a>
+						<a class="nav-link" aria-current="page" href="#experienceSection">Experience</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#">Skills</a>
+						<a class="nav-link" aria-current="page" href="#courseSection">Course</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#">Achievements</a>
+						<a class="nav-link" aria-current="page" href="#skillSection">Skill</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#">Contact</a>
+						<a class="nav-link" aria-current="page" href="#achivementSection">Achievement</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" aria-current="page" href="#projectSection">Project</a>
 					</li>
 				</ul>
 				<button class="btn btn-secondary btn-lg" type="button" disabled>
@@ -57,13 +60,12 @@
 						<img id="myPict" class="img-responsive" height="200" src="/assets/img/edward.jpg" alt="edward.jpg">
 					</div>
 					<div class="card-body">
-						<p class="card-text lead text-light font-italic col-md-6 mx-auto">&ldquo;My Name is <span class="font-weight-bold">Edward Evbert</span>
+						<p class="card-text lead text-light font-italic col-md-5 mx-auto text-center">
+							&ldquo;My Name is <span class="font-weight-bold">Edward Evbert</span>
 							. I am a simple person and a student at Gunadarma University - Computer Science & Information Technology. I interested in web development! I also have experiences in data management and playing contract bridge.&rdquo;
 						</p>
-						<div class="row justify-content-center">
-							<div class="col-md-6 ">
-								<a href="#" class="btn btn-light px-5">Contact Me!</a>
-							</div>
+						<div class="text-center">
+							<a href="#contactSection" class="btn btn-light px-5">Contact Me!</a>
 						</div>
 					</div>
 				</div>
@@ -74,6 +76,7 @@
 			<section id="experienceSection">
 				<h1 class="ContHeader">EXPERIENCES</h1>
 				<hr class="pageHr">
+				<h5 class="font-weight-bold">Work</h5>
 				<div class="my-4">
 					<h5>Lorem ipsum dolor.</h5>
 					<p class="text-muted">Lorem ipsum dolor.</p>
@@ -119,59 +122,59 @@
 						<li>Voluptates ipsam nihil ipsa laudantium sed eius ab veritatis ducimus debitis fugiat.</li>
 					</ul>
 				</div>
+				<h5 class="font-weight-bold">Organization</h5>
 			</section>
 			<hr class="my-5">
-			<section class="skillSection">
+			<section id="courseSection">
+				<h1 class="ContHeader">Courses</h1>
+				<hr class="pageHr">
+			</section>
+			<hr class="my-5">
+			<section id="skillSection">
 				<h1 class="ContHeader">Skills</h1>
 				<hr class="pageHr">
 			</section>
 			<hr class="my-5">
-			<section class="achivementSection">
-				<h1 class="ContHeader">Achievements</h1>
+			<section id="projectSection">
+				<h1 class="ContHeader">Projects</h1>
 				<hr class="pageHr">
 			</section>
 			<hr class="my-5">
+			<section id="achivementSection" class="mb-5">
+				<h1 class="ContHeader">Achievements</h1>
+				<hr class="pageHr">
+			</section>
 		</div> <!-- end Content -->
 	</div> <!-- end -->
-	<footer class="PageBackground pb-5">
-		<div class="container">
-			<section class="contactSection py-5">
-				<h1 class="ContHeader text-light">Contact</h1>
-				<div class="row">
-					<div class="col-md-5 mb-5">
-						<hr class="pageHr">
+	<div class="PageBackground beforeFooter py-4">
+		<div class="container-fluid py-5">
+			<section id="contactSection" class="pt-5">
+				<h1 class="ContHeader text-light text-center">Contact</h1>
+				<hr class="pageHr mx-auto">
+				<div class="row justify-content-center">
+					<div class="col-md-5 text-center">
 						<ul class="list-group">
 							<li class="list-group-item">
-								<a href="mailto:someone@yoursite.com">
-									<i class="far fa-envelope"></i> Email
-								</a>
-							</li>
-							<li class="list-group-item">
-								<a href="https://tiny.cc/linkedinedwevb">
-									<i class="fab fa-linkedin"></i> Linkedin
-								</a>
-							</li>
-							<li class="list-group-item">
-								<a href="https://edwardevbert.blogspot.com">
-									<i class="fab fa-blogger"></i> Blog
-								</a>
-							</li>
-							<li class="list-group-item">
-								<a href="https://github.com/edwevb">
-									<i class="fab fa-github-square"></i> Github
-								</a>
+								<a href="https://github.com/edwevb"><i class="fab fa-github-square"></i></a>
+								<a href="https://tiny.cc/linkedinedwevb"><i class="fab fa-linkedin"></i></a>
+								<a href="https://edwardevbert.blogspot.com"><i class="fab fa-blogger"></i></a>
+								<br>
+								<a href="mailto:edwardevbert@gmail.com"><i class="far fa-envelope"></i></a>
+								<a href="https://line.me/R/ti/p/@edwevb"><i class="fab fa-line"></i></a>
+								<a href="https://instagram.com/edwevb"><i class="fab fa-instagram"></i></a>	
+								<a href="https://t.me/edwevb"><i class="fab fa-telegram-plane"></i></a>
 							</li>
 						</ul>
 					</div>
-					<div class="col-md-5 text-center">
-						<p class="lead text-light font-italic font-weight-bold text-shadow">&ldquo;None of your efforts will ever be in vain&ldquo;</p>
-						<img class="rounded-lg" height="50" src="/assets/img/edwevb.jpg" alt="">
-						<p class="text-light mt-2">&copy;2020</p>
-					</div>
 				</div>
+				<hr class="pageHr mx-auto">
+				<footer class="text-center text-light mt-5">
+					<p class="lead font-italic font-weight-bold text-shadow">&ldquo;None of your efforts will ever be in vain&ldquo;</p>
+					<small class="pb-2">&copy;2020 &#46; Edward Evbert Angkouw</small>
+				</footer>
 			</section>
 		</div>
-	</footer>
+	</div>
 	<script src="/assets/js/min.js"></script>
 </body>
 </html>
