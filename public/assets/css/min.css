@@ -11976,29 +11976,34 @@ nav {
   text-shadow: 0.5px 2px 1px black;
 }
 
+.AppMain .card-text,
+.footer .quote {
+  font-size: 3vh;
+}
+
 .AppMain h1,
 .AppMain .h1,
 .AppMain a {
   text-align: center;
 }
 
-.beforeFooter .list-group-item {
+.footer .list-group-item {
   border: 0;
   font-weight: bolder;
   text-decoration: none;
   background: transparent;
 }
 
-.beforeFooter .list-group-item a,
-.beforeFooter h1,
-.beforeFooter .h1 {
+.footer .list-group-item a,
+.footer h1,
+.footer .h1 {
   text-shadow: 0.5px 2px 1px black;
   color: #f8f9fa;
   text-decoration: none;
   transition: color 0.5s;
 }
 
-.beforeFooter .list-group-item a:hover {
+.footer .list-group-item a:hover {
   color: #6c757d;
 }
 
@@ -12012,8 +12017,8 @@ nav {
 }
 
 @media (max-width: 575.98px) {
-  .beforeFooter,
-  .beforeFooter hr {
+  .footer,
+  .footer hr {
     text-align: center;
     margin: auto;
   }
