@@ -11993,8 +11993,13 @@ nav {
   font-family: "Poppins", sans-serif;
 }
 
-#myPict {
-  border-radius: 50%;
+.myPict {
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  border-radius: 5% 10%;
+  opacity: 0.85;
 }
 
 .pageHr {
@@ -12006,6 +12011,15 @@ nav {
 .PageBackground {
   background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(/assets/img/bg_page.jpg) no-repeat center center fixed;
   background-size: cover;
+  transition: -webkit-filter 0.5s;
+  transition: filter 0.5s;
+  transition: filter 0.5s, -webkit-filter 0.5s;
+}
+
+.sliderPage {
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(/assets/img/bg_page.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 50vh;
   transition: -webkit-filter 0.5s;
   transition: filter 0.5s;
   transition: filter 0.5s, -webkit-filter 0.5s;
