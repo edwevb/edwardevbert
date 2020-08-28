@@ -1,7 +1,7 @@
 # edwardevbert
 This is my personal website
 
-## <a href="https://edwevb.github.io">VISIT MY PAGE</a>
+<a href="https://edwevb.github.io"><h1>VISIT</h1></a>
 
 ## Environtment
 1. <a href="https://laravel-mix.com/docs/5.0/installation">Laravel-mix</a>
