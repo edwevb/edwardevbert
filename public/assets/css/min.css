@@ -11937,6 +11937,11 @@ button.close {
   }
 }
 
+#navbar {
+  top: 0;
+  transition: top 0.5s;
+}
+
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active {
@@ -11947,7 +11952,7 @@ button.close {
 
 .navbar-toggler span {
   display: block;
-  background-color: #444;
+  background-color: #6c757d;
   height: 2px;
   width: 25px;
   margin: 5px;

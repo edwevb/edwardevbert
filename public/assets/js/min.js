@@ -7821,6 +7821,19 @@ module.exports = g;
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
 
+var prevScrollpos = window.pageYOffset;
+
+window.onscroll = function () {
+  var currentScrollPos = window.pageYOffset;
+
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("navbar").style.top = "0";
+  } else {
+    document.getElementById("navbar").style.top = "-50px";
+  }
+
+  prevScrollpos = currentScrollPos;
+};
 
 /***/ }),
 
@@ -7842,8 +7855,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! E:\prefiks\Personal\portofolio\edwardevbert\src\js\min.js */"./src/js/min.js");
-module.exports = __webpack_require__(/*! E:\prefiks\Personal\portofolio\edwardevbert\src\sass\min.scss */"./src/sass/min.scss");
+__webpack_require__(/*! D:\Kognisi\Web Dev\Project\portofolio\edwardevbert\src\js\min.js */"./src/js/min.js");
+module.exports = __webpack_require__(/*! D:\Kognisi\Web Dev\Project\portofolio\edwardevbert\src\sass\min.scss */"./src/sass/min.scss");
 
 
 /***/ })
