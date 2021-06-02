@@ -1,6 +1,6 @@
 $enable-negative-margins: true;
 @import "~bootstrap/scss/bootstrap";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Rubik:wght@500&display=swap');
 
 #navbar{
 	top:0;
@@ -66,8 +66,30 @@ $enable-negative-margins: true;
 	opacity: 0.9;
 }
 
-nav {
+nav{
 	font-family: 'Poppins', sans-serif;
+}
+
+.navbar a{
+	color: #f8f9fa;
+	transition: .3s;
+}
+
+.navbar a:hover{
+	color: #6c757d;
+}
+
+.shadow-card{
+	-webkit-box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+	box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
+}
+
+h1,h3,h5, .btn-learn-more{
+	font-family: 'Rubik', sans-serif;
+}
+
+.AppMain{
+	padding: 150px 0;
 }
 
 .AppMain, .ContHeader{
@@ -75,9 +97,6 @@ nav {
 }
 
 .myPict{
-	object-fit: cover;
-	object-position: center;
-	border-radius: 5% 10%;
 	opacity:.85;
 }
 
@@ -87,8 +106,24 @@ nav {
 	color: gray!important;
 }
 
+@media (max-width: 575.98px) 
+{
+	.navbar{
+		background: #343a40!important;
+	}
+}
+
+.responsive-img{
+	max-width: 100%;
+	height: auto;
+}
+
+header{
+	margin-top: -100px;
+}
+
 .PageBackground{
-	background: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ), url(/assets/img/bg_page.jpg) no-repeat center center fixed;
+	background: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75) ), url(/assets/img/bg_page2.jpg) no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -96,26 +131,46 @@ nav {
 	transition: filter 0.5s;
 }
 
-.sliderPage{
-	background: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65) ), url(/assets/img/bg_page.jpg) no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	height:50vh;
-	transition: filter 0.5s;
-}
-
-.AppMain h1, .AppMain .card-text{
+.title{
+	color: #f8f9fa;
+	text-align:center;
+	margin-top: 100px;
 	text-shadow: 0.5px 2px 1px black;
 }
 
-.AppMain .card-text, .footer .quote{
-	font-size: 3vh;
+.welcome{
+	padding: 310px 0;
+	text-align: center;
+		background: url(/assets/img/login.png) no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	transition: filter 0.5s;
 }
 
-.AppMain h1, .AppMain a{
+.welcome-image{
+	background-size: 300px 100px;
+	
+}
+
+.icon-circle{
+	background: #343a40;
 	text-align: center;
+	vertical-align: middle;
+	padding:15px;
+	color: #f8f9fa;
+	border-radius: 50%;
+}
+
+.app .portofolio .card:hover{
+	color: #343A40;
+	cursor: pointer;
+	transform: scale(0.9);
+}
+
+.app .portofolio .card{
+	transition: ease 0.3s;
 }
 
 .footer .list-group-item{
@@ -126,8 +181,7 @@ nav {
 }
 
 .footer .list-group-item a, .footer h1{
-	text-shadow: 0.5px 2px 1px black;
-	color:#f8f9fa;
+	color:#343a40;
 	text-decoration:none;
 	transition: color 0.5s;
 }
@@ -144,9 +198,44 @@ nav {
 .text-shadow{
 	text-shadow: 0.5px 2px 1px black;
 }
-@media (max-width: 575.98px) {
-	.footer, .footer hr {
+
+@media (max-width: 575.98px) 
+{
+	.footer, .footer hr 
+	{
 		text-align:center;
 		margin:auto;
 	}
+}
+
+#scroll {
+    position:fixed;
+    right:10px;
+    bottom:10px;
+    cursor:pointer;
+    width:50px;
+    height:50px;
+    background-color:#343a40;
+    text-indent:-9999px;
+    display:none;
+    -webkit-border-radius:60px;
+    -moz-border-radius:60px;
+    border-radius:60px;
+    z-index: 999;
+}
+#scroll span {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-8px;
+    margin-top:-12px;
+    height:0;
+    width:0;
+    border:8px solid transparent;
+    border-bottom-color:#ffffff;
+}
+#scroll:hover {
+    background-color:#6c757d;
+    opacity:1;filter:"alpha(opacity=100)";
+    -ms-filter:"alpha(opacity=100)";
 }
