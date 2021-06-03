@@ -24,3 +24,7 @@ $(document).ready(function(){
 		return false; 
 	}); 
 });
+
+$(document).ready(function(){
+	$('.preloader').delay(720).fadeOut('slow'); 
+})
