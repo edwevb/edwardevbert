@@ -1,21 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: https://ogp.me/ns#"/>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="google-site-verification" content="0rFnJOmd_lHvO3F08cLMkfGLsJDk6e-b2fSWzi1MoDc" />
+	<meta name="google-site-verification" content="0rFnJOmd_lHvO3F08cLMkfGLsJDk6e-b2fSWzi1MoDc"/>
 	<meta name="description" content="Personal Page">
 	<meta name="author" content="Edward Evbert Angkouw">
+
+	<meta property="og:site_name" content="Edward Evbert Angkouw">
+	<meta property="og:title" content="Personal Page">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://edwardevbert.netlify.com/">
+	<meta name="twitter:creator" content="Edward Evbert Angkouw">
 	<title>Edward Evbert</title>
+
 	<!-- Bootstrap CSS -->
 	<link rel="icon" href="/assets/img/edwevb.jpg" type="image" sizes="16x16">
+
+	<!-- Fontawesome CSS -->
 	<link rel="stylesheet" href="/assets/fontawesome/css/all.min.css">
+
+	<!-- Main CSS -->
 	<link rel="stylesheet" href="/assets/css/min.css">
+
 	<style>
 		html{
 			scroll-behavior: smooth;
 		}
 	</style>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-198542729-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'UA-198542729-1');
+	</script>
 </head>
 <body>
 	<nav id="navbar" class="navbar navbar-expand-lg bg-transparent py-3">
@@ -58,9 +80,9 @@
 	</header>
 	<!-- Main Konten -->
 	<main class="app">
-		<div class="welcome">
-			<div class="container">
-				<h1 class="display-4 text-dark text-center">knock.. knock..</h1>
+		<div class="welcome bg-light">
+			<div class="container pt-5">
+				<h1 class="display-4 text-dark text-left">Have a look!</h1>
 			</div>
 		</div>
 		<section id="aboutSection" class="bg-light">
@@ -181,31 +203,40 @@
 				</div>
 			</div>
 		</section>
-		<section id="portofolioSection" class="bg-dark">
-			<div class="portofolio container pt-5">
-				<h1 class="text-light">Portofolio</h1>
-				<hr class="pageHr">
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-6 mb-5">
-							<div class="card h-100 border-0 shadow" data-toggle="modal" data-target="#bridgeModal">
-								<img src="/assets/img/portofolio_bridgegunadarma.jpg" alt="bridge gunadarma">
-								<div class="card-body">
-									<h5 class="card-title">Bridge Gunadarma</h5>
+		<section id="portofolioSection">
+			<div class="row my-5">
+				<div class="col-md-6 bg-dark">
+					<div class="portofolio pt-5">
+						<h1 class="text-light text-center">Portofolio</h1>
+						<hr class="pageHr mx-auto">
+						<div class="col-md-6 mx-auto">
+							<div class="col-md mb-5">
+								<div class="card h-100 border-0 shadow" data-toggle="modal" data-target="#bridgeModal">
+									<img src="/assets/img/portofolio_bridgegunadarma.jpg" alt="bridge gunadarma">
+									<div class="card-body">
+										<h5 class="card-title">Bridge Gunadarma</h5>
+									</div>
+								</div>
+							</div>
+							<div class="col-md mb-5">
+								<div class="card h-100 border-0 shadow" data-toggle="modal" data-target="#UfoModal">
+									<img src="/assets/img/portofolio_ufophotography.jpg" class="card-img-top"  alt="...">
+									<div class="card-body">
+										<h5 class="card-title">UFO Photography</h5>
+									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-6 mb-5">
-							<div class="card h-100 border-0 shadow" data-toggle="modal" data-target="#UfoModal">
-								<img src="/assets/img/portofolio_ufophotography.jpg" class="card-img-top"  alt="...">
-								<div class="card-body">
-									<h5 class="card-title">UFO Photography</h5>
-								</div>
-							</div>
+					</div>			
+				</div>
+				<div class="col-md-6">
+					<div class="welcome-2">
+						<div class="portofolio-img-desc">
+							<button class="btn btn-light shadow">I'm looking forward for a new project!</button>
 						</div>
 					</div>
 				</div>
-			</div>			
+			</div>
 		</section>
 		<section id="achievementSection">
 			<div class="container my-5">
@@ -216,7 +247,7 @@
 						<div class="card text-center">
 							<div class="card-body">
 								<i class="fas fa-user-check icon-circle"></i>
-								<hr class="pageHr mx-auto">
+								<hr class="achievementHr mx-auto">
 								<h5>Selected as part of East Jakarta U-26 Bridge Team</h5>
 								<h6 class="card-subtitle mb-2 text-muted">Jul 2021</h6>
 							</div>
@@ -226,7 +257,7 @@
 						<div class="card text-center">
 							<div class="card-body">
 								<i class="fas fa-code icon-circle"></i>
-								<hr class="pageHr mx-auto">
+								<hr class="achievementHr mx-auto">
 								<h5>Participant & Finished Junior Web Developer BPPTIK Kominfo training</h5>
 								<h6 class="card-subtitle mb-2 text-muted">Sept 2020</h6>
 							</div>
@@ -236,7 +267,7 @@
 						<div class="card text-center">
 							<div class="card-body">
 								<i class="fas fa-medal icon-circle"></i>
-								<hr class="pageHr mx-auto">
+								<hr class="achievementHr mx-auto">
 								<h5 class="card-title">1st U-26 Pair Kejurnas Terbuka</h5>
 								<h6 class="card-subtitle mb-2 text-muted">Dec 2019</h6>
 							</div>
@@ -246,7 +277,7 @@
 						<div class="card text-center">
 							<div class="card-body">
 								<i class="fas fa-medal icon-circle"></i>
-								<hr class="pageHr mx-auto">
+								<hr class="achievementHr mx-auto">
 								<h5 class="card-title">1st Team Kejurnas Mahasiswa</h5>
 								<h6 class="card-subtitle mb-2 text-muted">Nov 2019</h6>
 							</div>
@@ -256,7 +287,7 @@
 						<div class="card text-center">
 							<div class="card-body">
 								<i class="fas fa-medal icon-circle"></i>
-								<hr class="pageHr mx-auto">
+								<hr class="achievementHr mx-auto">
 								<h5 class="card-title">1st Pair Bridge Gunadarma Cup</h5>
 								<h6 class="card-subtitle mb-2 text-muted">Oct 2019</h6>
 							</div>
@@ -266,7 +297,7 @@
 						<div class="card text-center">
 							<div class="card-body">
 								<i class="fas fa-certificate icon-circle"></i>
-								<hr class="pageHr mx-auto">
+								<hr class="achievementHr mx-auto">
 								<h5 class="card-title">Scholarship by Bridge Gunadarma</h5>
 								<h6 class="card-subtitle mb-2 text-muted">2017 - Graduation</h6>
 							</div>
@@ -289,7 +320,7 @@
 						<div class="col text-center">
 							<h5>edwardevbert@gmail.com</h5>
 							<a href="mailto:edwardevbert@gmail.com" class="btn btn-dark btn-learn-more">Hire me <i class="fa fa-check"></i></a>
-							<a href="#" class="btn btn-light btn-learn-more">Curriculum Vitae</a>
+							<a href="https://drive.google.com/drive/folders/12GSiPhop4W-WQc9UlF6-iHgedTbkjp4e?usp=sharing" class="btn btn-light btn-learn-more">Curriculum Vitae</a>
 						</div>
 					</div>
 				</div>
@@ -315,8 +346,17 @@
 						</ul>
 					</div>
 				</div>
-				<div class="text-center mt-5">
-					<p class="lead font-italic font-weight-bold quote">&ldquo;None of your efforts will ever be in vain&ldquo;</p>
+				<div class="text-center">
+					<div class="mantra py-5">
+						<a class="btn btn-light btn-learn-more shadow" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+							mantra
+						</a>
+						<div class="collapse" id="collapseExample">
+							<div class="card-borderless card-body">
+								<p class="lead font-italic font-weight-bold quote">&ldquo;None of your efforts will ever be in vain&ldquo;</p>
+							</div>
+						</div>
+					</div>
 					<small class="pb-2">&copy;2020 &#46; Edward Evbert Angkouw</small><br>
 					<small><a class="text-decoration-none" href='https://www.freepik.com/photos/background'>Background photo created by denamorado - www.freepik.com</a></small>
 				</div>
@@ -334,29 +374,30 @@
 					</button>
 				</div>
 				<div class="modal-body">
-					<table class="table table-borderless">
-						<tr>
-							<th>Title</th>
-							<td>Web-based Information System Aplications</td>
-						</tr>
-						<tr>
-							<th>Created</th>
-							<td>Jul 2020</td>
-						</tr>
-						<tr>
-							<th>Company/Organization</th>
-							<td>Bridge Gunadarma Jakarta</td>
-						</tr>
-						<tr>
-							<th>Address</th>
-							<td>Salemba, Central Jakarta</td>
-						</tr>
-						<tr>
-							<th>Build</th>
-							<td>HTML, CSS, Javascript, Laravel, MySQL, Bootstrap, Heroku, Git</td>
-						</tr>
-						<tr>
-							<th>Source Code</td>
+					<div class="table-responsive">
+						<table class="table table-borderless">
+							<tr>
+								<th>Title</th>
+								<td>Web-based Information System Aplications</td>
+							</tr>
+							<tr>
+								<th>Created</th>
+								<td>Jul 2020</td>
+							</tr>
+							<tr>
+								<th>Company/Organization</th>
+								<td>Bridge Gunadarma Jakarta</td>
+							</tr>
+							<tr>
+								<th>Address</th>
+								<td>Salemba, Central Jakarta</td>
+							</tr>
+							<tr>
+								<th>Build</th>
+								<td>HTML, CSS, Javascript, Laravel, MySQL, Bootstrap, Heroku, Git</td>
+							</tr>
+							<tr>
+								<th>Source Code</th>
 								<td> <a href="https://github.com/edwevb/bridgegunadarma">github.com/edwevb/bridgegunadarma</a></td>
 							</tr>
 							<tr>
@@ -380,17 +421,19 @@
 				</div>
 			</div>
 		</div>
-		<!-- Modal Ufo -->
-		<div class="modal fade" id="UfoModal" tabindex="-1" aria-labelledby="UfoModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-lg">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="UfoModalLabel">Company Profile</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
+	</div>
+	<!-- Modal Ufo -->
+	<div class="modal fade" id="UfoModal" tabindex="-1" aria-labelledby="UfoModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="UfoModalLabel">Company Profile</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive">
 						<table class="table table-borderless">
 							<tr>
 								<th>Title</th>
@@ -437,8 +480,9 @@
 				</div>
 			</div>
 		</div>
-		<a href="#" id="scroll" style="display: none;"><span></span></a>
-		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-		<script src="/assets/js/min.js"></script>
-	</body>
-	</html>
+	</div>
+	<a href="#" id="scroll" style="display: none;"><span></span></a>
+	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	<script src="/assets/js/min.js"></script>
+</body>
+</html>

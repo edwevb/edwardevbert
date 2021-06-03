@@ -79,6 +79,10 @@ nav{
 	color: #6c757d;
 }
 
+header, #aboutSection, #skillSection, #portofolioSection, #achievementSection, #contactSection{
+	overflow: hidden!important;
+}
+
 .shadow-card{
 	-webkit-box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
 	box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%) !important;
@@ -106,6 +110,13 @@ h1,h3,h5, .btn-learn-more{
 	color: gray!important;
 }
 
+.achievementHr{
+	border: 1px solid;
+	width: 100px;
+	color: gray!important;
+}
+
+
 @media (max-width: 575.98px) 
 {
 	.navbar{
@@ -123,7 +134,7 @@ header{
 }
 
 .PageBackground{
-	background: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75) ), url(/assets/img/bg_page2.jpg) no-repeat center center fixed;
+	background: linear-gradient( rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75) ), url('/assets/img/bg_page2.jpg') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -139,9 +150,20 @@ header{
 }
 
 .welcome{
-	padding: 310px 0;
+	padding: 250px 0;
 	text-align: center;
-		background: url(/assets/img/login.png) no-repeat center center;
+	background: url('/assets/img/login.png') no-repeat center center;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	transition: filter 0.5s;
+}
+
+.welcome-2{
+	padding: 250px 0;
+	text-align: center;
+	background: url('/assets/img/looking.png') no-repeat center center;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -163,14 +185,18 @@ header{
 	border-radius: 50%;
 }
 
-.app .portofolio .card:hover{
+.portofolio .card:hover{
 	color: #343A40;
 	cursor: pointer;
 	transform: scale(0.9);
 }
 
-.app .portofolio .card{
+.portofolio .card{
 	transition: ease 0.3s;
+}
+
+.portofolio-img-desc button{
+	margin-top:-250px;
 }
 
 .footer .list-group-item{
@@ -209,33 +235,33 @@ header{
 }
 
 #scroll {
-    position:fixed;
-    right:10px;
-    bottom:10px;
-    cursor:pointer;
-    width:50px;
-    height:50px;
-    background-color:#343a40;
-    text-indent:-9999px;
-    display:none;
-    -webkit-border-radius:60px;
-    -moz-border-radius:60px;
-    border-radius:60px;
-    z-index: 999;
+	position:fixed;
+	right:10px;
+	bottom:10px;
+	cursor:pointer;
+	width:50px;
+	height:50px;
+	background-color:#343a40;
+	text-indent:-9999px;
+	display:none;
+	-webkit-border-radius:60px;
+	-moz-border-radius:60px;
+	border-radius:60px;
+	z-index: 999;
 }
 #scroll span {
-    position:absolute;
-    top:50%;
-    left:50%;
-    margin-left:-8px;
-    margin-top:-12px;
-    height:0;
-    width:0;
-    border:8px solid transparent;
-    border-bottom-color:#ffffff;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-left:-8px;
+	margin-top:-12px;
+	height:0;
+	width:0;
+	border:8px solid transparent;
+	border-bottom-color:#ffffff;
 }
 #scroll:hover {
-    background-color:#6c757d;
-    opacity:1;filter:"alpha(opacity=100)";
-    -ms-filter:"alpha(opacity=100)";
+	background-color:#6c757d;
+	opacity:1;filter:"alpha(opacity=100)";
+	-ms-filter:"alpha(opacity=100)";
 }
