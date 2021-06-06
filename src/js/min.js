@@ -55,7 +55,7 @@ $(window).scroll(function(){
 		contactRight.each(function(indexList){
 			setTimeout(function(){
 				contactRight.eq(indexList).addClass('contactRightShow');
-			}, 500 * (indexList+1));
+			}, 100 * (indexList+1));
 		});
 	}
 
