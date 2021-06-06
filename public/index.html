@@ -40,47 +40,52 @@
 	</script>
 </head>
 <body>
-	<nav id="navbar" class="navbar navbar-expand-lg bg-transparent py-3">
-		<div class="container-fluid">
-			<a class="navbar-brand d-flex align-items-center font-weight-bold" href="#">
-				My Personal Page
-			</a>
-			<button class="navbar-toggler collapsed position-relative" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-				<span> </span>
-				<span> </span>
-				<span> </span>
-				<!-- <div class="close-icon p-1 font-weight-bold"><i class="fas fa-times"></i></div> -->
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#aboutSection">About</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#skillSection">Skill</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#portofolioSection">Portofolio</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="#achievementSection">Achievement</a>
-					</li>
-				</ul>
+	<div class="pageBackground">
+		<nav id="navbar" class="navbar navbar-expand-lg bg-transparent py-3">
+			<div class="container-fluid">
+				<a class="navbar-brand d-flex font-weight-bold text-center" href="#">
+					My Personal Page
+				</a>
+				<button class="navbar-toggler collapsed position-relative" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+					<span> </span>
+					<span> </span>
+					<span> </span>
+					<!-- <div class="close-icon p-1 font-weight-bold"><i class="fas fa-times"></i></div> -->
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto mb-2 mb-lg-0 text-center">
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#aboutSection">About</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#skillSection">Skill</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#portofolioSection">Portofolio</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#coursesSection">Courses</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="#achievementSection">Achievement</a>
+						</li>
+					</ul>
+				</div>
 			</div>
-		</div>
-	</nav>
-	<!-- HEAD -->
-	<header id="HeadContent bg-dark">
-		<div class="AppMain PageBackground">
-			<div class="container title">
-				<h1 class="display-4 text-center">Edward Evbert Angkouw</h1>
-				<h5>Depok City, West Java 16542, ID</h5>
+		</nav>
+		<!-- HEAD -->
+		<header id="HeadContent">
+			<div class="AppMain">
+				<div class="container title myNameHeader">
+					<h1 class="display-4 text-center">Edward Evbert Angkouw</h1>
+					<h5>Bachelor Of Computer Science</h5>
+				</div>
 			</div>
-		</div>
-	</header>
+		</header>
+	</div>
 	<!-- Main Konten -->
 	<main class="app">
-		<div class="welcome bg-light">
+		<div style="display: none;" class="welcome bg-light">
 			<div class="container pt-5">
 				<h1 class="display-4 text-dark text-left">Have a look!</h1>
 			</div>
@@ -88,15 +93,17 @@
 		<section id="aboutSection" class="bg-light">
 			<div class="container py-5">
 				<div class="row align-items-center justify-content-center">
-					<div class="col-md-6">
+					<div class="col-md-6 aboutImage">
 						<img class="responsive-img" src="assets/img/coding.png" alt="illustration">
 					</div>
 					<div class="col-md-6">
-						<h1>About Me</h1>
-						<p class="font-italic">
-							&ldquo;Greetings! My name is <span class="font-weight-bold">Edward Evbert Angkouw</span>. I'm a simple guy who always tries his best to improve, to grow, to adapt, and to understand that there is always something more in life. I am passionate to have excellent career in the information technology environment.&rdquo;
-						</p>
-						<a href="#contactSection" class="btn btn-dark px-5 btn-learn-more">Contact me</a>
+						<div class="aboutText">
+							<h1>About Me</h1>
+							<p>
+								<em>&ldquo;Greetings! My name is <span class="font-weight-bold">Edward Evbert Angkouw</span>. I am a final-year student at Gunadarma University, while I'm pursuing a bachelor’s degree, I have gained and developed skills in computer science - such as web development, database, and various competencies related to the information technology environment. I am passionate to have excellent career in the information technology environment.&rdquo;</em>
+							</p>
+							<a href="#contactSection" class="btn btn-dark px-5 btn-learn-more">Contact me</a>
+						</div>
 					</div>
 				</div>
 				<div class="text-center my-5">
@@ -131,67 +138,74 @@
 			<div class="container my-5">
 				<h1>Skills</h1>
 				<hr class="pageHr">
-				<div class="row">
+				<div class="row align-items-center">
 					<div class="col-md-6">
 						<img class="responsive-img" src="assets/img/programming.png" alt="illustration">
 					</div>
 					<div class="col-md-6">
-						<div class="row row-cols-1 row-cols-md-1">
-							<div class="col mb-3">
-								<div class="card border-0 shadow-card">
-									<div class="card-body">
-										<h5 class="card-title">Web Development / Programming</h5>
-										<ul>
-											<li>HTML, CSS, Javascript</li>
-											<li>PHP, Laravel</li>
-											<li>MySQL, PostgreSQL</li>
-											<li>Git</li>
-											<li>Algorithm</li>
-											<li>Basic of Linux, Java, Python</li>
-										</ul>
+						<div class="skillsRight">
+							<div class="row row-cols-1 row-cols-md-1">
+								<div class="col mb-3">
+									<div class="card border-0 shadow-card">
+										<div class="card-body">
+											<h5 class="card-title">Web Development / Programming</h5>
+											<ul>
+												<li>HTML, CSS, Javascript</li>
+												<li>PHP, Laravel</li>
+												<li>Git</li>
+												<li>MySQL, PostgreSQL</li>
+												<li>Design, Testing, Deployment</li>
+												<li>Algorithm</li>
+												<li>Basic of Linux, Java, Python</li>
+											</ul>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col mb-3">
-								<div class="card border-0 shadow-card">
-									<div class="card-body">
-										<h5 class="card-title">Hardware & Software</h5>
-										<ul>
-											<li>Instalation</li>
-											<li>Maintenance</li>
-											<li>Troubleshooting</li>
-											<li>Internet</li>
-										</ul>
+								<div class="col mb-3">
+									<div class="card border-0 shadow-card">
+										<div class="card-body">
+											<h5 class="card-title">Hardware & Software</h5>
+											<ul>
+												<li>Instalation</li>
+												<li>Maintenance</li>
+												<li>Troubleshooting</li>
+												<li>Configuration</li>
+												<li>Internet</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div class="row align-items-center">
 					<div class="col-md-6">
-						<div class="row row-cols-1 row-cols-md-1">
-							<div class="col mb-3">
-								<div class="card border-0 shadow-card">
-									<div class="card-body">
-										<h5 class="card-title">Office App</h5>
-										<ul>
-											<li>MS. Office (Word, Excel, Powerpoint, Access)</li>
-											<li>Gdrive (Docs, Sheets, Slides, Forms)</li>
-											<li>Blogspot, Wordpress, Social Media</li>
-										</ul>
+						<div class="skillsLeft">
+							<div class="row row-cols-1 row-cols-md-1">
+								<div class="col mb-3">
+									<div class="card border-0 shadow-card">
+										<div class="card-body">
+											<h5 class="card-title">Apps</h5>
+											<ul>
+												<li>MS. Office (Word, Excel, Powerpoint, Access)</li>
+												<li>Gdrive (Docs, Sheets, Slides, Forms)</li>
+												<li>Blogspot, Wordpress, Social Media</li>
+											</ul>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col mb-3">
-								<div class="card border-0 shadow-card">
-									<div class="card-body">
-										<h5 class="card-title">Other</h5>
-										<ul>
-											<li>English Passive</li>
-											<li>Problem Solving</li>
-											<li>Decision Making</li>
-										</ul>
+								<div class="col mb-3">
+									<div class="card border-0 shadow-card">
+										<div class="card-body">
+											<h5 class="card-title">Other</h5>
+											<ul>
+												<li>Data Organization & Analysis</li>
+												<li>Problem Solving</li>
+												<li>Decision Making</li>
+												<li>English Passive</li>
+											</ul>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -204,12 +218,12 @@
 			</div>
 		</section>
 		<section id="portofolioSection">
-			<div class="row my-5">
+			<div class="row my-5 align-items-center">
 				<div class="col-md-6 bg-dark">
 					<div class="portofolio pt-5">
 						<h1 class="text-light text-center">Portofolio</h1>
 						<hr class="pageHr mx-auto">
-						<div class="col-md-6 mx-auto">
+						<div class="col-md-6 mx-auto portofolioContent">
 							<div class="col-md mb-5">
 								<div class="card h-100 border-0 shadow" data-toggle="modal" data-target="#bridgeModal">
 									<img src="/assets/img/portofolio_bridgegunadarma.jpg" alt="bridge gunadarma">
@@ -230,7 +244,7 @@
 					</div>			
 				</div>
 				<div class="col-md-6">
-					<div class="welcome-2">
+					<div class="portofolio-side-image">
 						<div class="portofolio-img-desc">
 							<button class="btn btn-light shadow">I'm looking forward for a new project!</button>
 						</div>
@@ -238,6 +252,73 @@
 				</div>
 			</div>
 		</section>
+		<section id="coursesSection">
+			<div class="container my-5">
+				<h1>Courses & Training</h1>
+				<hr class="pageHr">
+				<div class="row row-cols-1 row-cols-md-2">
+					<div class="col mb-3">
+						<div class="card h-100 border-0 bg-dark text-light coursesList">
+							<div class="card-body">
+								<h5 class="card-title">LepKom Gunadarma</h5>
+								<ul>
+									<li>Fundamental Database Management System</li>
+									<li>Fundamental ERP</li>
+									<li>Oracle</li>
+									<li>JAVASCRIPT</li>
+									<li>JAVA</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-3">
+						<div class="card h-100 border-0 bg-dark text-light coursesList">
+							<div class="card-body">
+								<h5 class="card-title">BPPTIK KOMINFO</h5>
+								<p class="card-text">Junior Web Developer</p>
+								<ul>
+									<li>Structured Programming (PHP)</li>
+									<li>UI Design</li>
+									<li>Guidelines & Best Practices</li>
+									<li>Library & Pre-Existing Component</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-3">
+						<div class="card h-100 border-0 bg-dark text-light coursesList">
+							<div class="card-body">
+								<h5 class="card-title">LSP Gunadarma</h5>
+								<p class="card-text">Programmer</p>
+								<ul>
+									<li>Program Specification</li>
+									<li>Structured Programming & OOP</li>
+									<li>Library & Pre-Existing Component</li>
+									<li>Database Access</li>
+									<li>Debugging & Unit Testing</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col mb-3">
+						<div class="card h-100 border-0 bg-dark text-light coursesList">
+							<div class="card-body">
+								<h5 class="card-title">CodePolitan E-Course</h5>
+								<ul>
+									<li>Fundamental HTML & CSS</li>
+									<li>Fundamental Algorithm & Programming</li>
+									<li>Fundamental GIT</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="col-md-6 mx-auto">
+			<div class="courses-side-image">
+			</div>
+		</div>
 		<section id="achievementSection">
 			<div class="container my-5">
 				<h1>Achievement</h1>
@@ -250,16 +331,6 @@
 								<hr class="achievementHr mx-auto">
 								<h5>Selected as part of East Jakarta U-26 Bridge Team</h5>
 								<h6 class="card-subtitle mb-2 text-muted">Jul 2021</h6>
-							</div>
-						</div>
-					</div>
-					<div class="col mb-2">
-						<div class="card text-center">
-							<div class="card-body">
-								<i class="fas fa-code icon-circle"></i>
-								<hr class="achievementHr mx-auto">
-								<h5>Participant & Finished Junior Web Developer BPPTIK Kominfo training</h5>
-								<h6 class="card-subtitle mb-2 text-muted">Sept 2020</h6>
 							</div>
 						</div>
 					</div>
@@ -318,9 +389,9 @@
 							<img class="responsive-img" src="assets/img/mailbox.png" alt="illustration">
 						</div>
 						<div class="col text-center">
-							<h5>edwardevbert@gmail.com</h5>
-							<a href="mailto:edwardevbert@gmail.com" class="btn btn-dark btn-learn-more">Hire me <i class="fa fa-check"></i></a>
-							<a href="https://drive.google.com/drive/folders/12GSiPhop4W-WQc9UlF6-iHgedTbkjp4e?usp=sharing" class="btn btn-light btn-learn-more">Curriculum Vitae</a>
+							<h5 class="contactRight">edwardevbert@gmail.com</h5>
+							<a href="mailto:edwardevbert@gmail.com" class="btn btn-dark btn-learn-more contactRight">Hire me <i class="fa fa-check"></i></a>
+							<a href="https://drive.google.com/drive/folders/12GSiPhop4W-WQc9UlF6-iHgedTbkjp4e?usp=sharing" class="btn btn-light btn-learn-more contactRight">Curriculum Vitae</a>
 						</div>
 					</div>
 				</div>
@@ -347,13 +418,15 @@
 					</div>
 				</div>
 				<div class="text-center">
-					<div class="mantra py-5">
-						<a class="btn btn-light btn-learn-more shadow" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-							mantra
-						</a>
+					<div class="py-5">
+						<div class="box-1">
+							<div class="btn btn-light btn-one btn-learn-more shadow" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+								<span class="text-dark">MANTRA</span>
+							</div>
+						</div>
 						<div class="collapse" id="collapseExample">
 							<div class="card-borderless card-body">
-								<p class="lead font-italic font-weight-bold quote">&ldquo;None of your efforts will ever be in vain&ldquo;</p>
+								<p class="lead font-italic font-weight-bold mantra">&ldquo;None of your efforts will ever be in vain&ldquo;</p>
 							</div>
 						</div>
 					</div>
@@ -399,10 +472,6 @@
 							<tr>
 								<th>Build</th>
 								<td>HTML, CSS, Javascript, Laravel, MySQL, Bootstrap, Heroku, Git</td>
-							</tr>
-							<tr>
-								<th>Source Code</th>
-								<td> <a href="https://github.com/edwevb/bridgegunadarma">github.com/edwevb/bridgegunadarma</a></td>
 							</tr>
 							<tr>
 								<th>Page URL</th>
@@ -462,10 +531,6 @@
 							<tr>
 								<th>Build</th>
 								<td>HTML, CSS, Bootstrap, Netlify, Git</td>
-							</tr>
-							<tr>
-								<th>Source Code</th>
-								<td> <a href="https://github.com/edwevb/UFO-WEB">github.com/edwevb/UFO-WEB</a></td>
 							</tr>
 							<tr>
 								<th>Page URL</th>
