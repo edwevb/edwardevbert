@@ -14,7 +14,7 @@ $('#scroll').click(function(){
 }); 
 
 $(window).on('load',function(){
-	$('.preloader').delay(3000).fadeOut('slow', function(){
+	$('.preloader').delay(1500).fadeOut('slow', function(){
 			$('.myNameHeader').addClass('myNameHeaderShow');
 		});
 });
@@ -22,8 +22,9 @@ $(window).on('load',function(){
 $(window).scroll(function(){
 	var wScroll = $(this).scrollTop();
 
-	if (wScroll >= $('.welcome').offset().top) {
-		$('.welcome').fadeIn(2000);
+	if (wScroll > $('.welcome').offset().top - 150) {
+		let welcomeDesc = $('.welcomeDesc');
+		welcomeDesc.addClass('welcomeDescShow');
 	}
 
 	if (wScroll > $('#aboutSection').offset().top - 250) {
@@ -39,6 +40,11 @@ $(window).scroll(function(){
 	if (wScroll > $('#portofolioSection').offset().top - 250) {
 		let portofolioContent = $('.portofolioContent');
 		portofolioContent.addClass('portofolioContentShow');
+	}
+
+		if (wScroll > $('.portofolio-side-image').offset().top - 150) {
+		let portofolioDesc = $('.portofolioDesc');
+		portofolioDesc.addClass('portofolioDescShow');
 	}
 
 	if (wScroll > $('#coursesSection').offset().top - 250) {

@@ -21,7 +21,7 @@ $enable-negative-margins: true;
 
 .navbar-toggler span {
 	display: block;
-	background-color: #6c757d;
+	background-color: #f8f9fa;
 	height: 2px;
 	width: 25px;
 	margin:5px;
@@ -101,7 +101,7 @@ h1, h3, h5, .btn-learn-more{
 	font-family: 'Rubik', sans-serif;
 }
 
-.AppMain{
+header{
 	padding: 150px 0;
 }
 
@@ -238,10 +238,8 @@ h1, h3, h5, .btn-learn-more{
 
 @media (max-width: 575.98px) 
 {
-	.footer, .footer hr 
-	{
-		text-align:center;
-		margin:auto;
+	.list-group-item a{
+		font-size:3em;
 	}
 }
 
@@ -302,6 +300,28 @@ h1, h3, h5, .btn-learn-more{
 
 //PAGE EFFECT & TRANSITION
 
+.welcomeDesc{
+	opacity: 0;
+	-webkit-transform:translate(-100px, 0);
+	-moz-transform:translate(-100px, 0);
+	-o-transform:translate(-100px, 0);
+	transform:translate(-100px, 0);
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	-ms-transition: 1s;
+	-o-transition: 1s;
+	transition: 1s;
+}
+
+.welcomeDescShow{
+	opacity: 1;
+	-webkit-transform:translate(0,0);
+	-moz-transform:translate(0,0);
+	-o-transform:translate(0,0);
+	transform:translate(0,0);
+	transform:translate(0,0);
+}
+
 .myNameHeader, .portofolioContent{
 	opacity:0;
 	-webkit-transform: scale(2,3);
@@ -321,6 +341,27 @@ h1, h3, h5, .btn-learn-more{
 	-moz-transform: scale(1,1);
 	-o-transform: scale(1,1);
 	transform: scale(1,1);
+}
+
+.portofolioDesc{
+	opacity:0;
+	-webkit-transform:translate(0, -100px);
+	-moz-transform:translate(0, -100px);
+	-o-transform:translate(0, -100px);
+	transform:translate(0, -100px);
+	-webkit-transition: 0.75s;
+	-moz-transition: 0.75s;
+	-ms-transition: 0.75s;
+	-o-transition: 0.75s;
+	transition: 0.75s;
+}
+
+.portofolioDescShow{
+	opacity:1;
+	-webkit-transform:translate(0,0);
+	-moz-transform:translate(0,0);
+	-o-transform:translate(0,0);
+	transform:translate(0, 0);
 }
 
 .aboutText, .skillsRight, .contactRight{
