@@ -19,13 +19,44 @@ $(window).on('load',function(){
 		});
 });
 
+$(function($) {
+	var followScroll = $('.followScroll'),
+	originalY = followScroll.offset().top - 50;
+	var topMargin = 20;
+	var stopScroll = $('.skillsLeft').offset().top - 300;
+	followScroll.css('position', 'relative');
+	if ($(window).width() > 768) {
+		$(window).on('scroll', function(event) {
+			var scrollTop = $(this).scrollTop();
+			if (scrollTop > originalY) {
+				followScroll.stop(true,true).animate({
+					top: scrollTop < originalY
+					? 0
+					: scrollTop - originalY + topMargin
+				}, 300);
+			}
+			if (scrollTop > 2600) {
+				followScroll.stop();
+			}
+		});
+	}
+
+});
+
+
 $(window).scroll(function(){
 	var wScroll = $(this).scrollTop();
 
 	if (wScroll > $('.welcome').offset().top - 150) {
 		let welcomeDesc = $('.welcomeDesc');
+		welcomeDesc.show();
 		welcomeDesc.addClass('welcomeDescShow');
 	}
+
+	if (wScroll < $('.welcome').offset().top - 150) {
+		let welcomeDesc = $('.welcomeDesc');
+		welcomeDesc.removeClass('welcomeDescShow');
+	}	
 
 	if (wScroll > $('#aboutSection').offset().top - 250) {
 		let aboutText = $('.aboutText');
@@ -37,17 +68,27 @@ $(window).scroll(function(){
 		$('.skillsLeft').addClass('skillsLeftShow');
 	}
 
+	if (wScroll < $('#skillSection').offset().top - 50) {
+		$('.skillsRight').removeClass('skillsRightShow');
+		$('.skillsLeft').removeClass('skillsLeftShow');
+	}
+
 	if (wScroll > $('#portofolioSection').offset().top - 250) {
 		let portofolioContent = $('.portofolioContent');
 		portofolioContent.addClass('portofolioContentShow');
 	}
 
-		if (wScroll > $('.portofolio-side-image').offset().top - 150) {
+	if (wScroll > $('.portofolio-side-image').offset().top - 300) {
 		let portofolioDesc = $('.portofolioDesc');
 		portofolioDesc.addClass('portofolioDescShow');
 	}
 
-	if (wScroll > $('#coursesSection').offset().top - 250) {
+	if (wScroll < $('.portofolio-side-image').offset().top - 300) {
+		let portofolioDesc = $('.portofolioDesc');
+		portofolioDesc.removeClass('portofolioDescShow');
+	}
+
+	if (wScroll > $('#coursesSection').offset().top - 400) {
 		var coursesList = $('.coursesList');
 		coursesList.each(function(indexList){
 			setTimeout(function(){

@@ -23,6 +23,9 @@
 	<!-- Main CSS -->
 	<link rel="stylesheet" href="/assets/css/min.css">
 
+	<!-- Devicon CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.12.0/devicon.min.css">
+
 	<style>
 		html{
 			scroll-behavior: smooth;
@@ -78,6 +81,7 @@
 			<div class="container title myNameHeader">
 				<h1 class="display-4 text-center">Edward Evbert Angkouw</h1>
 				<h5>Bachelor Of Computer Science (soon)</h5>
+				<h6>Depok City, West Java</h6>
 			</div>
 		</header>
 	</div>
@@ -98,7 +102,7 @@
 						<div class="aboutText">
 							<h1>About Me</h1>
 							<p>
-								<em>&ldquo;Greetings! My name is <span class="font-weight-bold">Edward Evbert Angkouw</span>. I am a final-year student at Gunadarma University, while I'm pursuing a bachelor’s degree, I have gained and developed skills in computer science - such as web development, database, and various competencies related to the information technology environment. I am passionate to have excellent career in the information technology environment.&rdquo;</em>
+								<em>&ldquo;Greetings! My name is <span class="font-weight-bold">Edward Evbert Angkouw</span>. I am a final-year student at Gunadarma University, while I'm pursuing a bachelor’s degree, I have gained and developed skills in computer science - such as web development, database, and various competencies related to the iT. I am passionate to have excellent career in the information technology environment.&rdquo;</em>
 							</p>
 							<a href="#contactSection" class="btn btn-dark px-5 btn-learn-more">Contact me</a>
 						</div>
@@ -136,9 +140,11 @@
 			<div class="container my-5">
 				<h1>Skills</h1>
 				<hr class="pageHr">
-				<div class="row align-items-center">
+				<div class="row">
 					<div class="col-md-6">
-						<img class="responsive-img" src="assets/img/programming.png" alt="illustration">
+						<div class="followScroll">
+							<img class="responsive-img" src="assets/img/programming.png" alt="illustration">
+						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="skillsRight">
@@ -146,30 +152,31 @@
 								<div class="col mb-3">
 									<div class="card border-0 shadow-card">
 										<div class="card-body">
-											<h5 class="card-title">Web Development / Programming</h5>
-											<ul>
-												<li>HTML, CSS, Javascript, jQuery</li>
-												<li>PHP, Laravel</li>
-												<li>Git</li>
-												<li>MySQL, PostgreSQL</li>
-												<li>Design, Testing, Deployment</li>
-												<li>Algorithm</li>
-												<li>Basic : Linux, Java, Python, Oracle, ERP</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="col mb-3">
-									<div class="card border-0 shadow-card">
-										<div class="card-body">
-											<h5 class="card-title">Hardware & Software</h5>
-											<ul>
-												<li>Instalation</li>
-												<li>Maintenance</li>
-												<li>Troubleshooting</li>
-												<li>Configuration</li>
-												<li>Internet</li>
-											</ul>
+											<h5 class="card-title">Web Development</h5>
+											<div class="row row-cols-3 row-cols-md-3 text-center align-items-center">
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-html5-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-css3-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-javascript-plain"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-php-plain"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-laravel-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-mysql-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-jquery-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-sass-original"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-bootstrap-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-postgresql-plain-wordmark"></i></span></div>
+											</div>
+											<div>
+												<hr>
+											</div>
+											<h5>Tools</h5>
+											<div class="row row-cols-3 row-cols-md-3 text-center align-items-center">
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-git-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-npm-original-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-webpack-plain"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-heroku-plain-wordmark"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-windows8-original"></i></span></div>
+												<div class="col skills-list"><span class="skills-list-icon"><i class="devicon-android-plain"></i></span></div>
+											</div>	
 										</div>
 									</div>
 								</div>
@@ -184,11 +191,25 @@
 								<div class="col mb-3">
 									<div class="card border-0 shadow-card">
 										<div class="card-body">
+											<h5 class="card-title">Hardware & Software</h5>
+											<ul>
+												<li>Instalation</li>
+												<li>Maintenance</li>
+												<li>Troubleshooting</li>
+												<li>Configuration</li>
+												<li>Internet</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col mb-3">
+									<div class="card border-0 shadow-card">
+										<div class="card-body">
 											<h5 class="card-title">Apps</h5>
 											<ul>
 												<li>MS. Office (Word, Excel, Powerpoint, Access)</li>
 												<li>Gdrive (Docs, Sheets, Slides, Forms)</li>
-												<li>Blogspot, Wordpress, Social Media</li>
+												<li>Blogspot, Social Media</li>
 											</ul>
 										</div>
 									</div>
@@ -260,7 +281,7 @@
 							<div class="card-body">
 								<h5 class="card-title">LepKom Gunadarma</h5>
 								<ul>
-									<li>Fundamental Database Management System</li>
+									<li>Fundamental DBMS</li>
 									<li>Fundamental ERP</li>
 									<li>Oracle</li>
 									<li>JAVASCRIPT</li>
