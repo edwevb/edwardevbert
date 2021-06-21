@@ -140,7 +140,6 @@ header{
 .title{
 	color: #f8f9fa;
 	text-align:center;
-	margin-top: 100px;
 }
 
 .welcome{
@@ -224,6 +223,21 @@ header{
 	-o-background-size: cover;
 	background-size: cover;
 	transition: filter 0.5s;
+	filter: blur(8px);
+	-webkit-filter: blur(8px);
+	transform: translateY(25%);
+}
+
+.coursesDesc h1{
+	background-color: rgb(52,58,64); /* Fallback color */
+  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
+  color: #f8f9fa;
+  border-radius:5px;
+  margin:auto;
+  width: 80%;
+  padding: 20px;
+  transform: translateY(-100%);
+  text-align:center;
 }
 
 .footer .list-group-item{
