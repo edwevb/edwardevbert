@@ -14,16 +14,18 @@ $('#scroll').click(function(){
 }); 
 
 $(window).on('load',function(){
-	$('.preloader').delay(1500).fadeOut('slow', function(){
+	$('body').css('overflow', 'hidden');
+	$('.preloader').delay(2000).fadeOut('slow', function(){
 			$('.myNameHeader').addClass('myNameHeaderShow');
+			$('body').css('overflow', 'visible');
 		});
 });
 
 $(function($) {
-	var followScroll = $('.followScroll'),
-	originalY = followScroll.offset().top - 50;
-	var topMargin = 20;
-	var stopScroll = $('.skillsLeft').offset().top - 300;
+	let followScroll = $('.followScroll'),
+	originalY = followScroll.offset().top - 50,
+	topMargin = 20
+
 	followScroll.css('position', 'relative');
 	if ($(window).width() > 768) {
 		$(window).on('scroll', function(event) {
@@ -33,9 +35,9 @@ $(function($) {
 					top: scrollTop < originalY
 					? 0
 					: scrollTop - originalY + topMargin
-				}, 300);
+				});
 			}
-			if (scrollTop > 2600) {
+			if (scrollTop > 2150) {
 				followScroll.stop();
 			}
 		});
@@ -46,6 +48,13 @@ $(function($) {
 
 $(window).scroll(function(){
 	var wScroll = $(this).scrollTop();
+	if ($(window).scrollTop() > $('.welcome').offset().top) {
+		$('#navbar').removeClass('bg-transparent');
+		$('#navbar').addClass('sticky');
+	} else {
+		$('#navbar').removeClass('sticky');
+		$('#navbar').addClass('bg-transparent');
+	}
 
 	if (wScroll > $('.welcome').offset().top - 150) {
 		let welcomeDesc = $('.welcomeDesc');
@@ -63,12 +72,12 @@ $(window).scroll(function(){
 		aboutText.addClass('aboutTextShow');
 	}
 
-	if (wScroll > $('#skillSection').offset().top - 50) {
+	if (wScroll > $('#skillSection').offset().top - 100) {
 		$('.skillsRight').addClass('skillsRightShow');
 		$('.skillsLeft').addClass('skillsLeftShow');
 	}
 
-	if (wScroll < $('#skillSection').offset().top - 50) {
+	if (wScroll < $('#skillSection').offset().top - 100) {
 		$('.skillsRight').removeClass('skillsRightShow');
 		$('.skillsLeft').removeClass('skillsLeftShow');
 	}
@@ -105,5 +114,51 @@ $(window).scroll(function(){
 			}, 100 * (indexList+1));
 		});
 	}
+});
 
+
+$.fn.materializeInputs = function(selectors) {
+	if (typeof(selectors)==='undefined') selectors = "input, textarea, select";
+
+	function setInputValueAttr(element) {
+		element.setAttribute('value', element.value);
+	}
+
+
+	this.find(selectors).each(function () {
+		setInputValueAttr(this);
+	});
+
+	this.on("keyup change", selectors, function() {
+		setInputValueAttr(this);
+	});
+};
+
+$('form').on('submit', function(e){
+	e.preventDefault();
+	const input = document.getElementsByClassName('form-control'),
+	data = {};
+	for (var i = 0; i < input.length; i++) {
+		data[input[i].name] = input[i].value;
+	}
+	console.log(data);
+	Swal.fire({
+		icon: 'success',
+		iconColor:'#3F3D56',
+		title: 'Thank you for your feedback!',
+		html: `Your message has been send! <br> but to make sure, please also send manually to my email below. <br> <a href="mailto:edwardevbert@gmail.com" class="text-decoration-none">edwardevbert@gmail.com</a>`,
+		customClass:{
+			confirmButton: 'btn btn-dark px-5',
+		},
+		buttonsStyling:false
+	});
+});
+
+$('#myBlog').on('click', ()=>{
+	Swal.fire({
+		html:`<h1 class="text-light">Comming soon!</h1>`,
+		width: 600,
+		padding: '3em',
+		background: '#3F3D56'
+	});
 });

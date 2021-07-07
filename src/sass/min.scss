@@ -1,7 +1,10 @@
 $enable-negative-margins: true;
 @import "~bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik:wght@500&display=swap');
+:root {
+	--primary: #343a40;
 
+}
 #navbar{
 	top:0;
 	-webkit-transition: 0.5s;
@@ -88,6 +91,15 @@ nav, p, li, h6, th, td, .mantra, footer small{
 	color: #6c757d;
 }
 
+.sticky{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1030;
+	background-color: rgba(0, 0, 0, 0.65)!important;
+}
+
 header, #aboutSection, #skillSection, #portofolioSection, #achievementSection, #contactSection{
 	overflow: hidden!important;
 }
@@ -133,7 +145,7 @@ header{
 	-o-background-size: cover;
 	background-size: cover;
 	transition: filter 0.5s;
-	z-index: -1;
+	z-index: -100;
 	overflow:hidden;
 }
 
@@ -214,32 +226,6 @@ header{
 	transition: filter 0.5s;
 }
 
-.courses-side-image{
-	padding: 250px 0;
-	text-align: center;
-	background: url('/assets/img/courses.png') no-repeat center center;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-	transition: filter 0.5s;
-	filter: blur(8px);
-	-webkit-filter: blur(8px);
-	transform: translateY(25%);
-}
-
-.coursesDesc h1{
-	background-color: rgb(52,58,64); /* Fallback color */
-  background-color: rgba(0,0,0, 0.7); /* Black w/opacity/see-through */
-  color: #f8f9fa;
-  border-radius:5px;
-  margin:auto;
-  width: 80%;
-  padding: 20px;
-  transform: translateY(-100%);
-  text-align:center;
-}
-
 .footer .list-group-item{
 	border:0;
 	font-weight: bolder;
@@ -270,7 +256,7 @@ header{
 	text-shadow: 0.5px 2px 1px black;
 }
 
-@media (max-width: 575.98px) 
+@media only screen and (max-width: 575.98px) 
 {
 	.list-group-item a{
 		font-size:3em;
@@ -279,6 +265,10 @@ header{
 	.title{
 		margin-top: -50px;
 	}
+	.pageBackground{
+		background-attachment: scroll;
+	}
+
 }
 
 #scroll {
@@ -315,26 +305,6 @@ header{
 	-ms-filter:"alpha(opacity=100)";
 }
 
-.preloader {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background-color: #fff;
-}
-
-.preloader .loading {
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	-moz-transform: translate(-50%, -50%);
-	-o-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-	font-family: 'Rubik', sans-serif;
-}
 
 //PAGE EFFECT & TRANSITION
 
@@ -404,10 +374,10 @@ header{
 
 .aboutText, .skillsRight, .contactRight{
 	opacity: 0;
-	-webkit-transform:translate(50px, 0) rotate(-15deg);
-	-moz-transform:translate(50px, 0) rotate(-15deg);
-	-o-transform:translate(50px, 0) rotate(-15deg);
-	transform:translate(50px, 0) rotate(-15deg);
+	-webkit-transform:translate(50px, 0);
+	-moz-transform:translate(50px, 0);
+	-o-transform:translate(50px, 0);
+	transform:translate(50px, 0);
 	-webkit-transition: 1s;
 	-moz-transition: 1s;
 	-ms-transition: 1s;
@@ -426,10 +396,10 @@ header{
 
 .skillsLeft{
 	opacity: 0;
-	-webkit-transform:translate(-50px, 0) rotate(15deg);
-	-moz-transform:translate(-50px, 0) rotate(15deg);
-	-o-transform:translate(-50px, 0) rotate(15deg);
-	transform:translate(-50px, 0) rotate(15deg);
+	-webkit-transform:translate(-50px, 0);
+	-moz-transform:translate(-50px, 0);
+	-o-transform:translate(-50px, 0);
+	transform:translate(-50px, 0);
 	-webkit-transition: 1s;
 	-moz-transition: 1s;
 	-ms-transition: 1s;
@@ -527,4 +497,110 @@ header{
 	-o-transform: scale(0.1, 1);
 	transform: scale(0.1, 1);
 	transform: scale(0.1, 1);
+}
+
+//input material
+
+.form-group.input-material {
+	position: relative;
+	margin-top: 50px;
+	margin-bottom: 25px;
+}
+.form-group.input-material label {
+	color: #BEBDC6;
+	font-size: 16px;
+	font-weight: normal;
+	position: absolute;
+	pointer-events: none;
+	left: 5px;
+	bottom: 1px;
+	transition: 0.1s ease all;
+	-moz-transition: 0.1s ease all;
+	-webkit-transition: 0.1s ease all; 
+}
+.form-group.input-material textarea.form-control ~ label {
+	margin-bottom:5px;
+	bottom: 90%;
+	bottom: calc(100% - 50px); 
+}
+.form-group.input-material .form-control, .form-group.input-material .form-select {
+	border: none;
+	border-bottom: 2px solid #BEBDC6;
+	border-radius: 0px;
+	background-color: transparent;
+	padding-left: 5px;
+	box-shadow: none;
+}
+.form-group.input-material .form-control:required ~ label::after, .form-group.input-material .form-select:required ~ label::after {
+	content: '*';
+	color: #dc3545;
+	padding-left: 2px;
+	font-size: 0.8em; 
+}
+
+.form-group.input-material .form-control:focus, .form-group.input-material .form-control[value]:not([value=""]), .form-group.input-material .form-select:focus, .form-group.input-material .form-select[value]:not([value=""]) {
+	border-bottom-color: #3F3D56;
+	color: #343A40; 
+}
+
+.form-group.input-material .form-control:focus ~ label,
+.form-group.input-material .form-control[value]:not([value=""]) ~ label, .form-group.input-material .form-select:focus ~ label,
+.form-group.input-material .form-select[value]:not([value=""]) ~ label {
+	top: unset;
+	bottom: 100%;
+	bottom: calc(100% - 5px);
+	font-size: 14px;
+	color: #3F3D56;
+	font-weight: 500; 
+}
+
+.form-group.input-material .form-control:focus.invalid, .form-group.input-material .form-control.invalid, .form-group.input-material .form-control:focus.parsley-error, .form-group.input-material .form-control[value]:not([value=""]).parsley-error, .form-group.input-material .form-select:focus.invalid, .form-group.input-material .form-select.invalid, .form-group.input-material .form-select:focus.parsley-error, .form-group.input-material .form-select[value]:not([value=""]).parsley-error {
+	border-bottom-color: #dc3545; 
+}
+
+.form-group.input-material .form-control:focus.invalid ~ label,
+.form-group.input-material .form-control.invalid ~ label,
+.form-group.input-material .form-control:focus.parsley-error ~ label,
+.form-group.input-material .form-control[value]:not([value=""]).parsley-error ~ label, .form-group.input-material .form-select:focus.invalid ~ label,
+.form-group.input-material .form-select.invalid ~ label,
+.form-group.input-material .form-select:focus.parsley-error ~ label,
+.form-group.input-material .form-select[value]:not([value=""]).parsley-error ~ label {
+	color: #dc3545; 
+}
+
+.form-group.input-material .form-select {
+	background-position: right 0 center;
+	padding-left: 0; 
+}
+
+.form-group.input-material .parsley-errors-list {
+	color: #dc3545;
+	list-style: none;
+	font-size: 0.7em;
+	padding-left: 5px; 
+}
+
+
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: #343A40;  
+	background: -webkit-linear-gradient(to right, #3F3D56, #343A40);
+	background: linear-gradient(to right, #3F3D56, #343A40); 
+
+}
+
+.preloader .loading {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-moz-transform: translate(-50%, -50%);
+	-o-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	font-family: 'Rubik', sans-serif;
 }

@@ -25,7 +25,6 @@
 
 	<!-- Devicon CSS -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.12.0/devicon.min.css">
-
 	<style>
 		html{
 			scroll-behavior: smooth;
@@ -47,7 +46,7 @@
 		<nav id="navbar" class="navbar navbar-expand-lg bg-transparent py-3">
 			<div class="container-fluid">
 				<a class="navbar-brand d-flex font-weight-bold text-center" href="#">
-					My Personal Page
+					Personal Page
 				</a>
 				<button class="navbar-toggler collapsed position-relative" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
 					<span> </span>
@@ -71,6 +70,9 @@
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" aria-current="page" href="#achievementSection">Achievement</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" id="myBlog" href="javascript:void(0)">Blog</a>
 						</li>
 					</ul>
 				</div>
@@ -102,37 +104,13 @@
 						<div class="aboutText">
 							<h1>Summary</h1>
 							<p>
-								<em>&ldquo;Hello World!<br>My name is Edward Evbert Angkouw - <span class="font-weight-bold">a passionate Junior Web Developer</span> with advanced skills on programming and databases. Experienced in creating interactive, responsive, and dynamic web-based applications. I'm hugely interest to be part of your company's creative team and to have excelent career in IT environtment.&rdquo;</em>
+								<em>&ldquo;Hello World!<br>My name is Edward Evbert Angkouw - <span class="font-weight-bold">a passionate Junior Web Developer</span> with advanced skills on programming and databases. Experienced in creating interactive, responsive, and dynamic web-based applications. I'm immensely interest to be part of your company's creative team and to have excelent career in IT environtment.&rdquo;</em>
 							</p>
-							<a href="#contactSection" class="btn btn-dark px-5 btn-learn-more">Contact me</a>
 						</div>
 					</div>
 				</div>
-				<div class="text-center my-5">
-					<h1>My Education</h1>
-					<hr class="pageHr" style="margin:auto;">
-				</div>
-				<div class="row row-cols-1 row-cols-md-2">
-					<div class="col">
-						<div class="card shadow-card text-white bg-dark mb-3">
-							<div class="card-body">
-								<div class="text-right text-muted">2017 - Currently</div>
-								<h5 class="card-title">Gunadarma University</h5>
-								<h6 class="card-subtitle mb-2 text-light">Information Technology</h6>
-								<p class="card-text"><em>I dive even deeper!</em></p>
-							</div>
-						</div>
-					</div>
-					<div class="col">
-						<div class="card shadow-card text-white bg-dark mb-3">
-							<div class="card-body">
-								<div class="text-right text-muted">2013 - 2016</div>
-								<h5 class="card-title">Ki Hajar Dewantara Vocational High School</h5>
-								<h6 class="card-subtitle mb-2 text-light">Computer Engineering</h6>
-								<p class="card-text"><em>Where I'm started to dive into the IT's world.</em></p>
-							</div>
-						</div>
-					</div>
+				<div class="text-center mb-5">
+					<a href="#contactSection" class="btn btn-outline-dark px-5 btn-learn-more">Get in touch</a>
 				</div>
 			</div>
 		</section>
@@ -184,7 +162,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row align-items-center">
+				<div class="row align-items-center scrollStop">
 					<div class="col-md-6">
 						<div class="skillsLeft">
 							<div class="row row-cols-1 row-cols-md-1">
@@ -198,17 +176,6 @@
 												<li>Troubleshooting</li>
 												<li>Configuration</li>
 												<li>Internet</li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<div class="col mb-3">
-									<div class="card border-0 shadow-card">
-										<div class="card-body">
-											<h5 class="card-title">Apps</h5>
-											<ul>
-												<li>Google/MS. Office</li>
-												<li>Blogspot, Social Media</li>
 											</ul>
 										</div>
 									</div>
@@ -270,9 +237,36 @@
 				</div>
 			</div>
 		</section>
+		<div class="container">
+			<h1>Education</h1>
+			<hr class="pageHr">
+
+			<div class="row row-cols-1 row-cols-md-2">
+				<div class="col">
+					<div class="card shadow-card text-white bg-dark mb-3">
+						<div class="card-body">
+							<div class="text-right text-muted">2017 - Currently</div>
+							<h5 class="card-title">Gunadarma University</h5>
+							<h6 class="card-subtitle mb-2 text-light">Information Technology</h6>
+							<p class="card-text"><em>I dive even deeper!</em></p>
+						</div>
+					</div>
+				</div>
+				<div class="col">
+					<div class="card shadow-card text-white bg-dark mb-3">
+						<div class="card-body">
+							<div class="text-right text-muted">2013 - 2016</div>
+							<h5 class="card-title">Ki Hajar Dewantara Vocational High School</h5>
+							<h6 class="card-subtitle mb-2 text-light">Computer Engineering</h6>
+							<p class="card-text"><em>Where I'm started to dive into the IT's world.</em></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<section id="coursesSection">
 			<div class="container my-5">
-				<h1>Courses & Training</h1>
+				<h1>Courses & Certification</h1>
 				<hr class="pageHr">
 				<div class="row row-cols-1 row-cols-md-2">
 					<div class="col mb-3">
@@ -333,10 +327,7 @@
 				</div>
 			</div>
 		</section>
-		<div class="courses-side-image"></div>
-		<div class="coursesDesc">
-			<h1>Programming isn't about writing thousands lines of code, but how to solve problems with it!</h1>
-		</div>
+
 		<section id="achievementSection">
 			<div class="container my-5">
 				<h1>Achievement</h1>
@@ -406,10 +397,41 @@
 						<div class="col mb-3">
 							<img class="responsive-img" src="assets/img/mailbox.png" alt="illustration">
 						</div>
-						<div class="col text-center">
-							<h5 class="contactRight">edwardevbert@gmail.com</h5>
-							<a href="mailto:edwardevbert@gmail.com" class="btn btn-dark btn-learn-more contactRight">Hire me <i class="fa fa-check"></i></a>
-							<a href="https://drive.google.com/drive/folders/12GSiPhop4W-WQc9UlF6-iHgedTbkjp4e?usp=sharing" class="btn btn-light btn-learn-more contactRight">Curriculum Vitae</a>
+						<div class="col">
+							<form id="contact-form" method="post">
+								<div class="row row-cols-1">
+									<div class="col">
+										<div class="form-group input-material">
+											<input type="text" class="form-control" name="name" id="name" autocomplete="off">
+											<label for="name">Name</label>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-group input-material">
+											<input type="email" class="form-control" name="email" id="email">
+											<label for="email">Email</label>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-group input-material">
+											<input type="text" class="form-control" name="subjet" id="subject" autocomplete="off">
+											<label for="subject">Subject</label>
+										</div>
+									</div>
+									<div class="col">
+										<div class="form-group input-material">
+											<textarea class="form-control" id="messages" name="messages"></textarea>
+											<label for="messages">Message</label>
+										</div>
+									</div>
+									<!-- <div class="col mb-3">
+										<div class="form-group">
+											<div id="recaptcha"></div>
+										</div>
+									</div> -->
+								</div>
+								<button type="submit" class="btn btn-outline-dark px-5"><i class="far fa-paper-plane"></i> Send</button>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -569,15 +591,50 @@
 		</div>
 	</div>
 	<div class="preloader">
-		<div class="loading text-center">
-			<img src="/assets/img/load-page.gif" width="80">
-			<div>
-				<button class="btn btn-learn-more">Please wait..</button>
+		<div class="loading">
+			<div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
+				<span class="sr-only">Loading...</span>
 			</div>
 		</div>
 	</div>
 	<a href="#" id="scroll" style="display: none;"><span></span></a>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+	
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<!-- <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script> -->
 	<script src="/assets/js/min.js"></script>
+	<script>
+		$('document').ready(function(){
+			$('body').materializeInputs();
+		});
+	</script>
 </body>
 </html>
+<!-- 
+<h5 class="contactRight">edwardevbert@gmail.com</h5>
+<a href="mailto:edwardevbert@gmail.com" class="btn btn-dark btn-learn-more contactRight">Hire me <i class="fa fa-check"></i></a>
+<a href="https://drive.google.com/drive/folders/12GSiPhop4W-WQc9UlF6-iHgedTbkjp4e?usp=sharing" class="btn btn-light btn-learn-more contactRight">Curriculum Vitae</a> 
+-->
+<!-- 
+<div class="col">
+	<div class="form-group input-material">
+		<div class="form-group input-material">
+			<select class="form-control" id="personality">
+				<option value="" selected></option>
+				<option value="Spaces">Spaces</option>
+				<option value="Tabs">Tabs</option>
+			</select>
+			<label for="personality" class="form-label">Spaces or tabs?</label>
+		</div>
+	</div>
+</div>	 -->
+
+<!-- 		$(function(){
+			var captcha;
+			onloadCallback=function(){
+				captcha = grecaptcha.render(document.getElementById('recaptcha'), {
+					'sitekey' : "6LcSiX8bAAAAAO4ItTLxjT4q0WDIHTN9rrO2SjCc",
+					'theme' : 'dark'
+				});
+			}
+		}); -->
