@@ -399,7 +399,7 @@
 						</div>
 						<div class="col">
 							<form id="contact-form" method="post">
-								<div class="row row-cols-1">
+								<div class="row row-cols-1 row-cols-md-1">
 									<div class="col">
 										<div class="form-group input-material">
 											<input type="text" class="form-control" name="name" id="name" autocomplete="off">
@@ -411,10 +411,11 @@
 											<input type="email" class="form-control" name="email" id="email">
 											<label for="email">Email</label>
 										</div>
+										
 									</div>
 									<div class="col">
 										<div class="form-group input-material">
-											<input type="text" class="form-control" name="subjet" id="subject" autocomplete="off">
+											<input type="text" class="form-control" name="subject" id="subject" autocomplete="off">
 											<label for="subject">Subject</label>
 										</div>
 									</div>
@@ -424,13 +425,14 @@
 											<label for="messages">Message</label>
 										</div>
 									</div>
-									<!-- <div class="col mb-3">
+									<div class="col my-4">
 										<div class="form-group">
-											<div id="recaptcha"></div>
+											<input class="form-control" type="hidden" name="captcha" id="captcha">
+											<div class="g-recaptcha" data-sitekey="6LfOioIbAAAAAGGV0COk7F8Hj90yTbUSXUWZBaCX" data-callback="recaptcha_callback" data-expired-callback="expire_callback"></div>
 										</div>
-									</div> -->
+									</div>
 								</div>
-								<button type="submit" class="btn btn-outline-dark px-5"><i class="far fa-paper-plane"></i> Send</button>
+								<button id="btn-submit" type="submit" class="btn btn-outline-dark px-5 mt-3" disabled><i class="far fa-paper-plane"></i> Send</button>
 							</form>
 						</div>
 					</div>
@@ -591,19 +593,30 @@
 		</div>
 	</div>
 	<div class="preloader">
-		<div class="loading">
-			<div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
-				<span class="sr-only">Loading...</span>
-			</div>
+		<div class="loading text-center">
+			<div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status"></div>
+			<h1 class="text-white">Please wait..</h1>
 		</div>
 	</div>
 	<a href="#" id="scroll" style="display: none;"><span></span></a>
 	<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-	
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-	<!-- <script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer></script> -->
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 	<script src="/assets/js/min.js"></script>
 	<script>
+
+		function recaptcha_callback(){
+			$('#btn-submit').prop('disabled',false);
+			$('#btn-submit').css('cursor', 'pointer');
+			$('input[name=captcha]').val('6LfOioIbAAAAAGGV0COk7F8Hj90yTbUSXUWZBaCX');
+		}
+
+		function expire_callback(){
+			$('#btn-submit').prop('disabled',true);
+			$('#btn-submit').css('cursor', 'not-allowed');
+			$('input[name=captcha]').val('');
+		}
+		
 		$('document').ready(function(){
 			$('body').materializeInputs();
 		});

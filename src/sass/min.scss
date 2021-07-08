@@ -503,9 +503,10 @@ header{
 
 .form-group.input-material {
 	position: relative;
-	margin-top: 50px;
+	margin-top: 25px;
 	margin-bottom: 25px;
 }
+
 .form-group.input-material label {
 	color: #BEBDC6;
 	font-size: 16px;
@@ -518,11 +519,13 @@ header{
 	-moz-transition: 0.1s ease all;
 	-webkit-transition: 0.1s ease all; 
 }
+
 .form-group.input-material textarea.form-control ~ label {
 	margin-bottom:5px;
 	bottom: 90%;
 	bottom: calc(100% - 50px); 
 }
+
 .form-group.input-material .form-control, .form-group.input-material .form-select {
 	border: none;
 	border-bottom: 2px solid #BEBDC6;
@@ -530,12 +533,6 @@ header{
 	background-color: transparent;
 	padding-left: 5px;
 	box-shadow: none;
-}
-.form-group.input-material .form-control:required ~ label::after, .form-group.input-material .form-select:required ~ label::after {
-	content: '*';
-	color: #dc3545;
-	padding-left: 2px;
-	font-size: 0.8em; 
 }
 
 .form-group.input-material .form-control:focus, .form-group.input-material .form-control[value]:not([value=""]), .form-group.input-material .form-select:focus, .form-group.input-material .form-select[value]:not([value=""]) {
@@ -554,32 +551,10 @@ header{
 	font-weight: 500; 
 }
 
-.form-group.input-material .form-control:focus.invalid, .form-group.input-material .form-control.invalid, .form-group.input-material .form-control:focus.parsley-error, .form-group.input-material .form-control[value]:not([value=""]).parsley-error, .form-group.input-material .form-select:focus.invalid, .form-group.input-material .form-select.invalid, .form-group.input-material .form-select:focus.parsley-error, .form-group.input-material .form-select[value]:not([value=""]).parsley-error {
-	border-bottom-color: #dc3545; 
-}
-
-.form-group.input-material .form-control:focus.invalid ~ label,
-.form-group.input-material .form-control.invalid ~ label,
-.form-group.input-material .form-control:focus.parsley-error ~ label,
-.form-group.input-material .form-control[value]:not([value=""]).parsley-error ~ label, .form-group.input-material .form-select:focus.invalid ~ label,
-.form-group.input-material .form-select.invalid ~ label,
-.form-group.input-material .form-select:focus.parsley-error ~ label,
-.form-group.input-material .form-select[value]:not([value=""]).parsley-error ~ label {
-	color: #dc3545; 
-}
-
 .form-group.input-material .form-select {
 	background-position: right 0 center;
 	padding-left: 0; 
 }
-
-.form-group.input-material .parsley-errors-list {
-	color: #dc3545;
-	list-style: none;
-	font-size: 0.7em;
-	padding-left: 5px; 
-}
-
 
 .preloader {
 	position: fixed;
@@ -603,4 +578,8 @@ header{
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	font-family: 'Rubik', sans-serif;
+}
+
+#btn-submit{
+	cursor: not-allowed;
 }
