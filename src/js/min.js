@@ -1,4 +1,13 @@
 import "bootstrap"
+$(document).ready(function(){
+	$('#contactPopover').popover({
+		html:true,
+		title:'Contact Info',
+		content:`<p>Please <strong>confirm</strong> reCAPTCHA to enable send button</p><p>Your message will be send to my email <strong>edwardevbert@gmail.com</strong></p><p><a href="mailto:edwardevbert@gmail.com">Click here</a> to send from your email apps.</p>`,
+		toggle:'popover',
+		trigger:'focus'
+	})
+})
 
 $(window).scroll(function(){ 
 	if ($(this).scrollTop() > 650) { 
@@ -13,9 +22,9 @@ $('#scroll').click(function(){
 	return false; 
 }); 
 
-$(window).on('load',function(){
+$(window).on('load', async function(){
 	$('body').css('overflow', 'hidden');
-	$('.preloader').delay(2000).fadeOut('slow', function(){
+	await $('.preloader').delay(2000).fadeOut('slow', function(){
 			$('.myNameHeader').addClass('myNameHeaderShow');
 			$('body').css('overflow', 'visible');
 		});
@@ -116,6 +125,9 @@ $(window).scroll(function(){
 	}
 });
 
+$('document').ready(function(){
+	$('body').materializeInputs();
+});
 
 $.fn.materializeInputs = function(selectors) {
 	if (typeof(selectors)==='undefined') selectors = "input, textarea, select";
@@ -155,12 +167,13 @@ const doAjax = (data, url) => {
 			requestPreLoader();
 		},
 		success: async (res) => {
-			await console.log(res.message)
+			await console.log(res.message);
 			await successAlert(res.message);
 			await requestPreLoaderRemove();
+			await resetContactForm(res);
 		},
 		error: async (xhr) => {
-			console.log(xhr.responseText)
+			await console.log(xhr.responseText);
 			if (xhr.status == 422) {
 				await warningAlert(xhr);
 			}else{
@@ -176,7 +189,7 @@ const successAlert = (msg) =>{
 		icon: 'success',
 		iconColor:'#3F3D56',
 		title: msg,
-		html: `Your message has been send! <br> to make sure, please also send manually to my email below. <br> <a href="mailto:edwardevbert@gmail.com" class="text-decoration-none">edwardevbert@gmail.com</a>`,
+		html: `Your message has been send!`,
 		customClass:{
 			confirmButton: 'btn btn-dark px-5',
 		},
@@ -184,15 +197,14 @@ const successAlert = (msg) =>{
 	});
 }
 
-const warningAlert = (res) => {
+const warningAlert = (xhr) => {
 	Swal.fire({
 		icon: 'error',
 		title: 'Oops.. something error!',
-		text: res.message,
+		text: xhr.responseJSON.message,
 	}).then(()=>{
-		formValidationShow(res);
+		formValidationShow(xhr);
 	});
-	$('input[name=captcha]').val(null);
 }
 
 const serverTimeOut = () => {
@@ -211,16 +223,24 @@ const formValidationShow = (xhr) => {
 		$.each(res.errors, (key, value) => {
 			if(key.indexOf(".") != -1){
 				const arr = key.split(".");
-				keys = $(`#${arr[0]}`)
+				keys = $(`#${arr[0]}`);
 			}else{
-				keys = $(`#${key}`)
+				keys = $(`#${key}`);
 			}
 			keys.closest('.form-control')
 			.addClass('is-invalid');
 			keys.closest('.form-group')
-			.append(`<div class="invalid-feedback" style="position: absolute;">${value}</div>`)
+			.append(`<div class="invalid-feedback" style="position: absolute;">${value}</div>`);
 		});
 	}
+}
+
+const resetContactForm = async (res) => {
+	await $.each(res.data, (key) => {
+		$(`#${key}`)
+		.closest('.form-control').val(null);
+	});
+	await $('body').materializeInputs();
 }
 
 const removeValidationElem = () => {
@@ -234,7 +254,6 @@ const requestPreLoader = async () =>{
 	await $('#btn-submit').css('cursor', 'not-allowed');
 	await $('#btn-submit').html(` <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
 		Loading...`);
-	await grecaptcha.reset();
 }
 
 const requestPreLoaderRemove = async () =>{
@@ -242,10 +261,9 @@ const requestPreLoaderRemove = async () =>{
 	await grecaptcha.reset();
 }
 
-
 $('#myBlog').on('click', ()=>{
 	Swal.fire({
-		html:`<h1 class="text-light">Comming soon!</h1>`,
+		html:`<h1 class="text-light">Coming soon!</h1>`,
 		width: 600,
 		padding: '3em',
 		background: '#3F3D56'
