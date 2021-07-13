@@ -1,33 +1,98 @@
 import "bootstrap"
 $(document).ready(function(){
+
+	$('.js-scroll').on('click', function(e) {
+		let href = $(this).attr('href');
+		let elHref = $(href);
+
+		$('html, body').animate({
+			scrollTop : elHref.offset().top - 50
+		}, 1000, 'easeInOutExpo');
+		e.preventDefault();
+	});
+
 	$('#contactPopover').popover({
 		html:true,
 		title:'Contact Info',
 		content:`<p>Please <strong>confirm</strong> reCAPTCHA to enable send button</p><p>Your message will be send to my email <strong>edwardevbert@gmail.com</strong></p><p><a href="mailto:edwardevbert@gmail.com">Click here</a> to send from your email apps.</p>`,
 		toggle:'popover',
 		trigger:'focus'
-	})
-})
+	});
 
-$(window).scroll(function(){ 
-	if ($(this).scrollTop() > 650) { 
-		$('#scroll').fadeIn(); 
-	} else { 
-		$('#scroll').fadeOut(); 
-	} 
+	$(window).scroll(function(){
+		var wScroll = $(this).scrollTop();
+		if (wScroll > $('.welcome').offset().top - 100){
+			$(".scrollTop").addClass("showScrollTop");
+		} else {
+			$(".scrollTop").removeClass("showScrollTop");
+		}
+
+		if (wScroll > $('.welcome').offset().top - 100){
+			$('#navbar').removeClass('bg-transparent');
+			$('#navbar').addClass('bg-nav-scroll');
+		} else {
+			$('#navbar').removeClass('bg-nav-scroll');
+			$('#navbar').addClass('bg-transparent');
+		}
+
+		if (wScroll > $('.welcome').offset().top - 100){
+			let welcomeDesc = $('.welcomeDesc');
+			welcomeDesc.show();
+			welcomeDesc.addClass('welcomeDescShow');
+		}
+
+		if (wScroll < $('.welcome').offset().top - 100){
+			let welcomeDesc = $('.welcomeDesc');
+			welcomeDesc.removeClass('welcomeDescShow');
+		}	
+
+		if (wScroll > $('#aboutSection').offset().top - 100){
+			let aboutText = $('.aboutText');
+			aboutText.addClass('aboutTextShow');
+		}
+
+		if (wScroll > $('#skillSection').offset().top - 100){
+			$('.skillsRight').addClass('skillsRightShow');
+			$('.skillsLeft').addClass('skillsLeftShow');
+		}
+
+		if (wScroll < $('#skillSection').offset().top - 100){
+			$('.skillsRight').removeClass('skillsRightShow');
+			$('.skillsLeft').removeClass('skillsLeftShow');
+		}
+
+		if (wScroll > $('#portofolioSection').offset().top - 250){
+			let portofolioContent = $('.portofolioContent');
+			portofolioContent.addClass('portofolioContentShow');
+		}
+
+		if (wScroll > $('.portofolio-side-image').offset().top - 300){
+			let portofolioDesc = $('.portofolioDesc');
+			portofolioDesc.addClass('portofolioDescShow');
+		}
+
+		if (wScroll < $('.portofolio-side-image').offset().top - 300){
+			let portofolioDesc = $('.portofolioDesc');
+			portofolioDesc.removeClass('portofolioDescShow');
+		}
+
+		if (wScroll > $('#coursesSection').offset().top - 400){
+			let coursesList = $('.coursesList');
+			coursesList.each(function(indexList){
+				setTimeout(function(){
+					coursesList.eq(indexList).addClass('coursesListShow');
+				}, 500 * (indexList+1));
+			});
+		}
+	});
 });
 
-$('#scroll').click(function(){ 
-	$("html, body").animate({ scrollTop: 0 }, 600); 
-	return false; 
-}); 
-
+$('body').css('overflow', 'hidden');
 $(window).on('load', async function(){
-	$('body').css('overflow', 'hidden');
-	await $('.preloader').delay(2000).fadeOut('slow', function(){
-			$('.myNameHeader').addClass('myNameHeaderShow');
-			$('body').css('overflow', 'visible');
-		});
+	await $('.preloader').fadeOut('slow', function(){
+		$('.myNameHeader').addClass('myNameHeaderShow');
+		$('body').css('overflow', 'visible');
+	});
 });
 
 $(function($) {
@@ -52,77 +117,6 @@ $(function($) {
 		});
 	}
 
-});
-
-
-$(window).scroll(function(){
-	var wScroll = $(this).scrollTop();
-	if ($(window).scrollTop() > $('.welcome').offset().top) {
-		$('#navbar').removeClass('bg-transparent');
-		$('#navbar').addClass('sticky');
-	} else {
-		$('#navbar').removeClass('sticky');
-		$('#navbar').addClass('bg-transparent');
-	}
-
-	if (wScroll > $('.welcome').offset().top - 150) {
-		let welcomeDesc = $('.welcomeDesc');
-		welcomeDesc.show();
-		welcomeDesc.addClass('welcomeDescShow');
-	}
-
-	if (wScroll < $('.welcome').offset().top - 150) {
-		let welcomeDesc = $('.welcomeDesc');
-		welcomeDesc.removeClass('welcomeDescShow');
-	}	
-
-	if (wScroll > $('#aboutSection').offset().top - 250) {
-		let aboutText = $('.aboutText');
-		aboutText.addClass('aboutTextShow');
-	}
-
-	if (wScroll > $('#skillSection').offset().top - 100) {
-		$('.skillsRight').addClass('skillsRightShow');
-		$('.skillsLeft').addClass('skillsLeftShow');
-	}
-
-	if (wScroll < $('#skillSection').offset().top - 100) {
-		$('.skillsRight').removeClass('skillsRightShow');
-		$('.skillsLeft').removeClass('skillsLeftShow');
-	}
-
-	if (wScroll > $('#portofolioSection').offset().top - 250) {
-		let portofolioContent = $('.portofolioContent');
-		portofolioContent.addClass('portofolioContentShow');
-	}
-
-	if (wScroll > $('.portofolio-side-image').offset().top - 300) {
-		let portofolioDesc = $('.portofolioDesc');
-		portofolioDesc.addClass('portofolioDescShow');
-	}
-
-	if (wScroll < $('.portofolio-side-image').offset().top - 300) {
-		let portofolioDesc = $('.portofolioDesc');
-		portofolioDesc.removeClass('portofolioDescShow');
-	}
-
-	if (wScroll > $('#coursesSection').offset().top - 400) {
-		var coursesList = $('.coursesList');
-		coursesList.each(function(indexList){
-			setTimeout(function(){
-				coursesList.eq(indexList).addClass('coursesListShow');
-			}, 500 * (indexList+1));
-		});
-	}
-
-	if (wScroll > $('#contactSection').offset().top - 100) {
-		var contactRight = $('.contactRight');
-		contactRight.each(function(indexList){
-			setTimeout(function(){
-				contactRight.eq(indexList).addClass('contactRightShow');
-			}, 100 * (indexList+1));
-		});
-	}
 });
 
 $('document').ready(function(){
