@@ -27,7 +27,7 @@ $(document).ready(function(){
 			$(".scrollTop").removeClass("showScrollTop");
 		}
 
-		if (wScroll > $('.welcome').offset().top - 100){
+		if (wScroll > 10){
 			$('#navbar').removeClass('bg-transparent');
 			$('#navbar').addClass('bg-nav-scroll');
 		} else {
@@ -35,9 +35,8 @@ $(document).ready(function(){
 			$('#navbar').addClass('bg-transparent');
 		}
 
-		if (wScroll > $('.welcome').offset().top - 100){
+		if (wScroll > $('.welcome').offset().top){
 			let welcomeDesc = $('.welcomeDesc');
-			welcomeDesc.show();
 			welcomeDesc.addClass('welcomeDescShow');
 		}
 
@@ -254,12 +253,3 @@ const requestPreLoaderRemove = async () =>{
 	await $('#btn-submit').html(`<i class="far fa-paper-plane"></i> Send`);
 	await grecaptcha.reset();
 }
-
-$('#myBlog').on('click', ()=>{
-	Swal.fire({
-		html:`<h1 class="text-light">Coming soon!</h1>`,
-		width: 600,
-		padding: '3em',
-		background: '#3F3D56'
-	});
-});
