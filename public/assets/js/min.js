@@ -1,2 +1,10487 @@
-/*! For license information please see min.js.LICENSE.txt */
-!function(t){var e={};function n(i){if(e[i])return e[i].exports;var o=e[i]={i:i,l:!1,exports:{}};return t[i].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=t,n.c=e,n.d=function(t,e,i){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:i})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var i=Object.create(null);if(n.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var o in t)n.d(i,o,function(e){return t[e]}.bind(null,o));return i},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="/",n(n.s=2)}([function(t,e,n){t.exports=n(3)},function(t,e,n){"use strict";(function(t){var n="undefined"!=typeof window&&"undefined"!=typeof document&&"undefined"!=typeof navigator,i=function(){for(var t=["Edge","Trident","Firefox"],e=0;e<t.length;e+=1)if(n&&navigator.userAgent.indexOf(t[e])>=0)return 1;return 0}();var o=n&&window.Promise?function(t){var e=!1;return function(){e||(e=!0,window.Promise.resolve().then((function(){e=!1,t()})))}}:function(t){var e=!1;return function(){e||(e=!0,setTimeout((function(){e=!1,t()}),i))}};function r(t){return t&&"[object Function]"==={}.toString.call(t)}function s(t,e){if(1!==t.nodeType)return[];var n=t.ownerDocument.defaultView.getComputedStyle(t,null);return e?n[e]:n}function a(t){return"HTML"===t.nodeName?t:t.parentNode||t.host}function l(t){if(!t)return document.body;switch(t.nodeName){case"HTML":case"BODY":return t.ownerDocument.body;case"#document":return t.body}var e=s(t),n=e.overflow,i=e.overflowX,o=e.overflowY;return/(auto|scroll|overlay)/.test(n+o+i)?t:l(a(t))}function c(t){return t&&t.referenceNode?t.referenceNode:t}var u=n&&!(!window.MSInputMethodContext||!document.documentMode),f=n&&/MSIE 10/.test(navigator.userAgent);function h(t){return 11===t?u:10===t?f:u||f}function d(t){if(!t)return document.documentElement;for(var e=h(10)?document.body:null,n=t.offsetParent||null;n===e&&t.nextElementSibling;)n=(t=t.nextElementSibling).offsetParent;var i=n&&n.nodeName;return i&&"BODY"!==i&&"HTML"!==i?-1!==["TH","TD","TABLE"].indexOf(n.nodeName)&&"static"===s(n,"position")?d(n):n:t?t.ownerDocument.documentElement:document.documentElement}function p(t){return null!==t.parentNode?p(t.parentNode):t}function m(t,e){if(!(t&&t.nodeType&&e&&e.nodeType))return document.documentElement;var n=t.compareDocumentPosition(e)&Node.DOCUMENT_POSITION_FOLLOWING,i=n?t:e,o=n?e:t,r=document.createRange();r.setStart(i,0),r.setEnd(o,0);var s,a,l=r.commonAncestorContainer;if(t!==l&&e!==l||i.contains(o))return"BODY"===(a=(s=l).nodeName)||"HTML"!==a&&d(s.firstElementChild)!==s?d(l):l;var c=p(t);return c.host?m(c.host,e):m(t,p(e).host)}function g(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:"top",n="top"===e?"scrollTop":"scrollLeft",i=t.nodeName;if("BODY"===i||"HTML"===i){var o=t.ownerDocument.documentElement,r=t.ownerDocument.scrollingElement||o;return r[n]}return t[n]}function v(t,e){var n=arguments.length>2&&void 0!==arguments[2]&&arguments[2],i=g(e,"top"),o=g(e,"left"),r=n?-1:1;return t.top+=i*r,t.bottom+=i*r,t.left+=o*r,t.right+=o*r,t}function _(t,e){var n="x"===e?"Left":"Top",i="Left"===n?"Right":"Bottom";return parseFloat(t["border"+n+"Width"])+parseFloat(t["border"+i+"Width"])}function b(t,e,n,i){return Math.max(e["offset"+t],e["scroll"+t],n["client"+t],n["offset"+t],n["scroll"+t],h(10)?parseInt(n["offset"+t])+parseInt(i["margin"+("Height"===t?"Top":"Left")])+parseInt(i["margin"+("Height"===t?"Bottom":"Right")]):0)}function y(t){var e=t.body,n=t.documentElement,i=h(10)&&getComputedStyle(n);return{height:b("Height",e,n,i),width:b("Width",e,n,i)}}var w=function(t,e){if(!(t instanceof e))throw new TypeError("Cannot call a class as a function")},E=function(){function t(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}return function(e,n,i){return n&&t(e.prototype,n),i&&t(e,i),e}}(),L=function(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t},k=Object.assign||function(t){for(var e=1;e<arguments.length;e++){var n=arguments[e];for(var i in n)Object.prototype.hasOwnProperty.call(n,i)&&(t[i]=n[i])}return t};function T(t){return k({},t,{right:t.left+t.width,bottom:t.top+t.height})}function x(t){var e={};try{if(h(10)){e=t.getBoundingClientRect();var n=g(t,"top"),i=g(t,"left");e.top+=n,e.left+=i,e.bottom+=n,e.right+=i}else e=t.getBoundingClientRect()}catch(t){}var o={left:e.left,top:e.top,width:e.right-e.left,height:e.bottom-e.top},r="HTML"===t.nodeName?y(t.ownerDocument):{},a=r.width||t.clientWidth||o.width,l=r.height||t.clientHeight||o.height,c=t.offsetWidth-a,u=t.offsetHeight-l;if(c||u){var f=s(t);c-=_(f,"x"),u-=_(f,"y"),o.width-=c,o.height-=u}return T(o)}function O(t,e){var n=arguments.length>2&&void 0!==arguments[2]&&arguments[2],i=h(10),o="HTML"===e.nodeName,r=x(t),a=x(e),c=l(t),u=s(e),f=parseFloat(u.borderTopWidth),d=parseFloat(u.borderLeftWidth);n&&o&&(a.top=Math.max(a.top,0),a.left=Math.max(a.left,0));var p=T({top:r.top-a.top-f,left:r.left-a.left-d,width:r.width,height:r.height});if(p.marginTop=0,p.marginLeft=0,!i&&o){var m=parseFloat(u.marginTop),g=parseFloat(u.marginLeft);p.top-=f-m,p.bottom-=f-m,p.left-=d-g,p.right-=d-g,p.marginTop=m,p.marginLeft=g}return(i&&!n?e.contains(c):e===c&&"BODY"!==c.nodeName)&&(p=v(p,e)),p}function C(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=t.ownerDocument.documentElement,i=O(t,n),o=Math.max(n.clientWidth,window.innerWidth||0),r=Math.max(n.clientHeight,window.innerHeight||0),s=e?0:g(n),a=e?0:g(n,"left"),l={top:s-i.top+i.marginTop,left:a-i.left+i.marginLeft,width:o,height:r};return T(l)}function S(t){var e=t.nodeName;if("BODY"===e||"HTML"===e)return!1;if("fixed"===s(t,"position"))return!0;var n=a(t);return!!n&&S(n)}function A(t){if(!t||!t.parentElement||h())return document.documentElement;for(var e=t.parentElement;e&&"none"===s(e,"transform");)e=e.parentElement;return e||document.documentElement}function D(t,e,n,i){var o=arguments.length>4&&void 0!==arguments[4]&&arguments[4],r={top:0,left:0},s=o?A(t):m(t,c(e));if("viewport"===i)r=C(s,o);else{var u=void 0;"scrollParent"===i?"BODY"===(u=l(a(e))).nodeName&&(u=t.ownerDocument.documentElement):u="window"===i?t.ownerDocument.documentElement:i;var f=O(u,s,o);if("HTML"!==u.nodeName||S(s))r=f;else{var h=y(t.ownerDocument),d=h.height,p=h.width;r.top+=f.top-f.marginTop,r.bottom=d+f.top,r.left+=f.left-f.marginLeft,r.right=p+f.left}}var g="number"==typeof(n=n||0);return r.left+=g?n:n.left||0,r.top+=g?n:n.top||0,r.right-=g?n:n.right||0,r.bottom-=g?n:n.bottom||0,r}function N(t){return t.width*t.height}function j(t,e,n,i,o){var r=arguments.length>5&&void 0!==arguments[5]?arguments[5]:0;if(-1===t.indexOf("auto"))return t;var s=D(n,i,r,o),a={top:{width:s.width,height:e.top-s.top},right:{width:s.right-e.right,height:s.height},bottom:{width:s.width,height:s.bottom-e.bottom},left:{width:e.left-s.left,height:s.height}},l=Object.keys(a).map((function(t){return k({key:t},a[t],{area:N(a[t])})})).sort((function(t,e){return e.area-t.area})),c=l.filter((function(t){var e=t.width,i=t.height;return e>=n.clientWidth&&i>=n.clientHeight})),u=c.length>0?c[0].key:l[0].key,f=t.split("-")[1];return u+(f?"-"+f:"")}function I(t,e,n){var i=arguments.length>3&&void 0!==arguments[3]?arguments[3]:null,o=i?A(e):m(e,c(n));return O(n,o,i)}function P(t){var e=t.ownerDocument.defaultView.getComputedStyle(t),n=parseFloat(e.marginTop||0)+parseFloat(e.marginBottom||0),i=parseFloat(e.marginLeft||0)+parseFloat(e.marginRight||0);return{width:t.offsetWidth+i,height:t.offsetHeight+n}}function M(t){var e={left:"right",right:"left",bottom:"top",top:"bottom"};return t.replace(/left|right|bottom|top/g,(function(t){return e[t]}))}function H(t,e,n){n=n.split("-")[0];var i=P(t),o={width:i.width,height:i.height},r=-1!==["right","left"].indexOf(n),s=r?"top":"left",a=r?"left":"top",l=r?"height":"width",c=r?"width":"height";return o[s]=e[s]+e[l]/2-i[l]/2,o[a]=n===a?e[a]-i[c]:e[M(a)],o}function R(t,e){return Array.prototype.find?t.find(e):t.filter(e)[0]}function B(t,e,n){return(void 0===n?t:t.slice(0,function(t,e,n){if(Array.prototype.findIndex)return t.findIndex((function(t){return t[e]===n}));var i=R(t,(function(t){return t[e]===n}));return t.indexOf(i)}(t,"name",n))).forEach((function(t){t.function&&console.warn("`modifier.function` is deprecated, use `modifier.fn`!");var n=t.function||t.fn;t.enabled&&r(n)&&(e.offsets.popper=T(e.offsets.popper),e.offsets.reference=T(e.offsets.reference),e=n(e,t))})),e}function F(){if(!this.state.isDestroyed){var t={instance:this,styles:{},arrowStyles:{},attributes:{},flipped:!1,offsets:{}};t.offsets.reference=I(this.state,this.popper,this.reference,this.options.positionFixed),t.placement=j(this.options.placement,t.offsets.reference,this.popper,this.reference,this.options.modifiers.flip.boundariesElement,this.options.modifiers.flip.padding),t.originalPlacement=t.placement,t.positionFixed=this.options.positionFixed,t.offsets.popper=H(this.popper,t.offsets.reference,t.placement),t.offsets.popper.position=this.options.positionFixed?"fixed":"absolute",t=B(this.modifiers,t),this.state.isCreated?this.options.onUpdate(t):(this.state.isCreated=!0,this.options.onCreate(t))}}function $(t,e){return t.some((function(t){var n=t.name;return t.enabled&&n===e}))}function W(t){for(var e=[!1,"ms","Webkit","Moz","O"],n=t.charAt(0).toUpperCase()+t.slice(1),i=0;i<e.length;i++){var o=e[i],r=o?""+o+n:t;if(void 0!==document.body.style[r])return r}return null}function U(){return this.state.isDestroyed=!0,$(this.modifiers,"applyStyle")&&(this.popper.removeAttribute("x-placement"),this.popper.style.position="",this.popper.style.top="",this.popper.style.left="",this.popper.style.right="",this.popper.style.bottom="",this.popper.style.willChange="",this.popper.style[W("transform")]=""),this.disableEventListeners(),this.options.removeOnDestroy&&this.popper.parentNode.removeChild(this.popper),this}function Q(t){var e=t.ownerDocument;return e?e.defaultView:window}function V(t,e,n,i){n.updateBound=i,Q(t).addEventListener("resize",n.updateBound,{passive:!0});var o=l(t);return function t(e,n,i,o){var r="BODY"===e.nodeName,s=r?e.ownerDocument.defaultView:e;s.addEventListener(n,i,{passive:!0}),r||t(l(s.parentNode),n,i,o),o.push(s)}(o,"scroll",n.updateBound,n.scrollParents),n.scrollElement=o,n.eventsEnabled=!0,n}function Y(){this.state.eventsEnabled||(this.state=V(this.reference,this.options,this.state,this.scheduleUpdate))}function z(){var t,e;this.state.eventsEnabled&&(cancelAnimationFrame(this.scheduleUpdate),this.state=(t=this.reference,e=this.state,Q(t).removeEventListener("resize",e.updateBound),e.scrollParents.forEach((function(t){t.removeEventListener("scroll",e.updateBound)})),e.updateBound=null,e.scrollParents=[],e.scrollElement=null,e.eventsEnabled=!1,e))}function q(t){return""!==t&&!isNaN(parseFloat(t))&&isFinite(t)}function K(t,e){Object.keys(e).forEach((function(n){var i="";-1!==["width","height","top","right","bottom","left"].indexOf(n)&&q(e[n])&&(i="px"),t.style[n]=e[n]+i}))}var X=n&&/Firefox/i.test(navigator.userAgent);function G(t,e,n){var i=R(t,(function(t){return t.name===e})),o=!!i&&t.some((function(t){return t.name===n&&t.enabled&&t.order<i.order}));if(!o){var r="`"+e+"`",s="`"+n+"`";console.warn(s+" modifier is required by "+r+" modifier in order to work, be sure to include it before "+r+"!")}return o}var J=["auto-start","auto","auto-end","top-start","top","top-end","right-start","right","right-end","bottom-end","bottom","bottom-start","left-end","left","left-start"],Z=J.slice(3);function tt(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=Z.indexOf(t),i=Z.slice(n+1).concat(Z.slice(0,n));return e?i.reverse():i}var et="flip",nt="clockwise",it="counterclockwise";function ot(t,e,n,i){var o=[0,0],r=-1!==["right","left"].indexOf(i),s=t.split(/(\+|\-)/).map((function(t){return t.trim()})),a=s.indexOf(R(s,(function(t){return-1!==t.search(/,|\s/)})));s[a]&&-1===s[a].indexOf(",")&&console.warn("Offsets separated by white space(s) are deprecated, use a comma (,) instead.");var l=/\s*,\s*|\s+/,c=-1!==a?[s.slice(0,a).concat([s[a].split(l)[0]]),[s[a].split(l)[1]].concat(s.slice(a+1))]:[s];return(c=c.map((function(t,i){var o=(1===i?!r:r)?"height":"width",s=!1;return t.reduce((function(t,e){return""===t[t.length-1]&&-1!==["+","-"].indexOf(e)?(t[t.length-1]=e,s=!0,t):s?(t[t.length-1]+=e,s=!1,t):t.concat(e)}),[]).map((function(t){return function(t,e,n,i){var o=t.match(/((?:\-|\+)?\d*\.?\d*)(.*)/),r=+o[1],s=o[2];if(!r)return t;if(0===s.indexOf("%")){var a=void 0;switch(s){case"%p":a=n;break;case"%":case"%r":default:a=i}return T(a)[e]/100*r}if("vh"===s||"vw"===s){return("vh"===s?Math.max(document.documentElement.clientHeight,window.innerHeight||0):Math.max(document.documentElement.clientWidth,window.innerWidth||0))/100*r}return r}(t,o,e,n)}))}))).forEach((function(t,e){t.forEach((function(n,i){q(n)&&(o[e]+=n*("-"===t[i-1]?-1:1))}))})),o}var rt={placement:"bottom",positionFixed:!1,eventsEnabled:!0,removeOnDestroy:!1,onCreate:function(){},onUpdate:function(){},modifiers:{shift:{order:100,enabled:!0,fn:function(t){var e=t.placement,n=e.split("-")[0],i=e.split("-")[1];if(i){var o=t.offsets,r=o.reference,s=o.popper,a=-1!==["bottom","top"].indexOf(n),l=a?"left":"top",c=a?"width":"height",u={start:L({},l,r[l]),end:L({},l,r[l]+r[c]-s[c])};t.offsets.popper=k({},s,u[i])}return t}},offset:{order:200,enabled:!0,fn:function(t,e){var n=e.offset,i=t.placement,o=t.offsets,r=o.popper,s=o.reference,a=i.split("-")[0],l=void 0;return l=q(+n)?[+n,0]:ot(n,r,s,a),"left"===a?(r.top+=l[0],r.left-=l[1]):"right"===a?(r.top+=l[0],r.left+=l[1]):"top"===a?(r.left+=l[0],r.top-=l[1]):"bottom"===a&&(r.left+=l[0],r.top+=l[1]),t.popper=r,t},offset:0},preventOverflow:{order:300,enabled:!0,fn:function(t,e){var n=e.boundariesElement||d(t.instance.popper);t.instance.reference===n&&(n=d(n));var i=W("transform"),o=t.instance.popper.style,r=o.top,s=o.left,a=o[i];o.top="",o.left="",o[i]="";var l=D(t.instance.popper,t.instance.reference,e.padding,n,t.positionFixed);o.top=r,o.left=s,o[i]=a,e.boundaries=l;var c=e.priority,u=t.offsets.popper,f={primary:function(t){var n=u[t];return u[t]<l[t]&&!e.escapeWithReference&&(n=Math.max(u[t],l[t])),L({},t,n)},secondary:function(t){var n="right"===t?"left":"top",i=u[n];return u[t]>l[t]&&!e.escapeWithReference&&(i=Math.min(u[n],l[t]-("right"===t?u.width:u.height))),L({},n,i)}};return c.forEach((function(t){var e=-1!==["left","top"].indexOf(t)?"primary":"secondary";u=k({},u,f[e](t))})),t.offsets.popper=u,t},priority:["left","right","top","bottom"],padding:5,boundariesElement:"scrollParent"},keepTogether:{order:400,enabled:!0,fn:function(t){var e=t.offsets,n=e.popper,i=e.reference,o=t.placement.split("-")[0],r=Math.floor,s=-1!==["top","bottom"].indexOf(o),a=s?"right":"bottom",l=s?"left":"top",c=s?"width":"height";return n[a]<r(i[l])&&(t.offsets.popper[l]=r(i[l])-n[c]),n[l]>r(i[a])&&(t.offsets.popper[l]=r(i[a])),t}},arrow:{order:500,enabled:!0,fn:function(t,e){var n;if(!G(t.instance.modifiers,"arrow","keepTogether"))return t;var i=e.element;if("string"==typeof i){if(!(i=t.instance.popper.querySelector(i)))return t}else if(!t.instance.popper.contains(i))return console.warn("WARNING: `arrow.element` must be child of its popper element!"),t;var o=t.placement.split("-")[0],r=t.offsets,a=r.popper,l=r.reference,c=-1!==["left","right"].indexOf(o),u=c?"height":"width",f=c?"Top":"Left",h=f.toLowerCase(),d=c?"left":"top",p=c?"bottom":"right",m=P(i)[u];l[p]-m<a[h]&&(t.offsets.popper[h]-=a[h]-(l[p]-m)),l[h]+m>a[p]&&(t.offsets.popper[h]+=l[h]+m-a[p]),t.offsets.popper=T(t.offsets.popper);var g=l[h]+l[u]/2-m/2,v=s(t.instance.popper),_=parseFloat(v["margin"+f]),b=parseFloat(v["border"+f+"Width"]),y=g-t.offsets.popper[h]-_-b;return y=Math.max(Math.min(a[u]-m,y),0),t.arrowElement=i,t.offsets.arrow=(L(n={},h,Math.round(y)),L(n,d,""),n),t},element:"[x-arrow]"},flip:{order:600,enabled:!0,fn:function(t,e){if($(t.instance.modifiers,"inner"))return t;if(t.flipped&&t.placement===t.originalPlacement)return t;var n=D(t.instance.popper,t.instance.reference,e.padding,e.boundariesElement,t.positionFixed),i=t.placement.split("-")[0],o=M(i),r=t.placement.split("-")[1]||"",s=[];switch(e.behavior){case et:s=[i,o];break;case nt:s=tt(i);break;case it:s=tt(i,!0);break;default:s=e.behavior}return s.forEach((function(a,l){if(i!==a||s.length===l+1)return t;i=t.placement.split("-")[0],o=M(i);var c=t.offsets.popper,u=t.offsets.reference,f=Math.floor,h="left"===i&&f(c.right)>f(u.left)||"right"===i&&f(c.left)<f(u.right)||"top"===i&&f(c.bottom)>f(u.top)||"bottom"===i&&f(c.top)<f(u.bottom),d=f(c.left)<f(n.left),p=f(c.right)>f(n.right),m=f(c.top)<f(n.top),g=f(c.bottom)>f(n.bottom),v="left"===i&&d||"right"===i&&p||"top"===i&&m||"bottom"===i&&g,_=-1!==["top","bottom"].indexOf(i),b=!!e.flipVariations&&(_&&"start"===r&&d||_&&"end"===r&&p||!_&&"start"===r&&m||!_&&"end"===r&&g),y=!!e.flipVariationsByContent&&(_&&"start"===r&&p||_&&"end"===r&&d||!_&&"start"===r&&g||!_&&"end"===r&&m),w=b||y;(h||v||w)&&(t.flipped=!0,(h||v)&&(i=s[l+1]),w&&(r=function(t){return"end"===t?"start":"start"===t?"end":t}(r)),t.placement=i+(r?"-"+r:""),t.offsets.popper=k({},t.offsets.popper,H(t.instance.popper,t.offsets.reference,t.placement)),t=B(t.instance.modifiers,t,"flip"))})),t},behavior:"flip",padding:5,boundariesElement:"viewport",flipVariations:!1,flipVariationsByContent:!1},inner:{order:700,enabled:!1,fn:function(t){var e=t.placement,n=e.split("-")[0],i=t.offsets,o=i.popper,r=i.reference,s=-1!==["left","right"].indexOf(n),a=-1===["top","left"].indexOf(n);return o[s?"left":"top"]=r[n]-(a?o[s?"width":"height"]:0),t.placement=M(e),t.offsets.popper=T(o),t}},hide:{order:800,enabled:!0,fn:function(t){if(!G(t.instance.modifiers,"hide","preventOverflow"))return t;var e=t.offsets.reference,n=R(t.instance.modifiers,(function(t){return"preventOverflow"===t.name})).boundaries;if(e.bottom<n.top||e.left>n.right||e.top>n.bottom||e.right<n.left){if(!0===t.hide)return t;t.hide=!0,t.attributes["x-out-of-boundaries"]=""}else{if(!1===t.hide)return t;t.hide=!1,t.attributes["x-out-of-boundaries"]=!1}return t}},computeStyle:{order:850,enabled:!0,fn:function(t,e){var n=e.x,i=e.y,o=t.offsets.popper,r=R(t.instance.modifiers,(function(t){return"applyStyle"===t.name})).gpuAcceleration;void 0!==r&&console.warn("WARNING: `gpuAcceleration` option moved to `computeStyle` modifier and will not be supported in future versions of Popper.js!");var s=void 0!==r?r:e.gpuAcceleration,a=d(t.instance.popper),l=x(a),c={position:o.position},u=function(t,e){var n=t.offsets,i=n.popper,o=n.reference,r=Math.round,s=Math.floor,a=function(t){return t},l=r(o.width),c=r(i.width),u=-1!==["left","right"].indexOf(t.placement),f=-1!==t.placement.indexOf("-"),h=e?u||f||l%2==c%2?r:s:a,d=e?r:a;return{left:h(l%2==1&&c%2==1&&!f&&e?i.left-1:i.left),top:d(i.top),bottom:d(i.bottom),right:h(i.right)}}(t,window.devicePixelRatio<2||!X),f="bottom"===n?"top":"bottom",h="right"===i?"left":"right",p=W("transform"),m=void 0,g=void 0;if(g="bottom"===f?"HTML"===a.nodeName?-a.clientHeight+u.bottom:-l.height+u.bottom:u.top,m="right"===h?"HTML"===a.nodeName?-a.clientWidth+u.right:-l.width+u.right:u.left,s&&p)c[p]="translate3d("+m+"px, "+g+"px, 0)",c[f]=0,c[h]=0,c.willChange="transform";else{var v="bottom"===f?-1:1,_="right"===h?-1:1;c[f]=g*v,c[h]=m*_,c.willChange=f+", "+h}var b={"x-placement":t.placement};return t.attributes=k({},b,t.attributes),t.styles=k({},c,t.styles),t.arrowStyles=k({},t.offsets.arrow,t.arrowStyles),t},gpuAcceleration:!0,x:"bottom",y:"right"},applyStyle:{order:900,enabled:!0,fn:function(t){var e,n;return K(t.instance.popper,t.styles),e=t.instance.popper,n=t.attributes,Object.keys(n).forEach((function(t){!1!==n[t]?e.setAttribute(t,n[t]):e.removeAttribute(t)})),t.arrowElement&&Object.keys(t.arrowStyles).length&&K(t.arrowElement,t.arrowStyles),t},onLoad:function(t,e,n,i,o){var r=I(o,e,t,n.positionFixed),s=j(n.placement,r,e,t,n.modifiers.flip.boundariesElement,n.modifiers.flip.padding);return e.setAttribute("x-placement",s),K(e,{position:n.positionFixed?"fixed":"absolute"}),n},gpuAcceleration:void 0}}},st=function(){function t(e,n){var i=this,s=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{};w(this,t),this.scheduleUpdate=function(){return requestAnimationFrame(i.update)},this.update=o(this.update.bind(this)),this.options=k({},t.Defaults,s),this.state={isDestroyed:!1,isCreated:!1,scrollParents:[]},this.reference=e&&e.jquery?e[0]:e,this.popper=n&&n.jquery?n[0]:n,this.options.modifiers={},Object.keys(k({},t.Defaults.modifiers,s.modifiers)).forEach((function(e){i.options.modifiers[e]=k({},t.Defaults.modifiers[e]||{},s.modifiers?s.modifiers[e]:{})})),this.modifiers=Object.keys(this.options.modifiers).map((function(t){return k({name:t},i.options.modifiers[t])})).sort((function(t,e){return t.order-e.order})),this.modifiers.forEach((function(t){t.enabled&&r(t.onLoad)&&t.onLoad(i.reference,i.popper,i.options,t,i.state)})),this.update();var a=this.options.eventsEnabled;a&&this.enableEventListeners(),this.state.eventsEnabled=a}return E(t,[{key:"update",value:function(){return F.call(this)}},{key:"destroy",value:function(){return U.call(this)}},{key:"enableEventListeners",value:function(){return Y.call(this)}},{key:"disableEventListeners",value:function(){return z.call(this)}}]),t}();st.Utils=("undefined"!=typeof window?window:t).PopperUtils,st.placements=J,st.Defaults=rt,e.a=st}).call(this,n(4))},function(t,e,n){n(5),t.exports=n(6)},function(t,e,n){var i=function(t){"use strict";var e=Object.prototype,n=e.hasOwnProperty,i="function"==typeof Symbol?Symbol:{},o=i.iterator||"@@iterator",r=i.asyncIterator||"@@asyncIterator",s=i.toStringTag||"@@toStringTag";function a(t,e,n){return Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}),t[e]}try{a({},"")}catch(t){a=function(t,e,n){return t[e]=n}}function l(t,e,n,i){var o=e&&e.prototype instanceof f?e:f,r=Object.create(o.prototype),s=new L(i||[]);return r._invoke=function(t,e,n){var i="suspendedStart";return function(o,r){if("executing"===i)throw new Error("Generator is already running");if("completed"===i){if("throw"===o)throw r;return T()}for(n.method=o,n.arg=r;;){var s=n.delegate;if(s){var a=y(s,n);if(a){if(a===u)continue;return a}}if("next"===n.method)n.sent=n._sent=n.arg;else if("throw"===n.method){if("suspendedStart"===i)throw i="completed",n.arg;n.dispatchException(n.arg)}else"return"===n.method&&n.abrupt("return",n.arg);i="executing";var l=c(t,e,n);if("normal"===l.type){if(i=n.done?"completed":"suspendedYield",l.arg===u)continue;return{value:l.arg,done:n.done}}"throw"===l.type&&(i="completed",n.method="throw",n.arg=l.arg)}}}(t,n,s),r}function c(t,e,n){try{return{type:"normal",arg:t.call(e,n)}}catch(t){return{type:"throw",arg:t}}}t.wrap=l;var u={};function f(){}function h(){}function d(){}var p={};p[o]=function(){return this};var m=Object.getPrototypeOf,g=m&&m(m(k([])));g&&g!==e&&n.call(g,o)&&(p=g);var v=d.prototype=f.prototype=Object.create(p);function _(t){["next","throw","return"].forEach((function(e){a(t,e,(function(t){return this._invoke(e,t)}))}))}function b(t,e){var i;this._invoke=function(o,r){function s(){return new e((function(i,s){!function i(o,r,s,a){var l=c(t[o],t,r);if("throw"!==l.type){var u=l.arg,f=u.value;return f&&"object"==typeof f&&n.call(f,"__await")?e.resolve(f.__await).then((function(t){i("next",t,s,a)}),(function(t){i("throw",t,s,a)})):e.resolve(f).then((function(t){u.value=t,s(u)}),(function(t){return i("throw",t,s,a)}))}a(l.arg)}(o,r,i,s)}))}return i=i?i.then(s,s):s()}}function y(t,e){var n=t.iterator[e.method];if(void 0===n){if(e.delegate=null,"throw"===e.method){if(t.iterator.return&&(e.method="return",e.arg=void 0,y(t,e),"throw"===e.method))return u;e.method="throw",e.arg=new TypeError("The iterator does not provide a 'throw' method")}return u}var i=c(n,t.iterator,e.arg);if("throw"===i.type)return e.method="throw",e.arg=i.arg,e.delegate=null,u;var o=i.arg;return o?o.done?(e[t.resultName]=o.value,e.next=t.nextLoc,"return"!==e.method&&(e.method="next",e.arg=void 0),e.delegate=null,u):o:(e.method="throw",e.arg=new TypeError("iterator result is not an object"),e.delegate=null,u)}function w(t){var e={tryLoc:t[0]};1 in t&&(e.catchLoc=t[1]),2 in t&&(e.finallyLoc=t[2],e.afterLoc=t[3]),this.tryEntries.push(e)}function E(t){var e=t.completion||{};e.type="normal",delete e.arg,t.completion=e}function L(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(w,this),this.reset(!0)}function k(t){if(t){var e=t[o];if(e)return e.call(t);if("function"==typeof t.next)return t;if(!isNaN(t.length)){var i=-1,r=function e(){for(;++i<t.length;)if(n.call(t,i))return e.value=t[i],e.done=!1,e;return e.value=void 0,e.done=!0,e};return r.next=r}}return{next:T}}function T(){return{value:void 0,done:!0}}return h.prototype=v.constructor=d,d.constructor=h,h.displayName=a(d,s,"GeneratorFunction"),t.isGeneratorFunction=function(t){var e="function"==typeof t&&t.constructor;return!!e&&(e===h||"GeneratorFunction"===(e.displayName||e.name))},t.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,d):(t.__proto__=d,a(t,s,"GeneratorFunction")),t.prototype=Object.create(v),t},t.awrap=function(t){return{__await:t}},_(b.prototype),b.prototype[r]=function(){return this},t.AsyncIterator=b,t.async=function(e,n,i,o,r){void 0===r&&(r=Promise);var s=new b(l(e,n,i,o),r);return t.isGeneratorFunction(n)?s:s.next().then((function(t){return t.done?t.value:s.next()}))},_(v),a(v,s,"Generator"),v[o]=function(){return this},v.toString=function(){return"[object Generator]"},t.keys=function(t){var e=[];for(var n in t)e.push(n);return e.reverse(),function n(){for(;e.length;){var i=e.pop();if(i in t)return n.value=i,n.done=!1,n}return n.done=!0,n}},t.values=k,L.prototype={constructor:L,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=void 0,this.done=!1,this.delegate=null,this.method="next",this.arg=void 0,this.tryEntries.forEach(E),!t)for(var e in this)"t"===e.charAt(0)&&n.call(this,e)&&!isNaN(+e.slice(1))&&(this[e]=void 0)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(t){if(this.done)throw t;var e=this;function i(n,i){return s.type="throw",s.arg=t,e.next=n,i&&(e.method="next",e.arg=void 0),!!i}for(var o=this.tryEntries.length-1;o>=0;--o){var r=this.tryEntries[o],s=r.completion;if("root"===r.tryLoc)return i("end");if(r.tryLoc<=this.prev){var a=n.call(r,"catchLoc"),l=n.call(r,"finallyLoc");if(a&&l){if(this.prev<r.catchLoc)return i(r.catchLoc,!0);if(this.prev<r.finallyLoc)return i(r.finallyLoc)}else if(a){if(this.prev<r.catchLoc)return i(r.catchLoc,!0)}else{if(!l)throw new Error("try statement without catch or finally");if(this.prev<r.finallyLoc)return i(r.finallyLoc)}}}},abrupt:function(t,e){for(var i=this.tryEntries.length-1;i>=0;--i){var o=this.tryEntries[i];if(o.tryLoc<=this.prev&&n.call(o,"finallyLoc")&&this.prev<o.finallyLoc){var r=o;break}}r&&("break"===t||"continue"===t)&&r.tryLoc<=e&&e<=r.finallyLoc&&(r=null);var s=r?r.completion:{};return s.type=t,s.arg=e,r?(this.method="next",this.next=r.finallyLoc,u):this.complete(s)},complete:function(t,e){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&e&&(this.next=e),u},finish:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var n=this.tryEntries[e];if(n.finallyLoc===t)return this.complete(n.completion,n.afterLoc),E(n),u}},catch:function(t){for(var e=this.tryEntries.length-1;e>=0;--e){var n=this.tryEntries[e];if(n.tryLoc===t){var i=n.completion;if("throw"===i.type){var o=i.arg;E(n)}return o}}throw new Error("illegal catch attempt")},delegateYield:function(t,e,n){return this.delegate={iterator:k(t),resultName:e,nextLoc:n},"next"===this.method&&(this.arg=void 0),u}},t}(t.exports);try{regeneratorRuntime=i}catch(t){Function("r","regeneratorRuntime = r")(i)}},function(t,e){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(t){"object"==typeof window&&(n=window)}t.exports=n},function(t,e,n){"use strict";n.r(e);var i=n(0),o=n.n(i),r=n(1);function s(t,e){for(var n=0;n<e.length;n++){var i=e[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(t,i.key,i)}}function a(t,e,n){return e&&s(t.prototype,e),n&&s(t,n),t}function l(t,e,n){return e in t?Object.defineProperty(t,e,{value:n,enumerable:!0,configurable:!0,writable:!0}):t[e]=n,t}function c(t,e){var n=Object.keys(t);if(Object.getOwnPropertySymbols){var i=Object.getOwnPropertySymbols(t);e&&(i=i.filter((function(e){return Object.getOwnPropertyDescriptor(t,e).enumerable}))),n.push.apply(n,i)}return n}function u(t){for(var e=1;e<arguments.length;e++){var n=null!=arguments[e]?arguments[e]:{};e%2?c(Object(n),!0).forEach((function(e){l(t,e,n[e])})):Object.getOwnPropertyDescriptors?Object.defineProperties(t,Object.getOwnPropertyDescriptors(n)):c(Object(n)).forEach((function(e){Object.defineProperty(t,e,Object.getOwnPropertyDescriptor(n,e))}))}return t}var f,h,d,p,m=function(t){do{t+=Math.floor(1e6*Math.random())}while(document.getElementById(t));return t},g=function(t){var e=t.getAttribute("data-target");if(!e||"#"===e){var n=t.getAttribute("href");e=n&&"#"!==n?n.trim():null}return e},v=function(t){var e=g(t);return e&&document.querySelector(e)?e:null},_=function(t){var e=g(t);return e?document.querySelector(e):null},b=function(t){if(!t)return 0;var e=window.getComputedStyle(t),n=e.transitionDuration,i=e.transitionDelay,o=parseFloat(n),r=parseFloat(i);return o||r?(n=n.split(",")[0],i=i.split(",")[0],1e3*(parseFloat(n)+parseFloat(i))):0},y=function(t){t.dispatchEvent(new Event("transitionend"))},w=function(t){return(t[0]||t).nodeType},E=function(t,e){var n=!1,i=e+5;t.addEventListener("transitionend",(function e(){n=!0,t.removeEventListener("transitionend",e)})),setTimeout((function(){n||y(t)}),i)},L=function(t,e,n){Object.keys(n).forEach((function(i){var o,r=n[i],s=e[i],a=s&&w(s)?"element":null==(o=s)?""+o:{}.toString.call(o).match(/\s([a-z]+)/i)[1].toLowerCase();if(!new RegExp(r).test(a))throw new Error(t.toUpperCase()+': Option "'+i+'" provided type "'+a+'" but expected type "'+r+'".')}))},k=function(t){if(!t)return!1;if(t.style&&t.parentNode&&t.parentNode.style){var e=getComputedStyle(t),n=getComputedStyle(t.parentNode);return"none"!==e.display&&"none"!==n.display&&"hidden"!==e.visibility}return!1},T=function(){return function(){}},x=function(t){return t.offsetHeight},O=function(){var t=window.jQuery;return t&&!document.body.hasAttribute("data-no-jquery")?t:null},C=(f={},h=1,{set:function(t,e,n){void 0===t.key&&(t.key={key:e,id:h},h++),f[t.key.id]=n},get:function(t,e){if(!t||void 0===t.key)return null;var n=t.key;return n.key===e?f[n.id]:null},delete:function(t,e){if(void 0!==t.key){var n=t.key;n.key===e&&(delete f[n.id],delete t.key)}}}),S=function(t,e,n){C.set(t,e,n)},A=function(t,e){return C.get(t,e)},D=function(t,e){C.delete(t,e)},N=Element.prototype.querySelectorAll,j=Element.prototype.querySelector,I=(d=new CustomEvent("Bootstrap",{cancelable:!0}),(p=document.createElement("div")).addEventListener("Bootstrap",(function(){return null})),d.preventDefault(),p.dispatchEvent(d),d.defaultPrevented),P=/:scope\b/;(function(){var t=document.createElement("div");try{t.querySelectorAll(":scope *")}catch(t){return!1}return!0})()||(N=function(t){if(!P.test(t))return this.querySelectorAll(t);var e=Boolean(this.id);e||(this.id=m("scope"));var n=null;try{t=t.replace(P,"#"+this.id),n=this.querySelectorAll(t)}finally{e||this.removeAttribute("id")}return n},j=function(t){if(!P.test(t))return this.querySelector(t);var e=N.call(this,t);return void 0!==e[0]?e[0]:null});var M=O(),H=/[^.]*(?=\..*)\.|.*/,R=/\..*/,B=/::\d+$/,F={},W=1,U={mouseenter:"mouseover",mouseleave:"mouseout"},Q=["click","dblclick","mouseup","mousedown","contextmenu","mousewheel","DOMMouseScroll","mouseover","mouseout","mousemove","selectstart","selectend","keydown","keypress","keyup","orientationchange","touchstart","touchmove","touchend","touchcancel","pointerdown","pointermove","pointerup","pointerleave","pointercancel","gesturestart","gesturechange","gestureend","focus","blur","change","reset","select","submit","focusin","focusout","load","unload","beforeunload","resize","move","DOMContentLoaded","readystatechange","error","abort","scroll"];function V(t,e){return e&&e+"::"+W++||t.uidEvent||W++}function Y(t){var e=V(t);return t.uidEvent=e,F[e]=F[e]||{},F[e]}function z(t,e,n){void 0===n&&(n=null);for(var i=Object.keys(t),o=0,r=i.length;o<r;o++){var s=t[i[o]];if(s.originalHandler===e&&s.delegationSelector===n)return s}return null}function q(t,e,n){var i="string"==typeof e,o=i?n:e,r=t.replace(R,""),s=U[r];return s&&(r=s),Q.indexOf(r)>-1||(r=t),[i,o,r]}function K(t,e,n,i,o){if("string"==typeof e&&t){n||(n=i,i=null);var r=q(e,n,i),s=r[0],a=r[1],l=r[2],c=Y(t),u=c[l]||(c[l]={}),f=z(u,a,s?n:null);if(f)f.oneOff=f.oneOff&&o;else{var h=V(a,e.replace(H,"")),d=s?function(t,e,n){return function i(o){for(var r=t.querySelectorAll(e),s=o.target;s&&s!==this;s=s.parentNode)for(var a=r.length;a--;)if(r[a]===s)return i.oneOff&&G.off(t,o.type,n),n.apply(s,[o]);return null}}(t,n,i):function(t,e){return function n(i){return n.oneOff&&G.off(t,i.type,e),e.apply(t,[i])}}(t,n);d.delegationSelector=s?n:null,d.originalHandler=a,d.oneOff=o,d.uidEvent=h,u[h]=d,t.addEventListener(l,d,s)}}}function X(t,e,n,i,o){var r=z(e[n],i,o);r&&(t.removeEventListener(n,r,Boolean(o)),delete e[n][r.uidEvent])}var G={on:function(t,e,n,i){K(t,e,n,i,!1)},one:function(t,e,n,i){K(t,e,n,i,!0)},off:function(t,e,n,i){if("string"==typeof e&&t){var o=q(e,n,i),r=o[0],s=o[1],a=o[2],l=a!==e,c=Y(t),u="."===e.charAt(0);if(void 0===s){u&&Object.keys(c).forEach((function(n){!function(t,e,n,i){var o=e[n]||{};Object.keys(o).forEach((function(r){if(r.indexOf(i)>-1){var s=o[r];X(t,e,n,s.originalHandler,s.delegationSelector)}}))}(t,c,n,e.slice(1))}));var f=c[a]||{};Object.keys(f).forEach((function(n){var i=n.replace(B,"");if(!l||e.indexOf(i)>-1){var o=f[n];X(t,c,a,o.originalHandler,o.delegationSelector)}}))}else{if(!c||!c[a])return;X(t,c,a,s,r?n:null)}}},trigger:function(t,e,n){if("string"!=typeof e||!t)return null;var i,o=e.replace(R,""),r=e!==o,s=Q.indexOf(o)>-1,a=!0,l=!0,c=!1,u=null;return r&&M&&(i=M.Event(e,n),M(t).trigger(i),a=!i.isPropagationStopped(),l=!i.isImmediatePropagationStopped(),c=i.isDefaultPrevented()),s?(u=document.createEvent("HTMLEvents")).initEvent(o,a,!0):u=new CustomEvent(e,{bubbles:a,cancelable:!0}),void 0!==n&&Object.keys(n).forEach((function(t){Object.defineProperty(u,t,{get:function(){return n[t]}})})),c&&(u.preventDefault(),I||Object.defineProperty(u,"defaultPrevented",{get:function(){return!0}})),l&&t.dispatchEvent(u),u.defaultPrevented&&void 0!==i&&i.preventDefault(),u}},J="alert",Z=function(){function t(t){this._element=t,this._element&&S(t,"bs.alert",this)}var e=t.prototype;return e.close=function(t){var e=this._element;t&&(e=this._getRootElement(t));var n=this._triggerCloseEvent(e);null===n||n.defaultPrevented||this._removeElement(e)},e.dispose=function(){D(this._element,"bs.alert"),this._element=null},e._getRootElement=function(t){return _(t)||t.closest(".alert")},e._triggerCloseEvent=function(t){return G.trigger(t,"close.bs.alert")},e._removeElement=function(t){var e=this;if(t.classList.remove("show"),t.classList.contains("fade")){var n=b(t);G.one(t,"transitionend",(function(){return e._destroyElement(t)})),E(t,n)}else this._destroyElement(t)},e._destroyElement=function(t){t.parentNode&&t.parentNode.removeChild(t),G.trigger(t,"closed.bs.alert")},t.jQueryInterface=function(e){return this.each((function(){var n=A(this,"bs.alert");n||(n=new t(this)),"close"===e&&n[e](this)}))},t.handleDismiss=function(t){return function(e){e&&e.preventDefault(),t.close(this)}},t.getInstance=function(t){return A(t,"bs.alert")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}}]),t}();G.on(document,"click.bs.alert.data-api",'[data-dismiss="alert"]',Z.handleDismiss(new Z));var tt=O();if(tt){var et=tt.fn[J];tt.fn[J]=Z.jQueryInterface,tt.fn[J].Constructor=Z,tt.fn[J].noConflict=function(){return tt.fn[J]=et,Z.jQueryInterface}}var nt=function(){function t(t){this._element=t,S(t,"bs.button",this)}var e=t.prototype;return e.toggle=function(){this._element.setAttribute("aria-pressed",this._element.classList.toggle("active"))},e.dispose=function(){D(this._element,"bs.button"),this._element=null},t.jQueryInterface=function(e){return this.each((function(){var n=A(this,"bs.button");n||(n=new t(this)),"toggle"===e&&n[e]()}))},t.getInstance=function(t){return A(t,"bs.button")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}}]),t}();G.on(document,"click.bs.button.data-api",'[data-toggle="button"]',(function(t){t.preventDefault();var e=t.target.closest('[data-toggle="button"]'),n=A(e,"bs.button");n||(n=new nt(e)),n.toggle()}));var it=O();if(it){var ot=it.fn.button;it.fn.button=nt.jQueryInterface,it.fn.button.Constructor=nt,it.fn.button.noConflict=function(){return it.fn.button=ot,nt.jQueryInterface}}function rt(t){return"true"===t||"false"!==t&&(t===Number(t).toString()?Number(t):""===t||"null"===t?null:t)}function st(t){return t.replace(/[A-Z]/g,(function(t){return"-"+t.toLowerCase()}))}var at={setDataAttribute:function(t,e,n){t.setAttribute("data-"+st(e),n)},removeDataAttribute:function(t,e){t.removeAttribute("data-"+st(e))},getDataAttributes:function(t){if(!t)return{};var e=u({},t.dataset);return Object.keys(e).forEach((function(t){e[t]=rt(e[t])})),e},getDataAttribute:function(t,e){return rt(t.getAttribute("data-"+st(e)))},offset:function(t){var e=t.getBoundingClientRect();return{top:e.top+document.body.scrollTop,left:e.left+document.body.scrollLeft}},position:function(t){return{top:t.offsetTop,left:t.offsetLeft}},toggleClass:function(t,e){t&&(t.classList.contains(e)?t.classList.remove(e):t.classList.add(e))}},lt={matches:function(t,e){return t.matches(e)},find:function(t,e){var n;return void 0===e&&(e=document.documentElement),(n=[]).concat.apply(n,N.call(e,t))},findOne:function(t,e){return void 0===e&&(e=document.documentElement),j.call(e,t)},children:function(t,e){var n,i=(n=[]).concat.apply(n,t.children);return i.filter((function(t){return t.matches(e)}))},parents:function(t,e){for(var n=[],i=t.parentNode;i&&i.nodeType===Node.ELEMENT_NODE&&3!==i.nodeType;)this.matches(i,e)&&n.push(i),i=i.parentNode;return n},prev:function(t,e){for(var n=t.previousElementSibling;n;){if(n.matches(e))return[n];n=n.previousElementSibling}return[]},next:function(t,e){for(var n=t.nextElementSibling;n;){if(this.matches(n,e))return[n];n=n.nextElementSibling}return[]}},ct="carousel",ut=".bs.carousel",ft={interval:5e3,keyboard:!0,slide:!1,pause:"hover",wrap:!0,touch:!0},ht={interval:"(number|boolean)",keyboard:"boolean",slide:"(boolean|string)",pause:"(string|boolean)",wrap:"boolean",touch:"boolean"},dt={TOUCH:"touch",PEN:"pen"},pt=function(){function t(t,e){this._items=null,this._interval=null,this._activeElement=null,this._isPaused=!1,this._isSliding=!1,this.touchTimeout=null,this.touchStartX=0,this.touchDeltaX=0,this._config=this._getConfig(e),this._element=t,this._indicatorsElement=lt.findOne(".carousel-indicators",this._element),this._touchSupported="ontouchstart"in document.documentElement||navigator.maxTouchPoints>0,this._pointerEvent=Boolean(window.PointerEvent),this._addEventListeners(),S(t,"bs.carousel",this)}var e=t.prototype;return e.next=function(){this._isSliding||this._slide("next")},e.nextWhenVisible=function(){!document.hidden&&k(this._element)&&this.next()},e.prev=function(){this._isSliding||this._slide("prev")},e.pause=function(t){t||(this._isPaused=!0),lt.findOne(".carousel-item-next, .carousel-item-prev",this._element)&&(y(this._element),this.cycle(!0)),clearInterval(this._interval),this._interval=null},e.cycle=function(t){t||(this._isPaused=!1),this._interval&&(clearInterval(this._interval),this._interval=null),this._config&&this._config.interval&&!this._isPaused&&(this._interval=setInterval((document.visibilityState?this.nextWhenVisible:this.next).bind(this),this._config.interval))},e.to=function(t){var e=this;this._activeElement=lt.findOne(".active.carousel-item",this._element);var n=this._getItemIndex(this._activeElement);if(!(t>this._items.length-1||t<0))if(this._isSliding)G.one(this._element,"slid.bs.carousel",(function(){return e.to(t)}));else{if(n===t)return this.pause(),void this.cycle();var i=t>n?"next":"prev";this._slide(i,this._items[t])}},e.dispose=function(){G.off(this._element,ut),D(this._element,"bs.carousel"),this._items=null,this._config=null,this._element=null,this._interval=null,this._isPaused=null,this._isSliding=null,this._activeElement=null,this._indicatorsElement=null},e._getConfig=function(t){return t=u(u({},ft),t),L(ct,t,ht),t},e._handleSwipe=function(){var t=Math.abs(this.touchDeltaX);if(!(t<=40)){var e=t/this.touchDeltaX;this.touchDeltaX=0,e>0&&this.prev(),e<0&&this.next()}},e._addEventListeners=function(){var t=this;this._config.keyboard&&G.on(this._element,"keydown.bs.carousel",(function(e){return t._keydown(e)})),"hover"===this._config.pause&&(G.on(this._element,"mouseenter.bs.carousel",(function(e){return t.pause(e)})),G.on(this._element,"mouseleave.bs.carousel",(function(e){return t.cycle(e)}))),this._config.touch&&this._touchSupported&&this._addTouchEventListeners()},e._addTouchEventListeners=function(){var t=this,e=function(e){t._pointerEvent&&dt[e.pointerType.toUpperCase()]?t.touchStartX=e.clientX:t._pointerEvent||(t.touchStartX=e.touches[0].clientX)},n=function(e){t._pointerEvent&&dt[e.pointerType.toUpperCase()]&&(t.touchDeltaX=e.clientX-t.touchStartX),t._handleSwipe(),"hover"===t._config.pause&&(t.pause(),t.touchTimeout&&clearTimeout(t.touchTimeout),t.touchTimeout=setTimeout((function(e){return t.cycle(e)}),500+t._config.interval))};lt.find(".carousel-item img",this._element).forEach((function(t){G.on(t,"dragstart.bs.carousel",(function(t){return t.preventDefault()}))})),this._pointerEvent?(G.on(this._element,"pointerdown.bs.carousel",(function(t){return e(t)})),G.on(this._element,"pointerup.bs.carousel",(function(t){return n(t)})),this._element.classList.add("pointer-event")):(G.on(this._element,"touchstart.bs.carousel",(function(t){return e(t)})),G.on(this._element,"touchmove.bs.carousel",(function(e){return function(e){e.touches&&e.touches.length>1?t.touchDeltaX=0:t.touchDeltaX=e.touches[0].clientX-t.touchStartX}(e)})),G.on(this._element,"touchend.bs.carousel",(function(t){return n(t)})))},e._keydown=function(t){if(!/input|textarea/i.test(t.target.tagName))switch(t.key){case"ArrowLeft":t.preventDefault(),this.prev();break;case"ArrowRight":t.preventDefault(),this.next()}},e._getItemIndex=function(t){return this._items=t&&t.parentNode?lt.find(".carousel-item",t.parentNode):[],this._items.indexOf(t)},e._getItemByDirection=function(t,e){var n="next"===t,i="prev"===t,o=this._getItemIndex(e),r=this._items.length-1;if((i&&0===o||n&&o===r)&&!this._config.wrap)return e;var s=(o+("prev"===t?-1:1))%this._items.length;return-1===s?this._items[this._items.length-1]:this._items[s]},e._triggerSlideEvent=function(t,e){var n=this._getItemIndex(t),i=this._getItemIndex(lt.findOne(".active.carousel-item",this._element));return G.trigger(this._element,"slide.bs.carousel",{relatedTarget:t,direction:e,from:i,to:n})},e._setActiveIndicatorElement=function(t){if(this._indicatorsElement){for(var e=lt.find(".active",this._indicatorsElement),n=0;n<e.length;n++)e[n].classList.remove("active");var i=this._indicatorsElement.children[this._getItemIndex(t)];i&&i.classList.add("active")}},e._slide=function(t,e){var n,i,o,r=this,s=lt.findOne(".active.carousel-item",this._element),a=this._getItemIndex(s),l=e||s&&this._getItemByDirection(t,s),c=this._getItemIndex(l),u=Boolean(this._interval);if("next"===t?(n="carousel-item-left",i="carousel-item-next",o="left"):(n="carousel-item-right",i="carousel-item-prev",o="right"),l&&l.classList.contains("active"))this._isSliding=!1;else if(!this._triggerSlideEvent(l,o).defaultPrevented&&s&&l){if(this._isSliding=!0,u&&this.pause(),this._setActiveIndicatorElement(l),this._element.classList.contains("slide")){l.classList.add(i),x(l),s.classList.add(n),l.classList.add(n);var f=parseInt(l.getAttribute("data-interval"),10);f?(this._config.defaultInterval=this._config.defaultInterval||this._config.interval,this._config.interval=f):this._config.interval=this._config.defaultInterval||this._config.interval;var h=b(s);G.one(s,"transitionend",(function(){l.classList.remove(n,i),l.classList.add("active"),s.classList.remove("active",i,n),r._isSliding=!1,setTimeout((function(){G.trigger(r._element,"slid.bs.carousel",{relatedTarget:l,direction:o,from:a,to:c})}),0)})),E(s,h)}else s.classList.remove("active"),l.classList.add("active"),this._isSliding=!1,G.trigger(this._element,"slid.bs.carousel",{relatedTarget:l,direction:o,from:a,to:c});u&&this.cycle()}},t.carouselInterface=function(e,n){var i=A(e,"bs.carousel"),o=u(u({},ft),at.getDataAttributes(e));"object"==typeof n&&(o=u(u({},o),n));var r="string"==typeof n?n:o.slide;if(i||(i=new t(e,o)),"number"==typeof n)i.to(n);else if("string"==typeof r){if(void 0===i[r])throw new TypeError('No method named "'+r+'"');i[r]()}else o.interval&&o.ride&&(i.pause(),i.cycle())},t.jQueryInterface=function(e){return this.each((function(){t.carouselInterface(this,e)}))},t.dataApiClickHandler=function(e){var n=_(this);if(n&&n.classList.contains("carousel")){var i=u(u({},at.getDataAttributes(n)),at.getDataAttributes(this)),o=this.getAttribute("data-slide-to");o&&(i.interval=!1),t.carouselInterface(n,i),o&&A(n,"bs.carousel").to(o),e.preventDefault()}},t.getInstance=function(t){return A(t,"bs.carousel")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"Default",get:function(){return ft}}]),t}();G.on(document,"click.bs.carousel.data-api","[data-slide], [data-slide-to]",pt.dataApiClickHandler),G.on(window,"load.bs.carousel.data-api",(function(){for(var t=lt.find('[data-ride="carousel"]'),e=0,n=t.length;e<n;e++)pt.carouselInterface(t[e],A(t[e],"bs.carousel"))}));var mt=O();if(mt){var gt=mt.fn[ct];mt.fn[ct]=pt.jQueryInterface,mt.fn[ct].Constructor=pt,mt.fn[ct].noConflict=function(){return mt.fn[ct]=gt,pt.jQueryInterface}}var vt="collapse",_t={toggle:!0,parent:""},bt={toggle:"boolean",parent:"(string|element)"},yt=function(){function t(t,e){this._isTransitioning=!1,this._element=t,this._config=this._getConfig(e),this._triggerArray=lt.find('[data-toggle="collapse"][href="#'+t.id+'"],[data-toggle="collapse"][data-target="#'+t.id+'"]');for(var n=lt.find('[data-toggle="collapse"]'),i=0,o=n.length;i<o;i++){var r=n[i],s=v(r),a=lt.find(s).filter((function(e){return e===t}));null!==s&&a.length&&(this._selector=s,this._triggerArray.push(r))}this._parent=this._config.parent?this._getParent():null,this._config.parent||this._addAriaAndCollapsedClass(this._element,this._triggerArray),this._config.toggle&&this.toggle(),S(t,"bs.collapse",this)}var e=t.prototype;return e.toggle=function(){this._element.classList.contains("show")?this.hide():this.show()},e.show=function(){var e=this;if(!this._isTransitioning&&!this._element.classList.contains("show")){var n,i;this._parent&&0===(n=lt.find(".show, .collapsing",this._parent).filter((function(t){return"string"==typeof e._config.parent?t.getAttribute("data-parent")===e._config.parent:t.classList.contains("collapse")}))).length&&(n=null);var o=lt.findOne(this._selector);if(n){var r=n.filter((function(t){return o!==t}));if((i=r[0]?A(r[0],"bs.collapse"):null)&&i._isTransitioning)return}if(!G.trigger(this._element,"show.bs.collapse").defaultPrevented){n&&n.forEach((function(e){o!==e&&t.collapseInterface(e,"hide"),i||S(e,"bs.collapse",null)}));var s=this._getDimension();this._element.classList.remove("collapse"),this._element.classList.add("collapsing"),this._element.style[s]=0,this._triggerArray.length&&this._triggerArray.forEach((function(t){t.classList.remove("collapsed"),t.setAttribute("aria-expanded",!0)})),this.setTransitioning(!0);var a="scroll"+(s[0].toUpperCase()+s.slice(1)),l=b(this._element);G.one(this._element,"transitionend",(function(){e._element.classList.remove("collapsing"),e._element.classList.add("collapse","show"),e._element.style[s]="",e.setTransitioning(!1),G.trigger(e._element,"shown.bs.collapse")})),E(this._element,l),this._element.style[s]=this._element[a]+"px"}}},e.hide=function(){var t=this;if(!this._isTransitioning&&this._element.classList.contains("show")&&!G.trigger(this._element,"hide.bs.collapse").defaultPrevented){var e=this._getDimension();this._element.style[e]=this._element.getBoundingClientRect()[e]+"px",x(this._element),this._element.classList.add("collapsing"),this._element.classList.remove("collapse","show");var n=this._triggerArray.length;if(n>0)for(var i=0;i<n;i++){var o=this._triggerArray[i],r=_(o);r&&!r.classList.contains("show")&&(o.classList.add("collapsed"),o.setAttribute("aria-expanded",!1))}this.setTransitioning(!0);this._element.style[e]="";var s=b(this._element);G.one(this._element,"transitionend",(function(){t.setTransitioning(!1),t._element.classList.remove("collapsing"),t._element.classList.add("collapse"),G.trigger(t._element,"hidden.bs.collapse")})),E(this._element,s)}},e.setTransitioning=function(t){this._isTransitioning=t},e.dispose=function(){D(this._element,"bs.collapse"),this._config=null,this._parent=null,this._element=null,this._triggerArray=null,this._isTransitioning=null},e._getConfig=function(t){return(t=u(u({},_t),t)).toggle=Boolean(t.toggle),L(vt,t,bt),t},e._getDimension=function(){return this._element.classList.contains("width")?"width":"height"},e._getParent=function(){var t=this,e=this._config.parent;w(e)?void 0===e.jquery&&void 0===e[0]||(e=e[0]):e=lt.findOne(e);var n='[data-toggle="collapse"][data-parent="'+e+'"]';return lt.find(n,e).forEach((function(e){var n=_(e);t._addAriaAndCollapsedClass(n,[e])})),e},e._addAriaAndCollapsedClass=function(t,e){if(t){var n=t.classList.contains("show");e.length&&e.forEach((function(t){n?t.classList.remove("collapsed"):t.classList.add("collapsed"),t.setAttribute("aria-expanded",n)}))}},t.collapseInterface=function(e,n){var i=A(e,"bs.collapse"),o=u(u(u({},_t),at.getDataAttributes(e)),"object"==typeof n&&n?n:{});if(!i&&o.toggle&&"string"==typeof n&&/show|hide/.test(n)&&(o.toggle=!1),i||(i=new t(e,o)),"string"==typeof n){if(void 0===i[n])throw new TypeError('No method named "'+n+'"');i[n]()}},t.jQueryInterface=function(e){return this.each((function(){t.collapseInterface(this,e)}))},t.getInstance=function(t){return A(t,"bs.collapse")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"Default",get:function(){return _t}}]),t}();G.on(document,"click.bs.collapse.data-api",'[data-toggle="collapse"]',(function(t){"A"===t.target.tagName&&t.preventDefault();var e=at.getDataAttributes(this),n=v(this);lt.find(n).forEach((function(t){var n,i=A(t,"bs.collapse");i?(null===i._parent&&"string"==typeof e.parent&&(i._config.parent=e.parent,i._parent=i._getParent()),n="toggle"):n=e,yt.collapseInterface(t,n)}))}));var wt=O();if(wt){var Et=wt.fn[vt];wt.fn[vt]=yt.jQueryInterface,wt.fn[vt].Constructor=yt,wt.fn[vt].noConflict=function(){return wt.fn[vt]=Et,yt.jQueryInterface}}var Lt="dropdown",kt=new RegExp("ArrowUp|ArrowDown|Escape"),Tt={offset:0,flip:!0,boundary:"scrollParent",reference:"toggle",display:"dynamic",popperConfig:null},xt={offset:"(number|string|function)",flip:"boolean",boundary:"(string|element)",reference:"(string|element)",display:"string",popperConfig:"(null|object)"},Ot=function(){function t(t,e){this._element=t,this._popper=null,this._config=this._getConfig(e),this._menu=this._getMenuElement(),this._inNavbar=this._detectNavbar(),this._addEventListeners(),S(t,"bs.dropdown",this)}var e=t.prototype;return e.toggle=function(){if(!this._element.disabled&&!this._element.classList.contains("disabled")){var e=this._element.classList.contains("show");t.clearMenus(),e||this.show()}},e.show=function(){if(!(this._element.disabled||this._element.classList.contains("disabled")||this._menu.classList.contains("show"))){var e=t.getParentFromElement(this._element),n={relatedTarget:this._element};if(!G.trigger(this._element,"show.bs.dropdown",n).defaultPrevented){if(!this._inNavbar){if(void 0===r.a)throw new TypeError("Bootstrap's dropdowns require Popper.js (https://popper.js.org)");var i=this._element;"parent"===this._config.reference?i=e:w(this._config.reference)&&(i=this._config.reference,void 0!==this._config.reference.jquery&&(i=this._config.reference[0])),"scrollParent"!==this._config.boundary&&e.classList.add("position-static"),this._popper=new r.a(i,this._menu,this._getPopperConfig())}var o;if("ontouchstart"in document.documentElement&&!e.closest(".navbar-nav"))(o=[]).concat.apply(o,document.body.children).forEach((function(t){return G.on(t,"mouseover",null,(function(){}))}));this._element.focus(),this._element.setAttribute("aria-expanded",!0),at.toggleClass(this._menu,"show"),at.toggleClass(this._element,"show"),G.trigger(e,"shown.bs.dropdown",n)}}},e.hide=function(){if(!this._element.disabled&&!this._element.classList.contains("disabled")&&this._menu.classList.contains("show")){var e=t.getParentFromElement(this._element),n={relatedTarget:this._element};G.trigger(e,"hide.bs.dropdown",n).defaultPrevented||(this._popper&&this._popper.destroy(),at.toggleClass(this._menu,"show"),at.toggleClass(this._element,"show"),G.trigger(e,"hidden.bs.dropdown",n))}},e.dispose=function(){D(this._element,"bs.dropdown"),G.off(this._element,".bs.dropdown"),this._element=null,this._menu=null,this._popper&&(this._popper.destroy(),this._popper=null)},e.update=function(){this._inNavbar=this._detectNavbar(),this._popper&&this._popper.scheduleUpdate()},e._addEventListeners=function(){var t=this;G.on(this._element,"click.bs.dropdown",(function(e){e.preventDefault(),e.stopPropagation(),t.toggle()}))},e._getConfig=function(t){return t=u(u(u({},this.constructor.Default),at.getDataAttributes(this._element)),t),L(Lt,t,this.constructor.DefaultType),t},e._getMenuElement=function(){return lt.next(this._element,".dropdown-menu")[0]},e._getPlacement=function(){var t=this._element.parentNode,e="bottom-start";return t.classList.contains("dropup")?(e="top-start",this._menu.classList.contains("dropdown-menu-right")&&(e="top-end")):t.classList.contains("dropright")?e="right-start":t.classList.contains("dropleft")?e="left-start":this._menu.classList.contains("dropdown-menu-right")&&(e="bottom-end"),e},e._detectNavbar=function(){return Boolean(this._element.closest(".navbar"))},e._getOffset=function(){var t=this,e={};return"function"==typeof this._config.offset?e.fn=function(e){return e.offsets=u(u({},e.offsets),t._config.offset(e.offsets,t._element)||{}),e}:e.offset=this._config.offset,e},e._getPopperConfig=function(){var t={placement:this._getPlacement(),modifiers:{offset:this._getOffset(),flip:{enabled:this._config.flip},preventOverflow:{boundariesElement:this._config.boundary}}};return"static"===this._config.display&&(t.modifiers.applyStyle={enabled:!1}),u(u({},t),this._config.popperConfig)},t.dropdownInterface=function(e,n){var i=A(e,"bs.dropdown");if(i||(i=new t(e,"object"==typeof n?n:null)),"string"==typeof n){if(void 0===i[n])throw new TypeError('No method named "'+n+'"');i[n]()}},t.jQueryInterface=function(e){return this.each((function(){t.dropdownInterface(this,e)}))},t.clearMenus=function(e){if(!e||2!==e.button&&("keyup"!==e.type||"Tab"===e.key))for(var n=lt.find('[data-toggle="dropdown"]'),i=0,o=n.length;i<o;i++){var r=t.getParentFromElement(n[i]),s=A(n[i],"bs.dropdown"),a={relatedTarget:n[i]};if(e&&"click"===e.type&&(a.clickEvent=e),s){var l=s._menu;if(n[i].classList.contains("show"))if(!(e&&("click"===e.type&&/input|textarea/i.test(e.target.tagName)||"keyup"===e.type&&"Tab"===e.key)&&l.contains(e.target)))if(!G.trigger(r,"hide.bs.dropdown",a).defaultPrevented){var c;if("ontouchstart"in document.documentElement)(c=[]).concat.apply(c,document.body.children).forEach((function(t){return G.off(t,"mouseover",null,(function(){}))}));n[i].setAttribute("aria-expanded","false"),s._popper&&s._popper.destroy(),l.classList.remove("show"),n[i].classList.remove("show"),G.trigger(r,"hidden.bs.dropdown",a)}}}},t.getParentFromElement=function(t){return _(t)||t.parentNode},t.dataApiKeydownHandler=function(e){if(!(/input|textarea/i.test(e.target.tagName)?"Space"===e.key||"Escape"!==e.key&&("ArrowDown"!==e.key&&"ArrowUp"!==e.key||e.target.closest(".dropdown-menu")):!kt.test(e.key))&&(e.preventDefault(),e.stopPropagation(),!this.disabled&&!this.classList.contains("disabled"))){var n=t.getParentFromElement(this),i=this.classList.contains("show");if("Escape"===e.key)return(this.matches('[data-toggle="dropdown"]')?this:lt.prev(this,'[data-toggle="dropdown"]')[0]).focus(),void t.clearMenus();if(i&&"Space"!==e.key){var o=lt.find(".dropdown-menu .dropdown-item:not(.disabled):not(:disabled)",n).filter(k);if(o.length){var r=o.indexOf(e.target);"ArrowUp"===e.key&&r>0&&r--,"ArrowDown"===e.key&&r<o.length-1&&r++,o[r=-1===r?0:r].focus()}}else t.clearMenus()}},t.getInstance=function(t){return A(t,"bs.dropdown")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"Default",get:function(){return Tt}},{key:"DefaultType",get:function(){return xt}}]),t}();G.on(document,"keydown.bs.dropdown.data-api",'[data-toggle="dropdown"]',Ot.dataApiKeydownHandler),G.on(document,"keydown.bs.dropdown.data-api",".dropdown-menu",Ot.dataApiKeydownHandler),G.on(document,"click.bs.dropdown.data-api",Ot.clearMenus),G.on(document,"keyup.bs.dropdown.data-api",Ot.clearMenus),G.on(document,"click.bs.dropdown.data-api",'[data-toggle="dropdown"]',(function(t){t.preventDefault(),t.stopPropagation(),Ot.dropdownInterface(this,"toggle")})),G.on(document,"click.bs.dropdown.data-api",".dropdown form",(function(t){return t.stopPropagation()}));var Ct=O();if(Ct){var St=Ct.fn[Lt];Ct.fn[Lt]=Ot.jQueryInterface,Ct.fn[Lt].Constructor=Ot,Ct.fn[Lt].noConflict=function(){return Ct.fn[Lt]=St,Ot.jQueryInterface}}var At={backdrop:!0,keyboard:!0,focus:!0,show:!0},Dt={backdrop:"(boolean|string)",keyboard:"boolean",focus:"boolean",show:"boolean"},Nt=function(){function t(t,e){this._config=this._getConfig(e),this._element=t,this._dialog=lt.findOne(".modal-dialog",t),this._backdrop=null,this._isShown=!1,this._isBodyOverflowing=!1,this._ignoreBackdropClick=!1,this._isTransitioning=!1,this._scrollbarWidth=0,S(t,"bs.modal",this)}var e=t.prototype;return e.toggle=function(t){return this._isShown?this.hide():this.show(t)},e.show=function(t){var e=this;if(!this._isShown&&!this._isTransitioning){this._element.classList.contains("fade")&&(this._isTransitioning=!0);var n=G.trigger(this._element,"show.bs.modal",{relatedTarget:t});this._isShown||n.defaultPrevented||(this._isShown=!0,this._checkScrollbar(),this._setScrollbar(),this._adjustDialog(),this._setEscapeEvent(),this._setResizeEvent(),G.on(this._element,"click.dismiss.bs.modal",'[data-dismiss="modal"]',(function(t){return e.hide(t)})),G.on(this._dialog,"mousedown.dismiss.bs.modal",(function(){G.one(e._element,"mouseup.dismiss.bs.modal",(function(t){t.target===e._element&&(e._ignoreBackdropClick=!0)}))})),this._showBackdrop((function(){return e._showElement(t)})))}},e.hide=function(t){var e=this;if((t&&t.preventDefault(),this._isShown&&!this._isTransitioning)&&!G.trigger(this._element,"hide.bs.modal").defaultPrevented){this._isShown=!1;var n=this._element.classList.contains("fade");if(n&&(this._isTransitioning=!0),this._setEscapeEvent(),this._setResizeEvent(),G.off(document,"focusin.bs.modal"),this._element.classList.remove("show"),G.off(this._element,"click.dismiss.bs.modal"),G.off(this._dialog,"mousedown.dismiss.bs.modal"),n){var i=b(this._element);G.one(this._element,"transitionend",(function(t){return e._hideModal(t)})),E(this._element,i)}else this._hideModal()}},e.dispose=function(){[window,this._element,this._dialog].forEach((function(t){return G.off(t,".bs.modal")})),G.off(document,"focusin.bs.modal"),D(this._element,"bs.modal"),this._config=null,this._element=null,this._dialog=null,this._backdrop=null,this._isShown=null,this._isBodyOverflowing=null,this._ignoreBackdropClick=null,this._isTransitioning=null,this._scrollbarWidth=null},e.handleUpdate=function(){this._adjustDialog()},e._getConfig=function(t){return t=u(u({},At),t),L("modal",t,Dt),t},e._showElement=function(t){var e=this,n=this._element.classList.contains("fade"),i=lt.findOne(".modal-body",this._dialog);this._element.parentNode&&this._element.parentNode.nodeType===Node.ELEMENT_NODE||document.body.appendChild(this._element),this._element.style.display="block",this._element.removeAttribute("aria-hidden"),this._element.setAttribute("aria-modal",!0),this._element.setAttribute("role","dialog"),this._element.scrollTop=0,i&&(i.scrollTop=0),n&&x(this._element),this._element.classList.add("show"),this._config.focus&&this._enforceFocus();var o=function(){e._config.focus&&e._element.focus(),e._isTransitioning=!1,G.trigger(e._element,"shown.bs.modal",{relatedTarget:t})};if(n){var r=b(this._dialog);G.one(this._dialog,"transitionend",o),E(this._dialog,r)}else o()},e._enforceFocus=function(){var t=this;G.off(document,"focusin.bs.modal"),G.on(document,"focusin.bs.modal",(function(e){document===e.target||t._element===e.target||t._element.contains(e.target)||t._element.focus()}))},e._setEscapeEvent=function(){var t=this;this._isShown?G.on(this._element,"keydown.dismiss.bs.modal",(function(e){t._config.keyboard&&"Escape"===e.key?(e.preventDefault(),t.hide()):t._config.keyboard||"Escape"!==e.key||t._triggerBackdropTransition()})):G.off(this._element,"keydown.dismiss.bs.modal")},e._setResizeEvent=function(){var t=this;this._isShown?G.on(window,"resize.bs.modal",(function(){return t._adjustDialog()})):G.off(window,"resize.bs.modal")},e._hideModal=function(){var t=this;this._element.style.display="none",this._element.setAttribute("aria-hidden",!0),this._element.removeAttribute("aria-modal"),this._element.removeAttribute("role"),this._isTransitioning=!1,this._showBackdrop((function(){document.body.classList.remove("modal-open"),t._resetAdjustments(),t._resetScrollbar(),G.trigger(t._element,"hidden.bs.modal")}))},e._removeBackdrop=function(){this._backdrop.parentNode.removeChild(this._backdrop),this._backdrop=null},e._showBackdrop=function(t){var e=this,n=this._element.classList.contains("fade")?"fade":"";if(this._isShown&&this._config.backdrop){if(this._backdrop=document.createElement("div"),this._backdrop.className="modal-backdrop",n&&this._backdrop.classList.add(n),document.body.appendChild(this._backdrop),G.on(this._element,"click.dismiss.bs.modal",(function(t){e._ignoreBackdropClick?e._ignoreBackdropClick=!1:t.target===t.currentTarget&&e._triggerBackdropTransition()})),n&&x(this._backdrop),this._backdrop.classList.add("show"),!n)return void t();var i=b(this._backdrop);G.one(this._backdrop,"transitionend",t),E(this._backdrop,i)}else if(!this._isShown&&this._backdrop){this._backdrop.classList.remove("show");var o=function(){e._removeBackdrop(),t()};if(this._element.classList.contains("fade")){var r=b(this._backdrop);G.one(this._backdrop,"transitionend",o),E(this._backdrop,r)}else o()}else t()},e._triggerBackdropTransition=function(){var t=this;if("static"===this._config.backdrop){if(G.trigger(this._element,"hidePrevented.bs.modal").defaultPrevented)return;this._element.classList.add("modal-static");var e=b(this._element);G.one(this._element,"transitionend",(function(){t._element.classList.remove("modal-static")})),E(this._element,e),this._element.focus()}else this.hide()},e._adjustDialog=function(){var t=this._element.scrollHeight>document.documentElement.clientHeight;!this._isBodyOverflowing&&t&&(this._element.style.paddingLeft=this._scrollbarWidth+"px"),this._isBodyOverflowing&&!t&&(this._element.style.paddingRight=this._scrollbarWidth+"px")},e._resetAdjustments=function(){this._element.style.paddingLeft="",this._element.style.paddingRight=""},e._checkScrollbar=function(){var t=document.body.getBoundingClientRect();this._isBodyOverflowing=Math.round(t.left+t.right)<window.innerWidth,this._scrollbarWidth=this._getScrollbarWidth()},e._setScrollbar=function(){var t=this;if(this._isBodyOverflowing){lt.find(".fixed-top, .fixed-bottom, .is-fixed, .sticky-top").forEach((function(e){var n=e.style.paddingRight,i=window.getComputedStyle(e)["padding-right"];at.setDataAttribute(e,"padding-right",n),e.style.paddingRight=parseFloat(i)+t._scrollbarWidth+"px"})),lt.find(".sticky-top").forEach((function(e){var n=e.style.marginRight,i=window.getComputedStyle(e)["margin-right"];at.setDataAttribute(e,"margin-right",n),e.style.marginRight=parseFloat(i)-t._scrollbarWidth+"px"}));var e=document.body.style.paddingRight,n=window.getComputedStyle(document.body)["padding-right"];at.setDataAttribute(document.body,"padding-right",e),document.body.style.paddingRight=parseFloat(n)+this._scrollbarWidth+"px"}document.body.classList.add("modal-open")},e._resetScrollbar=function(){lt.find(".fixed-top, .fixed-bottom, .is-fixed, .sticky-top").forEach((function(t){var e=at.getDataAttribute(t,"padding-right");void 0!==e&&(at.removeDataAttribute(t,"padding-right"),t.style.paddingRight=e)})),lt.find(".sticky-top").forEach((function(t){var e=at.getDataAttribute(t,"margin-right");void 0!==e&&(at.removeDataAttribute(t,"margin-right"),t.style.marginRight=e)}));var t=at.getDataAttribute(document.body,"padding-right");void 0===t?document.body.style.paddingRight="":(at.removeDataAttribute(document.body,"padding-right"),document.body.style.paddingRight=t)},e._getScrollbarWidth=function(){var t=document.createElement("div");t.className="modal-scrollbar-measure",document.body.appendChild(t);var e=t.getBoundingClientRect().width-t.clientWidth;return document.body.removeChild(t),e},t.jQueryInterface=function(e,n){return this.each((function(){var i=A(this,"bs.modal"),o=u(u(u({},At),at.getDataAttributes(this)),"object"==typeof e&&e?e:{});if(i||(i=new t(this,o)),"string"==typeof e){if(void 0===i[e])throw new TypeError('No method named "'+e+'"');i[e](n)}else o.show&&i.show(n)}))},t.getInstance=function(t){return A(t,"bs.modal")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"Default",get:function(){return At}}]),t}();G.on(document,"click.bs.modal.data-api",'[data-toggle="modal"]',(function(t){var e=this,n=_(this);"A"!==this.tagName&&"AREA"!==this.tagName||t.preventDefault(),G.one(n,"show.bs.modal",(function(t){t.defaultPrevented||G.one(n,"hidden.bs.modal",(function(){k(e)&&e.focus()}))}));var i=A(n,"bs.modal");if(!i){var o=u(u({},at.getDataAttributes(n)),at.getDataAttributes(this));i=new Nt(n,o)}i.show(this)}));var jt=O();if(jt){var It=jt.fn.modal;jt.fn.modal=Nt.jQueryInterface,jt.fn.modal.Constructor=Nt,jt.fn.modal.noConflict=function(){return jt.fn.modal=It,Nt.jQueryInterface}}var Pt=["background","cite","href","itemtype","longdesc","poster","src","xlink:href"],Mt=/^(?:(?:https?|mailto|ftp|tel|file):|[^#&/:?]*(?:[#/?]|$))/gi,Ht=/^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z]+=*$/i,Rt={"*":["class","dir","id","lang","role",/^aria-[\w-]*$/i],a:["target","href","title","rel"],area:[],b:[],br:[],col:[],code:[],div:[],em:[],hr:[],h1:[],h2:[],h3:[],h4:[],h5:[],h6:[],i:[],img:["src","srcset","alt","title","width","height"],li:[],ol:[],p:[],pre:[],s:[],small:[],span:[],sub:[],sup:[],strong:[],u:[],ul:[]};function Bt(t,e,n){var i;if(!t.length)return t;if(n&&"function"==typeof n)return n(t);for(var o=(new window.DOMParser).parseFromString(t,"text/html"),r=Object.keys(e),s=(i=[]).concat.apply(i,o.body.querySelectorAll("*")),a=function(t,n){var i,o=s[t],a=o.nodeName.toLowerCase();if(-1===r.indexOf(a))return o.parentNode.removeChild(o),"continue";var l=(i=[]).concat.apply(i,o.attributes),c=[].concat(e["*"]||[],e[a]||[]);l.forEach((function(t){(function(t,e){var n=t.nodeName.toLowerCase();if(-1!==e.indexOf(n))return-1===Pt.indexOf(n)||Boolean(t.nodeValue.match(Mt)||t.nodeValue.match(Ht));for(var i=e.filter((function(t){return t instanceof RegExp})),o=0,r=i.length;o<r;o++)if(n.match(i[o]))return!0;return!1})(t,c)||o.removeAttribute(t.nodeName)}))},l=0,c=s.length;l<c;l++)a(l);return o.body.innerHTML}var Ft="tooltip",$t=new RegExp("(^|\\s)bs-tooltip\\S+","g"),Wt=["sanitize","whiteList","sanitizeFn"],Ut={animation:"boolean",template:"string",title:"(string|element|function)",trigger:"string",delay:"(number|object)",html:"boolean",selector:"(string|boolean)",placement:"(string|function)",offset:"(number|string|function)",container:"(string|element|boolean)",fallbackPlacement:"(string|array)",boundary:"(string|element)",sanitize:"boolean",sanitizeFn:"(null|function)",whiteList:"object",popperConfig:"(null|object)"},Qt={AUTO:"auto",TOP:"top",RIGHT:"right",BOTTOM:"bottom",LEFT:"left"},Vt={animation:!0,template:'<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',trigger:"hover focus",title:"",delay:0,html:!1,selector:!1,placement:"top",offset:0,container:!1,fallbackPlacement:"flip",boundary:"scrollParent",sanitize:!0,sanitizeFn:null,whiteList:Rt,popperConfig:null},Yt={HIDE:"hide.bs.tooltip",HIDDEN:"hidden.bs.tooltip",SHOW:"show.bs.tooltip",SHOWN:"shown.bs.tooltip",INSERTED:"inserted.bs.tooltip",CLICK:"click.bs.tooltip",FOCUSIN:"focusin.bs.tooltip",FOCUSOUT:"focusout.bs.tooltip",MOUSEENTER:"mouseenter.bs.tooltip",MOUSELEAVE:"mouseleave.bs.tooltip"},zt=function(){function t(t,e){if(void 0===r.a)throw new TypeError("Bootstrap's tooltips require Popper.js (https://popper.js.org)");this._isEnabled=!0,this._timeout=0,this._hoverState="",this._activeTrigger={},this._popper=null,this.element=t,this.config=this._getConfig(e),this.tip=null,this._setListeners(),S(t,this.constructor.DATA_KEY,this)}var e=t.prototype;return e.enable=function(){this._isEnabled=!0},e.disable=function(){this._isEnabled=!1},e.toggleEnabled=function(){this._isEnabled=!this._isEnabled},e.toggle=function(t){if(this._isEnabled)if(t){var e=this.constructor.DATA_KEY,n=A(t.target,e);n||(n=new this.constructor(t.target,this._getDelegateConfig()),S(t.target,e,n)),n._activeTrigger.click=!n._activeTrigger.click,n._isWithActiveTrigger()?n._enter(null,n):n._leave(null,n)}else{if(this.getTipElement().classList.contains("show"))return void this._leave(null,this);this._enter(null,this)}},e.dispose=function(){clearTimeout(this._timeout),D(this.element,this.constructor.DATA_KEY),G.off(this.element,this.constructor.EVENT_KEY),G.off(this.element.closest(".modal"),"hide.bs.modal",this._hideModalHandler),this.tip&&this.tip.parentNode.removeChild(this.tip),this._isEnabled=null,this._timeout=null,this._hoverState=null,this._activeTrigger=null,this._popper&&this._popper.destroy(),this._popper=null,this.element=null,this.config=null,this.tip=null},e.show=function(){var t=this;if("none"===this.element.style.display)throw new Error("Please use show on visible elements");if(this.isWithContent()&&this._isEnabled){var e=G.trigger(this.element,this.constructor.Event.SHOW),n=function t(e){if(!document.documentElement.attachShadow)return null;if("function"==typeof e.getRootNode){var n=e.getRootNode();return n instanceof ShadowRoot?n:null}return e instanceof ShadowRoot?e:e.parentNode?t(e.parentNode):null}(this.element),i=null===n?this.element.ownerDocument.documentElement.contains(this.element):n.contains(this.element);if(e.defaultPrevented||!i)return;var o=this.getTipElement(),s=m(this.constructor.NAME);o.setAttribute("id",s),this.element.setAttribute("aria-describedby",s),this.setContent(),this.config.animation&&o.classList.add("fade");var a="function"==typeof this.config.placement?this.config.placement.call(this,o,this.element):this.config.placement,l=this._getAttachment(a);this._addAttachmentClass(l);var c,u=this._getContainer();if(S(o,this.constructor.DATA_KEY,this),this.element.ownerDocument.documentElement.contains(this.tip)||u.appendChild(o),G.trigger(this.element,this.constructor.Event.INSERTED),this._popper=new r.a(this.element,o,this._getPopperConfig(l)),o.classList.add("show"),"ontouchstart"in document.documentElement)(c=[]).concat.apply(c,document.body.children).forEach((function(t){G.on(t,"mouseover",(function(){}))}));var f=function(){t.config.animation&&t._fixTransition();var e=t._hoverState;t._hoverState=null,G.trigger(t.element,t.constructor.Event.SHOWN),"out"===e&&t._leave(null,t)};if(this.tip.classList.contains("fade")){var h=b(this.tip);G.one(this.tip,"transitionend",f),E(this.tip,h)}else f()}},e.hide=function(){var t=this,e=this.getTipElement(),n=function(){"show"!==t._hoverState&&e.parentNode&&e.parentNode.removeChild(e),t._cleanTipClass(),t.element.removeAttribute("aria-describedby"),G.trigger(t.element,t.constructor.Event.HIDDEN),t._popper.destroy()};if(!G.trigger(this.element,this.constructor.Event.HIDE).defaultPrevented){var i;if(e.classList.remove("show"),"ontouchstart"in document.documentElement)(i=[]).concat.apply(i,document.body.children).forEach((function(t){return G.off(t,"mouseover",T)}));if(this._activeTrigger.click=!1,this._activeTrigger.focus=!1,this._activeTrigger.hover=!1,this.tip.classList.contains("fade")){var o=b(e);G.one(e,"transitionend",n),E(e,o)}else n();this._hoverState=""}},e.update=function(){null!==this._popper&&this._popper.scheduleUpdate()},e.isWithContent=function(){return Boolean(this.getTitle())},e.getTipElement=function(){if(this.tip)return this.tip;var t=document.createElement("div");return t.innerHTML=this.config.template,this.tip=t.children[0],this.tip},e.setContent=function(){var t=this.getTipElement();this.setElementContent(lt.findOne(".tooltip-inner",t),this.getTitle()),t.classList.remove("fade","show")},e.setElementContent=function(t,e){if(null!==t)return"object"==typeof e&&w(e)?(e.jquery&&(e=e[0]),void(this.config.html?e.parentNode!==t&&(t.innerHTML="",t.appendChild(e)):t.textContent=e.textContent)):void(this.config.html?(this.config.sanitize&&(e=Bt(e,this.config.whiteList,this.config.sanitizeFn)),t.innerHTML=e):t.textContent=e)},e.getTitle=function(){var t=this.element.getAttribute("data-original-title");return t||(t="function"==typeof this.config.title?this.config.title.call(this.element):this.config.title),t},e._getPopperConfig=function(t){var e=this;return u(u({},{placement:t,modifiers:{offset:this._getOffset(),flip:{behavior:this.config.fallbackPlacement},arrow:{element:"."+this.constructor.NAME+"-arrow"},preventOverflow:{boundariesElement:this.config.boundary}},onCreate:function(t){t.originalPlacement!==t.placement&&e._handlePopperPlacementChange(t)},onUpdate:function(t){return e._handlePopperPlacementChange(t)}}),this.config.popperConfig)},e._addAttachmentClass=function(t){this.getTipElement().classList.add("bs-tooltip-"+t)},e._getOffset=function(){var t=this,e={};return"function"==typeof this.config.offset?e.fn=function(e){return e.offsets=u(u({},e.offsets),t.config.offset(e.offsets,t.element)||{}),e}:e.offset=this.config.offset,e},e._getContainer=function(){return!1===this.config.container?document.body:w(this.config.container)?this.config.container:lt.findOne(this.config.container)},e._getAttachment=function(t){return Qt[t.toUpperCase()]},e._setListeners=function(){var t=this;this.config.trigger.split(" ").forEach((function(e){if("click"===e)G.on(t.element,t.constructor.Event.CLICK,t.config.selector,(function(e){return t.toggle(e)}));else if("manual"!==e){var n="hover"===e?t.constructor.Event.MOUSEENTER:t.constructor.Event.FOCUSIN,i="hover"===e?t.constructor.Event.MOUSELEAVE:t.constructor.Event.FOCUSOUT;G.on(t.element,n,t.config.selector,(function(e){return t._enter(e)})),G.on(t.element,i,t.config.selector,(function(e){return t._leave(e)}))}})),this._hideModalHandler=function(){t.element&&t.hide()},G.on(this.element.closest(".modal"),"hide.bs.modal",this._hideModalHandler),this.config.selector?this.config=u(u({},this.config),{},{trigger:"manual",selector:""}):this._fixTitle()},e._fixTitle=function(){var t=typeof this.element.getAttribute("data-original-title");(this.element.getAttribute("title")||"string"!==t)&&(this.element.setAttribute("data-original-title",this.element.getAttribute("title")||""),this.element.setAttribute("title",""))},e._enter=function(t,e){var n=this.constructor.DATA_KEY;(e=e||A(t.target,n))||(e=new this.constructor(t.target,this._getDelegateConfig()),S(t.target,n,e)),t&&(e._activeTrigger["focusin"===t.type?"focus":"hover"]=!0),e.getTipElement().classList.contains("show")||"show"===e._hoverState?e._hoverState="show":(clearTimeout(e._timeout),e._hoverState="show",e.config.delay&&e.config.delay.show?e._timeout=setTimeout((function(){"show"===e._hoverState&&e.show()}),e.config.delay.show):e.show())},e._leave=function(t,e){var n=this.constructor.DATA_KEY;(e=e||A(t.target,n))||(e=new this.constructor(t.target,this._getDelegateConfig()),S(t.target,n,e)),t&&(e._activeTrigger["focusout"===t.type?"focus":"hover"]=!1),e._isWithActiveTrigger()||(clearTimeout(e._timeout),e._hoverState="out",e.config.delay&&e.config.delay.hide?e._timeout=setTimeout((function(){"out"===e._hoverState&&e.hide()}),e.config.delay.hide):e.hide())},e._isWithActiveTrigger=function(){for(var t in this._activeTrigger)if(this._activeTrigger[t])return!0;return!1},e._getConfig=function(t){var e=at.getDataAttributes(this.element);return Object.keys(e).forEach((function(t){-1!==Wt.indexOf(t)&&delete e[t]})),t&&"object"==typeof t.container&&t.container.jquery&&(t.container=t.container[0]),"number"==typeof(t=u(u(u({},this.constructor.Default),e),"object"==typeof t&&t?t:{})).delay&&(t.delay={show:t.delay,hide:t.delay}),"number"==typeof t.title&&(t.title=t.title.toString()),"number"==typeof t.content&&(t.content=t.content.toString()),L(Ft,t,this.constructor.DefaultType),t.sanitize&&(t.template=Bt(t.template,t.whiteList,t.sanitizeFn)),t},e._getDelegateConfig=function(){var t={};if(this.config)for(var e in this.config)this.constructor.Default[e]!==this.config[e]&&(t[e]=this.config[e]);return t},e._cleanTipClass=function(){var t=this.getTipElement(),e=t.getAttribute("class").match($t);null!==e&&e.length>0&&e.map((function(t){return t.trim()})).forEach((function(e){return t.classList.remove(e)}))},e._handlePopperPlacementChange=function(t){var e=t.instance;this.tip=e.popper,this._cleanTipClass(),this._addAttachmentClass(this._getAttachment(t.placement))},e._fixTransition=function(){var t=this.getTipElement(),e=this.config.animation;null===t.getAttribute("x-placement")&&(t.classList.remove("fade"),this.config.animation=!1,this.hide(),this.show(),this.config.animation=e)},t.jQueryInterface=function(e){return this.each((function(){var n=A(this,"bs.tooltip"),i="object"==typeof e&&e;if((n||!/dispose|hide/.test(e))&&(n||(n=new t(this,i)),"string"==typeof e)){if(void 0===n[e])throw new TypeError('No method named "'+e+'"');n[e]()}}))},t.getInstance=function(t){return A(t,"bs.tooltip")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"Default",get:function(){return Vt}},{key:"NAME",get:function(){return Ft}},{key:"DATA_KEY",get:function(){return"bs.tooltip"}},{key:"Event",get:function(){return Yt}},{key:"EVENT_KEY",get:function(){return".bs.tooltip"}},{key:"DefaultType",get:function(){return Ut}}]),t}(),qt=O();if(qt){var Kt=qt.fn[Ft];qt.fn[Ft]=zt.jQueryInterface,qt.fn[Ft].Constructor=zt,qt.fn[Ft].noConflict=function(){return qt.fn[Ft]=Kt,zt.jQueryInterface}}var Xt="popover",Gt=new RegExp("(^|\\s)bs-popover\\S+","g"),Jt=u(u({},zt.Default),{},{placement:"right",trigger:"click",content:"",template:'<div class="popover" role="tooltip"><div class="popover-arrow"></div><h3 class="popover-header"></h3><div class="popover-body"></div></div>'}),Zt=u(u({},zt.DefaultType),{},{content:"(string|element|function)"}),te={HIDE:"hide.bs.popover",HIDDEN:"hidden.bs.popover",SHOW:"show.bs.popover",SHOWN:"shown.bs.popover",INSERTED:"inserted.bs.popover",CLICK:"click.bs.popover",FOCUSIN:"focusin.bs.popover",FOCUSOUT:"focusout.bs.popover",MOUSEENTER:"mouseenter.bs.popover",MOUSELEAVE:"mouseleave.bs.popover"},ee=function(t){var e,n;function i(){return t.apply(this,arguments)||this}n=t,(e=i).prototype=Object.create(n.prototype),e.prototype.constructor=e,e.__proto__=n;var o=i.prototype;return o.isWithContent=function(){return this.getTitle()||this._getContent()},o.setContent=function(){var t=this.getTipElement();this.setElementContent(lt.findOne(".popover-header",t),this.getTitle());var e=this._getContent();"function"==typeof e&&(e=e.call(this.element)),this.setElementContent(lt.findOne(".popover-body",t),e),t.classList.remove("fade","show")},o._addAttachmentClass=function(t){this.getTipElement().classList.add("bs-popover-"+t)},o._getContent=function(){return this.element.getAttribute("data-content")||this.config.content},o._cleanTipClass=function(){var t=this.getTipElement(),e=t.getAttribute("class").match(Gt);null!==e&&e.length>0&&e.map((function(t){return t.trim()})).forEach((function(e){return t.classList.remove(e)}))},i.jQueryInterface=function(t){return this.each((function(){var e=A(this,"bs.popover"),n="object"==typeof t?t:null;if((e||!/dispose|hide/.test(t))&&(e||(e=new i(this,n),S(this,"bs.popover",e)),"string"==typeof t)){if(void 0===e[t])throw new TypeError('No method named "'+t+'"');e[t]()}}))},i.getInstance=function(t){return A(t,"bs.popover")},a(i,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"Default",get:function(){return Jt}},{key:"NAME",get:function(){return Xt}},{key:"DATA_KEY",get:function(){return"bs.popover"}},{key:"Event",get:function(){return te}},{key:"EVENT_KEY",get:function(){return".bs.popover"}},{key:"DefaultType",get:function(){return Zt}}]),i}(zt),ne=O();if(ne){var ie=ne.fn[Xt];ne.fn[Xt]=ee.jQueryInterface,ne.fn[Xt].Constructor=ee,ne.fn[Xt].noConflict=function(){return ne.fn[Xt]=ie,ee.jQueryInterface}}var oe="scrollspy",re={offset:10,method:"auto",target:""},se={offset:"number",method:"string",target:"(string|element)"},ae=function(){function t(t,e){var n=this;this._element=t,this._scrollElement="BODY"===t.tagName?window:t,this._config=this._getConfig(e),this._selector=this._config.target+" .nav-link,"+this._config.target+" .list-group-item,"+this._config.target+" .dropdown-item",this._offsets=[],this._targets=[],this._activeTarget=null,this._scrollHeight=0,G.on(this._scrollElement,"scroll.bs.scrollspy",(function(t){return n._process(t)})),this.refresh(),this._process(),S(t,"bs.scrollspy",this)}var e=t.prototype;return e.refresh=function(){var t=this,e=this._scrollElement===this._scrollElement.window?"offset":"position",n="auto"===this._config.method?e:this._config.method,i="position"===n?this._getScrollTop():0;this._offsets=[],this._targets=[],this._scrollHeight=this._getScrollHeight(),lt.find(this._selector).map((function(t){var e,o=v(t);if(o&&(e=lt.findOne(o)),e){var r=e.getBoundingClientRect();if(r.width||r.height)return[at[n](e).top+i,o]}return null})).filter((function(t){return t})).sort((function(t,e){return t[0]-e[0]})).forEach((function(e){t._offsets.push(e[0]),t._targets.push(e[1])}))},e.dispose=function(){D(this._element,"bs.scrollspy"),G.off(this._scrollElement,".bs.scrollspy"),this._element=null,this._scrollElement=null,this._config=null,this._selector=null,this._offsets=null,this._targets=null,this._activeTarget=null,this._scrollHeight=null},e._getConfig=function(t){if("string"!=typeof(t=u(u({},re),"object"==typeof t&&t?t:{})).target&&w(t.target)){var e=t.target.id;e||(e=m(oe),t.target.id=e),t.target="#"+e}return L(oe,t,se),t},e._getScrollTop=function(){return this._scrollElement===window?this._scrollElement.pageYOffset:this._scrollElement.scrollTop},e._getScrollHeight=function(){return this._scrollElement.scrollHeight||Math.max(document.body.scrollHeight,document.documentElement.scrollHeight)},e._getOffsetHeight=function(){return this._scrollElement===window?window.innerHeight:this._scrollElement.getBoundingClientRect().height},e._process=function(){var t=this._getScrollTop()+this._config.offset,e=this._getScrollHeight(),n=this._config.offset+e-this._getOffsetHeight();if(this._scrollHeight!==e&&this.refresh(),t>=n){var i=this._targets[this._targets.length-1];this._activeTarget!==i&&this._activate(i)}else{if(this._activeTarget&&t<this._offsets[0]&&this._offsets[0]>0)return this._activeTarget=null,void this._clear();for(var o=this._offsets.length;o--;){this._activeTarget!==this._targets[o]&&t>=this._offsets[o]&&(void 0===this._offsets[o+1]||t<this._offsets[o+1])&&this._activate(this._targets[o])}}},e._activate=function(t){this._activeTarget=t,this._clear();var e=this._selector.split(",").map((function(e){return e+'[data-target="'+t+'"],'+e+'[href="'+t+'"]'})),n=lt.findOne(e.join(","));n.classList.contains("dropdown-item")?(lt.findOne(".dropdown-toggle",n.closest(".dropdown")).classList.add("active"),n.classList.add("active")):(n.classList.add("active"),lt.parents(n,".nav, .list-group").forEach((function(t){lt.prev(t,".nav-link, .list-group-item").forEach((function(t){return t.classList.add("active")})),lt.prev(t,".nav-item").forEach((function(t){lt.children(t,".nav-link").forEach((function(t){return t.classList.add("active")}))}))}))),G.trigger(this._scrollElement,"activate.bs.scrollspy",{relatedTarget:t})},e._clear=function(){lt.find(this._selector).filter((function(t){return t.classList.contains("active")})).forEach((function(t){return t.classList.remove("active")}))},t.jQueryInterface=function(e){return this.each((function(){var n=A(this,"bs.scrollspy");if(n||(n=new t(this,"object"==typeof e&&e)),"string"==typeof e){if(void 0===n[e])throw new TypeError('No method named "'+e+'"');n[e]()}}))},t.getInstance=function(t){return A(t,"bs.scrollspy")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"Default",get:function(){return re}}]),t}();G.on(window,"load.bs.scrollspy.data-api",(function(){lt.find('[data-spy="scroll"]').forEach((function(t){return new ae(t,at.getDataAttributes(t))}))}));var le=O();if(le){var ce=le.fn[oe];le.fn[oe]=ae.jQueryInterface,le.fn[oe].Constructor=ae,le.fn[oe].noConflict=function(){return le.fn[oe]=ce,ae.jQueryInterface}}var ue=function(){function t(t){this._element=t,S(this._element,"bs.tab",this)}var e=t.prototype;return e.show=function(){var t=this;if(!(this._element.parentNode&&this._element.parentNode.nodeType===Node.ELEMENT_NODE&&this._element.classList.contains("active")||this._element.classList.contains("disabled"))){var e,n=_(this._element),i=this._element.closest(".nav, .list-group");if(i){var o="UL"===i.nodeName||"OL"===i.nodeName?":scope > li > .active":".active";e=(e=lt.find(o,i))[e.length-1]}var r=null;if(e&&(r=G.trigger(e,"hide.bs.tab",{relatedTarget:this._element})),!(G.trigger(this._element,"show.bs.tab",{relatedTarget:e}).defaultPrevented||null!==r&&r.defaultPrevented)){this._activate(this._element,i);var s=function(){G.trigger(e,"hidden.bs.tab",{relatedTarget:t._element}),G.trigger(t._element,"shown.bs.tab",{relatedTarget:e})};n?this._activate(n,n.parentNode,s):s()}}},e.dispose=function(){D(this._element,"bs.tab"),this._element=null},e._activate=function(t,e,n){var i=this,o=(!e||"UL"!==e.nodeName&&"OL"!==e.nodeName?lt.children(e,".active"):lt.find(":scope > li > .active",e))[0],r=n&&o&&o.classList.contains("fade"),s=function(){return i._transitionComplete(t,o,n)};if(o&&r){var a=b(o);o.classList.remove("show"),G.one(o,"transitionend",s),E(o,a)}else s()},e._transitionComplete=function(t,e,n){if(e){e.classList.remove("active");var i=lt.findOne(":scope > .dropdown-menu .active",e.parentNode);i&&i.classList.remove("active"),"tab"===e.getAttribute("role")&&e.setAttribute("aria-selected",!1)}(t.classList.add("active"),"tab"===t.getAttribute("role")&&t.setAttribute("aria-selected",!0),x(t),t.classList.contains("fade")&&t.classList.add("show"),t.parentNode&&t.parentNode.classList.contains("dropdown-menu"))&&(t.closest(".dropdown")&&lt.find(".dropdown-toggle").forEach((function(t){return t.classList.add("active")})),t.setAttribute("aria-expanded",!0));n&&n()},t.jQueryInterface=function(e){return this.each((function(){var n=A(this,"bs.tab")||new t(this);if("string"==typeof e){if(void 0===n[e])throw new TypeError('No method named "'+e+'"');n[e]()}}))},t.getInstance=function(t){return A(t,"bs.tab")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}}]),t}();G.on(document,"click.bs.tab.data-api",'[data-toggle="tab"], [data-toggle="pill"], [data-toggle="list"]',(function(t){t.preventDefault(),(A(this,"bs.tab")||new ue(this)).show()}));var fe=O();if(fe){var he=fe.fn.tab;fe.fn.tab=ue.jQueryInterface,fe.fn.tab.Constructor=ue,fe.fn.tab.noConflict=function(){return fe.fn.tab=he,ue.jQueryInterface}}var de={animation:"boolean",autohide:"boolean",delay:"number"},pe={animation:!0,autohide:!0,delay:500},me=function(){function t(t,e){this._element=t,this._config=this._getConfig(e),this._timeout=null,this._setListeners(),S(t,"bs.toast",this)}var e=t.prototype;return e.show=function(){var t=this;if(!G.trigger(this._element,"show.bs.toast").defaultPrevented){this._config.animation&&this._element.classList.add("fade");var e=function(){t._element.classList.remove("showing"),t._element.classList.add("show"),G.trigger(t._element,"shown.bs.toast"),t._config.autohide&&(t._timeout=setTimeout((function(){t.hide()}),t._config.delay))};if(this._element.classList.remove("hide"),x(this._element),this._element.classList.add("showing"),this._config.animation){var n=b(this._element);G.one(this._element,"transitionend",e),E(this._element,n)}else e()}},e.hide=function(){var t=this;if(this._element.classList.contains("show")&&!G.trigger(this._element,"hide.bs.toast").defaultPrevented){var e=function(){t._element.classList.add("hide"),G.trigger(t._element,"hidden.bs.toast")};if(this._element.classList.remove("show"),this._config.animation){var n=b(this._element);G.one(this._element,"transitionend",e),E(this._element,n)}else e()}},e.dispose=function(){clearTimeout(this._timeout),this._timeout=null,this._element.classList.contains("show")&&this._element.classList.remove("show"),G.off(this._element,"click.dismiss.bs.toast"),D(this._element,"bs.toast"),this._element=null,this._config=null},e._getConfig=function(t){return t=u(u(u({},pe),at.getDataAttributes(this._element)),"object"==typeof t&&t?t:{}),L("toast",t,this.constructor.DefaultType),t},e._setListeners=function(){var t=this;G.on(this._element,"click.dismiss.bs.toast",'[data-dismiss="toast"]',(function(){return t.hide()}))},t.jQueryInterface=function(e){return this.each((function(){var n=A(this,"bs.toast");if(n||(n=new t(this,"object"==typeof e&&e)),"string"==typeof e){if(void 0===n[e])throw new TypeError('No method named "'+e+'"');n[e](this)}}))},t.getInstance=function(t){return A(t,"bs.toast")},a(t,null,[{key:"VERSION",get:function(){return"5.0.0-alpha1"}},{key:"DefaultType",get:function(){return de}},{key:"Default",get:function(){return pe}}]),t}(),ge=O();if(ge){var ve=ge.fn.toast;ge.fn.toast=me.jQueryInterface,ge.fn.toast.Constructor=me,ge.fn.toast.noConflict=function(){return ge.fn.toast=ve,me.jQueryInterface}}function _e(t,e,n,i,o,r,s){try{var a=t[r](s),l=a.value}catch(t){return void n(t)}a.done?e(l):Promise.resolve(l).then(i,o)}function be(t){return function(){var e=this,n=arguments;return new Promise((function(i,o){var r=t.apply(e,n);function s(t){_e(r,i,o,s,a,"next",t)}function a(t){_e(r,i,o,s,a,"throw",t)}s(void 0)}))}}$(document).ready((function(){$(".js-scroll").on("click",(function(t){var e=$(this).attr("href"),n=$(e);$("html, body").animate({scrollTop:n.offset().top-50},1e3,"easeInOutExpo"),t.preventDefault()})),$("#contactPopover").popover({html:!0,title:"Contact Info",content:'<p>Please <strong>confirm</strong> reCAPTCHA to enable send button</p><p>Your message will be send to my email <strong>edwardevbert@gmail.com</strong></p><p><a href="mailto:edwardevbert@gmail.com">Click here</a> to send from your email apps.</p>',toggle:"popover",trigger:"focus"}),$(window).scroll((function(){var t=$(this).scrollTop();(t>$(".welcome").offset().top-100?$(".scrollTop").addClass("showScrollTop"):$(".scrollTop").removeClass("showScrollTop"),t>10?($("#navbar").removeClass("bg-transparent"),$("#navbar").addClass("bg-nav-scroll")):($("#navbar").removeClass("bg-nav-scroll"),$("#navbar").addClass("bg-transparent")),t>$(".welcome").offset().top)&&$(".welcomeDesc").addClass("welcomeDescShow");t<$(".welcome").offset().top-100&&$(".welcomeDesc").removeClass("welcomeDescShow");t>$("#aboutSection").offset().top-100&&$(".aboutText").addClass("aboutTextShow");(t>$("#skillSection").offset().top-100&&($(".skillsRight").addClass("skillsRightShow"),$(".skillsLeft").addClass("skillsLeftShow")),t<$("#skillSection").offset().top-100&&($(".skillsRight").removeClass("skillsRightShow"),$(".skillsLeft").removeClass("skillsLeftShow")),t>$("#portofolioSection").offset().top-250)&&$(".portofolioContent").addClass("portofolioContentShow");t>$(".portofolio-side-image").offset().top-300&&$(".portofolioDesc").addClass("portofolioDescShow");t<$(".portofolio-side-image").offset().top-300&&$(".portofolioDesc").removeClass("portofolioDescShow");if(t>$("#coursesSection").offset().top-400){var e=$(".coursesList");e.each((function(t){setTimeout((function(){e.eq(t).addClass("coursesListShow")}),500*(t+1))}))}}))})),$("body").css("overflow","hidden"),$(window).on("load",be(o.a.mark((function t(){return o.a.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,$(".preloader").fadeOut("slow",(function(){$(".myNameHeader").addClass("myNameHeaderShow"),$("body").css("overflow","visible")}));case 2:case"end":return t.stop()}}),t)})))),$((function(t){var e=t(".followScroll"),n=e.offset().top-50;e.css("position","relative"),t(window).width()>768&&t(window).on("scroll",(function(i){var o=t(this).scrollTop();o>n&&e.stop(!0,!0).animate({top:o<n?0:o-n+20}),o>2150&&e.stop()}))})),$("document").ready((function(){$("body").materializeInputs()})),$.fn.materializeInputs=function(t){function e(t){t.setAttribute("value",t.value)}void 0===t&&(t="input, textarea, select"),this.find(t).each((function(){e(this)})),this.on("keyup change",t,(function(){e(this)}))},$("form").on("submit",function(){var t=be(o.a.mark((function t(e){var n,i,r;return o.a.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:for(e.preventDefault(),xe(),n=document.getElementsByClassName("form-control"),"https://edwardemailapi.herokuapp.com/api/contact",i={},r=0;r<n.length;r++)i[n[r].name]=n[r].value;return t.next=6,ye(i,"https://edwardemailapi.herokuapp.com/api/contact");case 6:case"end":return t.stop()}}),t)})));return function(e){return t.apply(this,arguments)}}());var ye=function(t,e){var n,i;$.ajax({type:"post",url:e,data:t,dataType:"json",beforeSend:function(){Oe()},success:(i=be(o.a.mark((function t(e){return o.a.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,console.log(e.message);case 2:return t.next=4,we(e.message);case 4:return t.next=6,Ce();case 6:return t.next=8,Te(e);case 8:case"end":return t.stop()}}),t)}))),function(t){return i.apply(this,arguments)}),error:(n=be(o.a.mark((function t(e){return o.a.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,console.log(e.responseText);case 2:if(422!=e.status){t.next=7;break}return t.next=5,Ee(e);case 5:t.next=9;break;case 7:return t.next=9,Le();case 9:return t.next=11,Ce();case 11:case"end":return t.stop()}}),t)}))),function(t){return n.apply(this,arguments)})})},we=function(t){Swal.fire({icon:"success",iconColor:"#3F3D56",title:t,html:"Your message has been send!",customClass:{confirmButton:"btn btn-dark px-5"},buttonsStyling:!1})},Ee=function(t){Swal.fire({icon:"error",title:"Oops.. something error!",text:t.responseJSON.message}).then((function(){ke(t)}))},Le=function(){Swal.fire({icon:"error",title:"Server lost connection!",text:"Please try again later"}),$("input[name=captcha]").val(null)},ke=function(t){var e=t.responseJSON,n="";0==$.isEmptyObject(e)&&$.each(e.errors,(function(t,e){if(-1!=t.indexOf(".")){var i=t.split(".");n=$("#".concat(i[0]))}else n=$("#".concat(t));n.closest(".form-control").addClass("is-invalid"),n.closest(".form-group").append('<div class="invalid-feedback" style="position: absolute;">'.concat(e,"</div>"))}))},Te=function(){var t=be(o.a.mark((function t(e){return o.a.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,$.each(e.data,(function(t){$("#".concat(t)).closest(".form-control").val(null)}));case 2:return t.next=4,$("body").materializeInputs();case 4:case"end":return t.stop()}}),t)})));return function(e){return t.apply(this,arguments)}}(),xe=function(){var t=$("#contact-form");t.find(".invalid-feedback").remove(),t.find(".form-control").removeClass("is-invalid")},Oe=function(){var t=be(o.a.mark((function t(){return o.a.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,$("#btn-submit").prop("disabled",!0);case 2:return t.next=4,$("#btn-submit").css("cursor","not-allowed");case 4:return t.next=6,$("#btn-submit").html(' <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>\n\t\tLoading...');case 6:case"end":return t.stop()}}),t)})));return function(){return t.apply(this,arguments)}}(),Ce=function(){var t=be(o.a.mark((function t(){return o.a.wrap((function(t){for(;;)switch(t.prev=t.next){case 0:return t.next=2,$("#btn-submit").html('<i class="far fa-paper-plane"></i> Send');case 2:return t.next=4,grecaptcha.reset();case 4:case"end":return t.stop()}}),t)})));return function(){return t.apply(this,arguments)}}()},function(t,e){}]);
+/******/
+(() => { // webpackBootstrap
+  /******/
+  var __webpack_modules__ = ({
+
+    /***/
+    "./node_modules/@babel/runtime/regenerator/index.js":
+      /*!**********************************************************!*\
+        !*** ./node_modules/@babel/runtime/regenerator/index.js ***!
+        \**********************************************************/
+      /***/
+      ((module, __unused_webpack_exports, __webpack_require__) => {
+
+        module.exports = __webpack_require__( /*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/createPopper.js":
+      /*!*********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/createPopper.js ***!
+        \*********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "createPopper": () => ( /* binding */ createPopper),
+          /* harmony export */
+          "detectOverflow": () => ( /* reexport safe */ _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_13__["default"]),
+          /* harmony export */
+          "popperGenerator": () => ( /* binding */ popperGenerator)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__( /*! ./dom-utils/getCompositeRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js");
+        /* harmony import */
+        var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__( /*! ./dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
+        /* harmony import */
+        var _dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./dom-utils/listScrollParents.js */ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js");
+        /* harmony import */
+        var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__( /*! ./dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+        /* harmony import */
+        var _dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__( /*! ./dom-utils/getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+        /* harmony import */
+        var _utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./utils/orderModifiers.js */ "./node_modules/@popperjs/core/lib/utils/orderModifiers.js");
+        /* harmony import */
+        var _utils_debounce_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__( /*! ./utils/debounce.js */ "./node_modules/@popperjs/core/lib/utils/debounce.js");
+        /* harmony import */
+        var _utils_validateModifiers_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./utils/validateModifiers.js */ "./node_modules/@popperjs/core/lib/utils/validateModifiers.js");
+        /* harmony import */
+        var _utils_uniqueBy_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./utils/uniqueBy.js */ "./node_modules/@popperjs/core/lib/utils/uniqueBy.js");
+        /* harmony import */
+        var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ./utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+        /* harmony import */
+        var _utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./utils/mergeByName.js */ "./node_modules/@popperjs/core/lib/utils/mergeByName.js");
+        /* harmony import */
+        var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__( /*! ./utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+        /* harmony import */
+        var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ./enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        var INVALID_ELEMENT_ERROR = 'Popper: Invalid reference or popper argument provided. They must be either a DOM element or virtual element.';
+        var INFINITE_LOOP_ERROR = 'Popper: An infinite loop in the modifiers cycle has been detected! The cycle has been interrupted to prevent a browser crash.';
+        var DEFAULT_OPTIONS = {
+          placement: 'bottom',
+          modifiers: [],
+          strategy: 'absolute'
+        };
+
+        function areValidElements() {
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+
+          return !args.some(function (element) {
+            return !(element && typeof element.getBoundingClientRect === 'function');
+          });
+        }
+
+        function popperGenerator(generatorOptions) {
+          if (generatorOptions === void 0) {
+            generatorOptions = {};
+          }
+
+          var _generatorOptions = generatorOptions,
+            _generatorOptions$def = _generatorOptions.defaultModifiers,
+            defaultModifiers = _generatorOptions$def === void 0 ? [] : _generatorOptions$def,
+            _generatorOptions$def2 = _generatorOptions.defaultOptions,
+            defaultOptions = _generatorOptions$def2 === void 0 ? DEFAULT_OPTIONS : _generatorOptions$def2;
+          return function createPopper(reference, popper, options) {
+            if (options === void 0) {
+              options = defaultOptions;
+            }
+
+            var state = {
+              placement: 'bottom',
+              orderedModifiers: [],
+              options: Object.assign({}, DEFAULT_OPTIONS, defaultOptions),
+              modifiersData: {},
+              elements: {
+                reference: reference,
+                popper: popper
+              },
+              attributes: {},
+              styles: {}
+            };
+            var effectCleanupFns = [];
+            var isDestroyed = false;
+            var instance = {
+              state: state,
+              setOptions: function setOptions(setOptionsAction) {
+                var options = typeof setOptionsAction === 'function' ? setOptionsAction(state.options) : setOptionsAction;
+                cleanupModifierEffects();
+                state.options = Object.assign({}, defaultOptions, state.options, options);
+                state.scrollParents = {
+                  reference: (0, _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isElement)(reference) ? (0, _dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(reference) : reference.contextElement ? (0, _dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(reference.contextElement) : [],
+                  popper: (0, _dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(popper)
+                }; // Orders the modifiers based on their dependencies and `phase`
+                // properties
+
+                var orderedModifiers = (0, _utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_2__["default"])((0, _utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_3__["default"])([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
+
+                state.orderedModifiers = orderedModifiers.filter(function (m) {
+                  return m.enabled;
+                }); // Validate the provided modifiers so that the consumer will get warned
+                // if one of the modifiers is invalid for any reason
+
+                if (true) {
+                  var modifiers = (0, _utils_uniqueBy_js__WEBPACK_IMPORTED_MODULE_4__["default"])([].concat(orderedModifiers, state.options.modifiers), function (_ref) {
+                    var name = _ref.name;
+                    return name;
+                  });
+                  (0, _utils_validateModifiers_js__WEBPACK_IMPORTED_MODULE_5__["default"])(modifiers);
+
+                  if ((0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state.options.placement) === _enums_js__WEBPACK_IMPORTED_MODULE_7__.auto) {
+                    var flipModifier = state.orderedModifiers.find(function (_ref2) {
+                      var name = _ref2.name;
+                      return name === 'flip';
+                    });
+
+                    if (!flipModifier) {
+                      console.error(['Popper: "auto" placements require the "flip" modifier be', 'present and enabled to work.'].join(' '));
+                    }
+                  }
+
+                  var _getComputedStyle = (0, _dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_8__["default"])(popper),
+                    marginTop = _getComputedStyle.marginTop,
+                    marginRight = _getComputedStyle.marginRight,
+                    marginBottom = _getComputedStyle.marginBottom,
+                    marginLeft = _getComputedStyle.marginLeft; // We no longer take into account `margins` on the popper, and it can
+                  // cause bugs with positioning, so we'll warn the consumer
+
+
+                  if ([marginTop, marginRight, marginBottom, marginLeft].some(function (margin) {
+                      return parseFloat(margin);
+                    })) {
+                    console.warn(['Popper: CSS "margin" styles cannot be used to apply padding', 'between the popper and its reference element or boundary.', 'To replicate margin, use the `offset` modifier, as well as', 'the `padding` option in the `preventOverflow` and `flip`', 'modifiers.'].join(' '));
+                  }
+                }
+
+                runModifierEffects();
+                return instance.update();
+              },
+              // Sync update – it will always be executed, even if not necessary. This
+              // is useful for low frequency updates where sync behavior simplifies the
+              // logic.
+              // For high frequency updates (e.g. `resize` and `scroll` events), always
+              // prefer the async Popper#update method
+              forceUpdate: function forceUpdate() {
+                if (isDestroyed) {
+                  return;
+                }
+
+                var _state$elements = state.elements,
+                  reference = _state$elements.reference,
+                  popper = _state$elements.popper; // Don't proceed if `reference` or `popper` are not valid elements
+                // anymore
+
+                if (!areValidElements(reference, popper)) {
+                  if (true) {
+                    console.error(INVALID_ELEMENT_ERROR);
+                  }
+
+                  return;
+                } // Store the reference and popper rects to be read by modifiers
+
+
+                state.rects = {
+                  reference: (0, _dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_9__["default"])(reference, (0, _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_10__["default"])(popper), state.options.strategy === 'fixed'),
+                  popper: (0, _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_11__["default"])(popper)
+                }; // Modifiers have the ability to reset the current update cycle. The
+                // most common use case for this is the `flip` modifier changing the
+                // placement, which then needs to re-run all the modifiers, because the
+                // logic was previously ran for the previous placement and is therefore
+                // stale/incorrect
+
+                state.reset = false;
+                state.placement = state.options.placement; // On each update cycle, the `modifiersData` property for each modifier
+                // is filled with the initial data specified by the modifier. This means
+                // it doesn't persist and is fresh on each update.
+                // To ensure persistent data, use `${name}#persistent`
+
+                state.orderedModifiers.forEach(function (modifier) {
+                  return state.modifiersData[modifier.name] = Object.assign({}, modifier.data);
+                });
+                var __debug_loops__ = 0;
+
+                for (var index = 0; index < state.orderedModifiers.length; index++) {
+                  if (true) {
+                    __debug_loops__ += 1;
+
+                    if (__debug_loops__ > 100) {
+                      console.error(INFINITE_LOOP_ERROR);
+                      break;
+                    }
+                  }
+
+                  if (state.reset === true) {
+                    state.reset = false;
+                    index = -1;
+                    continue;
+                  }
+
+                  var _state$orderedModifie = state.orderedModifiers[index],
+                    fn = _state$orderedModifie.fn,
+                    _state$orderedModifie2 = _state$orderedModifie.options,
+                    _options = _state$orderedModifie2 === void 0 ? {} : _state$orderedModifie2,
+                    name = _state$orderedModifie.name;
+
+                  if (typeof fn === 'function') {
+                    state = fn({
+                      state: state,
+                      options: _options,
+                      name: name,
+                      instance: instance
+                    }) || state;
+                  }
+                }
+              },
+              // Async and optimistically optimized update – it will not be executed if
+              // not necessary (debounced to run at most once-per-tick)
+              update: (0, _utils_debounce_js__WEBPACK_IMPORTED_MODULE_12__["default"])(function () {
+                return new Promise(function (resolve) {
+                  instance.forceUpdate();
+                  resolve(state);
+                });
+              }),
+              destroy: function destroy() {
+                cleanupModifierEffects();
+                isDestroyed = true;
+              }
+            };
+
+            if (!areValidElements(reference, popper)) {
+              if (true) {
+                console.error(INVALID_ELEMENT_ERROR);
+              }
+
+              return instance;
+            }
+
+            instance.setOptions(options).then(function (state) {
+              if (!isDestroyed && options.onFirstUpdate) {
+                options.onFirstUpdate(state);
+              }
+            }); // Modifiers have the ability to execute arbitrary code before the first
+            // update cycle runs. They will be executed in the same order as the update
+            // cycle. This is useful when a modifier adds some persistent data that
+            // other modifiers need to use, but the modifier is run after the dependent
+            // one.
+
+            function runModifierEffects() {
+              state.orderedModifiers.forEach(function (_ref3) {
+                var name = _ref3.name,
+                  _ref3$options = _ref3.options,
+                  options = _ref3$options === void 0 ? {} : _ref3$options,
+                  effect = _ref3.effect;
+
+                if (typeof effect === 'function') {
+                  var cleanupFn = effect({
+                    state: state,
+                    name: name,
+                    instance: instance,
+                    options: options
+                  });
+
+                  var noopFn = function noopFn() {};
+
+                  effectCleanupFns.push(cleanupFn || noopFn);
+                }
+              });
+            }
+
+            function cleanupModifierEffects() {
+              effectCleanupFns.forEach(function (fn) {
+                return fn();
+              });
+              effectCleanupFns = [];
+            }
+
+            return instance;
+          };
+        }
+        var createPopper = /*#__PURE__*/ popperGenerator(); // eslint-disable-next-line import/no-unused-modules
+
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/contains.js":
+      /*!***************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/contains.js ***!
+        \***************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ contains)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+
+        function contains(parent, child) {
+          var rootNode = child.getRootNode && child.getRootNode(); // First, attempt with faster native method
+
+          if (parent.contains(child)) {
+            return true;
+          } // then fallback to custom implementation with Shadow DOM support
+          else if (rootNode && (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isShadowRoot)(rootNode)) {
+            var next = child;
+
+            do {
+              if (next && parent.isSameNode(next)) {
+                return true;
+              } // $FlowFixMe[prop-missing]: need a better way to handle this...
+
+
+              next = next.parentNode || next.host;
+            } while (next);
+          } // Give up, the result is false
+
+
+          return false;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js":
+      /*!****************************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js ***!
+        \****************************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getBoundingClientRect)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+        /* harmony import */
+        var _utils_math_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+
+
+        function getBoundingClientRect(element, includeScale) {
+          if (includeScale === void 0) {
+            includeScale = false;
+          }
+
+          var rect = element.getBoundingClientRect();
+          var scaleX = 1;
+          var scaleY = 1;
+
+          if ((0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) && includeScale) {
+            var offsetHeight = element.offsetHeight;
+            var offsetWidth = element.offsetWidth; // Do not attempt to divide by 0, otherwise we get `Infinity` as scale
+            // Fallback to 1 in case both values are `0`
+
+            if (offsetWidth > 0) {
+              scaleX = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_1__.round)(rect.width) / offsetWidth || 1;
+            }
+
+            if (offsetHeight > 0) {
+              scaleY = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_1__.round)(rect.height) / offsetHeight || 1;
+            }
+          }
+
+          return {
+            width: rect.width / scaleX,
+            height: rect.height / scaleY,
+            top: rect.top / scaleY,
+            right: rect.right / scaleX,
+            bottom: rect.bottom / scaleY,
+            left: rect.left / scaleX,
+            x: rect.left / scaleX,
+            y: rect.top / scaleY
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js":
+      /*!**********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js ***!
+        \**********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getClippingRect)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _getViewportRect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getViewportRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js");
+        /* harmony import */
+        var _getDocumentRect_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./getDocumentRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js");
+        /* harmony import */
+        var _listScrollParents_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ./listScrollParents.js */ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js");
+        /* harmony import */
+        var _getOffsetParent_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__( /*! ./getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+        /* harmony import */
+        var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__( /*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+        /* harmony import */
+        var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+        /* harmony import */
+        var _getParentNode_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__( /*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+        /* harmony import */
+        var _contains_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__( /*! ./contains.js */ "./node_modules/@popperjs/core/lib/dom-utils/contains.js");
+        /* harmony import */
+        var _getNodeName_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__( /*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+        /* harmony import */
+        var _utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ../utils/rectToClientRect.js */ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js");
+        /* harmony import */
+        var _utils_math_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__( /*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        function getInnerBoundingClientRect(element) {
+          var rect = (0, _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element);
+          rect.top = rect.top + element.clientTop;
+          rect.left = rect.left + element.clientLeft;
+          rect.bottom = rect.top + element.clientHeight;
+          rect.right = rect.left + element.clientWidth;
+          rect.width = element.clientWidth;
+          rect.height = element.clientHeight;
+          rect.x = rect.left;
+          rect.y = rect.top;
+          return rect;
+        }
+
+        function getClientRectFromMixedType(element, clippingParent) {
+          return clippingParent === _enums_js__WEBPACK_IMPORTED_MODULE_1__.viewport ? (0, _utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_2__["default"])((0, _getViewportRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])(element)) : (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clippingParent) ? getInnerBoundingClientRect(clippingParent) : (0, _utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_2__["default"])((0, _getDocumentRect_js__WEBPACK_IMPORTED_MODULE_5__["default"])((0, _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_6__["default"])(element)));
+        } // A "clipping parent" is an overflowable container with the characteristic of
+        // clipping (or hiding) overflowing elements with a position different from
+        // `initial`
+
+
+        function getClippingParents(element) {
+          var clippingParents = (0, _listScrollParents_js__WEBPACK_IMPORTED_MODULE_7__["default"])((0, _getParentNode_js__WEBPACK_IMPORTED_MODULE_8__["default"])(element));
+          var canEscapeClipping = ['absolute', 'fixed'].indexOf((0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_9__["default"])(element).position) >= 0;
+          var clipperElement = canEscapeClipping && (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isHTMLElement)(element) ? (0, _getOffsetParent_js__WEBPACK_IMPORTED_MODULE_10__["default"])(element) : element;
+
+          if (!(0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clipperElement)) {
+            return [];
+          } // $FlowFixMe[incompatible-return]: https://github.com/facebook/flow/issues/1414
+
+
+          return clippingParents.filter(function (clippingParent) {
+            return (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clippingParent) && (0, _contains_js__WEBPACK_IMPORTED_MODULE_11__["default"])(clippingParent, clipperElement) && (0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_12__["default"])(clippingParent) !== 'body';
+          });
+        } // Gets the maximum area that the element is visible in due to any number of
+        // clipping parents
+
+
+        function getClippingRect(element, boundary, rootBoundary) {
+          var mainClippingParents = boundary === 'clippingParents' ? getClippingParents(element) : [].concat(boundary);
+          var clippingParents = [].concat(mainClippingParents, [rootBoundary]);
+          var firstClippingParent = clippingParents[0];
+          var clippingRect = clippingParents.reduce(function (accRect, clippingParent) {
+            var rect = getClientRectFromMixedType(element, clippingParent);
+            accRect.top = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_13__.max)(rect.top, accRect.top);
+            accRect.right = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_13__.min)(rect.right, accRect.right);
+            accRect.bottom = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_13__.min)(rect.bottom, accRect.bottom);
+            accRect.left = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_13__.max)(rect.left, accRect.left);
+            return accRect;
+          }, getClientRectFromMixedType(element, firstClippingParent));
+          clippingRect.width = clippingRect.right - clippingRect.left;
+          clippingRect.height = clippingRect.bottom - clippingRect.top;
+          clippingRect.x = clippingRect.left;
+          clippingRect.y = clippingRect.top;
+          return clippingRect;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js":
+      /*!***********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js ***!
+        \***********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getCompositeRect)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+        /* harmony import */
+        var _getNodeScroll_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ./getNodeScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js");
+        /* harmony import */
+        var _getNodeName_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+        /* harmony import */
+        var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
+        /* harmony import */
+        var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
+        /* harmony import */
+        var _utils_math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+
+
+
+
+
+
+
+
+
+        function isElementScaled(element) {
+          var rect = element.getBoundingClientRect();
+          var scaleX = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(rect.width) / element.offsetWidth || 1;
+          var scaleY = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(rect.height) / element.offsetHeight || 1;
+          return scaleX !== 1 || scaleY !== 1;
+        } // Returns the composite rect of an element relative to its offsetParent.
+        // Composite means it takes into account transforms as well as layout.
+
+
+        function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
+          if (isFixed === void 0) {
+            isFixed = false;
+          }
+
+          var isOffsetParentAnElement = (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(offsetParent);
+          var offsetParentIsScaled = (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(offsetParent) && isElementScaled(offsetParent);
+          var documentElement = (0, _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(offsetParent);
+          var rect = (0, _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])(elementOrVirtualElement, offsetParentIsScaled);
+          var scroll = {
+            scrollLeft: 0,
+            scrollTop: 0
+          };
+          var offsets = {
+            x: 0,
+            y: 0
+          };
+
+          if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
+            if ((0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_4__["default"])(offsetParent) !== 'body' || // https://github.com/popperjs/popper-core/issues/1078
+              (0, _isScrollParent_js__WEBPACK_IMPORTED_MODULE_5__["default"])(documentElement)) {
+              scroll = (0, _getNodeScroll_js__WEBPACK_IMPORTED_MODULE_6__["default"])(offsetParent);
+            }
+
+            if ((0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(offsetParent)) {
+              offsets = (0, _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])(offsetParent, true);
+              offsets.x += offsetParent.clientLeft;
+              offsets.y += offsetParent.clientTop;
+            } else if (documentElement) {
+              offsets.x = (0, _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_7__["default"])(documentElement);
+            }
+          }
+
+          return {
+            x: rect.left + scroll.scrollLeft - offsets.x,
+            y: rect.top + scroll.scrollTop - offsets.y,
+            width: rect.width,
+            height: rect.height
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js":
+      /*!***********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js ***!
+        \***********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getComputedStyle)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+
+        function getComputedStyle(element) {
+          return (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element).getComputedStyle(element);
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js":
+      /*!*************************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js ***!
+        \*************************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getDocumentElement)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+
+        function getDocumentElement(element) {
+          // $FlowFixMe[incompatible-return]: assume body is always available
+          return (((0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isElement)(element) ? element.ownerDocument : // $FlowFixMe[prop-missing]
+            element.document) || window.document).documentElement;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js":
+      /*!**********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js ***!
+        \**********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getDocumentRect)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+        /* harmony import */
+        var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
+        /* harmony import */
+        var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./getWindowScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js");
+        /* harmony import */
+        var _utils_math_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+
+
+
+
+        // Gets the entire size of the scrollable document area, even extending outside
+        // of the `<html>` and `<body>` rect bounds if horizontally scrollable
+
+        function getDocumentRect(element) {
+          var _element$ownerDocumen;
+
+          var html = (0, _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element);
+          var winScroll = (0, _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element);
+          var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
+          var width = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_2__.max)(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+          var height = (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_2__.max)(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+          var x = -winScroll.scrollLeft + (0, _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_3__["default"])(element);
+          var y = -winScroll.scrollTop;
+
+          if ((0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_4__["default"])(body || html).direction === 'rtl') {
+            x += (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_2__.max)(html.clientWidth, body ? body.clientWidth : 0) - width;
+          }
+
+          return {
+            width: width,
+            height: height,
+            x: x,
+            y: y
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js":
+      /*!***************************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js ***!
+        \***************************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getHTMLElementScroll)
+          /* harmony export */
+        });
+
+        function getHTMLElementScroll(element) {
+          return {
+            scrollLeft: element.scrollLeft,
+            scrollTop: element.scrollTop
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js":
+      /*!********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js ***!
+        \********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getLayoutRect)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+        // Returns the layout rect of an element relative to its offsetParent. Layout
+        // means it doesn't take into account transforms.
+
+        function getLayoutRect(element) {
+          var clientRect = (0, _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element); // Use the clientRect sizes if it's not been transformed.
+          // Fixes https://github.com/popperjs/popper-core/issues/1223
+
+          var width = element.offsetWidth;
+          var height = element.offsetHeight;
+
+          if (Math.abs(clientRect.width - width) <= 1) {
+            width = clientRect.width;
+          }
+
+          if (Math.abs(clientRect.height - height) <= 1) {
+            height = clientRect.height;
+          }
+
+          return {
+            x: element.offsetLeft,
+            y: element.offsetTop,
+            width: width,
+            height: height
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js":
+      /*!******************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js ***!
+        \******************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getNodeName)
+          /* harmony export */
+        });
+
+        function getNodeName(element) {
+          return element ? (element.nodeName || '').toLowerCase() : null;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js":
+      /*!********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js ***!
+        \********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getNodeScroll)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./getWindowScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js");
+        /* harmony import */
+        var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+        /* harmony import */
+        var _getHTMLElementScroll_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getHTMLElementScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js");
+
+
+
+
+        function getNodeScroll(node) {
+          if (node === (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node) || !(0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(node)) {
+            return (0, _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__["default"])(node);
+          } else {
+            return (0, _getHTMLElementScroll_js__WEBPACK_IMPORTED_MODULE_3__["default"])(node);
+          }
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js":
+      /*!**********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js ***!
+        \**********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getOffsetParent)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getWindow_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+        /* harmony import */
+        var _getNodeName_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+        /* harmony import */
+        var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+        /* harmony import */
+        var _isTableElement_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./isTableElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js");
+        /* harmony import */
+        var _getParentNode_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+
+
+
+
+
+
+
+        function getTrueOffsetParent(element) {
+          if (!(0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) || // https://github.com/popperjs/popper-core/issues/837
+            (0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element).position === 'fixed') {
+            return null;
+          }
+
+          return element.offsetParent;
+        } // `.offsetParent` reports `null` for fixed elements, while absolute elements
+        // return the containing block
+
+
+        function getContainingBlock(element) {
+          var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') !== -1;
+          var isIE = navigator.userAgent.indexOf('Trident') !== -1;
+
+          if (isIE && (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element)) {
+            // In IE 9, 10 and 11 fixed elements containing block is always established by the viewport
+            var elementCss = (0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element);
+
+            if (elementCss.position === 'fixed') {
+              return null;
+            }
+          }
+
+          var currentNode = (0, _getParentNode_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element);
+
+          if ((0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isShadowRoot)(currentNode)) {
+            currentNode = currentNode.host;
+          }
+
+          while ((0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(currentNode) && ['html', 'body'].indexOf((0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_3__["default"])(currentNode)) < 0) {
+            var css = (0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(currentNode); // This is non-exhaustive but covers the most common CSS properties that
+            // create a containing block.
+            // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
+
+            if (css.transform !== 'none' || css.perspective !== 'none' || css.contain === 'paint' || ['transform', 'perspective'].indexOf(css.willChange) !== -1 || isFirefox && css.willChange === 'filter' || isFirefox && css.filter && css.filter !== 'none') {
+              return currentNode;
+            } else {
+              currentNode = currentNode.parentNode;
+            }
+          }
+
+          return null;
+        } // Gets the closest ancestor positioned element. Handles some edge cases,
+        // such as table ancestors and cross browser bugs.
+
+
+        function getOffsetParent(element) {
+          var window = (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_4__["default"])(element);
+          var offsetParent = getTrueOffsetParent(element);
+
+          while (offsetParent && (0, _isTableElement_js__WEBPACK_IMPORTED_MODULE_5__["default"])(offsetParent) && (0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(offsetParent).position === 'static') {
+            offsetParent = getTrueOffsetParent(offsetParent);
+          }
+
+          if (offsetParent && ((0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_3__["default"])(offsetParent) === 'html' || (0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_3__["default"])(offsetParent) === 'body' && (0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(offsetParent).position === 'static')) {
+            return window;
+          }
+
+          return offsetParent || getContainingBlock(element) || window;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js":
+      /*!********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js ***!
+        \********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getParentNode)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+        /* harmony import */
+        var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+
+
+
+        function getParentNode(element) {
+          if ((0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element) === 'html') {
+            return element;
+          }
+
+          return ( // this is a quicker (but less type safe) way to save quite some bytes from the bundle
+            // $FlowFixMe[incompatible-return]
+            // $FlowFixMe[prop-missing]
+            element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
+            element.parentNode || ( // DOM Element detected
+              (0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isShadowRoot)(element) ? element.host : null) || // ShadowRoot detected
+            // $FlowFixMe[incompatible-call]: HTMLElement is a Node
+            (0, _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element) // fallback
+
+          );
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js":
+      /*!**********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js ***!
+        \**********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getScrollParent)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getParentNode_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+        /* harmony import */
+        var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
+        /* harmony import */
+        var _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+        /* harmony import */
+        var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+
+
+
+
+        function getScrollParent(node) {
+          if (['html', 'body', '#document'].indexOf((0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node)) >= 0) {
+            // $FlowFixMe[incompatible-return]: assume body is always available
+            return node.ownerDocument.body;
+          }
+
+          if ((0, _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(node) && (0, _isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__["default"])(node)) {
+            return node;
+          }
+
+          return getScrollParent((0, _getParentNode_js__WEBPACK_IMPORTED_MODULE_3__["default"])(node));
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js":
+      /*!**********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js ***!
+        \**********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getViewportRect)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+        /* harmony import */
+        var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
+
+
+
+        function getViewportRect(element) {
+          var win = (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element);
+          var html = (0, _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element);
+          var visualViewport = win.visualViewport;
+          var width = html.clientWidth;
+          var height = html.clientHeight;
+          var x = 0;
+          var y = 0; // NB: This isn't supported on iOS <= 12. If the keyboard is open, the popper
+          // can be obscured underneath it.
+          // Also, `html.clientHeight` adds the bottom bar height in Safari iOS, even
+          // if it isn't open, so if this isn't available, the popper will be detected
+          // to overflow the bottom of the screen too early.
+
+          if (visualViewport) {
+            width = visualViewport.width;
+            height = visualViewport.height; // Uses Layout Viewport (like Chrome; Safari does not currently)
+            // In Chrome, it returns a value very close to 0 (+/-) but contains rounding
+            // errors due to floating point numbers, so we need to check precision.
+            // Safari returns a number <= 0, usually < -1 when pinch-zoomed
+            // Feature detection fails in mobile emulation mode in Chrome.
+            // Math.abs(win.innerWidth / visualViewport.scale - visualViewport.width) <
+            // 0.001
+            // Fallback here: "Not Safari" userAgent
+
+            if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+              x = visualViewport.offsetLeft;
+              y = visualViewport.offsetTop;
+            }
+          }
+
+          return {
+            width: width,
+            height: height,
+            x: x + (0, _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element),
+            y: y
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js":
+      /*!****************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js ***!
+        \****************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getWindow)
+          /* harmony export */
+        });
+
+        function getWindow(node) {
+          if (node == null) {
+            return window;
+          }
+
+          if (node.toString() !== '[object Window]') {
+            var ownerDocument = node.ownerDocument;
+            return ownerDocument ? ownerDocument.defaultView || window : window;
+          }
+
+          return node;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js":
+      /*!**********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js ***!
+        \**********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getWindowScroll)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+
+        function getWindowScroll(node) {
+          var win = (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node);
+          var scrollLeft = win.pageXOffset;
+          var scrollTop = win.pageYOffset;
+          return {
+            scrollLeft: scrollLeft,
+            scrollTop: scrollTop
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js":
+      /*!**************************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js ***!
+        \**************************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getWindowScrollBarX)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+        /* harmony import */
+        var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./getWindowScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js");
+
+
+
+        function getWindowScrollBarX(element) {
+          // If <html> has a CSS width greater than the viewport, then this will be
+          // incorrect for RTL.
+          // Popper 1 is broken in this case and never had a bug report so let's assume
+          // it's not an issue. I don't think anyone ever specifies width on <html>
+          // anyway.
+          // Browsers where the left scrollbar doesn't cause an issue report `0` for
+          // this (e.g. Edge 2019, IE11, Safari)
+          return (0, _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])((0, _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element)).left + (0, _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element).scrollLeft;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js":
+      /*!*****************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js ***!
+        \*****************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "isElement": () => ( /* binding */ isElement),
+          /* harmony export */
+          "isHTMLElement": () => ( /* binding */ isHTMLElement),
+          /* harmony export */
+          "isShadowRoot": () => ( /* binding */ isShadowRoot)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+
+
+        function isElement(node) {
+          var OwnElement = (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node).Element;
+          return node instanceof OwnElement || node instanceof Element;
+        }
+
+        function isHTMLElement(node) {
+          var OwnElement = (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node).HTMLElement;
+          return node instanceof OwnElement || node instanceof HTMLElement;
+        }
+
+        function isShadowRoot(node) {
+          // IE 11 has no ShadowRoot
+          if (typeof ShadowRoot === 'undefined') {
+            return false;
+          }
+
+          var OwnElement = (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node).ShadowRoot;
+          return node instanceof OwnElement || node instanceof ShadowRoot;
+        }
+
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js":
+      /*!*********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js ***!
+        \*********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ isScrollParent)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+
+        function isScrollParent(element) {
+          // Firefox wants us to check `-x` and `-y` variations as well
+          var _getComputedStyle = (0, _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element),
+            overflow = _getComputedStyle.overflow,
+            overflowX = _getComputedStyle.overflowX,
+            overflowY = _getComputedStyle.overflowY;
+
+          return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js":
+      /*!*********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js ***!
+        \*********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ isTableElement)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+
+        function isTableElement(element) {
+          return ['table', 'td', 'th'].indexOf((0, _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element)) >= 0;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js":
+      /*!************************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js ***!
+        \************************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ listScrollParents)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getScrollParent_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js");
+        /* harmony import */
+        var _getParentNode_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+        /* harmony import */
+        var _getWindow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+        /* harmony import */
+        var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
+
+
+
+
+        /*
+        given a DOM element, return the list of all scroll parents, up the list of ancesors
+        until we get to the top window object. This list is what we attach scroll listeners
+        to, because if any of these parent elements scroll, we'll need to re-calculate the
+        reference element's position.
+        */
+
+        function listScrollParents(element, list) {
+          var _element$ownerDocumen;
+
+          if (list === void 0) {
+            list = [];
+          }
+
+          var scrollParent = (0, _getScrollParent_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element);
+          var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
+          var win = (0, _getWindow_js__WEBPACK_IMPORTED_MODULE_1__["default"])(scrollParent);
+          var target = isBody ? [win].concat(win.visualViewport || [], (0, _isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__["default"])(scrollParent) ? scrollParent : []) : scrollParent;
+          var updatedList = list.concat(target);
+          return isBody ? updatedList : // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
+            updatedList.concat(listScrollParents((0, _getParentNode_js__WEBPACK_IMPORTED_MODULE_3__["default"])(target)));
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/enums.js":
+      /*!**************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/enums.js ***!
+        \**************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "afterMain": () => ( /* binding */ afterMain),
+          /* harmony export */
+          "afterRead": () => ( /* binding */ afterRead),
+          /* harmony export */
+          "afterWrite": () => ( /* binding */ afterWrite),
+          /* harmony export */
+          "auto": () => ( /* binding */ auto),
+          /* harmony export */
+          "basePlacements": () => ( /* binding */ basePlacements),
+          /* harmony export */
+          "beforeMain": () => ( /* binding */ beforeMain),
+          /* harmony export */
+          "beforeRead": () => ( /* binding */ beforeRead),
+          /* harmony export */
+          "beforeWrite": () => ( /* binding */ beforeWrite),
+          /* harmony export */
+          "bottom": () => ( /* binding */ bottom),
+          /* harmony export */
+          "clippingParents": () => ( /* binding */ clippingParents),
+          /* harmony export */
+          "end": () => ( /* binding */ end),
+          /* harmony export */
+          "left": () => ( /* binding */ left),
+          /* harmony export */
+          "main": () => ( /* binding */ main),
+          /* harmony export */
+          "modifierPhases": () => ( /* binding */ modifierPhases),
+          /* harmony export */
+          "placements": () => ( /* binding */ placements),
+          /* harmony export */
+          "popper": () => ( /* binding */ popper),
+          /* harmony export */
+          "read": () => ( /* binding */ read),
+          /* harmony export */
+          "reference": () => ( /* binding */ reference),
+          /* harmony export */
+          "right": () => ( /* binding */ right),
+          /* harmony export */
+          "start": () => ( /* binding */ start),
+          /* harmony export */
+          "top": () => ( /* binding */ top),
+          /* harmony export */
+          "variationPlacements": () => ( /* binding */ variationPlacements),
+          /* harmony export */
+          "viewport": () => ( /* binding */ viewport),
+          /* harmony export */
+          "write": () => ( /* binding */ write)
+          /* harmony export */
+        });
+        var top = 'top';
+        var bottom = 'bottom';
+        var right = 'right';
+        var left = 'left';
+        var auto = 'auto';
+        var basePlacements = [top, bottom, right, left];
+        var start = 'start';
+        var end = 'end';
+        var clippingParents = 'clippingParents';
+        var viewport = 'viewport';
+        var popper = 'popper';
+        var reference = 'reference';
+        var variationPlacements = /*#__PURE__*/ basePlacements.reduce(function (acc, placement) {
+          return acc.concat([placement + "-" + start, placement + "-" + end]);
+        }, []);
+        var placements = /*#__PURE__*/ [].concat(basePlacements, [auto]).reduce(function (acc, placement) {
+          return acc.concat([placement, placement + "-" + start, placement + "-" + end]);
+        }, []); // modifiers that need to read the DOM
+
+        var beforeRead = 'beforeRead';
+        var read = 'read';
+        var afterRead = 'afterRead'; // pure-logic modifiers
+
+        var beforeMain = 'beforeMain';
+        var main = 'main';
+        var afterMain = 'afterMain'; // modifier with the purpose to write to the DOM (or write into a framework state)
+
+        var beforeWrite = 'beforeWrite';
+        var write = 'write';
+        var afterWrite = 'afterWrite';
+        var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/index.js":
+      /*!**************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/index.js ***!
+        \**************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "afterMain": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.afterMain),
+          /* harmony export */
+          "afterRead": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.afterRead),
+          /* harmony export */
+          "afterWrite": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.afterWrite),
+          /* harmony export */
+          "applyStyles": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.applyStyles),
+          /* harmony export */
+          "arrow": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.arrow),
+          /* harmony export */
+          "auto": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.auto),
+          /* harmony export */
+          "basePlacements": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.basePlacements),
+          /* harmony export */
+          "beforeMain": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.beforeMain),
+          /* harmony export */
+          "beforeRead": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.beforeRead),
+          /* harmony export */
+          "beforeWrite": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.beforeWrite),
+          /* harmony export */
+          "bottom": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom),
+          /* harmony export */
+          "clippingParents": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.clippingParents),
+          /* harmony export */
+          "computeStyles": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.computeStyles),
+          /* harmony export */
+          "createPopper": () => ( /* reexport safe */ _popper_js__WEBPACK_IMPORTED_MODULE_4__.createPopper),
+          /* harmony export */
+          "createPopperBase": () => ( /* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_2__.createPopper),
+          /* harmony export */
+          "createPopperLite": () => ( /* reexport safe */ _popper_lite_js__WEBPACK_IMPORTED_MODULE_5__.createPopper),
+          /* harmony export */
+          "detectOverflow": () => ( /* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_3__["default"]),
+          /* harmony export */
+          "end": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.end),
+          /* harmony export */
+          "eventListeners": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.eventListeners),
+          /* harmony export */
+          "flip": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.flip),
+          /* harmony export */
+          "hide": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.hide),
+          /* harmony export */
+          "left": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.left),
+          /* harmony export */
+          "main": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.main),
+          /* harmony export */
+          "modifierPhases": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.modifierPhases),
+          /* harmony export */
+          "offset": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.offset),
+          /* harmony export */
+          "placements": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.placements),
+          /* harmony export */
+          "popper": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper),
+          /* harmony export */
+          "popperGenerator": () => ( /* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_2__.popperGenerator),
+          /* harmony export */
+          "popperOffsets": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.popperOffsets),
+          /* harmony export */
+          "preventOverflow": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__.preventOverflow),
+          /* harmony export */
+          "read": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.read),
+          /* harmony export */
+          "reference": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.reference),
+          /* harmony export */
+          "right": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.right),
+          /* harmony export */
+          "start": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.start),
+          /* harmony export */
+          "top": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.top),
+          /* harmony export */
+          "variationPlacements": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.variationPlacements),
+          /* harmony export */
+          "viewport": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.viewport),
+          /* harmony export */
+          "write": () => ( /* reexport safe */ _enums_js__WEBPACK_IMPORTED_MODULE_0__.write)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _modifiers_index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./modifiers/index.js */ "./node_modules/@popperjs/core/lib/modifiers/index.js");
+        /* harmony import */
+        var _createPopper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/createPopper.js");
+        /* harmony import */
+        var _createPopper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+        /* harmony import */
+        var _popper_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./popper.js */ "./node_modules/@popperjs/core/lib/popper.js");
+        /* harmony import */
+        var _popper_lite_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./popper-lite.js */ "./node_modules/@popperjs/core/lib/popper-lite.js");
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        // eslint-disable-next-line import/no-unused-modules
+
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js":
+      /*!******************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/applyStyles.js ***!
+        \******************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../dom-utils/getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+        /* harmony import */
+        var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+
+        // This modifier takes the styles prepared by the `computeStyles` modifier
+        // and applies them to the HTMLElements such as popper and arrow
+
+        function applyStyles(_ref) {
+          var state = _ref.state;
+          Object.keys(state.elements).forEach(function (name) {
+            var style = state.styles[name] || {};
+            var attributes = state.attributes[name] || {};
+            var element = state.elements[name]; // arrow is optional + virtual elements
+
+            if (!(0, _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) || !(0, _dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element)) {
+              return;
+            } // Flow doesn't support to extend this property, but it's the most
+            // effective way to apply styles to an HTMLElement
+            // $FlowFixMe[cannot-write]
+
+
+            Object.assign(element.style, style);
+            Object.keys(attributes).forEach(function (name) {
+              var value = attributes[name];
+
+              if (value === false) {
+                element.removeAttribute(name);
+              } else {
+                element.setAttribute(name, value === true ? '' : value);
+              }
+            });
+          });
+        }
+
+        function effect(_ref2) {
+          var state = _ref2.state;
+          var initialStyles = {
+            popper: {
+              position: state.options.strategy,
+              left: '0',
+              top: '0',
+              margin: '0'
+            },
+            arrow: {
+              position: 'absolute'
+            },
+            reference: {}
+          };
+          Object.assign(state.elements.popper.style, initialStyles.popper);
+          state.styles = initialStyles;
+
+          if (state.elements.arrow) {
+            Object.assign(state.elements.arrow.style, initialStyles.arrow);
+          }
+
+          return function () {
+            Object.keys(state.elements).forEach(function (name) {
+              var element = state.elements[name];
+              var attributes = state.attributes[name] || {};
+              var styleProperties = Object.keys(state.styles.hasOwnProperty(name) ? state.styles[name] : initialStyles[name]); // Set all values to an empty string to unset them
+
+              var style = styleProperties.reduce(function (style, property) {
+                style[property] = '';
+                return style;
+              }, {}); // arrow is optional + virtual elements
+
+              if (!(0, _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) || !(0, _dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element)) {
+                return;
+              }
+
+              Object.assign(element.style, style);
+              Object.keys(attributes).forEach(function (attribute) {
+                element.removeAttribute(attribute);
+              });
+            });
+          };
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'applyStyles',
+          enabled: true,
+          phase: 'write',
+          fn: applyStyles,
+          effect: effect,
+          requires: ['computeStyles']
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/arrow.js":
+      /*!************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/arrow.js ***!
+        \************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+        /* harmony import */
+        var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ../dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
+        /* harmony import */
+        var _dom_utils_contains_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__( /*! ../dom-utils/contains.js */ "./node_modules/@popperjs/core/lib/dom-utils/contains.js");
+        /* harmony import */
+        var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+        /* harmony import */
+        var _utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ../utils/getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
+        /* harmony import */
+        var _utils_within_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ../utils/within.js */ "./node_modules/@popperjs/core/lib/utils/within.js");
+        /* harmony import */
+        var _utils_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../utils/mergePaddingObject.js */ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js");
+        /* harmony import */
+        var _utils_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../utils/expandToHashMap.js */ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__( /*! ../dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+
+
+
+
+
+
+
+
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        var toPaddingObject = function toPaddingObject(padding, state) {
+          padding = typeof padding === 'function' ? padding(Object.assign({}, state.rects, {
+            placement: state.placement
+          })) : padding;
+          return (0, _utils_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(typeof padding !== 'number' ? padding : (0, _utils_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_1__["default"])(padding, _enums_js__WEBPACK_IMPORTED_MODULE_2__.basePlacements));
+        };
+
+        function arrow(_ref) {
+          var _state$modifiersData$;
+
+          var state = _ref.state,
+            name = _ref.name,
+            options = _ref.options;
+          var arrowElement = state.elements.arrow;
+          var popperOffsets = state.modifiersData.popperOffsets;
+          var basePlacement = (0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(state.placement);
+          var axis = (0, _utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(basePlacement);
+          var isVertical = [_enums_js__WEBPACK_IMPORTED_MODULE_2__.left, _enums_js__WEBPACK_IMPORTED_MODULE_2__.right].indexOf(basePlacement) >= 0;
+          var len = isVertical ? 'height' : 'width';
+
+          if (!arrowElement || !popperOffsets) {
+            return;
+          }
+
+          var paddingObject = toPaddingObject(options.padding, state);
+          var arrowRect = (0, _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_5__["default"])(arrowElement);
+          var minProp = axis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_2__.top : _enums_js__WEBPACK_IMPORTED_MODULE_2__.left;
+          var maxProp = axis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_2__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_2__.right;
+          var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets[axis] - state.rects.popper[len];
+          var startDiff = popperOffsets[axis] - state.rects.reference[axis];
+          var arrowOffsetParent = (0, _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_6__["default"])(arrowElement);
+          var clientSize = arrowOffsetParent ? axis === 'y' ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
+          var centerToReference = endDiff / 2 - startDiff / 2; // Make sure the arrow doesn't overflow the popper if the center point is
+          // outside of the popper bounds
+
+          var min = paddingObject[minProp];
+          var max = clientSize - arrowRect[len] - paddingObject[maxProp];
+          var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
+          var offset = (0, _utils_within_js__WEBPACK_IMPORTED_MODULE_7__.within)(min, center, max); // Prevents breaking syntax highlighting...
+
+          var axisProp = axis;
+          state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset, _state$modifiersData$.centerOffset = offset - center, _state$modifiersData$);
+        }
+
+        function effect(_ref2) {
+          var state = _ref2.state,
+            options = _ref2.options;
+          var _options$element = options.element,
+            arrowElement = _options$element === void 0 ? '[data-popper-arrow]' : _options$element;
+
+          if (arrowElement == null) {
+            return;
+          } // CSS selector
+
+
+          if (typeof arrowElement === 'string') {
+            arrowElement = state.elements.popper.querySelector(arrowElement);
+
+            if (!arrowElement) {
+              return;
+            }
+          }
+
+          if (true) {
+            if (!(0, _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_8__.isHTMLElement)(arrowElement)) {
+              console.error(['Popper: "arrow" element must be an HTMLElement (not an SVGElement).', 'To use an SVG arrow, wrap it in an HTMLElement that will be used as', 'the arrow.'].join(' '));
+            }
+          }
+
+          if (!(0, _dom_utils_contains_js__WEBPACK_IMPORTED_MODULE_9__["default"])(state.elements.popper, arrowElement)) {
+            if (true) {
+              console.error(['Popper: "arrow" modifier\'s `element` must be a child of the popper', 'element.'].join(' '));
+            }
+
+            return;
+          }
+
+          state.elements.arrow = arrowElement;
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'arrow',
+          enabled: true,
+          phase: 'main',
+          fn: arrow,
+          effect: effect,
+          requires: ['popperOffsets'],
+          requiresIfExists: ['preventOverflow']
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js":
+      /*!********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/computeStyles.js ***!
+        \********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+          /* harmony export */
+          "mapToStyles": () => ( /* binding */ mapToStyles)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+        /* harmony import */
+        var _dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ../dom-utils/getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+        /* harmony import */
+        var _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ../dom-utils/getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ../dom-utils/getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+        /* harmony import */
+        var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+        /* harmony import */
+        var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+        /* harmony import */
+        var _utils_math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+
+
+
+
+
+
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        var unsetSides = {
+          top: 'auto',
+          right: 'auto',
+          bottom: 'auto',
+          left: 'auto'
+        }; // Round the offsets to the nearest suitable subpixel based on the DPR.
+        // Zooming can change the DPR, but it seems to report a value that will
+        // cleanly divide the values into the appropriate subpixels.
+
+        function roundOffsetsByDPR(_ref) {
+          var x = _ref.x,
+            y = _ref.y;
+          var win = window;
+          var dpr = win.devicePixelRatio || 1;
+          return {
+            x: (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(x * dpr) / dpr || 0,
+            y: (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(y * dpr) / dpr || 0
+          };
+        }
+
+        function mapToStyles(_ref2) {
+          var _Object$assign2;
+
+          var popper = _ref2.popper,
+            popperRect = _ref2.popperRect,
+            placement = _ref2.placement,
+            variation = _ref2.variation,
+            offsets = _ref2.offsets,
+            position = _ref2.position,
+            gpuAcceleration = _ref2.gpuAcceleration,
+            adaptive = _ref2.adaptive,
+            roundOffsets = _ref2.roundOffsets,
+            isFixed = _ref2.isFixed;
+          var _offsets$x = offsets.x,
+            x = _offsets$x === void 0 ? 0 : _offsets$x,
+            _offsets$y = offsets.y,
+            y = _offsets$y === void 0 ? 0 : _offsets$y;
+
+          var _ref3 = typeof roundOffsets === 'function' ? roundOffsets({
+            x: x,
+            y: y
+          }) : {
+            x: x,
+            y: y
+          };
+
+          x = _ref3.x;
+          y = _ref3.y;
+          var hasX = offsets.hasOwnProperty('x');
+          var hasY = offsets.hasOwnProperty('y');
+          var sideX = _enums_js__WEBPACK_IMPORTED_MODULE_1__.left;
+          var sideY = _enums_js__WEBPACK_IMPORTED_MODULE_1__.top;
+          var win = window;
+
+          if (adaptive) {
+            var offsetParent = (0, _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_2__["default"])(popper);
+            var heightProp = 'clientHeight';
+            var widthProp = 'clientWidth';
+
+            if (offsetParent === (0, _dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_3__["default"])(popper)) {
+              offsetParent = (0, _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(popper);
+
+              if ((0, _dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_5__["default"])(offsetParent).position !== 'static' && position === 'absolute') {
+                heightProp = 'scrollHeight';
+                widthProp = 'scrollWidth';
+              }
+            } // $FlowFixMe[incompatible-cast]: force type refinement, we compare offsetParent with window above, but Flow doesn't detect it
+
+
+            offsetParent = offsetParent;
+
+            if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.top || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.left || placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.right) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_1__.end) {
+              sideY = _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom;
+              var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : // $FlowFixMe[prop-missing]
+                offsetParent[heightProp];
+              y -= offsetY - popperRect.height;
+              y *= gpuAcceleration ? 1 : -1;
+            }
+
+            if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.left || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.top || placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_1__.end) {
+              sideX = _enums_js__WEBPACK_IMPORTED_MODULE_1__.right;
+              var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : // $FlowFixMe[prop-missing]
+                offsetParent[widthProp];
+              x -= offsetX - popperRect.width;
+              x *= gpuAcceleration ? 1 : -1;
+            }
+          }
+
+          var commonStyles = Object.assign({
+            position: position
+          }, adaptive && unsetSides);
+
+          var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
+            x: x,
+            y: y
+          }) : {
+            x: x,
+            y: y
+          };
+
+          x = _ref4.x;
+          y = _ref4.y;
+
+          if (gpuAcceleration) {
+            var _Object$assign;
+
+            return Object.assign({}, commonStyles, (_Object$assign = {}, _Object$assign[sideY] = hasY ? '0' : '', _Object$assign[sideX] = hasX ? '0' : '', _Object$assign.transform = (win.devicePixelRatio || 1) <= 1 ? "translate(" + x + "px, " + y + "px)" : "translate3d(" + x + "px, " + y + "px, 0)", _Object$assign));
+          }
+
+          return Object.assign({}, commonStyles, (_Object$assign2 = {}, _Object$assign2[sideY] = hasY ? y + "px" : '', _Object$assign2[sideX] = hasX ? x + "px" : '', _Object$assign2.transform = '', _Object$assign2));
+        }
+
+        function computeStyles(_ref5) {
+          var state = _ref5.state,
+            options = _ref5.options;
+          var _options$gpuAccelerat = options.gpuAcceleration,
+            gpuAcceleration = _options$gpuAccelerat === void 0 ? true : _options$gpuAccelerat,
+            _options$adaptive = options.adaptive,
+            adaptive = _options$adaptive === void 0 ? true : _options$adaptive,
+            _options$roundOffsets = options.roundOffsets,
+            roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
+
+          if (true) {
+            var transitionProperty = (0, _dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_5__["default"])(state.elements.popper).transitionProperty || '';
+
+            if (adaptive && ['transform', 'top', 'right', 'bottom', 'left'].some(function (property) {
+                return transitionProperty.indexOf(property) >= 0;
+              })) {
+              console.warn(['Popper: Detected CSS transitions on at least one of the following', 'CSS properties: "transform", "top", "right", "bottom", "left".', '\n\n', 'Disable the "computeStyles" modifier\'s `adaptive` option to allow', 'for smooth transitions, or remove these properties from the CSS', 'transition declaration on the popper element if only transitioning', 'opacity or background-color for example.', '\n\n', 'We recommend using the popper element as a wrapper around an inner', 'element that can have any CSS property transitioned for animations.'].join(' '));
+            }
+          }
+
+          var commonStyles = {
+            placement: (0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state.placement),
+            variation: (0, _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_7__["default"])(state.placement),
+            popper: state.elements.popper,
+            popperRect: state.rects.popper,
+            gpuAcceleration: gpuAcceleration,
+            isFixed: state.options.strategy === 'fixed'
+          };
+
+          if (state.modifiersData.popperOffsets != null) {
+            state.styles.popper = Object.assign({}, state.styles.popper, mapToStyles(Object.assign({}, commonStyles, {
+              offsets: state.modifiersData.popperOffsets,
+              position: state.options.strategy,
+              adaptive: adaptive,
+              roundOffsets: roundOffsets
+            })));
+          }
+
+          if (state.modifiersData.arrow != null) {
+            state.styles.arrow = Object.assign({}, state.styles.arrow, mapToStyles(Object.assign({}, commonStyles, {
+              offsets: state.modifiersData.arrow,
+              position: 'absolute',
+              adaptive: false,
+              roundOffsets: roundOffsets
+            })));
+          }
+
+          state.attributes.popper = Object.assign({}, state.attributes.popper, {
+            'data-popper-placement': state.placement
+          });
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'computeStyles',
+          enabled: true,
+          phase: 'beforeWrite',
+          fn: computeStyles,
+          data: {}
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js":
+      /*!*********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/eventListeners.js ***!
+        \*********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../dom-utils/getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+        // eslint-disable-next-line import/no-unused-modules
+
+        var passive = {
+          passive: true
+        };
+
+        function effect(_ref) {
+          var state = _ref.state,
+            instance = _ref.instance,
+            options = _ref.options;
+          var _options$scroll = options.scroll,
+            scroll = _options$scroll === void 0 ? true : _options$scroll,
+            _options$resize = options.resize,
+            resize = _options$resize === void 0 ? true : _options$resize;
+          var window = (0, _dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(state.elements.popper);
+          var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
+
+          if (scroll) {
+            scrollParents.forEach(function (scrollParent) {
+              scrollParent.addEventListener('scroll', instance.update, passive);
+            });
+          }
+
+          if (resize) {
+            window.addEventListener('resize', instance.update, passive);
+          }
+
+          return function () {
+            if (scroll) {
+              scrollParents.forEach(function (scrollParent) {
+                scrollParent.removeEventListener('scroll', instance.update, passive);
+              });
+            }
+
+            if (resize) {
+              window.removeEventListener('resize', instance.update, passive);
+            }
+          };
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'eventListeners',
+          enabled: true,
+          phase: 'write',
+          fn: function fn() {},
+          effect: effect,
+          data: {}
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/flip.js":
+      /*!***********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/flip.js ***!
+        \***********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ../utils/getOppositePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js");
+        /* harmony import */
+        var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+        /* harmony import */
+        var _utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ../utils/getOppositeVariationPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js");
+        /* harmony import */
+        var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ../utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+        /* harmony import */
+        var _utils_computeAutoPlacement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ../utils/computeAutoPlacement.js */ "./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+
+
+
+
+
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        function getExpandedFallbackPlacements(placement) {
+          if ((0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_1__.auto) {
+            return [];
+          }
+
+          var oppositePlacement = (0, _utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(placement);
+          return [(0, _utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(placement), oppositePlacement, (0, _utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(oppositePlacement)];
+        }
+
+        function flip(_ref) {
+          var state = _ref.state,
+            options = _ref.options,
+            name = _ref.name;
+
+          if (state.modifiersData[name]._skip) {
+            return;
+          }
+
+          var _options$mainAxis = options.mainAxis,
+            checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis,
+            _options$altAxis = options.altAxis,
+            checkAltAxis = _options$altAxis === void 0 ? true : _options$altAxis,
+            specifiedFallbackPlacements = options.fallbackPlacements,
+            padding = options.padding,
+            boundary = options.boundary,
+            rootBoundary = options.rootBoundary,
+            altBoundary = options.altBoundary,
+            _options$flipVariatio = options.flipVariations,
+            flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio,
+            allowedAutoPlacements = options.allowedAutoPlacements;
+          var preferredPlacement = state.options.placement;
+          var basePlacement = (0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(preferredPlacement);
+          var isBasePlacement = basePlacement === preferredPlacement;
+          var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [(0, _utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(preferredPlacement)] : getExpandedFallbackPlacements(preferredPlacement));
+          var placements = [preferredPlacement].concat(fallbackPlacements).reduce(function (acc, placement) {
+            return acc.concat((0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_1__.auto ? (0, _utils_computeAutoPlacement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(state, {
+              placement: placement,
+              boundary: boundary,
+              rootBoundary: rootBoundary,
+              padding: padding,
+              flipVariations: flipVariations,
+              allowedAutoPlacements: allowedAutoPlacements
+            }) : placement);
+          }, []);
+          var referenceRect = state.rects.reference;
+          var popperRect = state.rects.popper;
+          var checksMap = new Map();
+          var makeFallbackChecks = true;
+          var firstFittingPlacement = placements[0];
+
+          for (var i = 0; i < placements.length; i++) {
+            var placement = placements[i];
+
+            var _basePlacement = (0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement);
+
+            var isStartVariation = (0, _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_5__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_1__.start;
+            var isVertical = [_enums_js__WEBPACK_IMPORTED_MODULE_1__.top, _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom].indexOf(_basePlacement) >= 0;
+            var len = isVertical ? 'width' : 'height';
+            var overflow = (0, _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state, {
+              placement: placement,
+              boundary: boundary,
+              rootBoundary: rootBoundary,
+              altBoundary: altBoundary,
+              padding: padding
+            });
+            var mainVariationSide = isVertical ? isStartVariation ? _enums_js__WEBPACK_IMPORTED_MODULE_1__.right : _enums_js__WEBPACK_IMPORTED_MODULE_1__.left : isStartVariation ? _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_1__.top;
+
+            if (referenceRect[len] > popperRect[len]) {
+              mainVariationSide = (0, _utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(mainVariationSide);
+            }
+
+            var altVariationSide = (0, _utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(mainVariationSide);
+            var checks = [];
+
+            if (checkMainAxis) {
+              checks.push(overflow[_basePlacement] <= 0);
+            }
+
+            if (checkAltAxis) {
+              checks.push(overflow[mainVariationSide] <= 0, overflow[altVariationSide] <= 0);
+            }
+
+            if (checks.every(function (check) {
+                return check;
+              })) {
+              firstFittingPlacement = placement;
+              makeFallbackChecks = false;
+              break;
+            }
+
+            checksMap.set(placement, checks);
+          }
+
+          if (makeFallbackChecks) {
+            // `2` may be desired in some cases – research later
+            var numberOfChecks = flipVariations ? 3 : 1;
+
+            var _loop = function _loop(_i) {
+              var fittingPlacement = placements.find(function (placement) {
+                var checks = checksMap.get(placement);
+
+                if (checks) {
+                  return checks.slice(0, _i).every(function (check) {
+                    return check;
+                  });
+                }
+              });
+
+              if (fittingPlacement) {
+                firstFittingPlacement = fittingPlacement;
+                return "break";
+              }
+            };
+
+            for (var _i = numberOfChecks; _i > 0; _i--) {
+              var _ret = _loop(_i);
+
+              if (_ret === "break") break;
+            }
+          }
+
+          if (state.placement !== firstFittingPlacement) {
+            state.modifiersData[name]._skip = true;
+            state.placement = firstFittingPlacement;
+            state.reset = true;
+          }
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'flip',
+          enabled: true,
+          phase: 'main',
+          fn: flip,
+          requiresIfExists: ['offset'],
+          data: {
+            _skip: false
+          }
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/hide.js":
+      /*!***********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/hide.js ***!
+        \***********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+
+
+
+        function getSideOffsets(overflow, rect, preventedOffsets) {
+          if (preventedOffsets === void 0) {
+            preventedOffsets = {
+              x: 0,
+              y: 0
+            };
+          }
+
+          return {
+            top: overflow.top - rect.height - preventedOffsets.y,
+            right: overflow.right - rect.width + preventedOffsets.x,
+            bottom: overflow.bottom - rect.height + preventedOffsets.y,
+            left: overflow.left - rect.width - preventedOffsets.x
+          };
+        }
+
+        function isAnySideFullyClipped(overflow) {
+          return [_enums_js__WEBPACK_IMPORTED_MODULE_0__.top, _enums_js__WEBPACK_IMPORTED_MODULE_0__.right, _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom, _enums_js__WEBPACK_IMPORTED_MODULE_0__.left].some(function (side) {
+            return overflow[side] >= 0;
+          });
+        }
+
+        function hide(_ref) {
+          var state = _ref.state,
+            name = _ref.name;
+          var referenceRect = state.rects.reference;
+          var popperRect = state.rects.popper;
+          var preventedOffsets = state.modifiersData.preventOverflow;
+          var referenceOverflow = (0, _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_1__["default"])(state, {
+            elementContext: 'reference'
+          });
+          var popperAltOverflow = (0, _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_1__["default"])(state, {
+            altBoundary: true
+          });
+          var referenceClippingOffsets = getSideOffsets(referenceOverflow, referenceRect);
+          var popperEscapeOffsets = getSideOffsets(popperAltOverflow, popperRect, preventedOffsets);
+          var isReferenceHidden = isAnySideFullyClipped(referenceClippingOffsets);
+          var hasPopperEscaped = isAnySideFullyClipped(popperEscapeOffsets);
+          state.modifiersData[name] = {
+            referenceClippingOffsets: referenceClippingOffsets,
+            popperEscapeOffsets: popperEscapeOffsets,
+            isReferenceHidden: isReferenceHidden,
+            hasPopperEscaped: hasPopperEscaped
+          };
+          state.attributes.popper = Object.assign({}, state.attributes.popper, {
+            'data-popper-reference-hidden': isReferenceHidden,
+            'data-popper-escaped': hasPopperEscaped
+          });
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'hide',
+          enabled: true,
+          phase: 'main',
+          requiresIfExists: ['preventOverflow'],
+          fn: hide
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/index.js":
+      /*!************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/index.js ***!
+        \************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "applyStyles": () => ( /* reexport safe */ _applyStyles_js__WEBPACK_IMPORTED_MODULE_0__["default"]),
+          /* harmony export */
+          "arrow": () => ( /* reexport safe */ _arrow_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+          /* harmony export */
+          "computeStyles": () => ( /* reexport safe */ _computeStyles_js__WEBPACK_IMPORTED_MODULE_2__["default"]),
+          /* harmony export */
+          "eventListeners": () => ( /* reexport safe */ _eventListeners_js__WEBPACK_IMPORTED_MODULE_3__["default"]),
+          /* harmony export */
+          "flip": () => ( /* reexport safe */ _flip_js__WEBPACK_IMPORTED_MODULE_4__["default"]),
+          /* harmony export */
+          "hide": () => ( /* reexport safe */ _hide_js__WEBPACK_IMPORTED_MODULE_5__["default"]),
+          /* harmony export */
+          "offset": () => ( /* reexport safe */ _offset_js__WEBPACK_IMPORTED_MODULE_6__["default"]),
+          /* harmony export */
+          "popperOffsets": () => ( /* reexport safe */ _popperOffsets_js__WEBPACK_IMPORTED_MODULE_7__["default"]),
+          /* harmony export */
+          "preventOverflow": () => ( /* reexport safe */ _preventOverflow_js__WEBPACK_IMPORTED_MODULE_8__["default"])
+          /* harmony export */
+        });
+        /* harmony import */
+        var _applyStyles_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./applyStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js");
+        /* harmony import */
+        var _arrow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./arrow.js */ "./node_modules/@popperjs/core/lib/modifiers/arrow.js");
+        /* harmony import */
+        var _computeStyles_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./computeStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js");
+        /* harmony import */
+        var _eventListeners_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./eventListeners.js */ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js");
+        /* harmony import */
+        var _flip_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./flip.js */ "./node_modules/@popperjs/core/lib/modifiers/flip.js");
+        /* harmony import */
+        var _hide_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./hide.js */ "./node_modules/@popperjs/core/lib/modifiers/hide.js");
+        /* harmony import */
+        var _offset_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ./offset.js */ "./node_modules/@popperjs/core/lib/modifiers/offset.js");
+        /* harmony import */
+        var _popperOffsets_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ./popperOffsets.js */ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js");
+        /* harmony import */
+        var _preventOverflow_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__( /*! ./preventOverflow.js */ "./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js");
+
+
+
+
+
+
+
+
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/offset.js":
+      /*!*************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/offset.js ***!
+        \*************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__),
+          /* harmony export */
+          "distanceAndSkiddingToXY": () => ( /* binding */ distanceAndSkiddingToXY)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        function distanceAndSkiddingToXY(placement, rects, offset) {
+          var basePlacement = (0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement);
+          var invertDistance = [_enums_js__WEBPACK_IMPORTED_MODULE_1__.left, _enums_js__WEBPACK_IMPORTED_MODULE_1__.top].indexOf(basePlacement) >= 0 ? -1 : 1;
+
+          var _ref = typeof offset === 'function' ? offset(Object.assign({}, rects, {
+              placement: placement
+            })) : offset,
+            skidding = _ref[0],
+            distance = _ref[1];
+
+          skidding = skidding || 0;
+          distance = (distance || 0) * invertDistance;
+          return [_enums_js__WEBPACK_IMPORTED_MODULE_1__.left, _enums_js__WEBPACK_IMPORTED_MODULE_1__.right].indexOf(basePlacement) >= 0 ? {
+            x: distance,
+            y: skidding
+          } : {
+            x: skidding,
+            y: distance
+          };
+        }
+
+        function offset(_ref2) {
+          var state = _ref2.state,
+            options = _ref2.options,
+            name = _ref2.name;
+          var _options$offset = options.offset,
+            offset = _options$offset === void 0 ? [0, 0] : _options$offset;
+          var data = _enums_js__WEBPACK_IMPORTED_MODULE_1__.placements.reduce(function (acc, placement) {
+            acc[placement] = distanceAndSkiddingToXY(placement, state.rects, offset);
+            return acc;
+          }, {});
+          var _data$state$placement = data[state.placement],
+            x = _data$state$placement.x,
+            y = _data$state$placement.y;
+
+          if (state.modifiersData.popperOffsets != null) {
+            state.modifiersData.popperOffsets.x += x;
+            state.modifiersData.popperOffsets.y += y;
+          }
+
+          state.modifiersData[name] = data;
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'offset',
+          enabled: true,
+          phase: 'main',
+          requires: ['popperOffsets'],
+          fn: offset
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js":
+      /*!********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js ***!
+        \********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _utils_computeOffsets_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../utils/computeOffsets.js */ "./node_modules/@popperjs/core/lib/utils/computeOffsets.js");
+
+
+        function popperOffsets(_ref) {
+          var state = _ref.state,
+            name = _ref.name;
+          // Offsets are the actual position the popper needs to have to be
+          // properly positioned near its reference element
+          // This is the most basic placement, and will be adjusted by
+          // the modifiers in the next step
+          state.modifiersData[name] = (0, _utils_computeOffsets_js__WEBPACK_IMPORTED_MODULE_0__["default"])({
+            reference: state.rects.reference,
+            element: state.rects.popper,
+            strategy: 'absolute',
+            placement: state.placement
+          });
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'popperOffsets',
+          enabled: true,
+          phase: 'read',
+          fn: popperOffsets,
+          data: {}
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js":
+      /*!**********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js ***!
+        \**********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+        /* harmony import */
+        var _utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ../utils/getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
+        /* harmony import */
+        var _utils_getAltAxis_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ../utils/getAltAxis.js */ "./node_modules/@popperjs/core/lib/utils/getAltAxis.js");
+        /* harmony import */
+        var _utils_within_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__( /*! ../utils/within.js */ "./node_modules/@popperjs/core/lib/utils/within.js");
+        /* harmony import */
+        var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ../dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
+        /* harmony import */
+        var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__( /*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+        /* harmony import */
+        var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+        /* harmony import */
+        var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+        /* harmony import */
+        var _utils_getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ../utils/getFreshSideObject.js */ "./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js");
+        /* harmony import */
+        var _utils_math_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__( /*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+
+
+
+
+
+
+
+
+
+
+
+
+        function preventOverflow(_ref) {
+          var state = _ref.state,
+            options = _ref.options,
+            name = _ref.name;
+          var _options$mainAxis = options.mainAxis,
+            checkMainAxis = _options$mainAxis === void 0 ? true : _options$mainAxis,
+            _options$altAxis = options.altAxis,
+            checkAltAxis = _options$altAxis === void 0 ? false : _options$altAxis,
+            boundary = options.boundary,
+            rootBoundary = options.rootBoundary,
+            altBoundary = options.altBoundary,
+            padding = options.padding,
+            _options$tether = options.tether,
+            tether = _options$tether === void 0 ? true : _options$tether,
+            _options$tetherOffset = options.tetherOffset,
+            tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
+          var overflow = (0, _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(state, {
+            boundary: boundary,
+            rootBoundary: rootBoundary,
+            padding: padding,
+            altBoundary: altBoundary
+          });
+          var basePlacement = (0, _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(state.placement);
+          var variation = (0, _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_2__["default"])(state.placement);
+          var isBasePlacement = !variation;
+          var mainAxis = (0, _utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(basePlacement);
+          var altAxis = (0, _utils_getAltAxis_js__WEBPACK_IMPORTED_MODULE_4__["default"])(mainAxis);
+          var popperOffsets = state.modifiersData.popperOffsets;
+          var referenceRect = state.rects.reference;
+          var popperRect = state.rects.popper;
+          var tetherOffsetValue = typeof tetherOffset === 'function' ? tetherOffset(Object.assign({}, state.rects, {
+            placement: state.placement
+          })) : tetherOffset;
+          var normalizedTetherOffsetValue = typeof tetherOffsetValue === 'number' ? {
+            mainAxis: tetherOffsetValue,
+            altAxis: tetherOffsetValue
+          } : Object.assign({
+            mainAxis: 0,
+            altAxis: 0
+          }, tetherOffsetValue);
+          var offsetModifierState = state.modifiersData.offset ? state.modifiersData.offset[state.placement] : null;
+          var data = {
+            x: 0,
+            y: 0
+          };
+
+          if (!popperOffsets) {
+            return;
+          }
+
+          if (checkMainAxis) {
+            var _offsetModifierState$;
+
+            var mainSide = mainAxis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.top : _enums_js__WEBPACK_IMPORTED_MODULE_5__.left;
+            var altSide = mainAxis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_5__.right;
+            var len = mainAxis === 'y' ? 'height' : 'width';
+            var offset = popperOffsets[mainAxis];
+            var min = offset + overflow[mainSide];
+            var max = offset - overflow[altSide];
+            var additive = tether ? -popperRect[len] / 2 : 0;
+            var minLen = variation === _enums_js__WEBPACK_IMPORTED_MODULE_5__.start ? referenceRect[len] : popperRect[len];
+            var maxLen = variation === _enums_js__WEBPACK_IMPORTED_MODULE_5__.start ? -popperRect[len] : -referenceRect[len]; // We need to include the arrow in the calculation so the arrow doesn't go
+            // outside the reference bounds
+
+            var arrowElement = state.elements.arrow;
+            var arrowRect = tether && arrowElement ? (0, _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_6__["default"])(arrowElement) : {
+              width: 0,
+              height: 0
+            };
+            var arrowPaddingObject = state.modifiersData['arrow#persistent'] ? state.modifiersData['arrow#persistent'].padding : (0, _utils_getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
+            var arrowPaddingMin = arrowPaddingObject[mainSide];
+            var arrowPaddingMax = arrowPaddingObject[altSide]; // If the reference length is smaller than the arrow length, we don't want
+            // to include its full size in the calculation. If the reference is small
+            // and near the edge of a boundary, the popper can overflow even if the
+            // reference is not overflowing as well (e.g. virtual elements with no
+            // width or height)
+
+            var arrowLen = (0, _utils_within_js__WEBPACK_IMPORTED_MODULE_8__.within)(0, referenceRect[len], arrowRect[len]);
+            var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
+            var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
+            var arrowOffsetParent = state.elements.arrow && (0, _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_9__["default"])(state.elements.arrow);
+            var clientOffset = arrowOffsetParent ? mainAxis === 'y' ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
+            var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
+            var tetherMin = offset + minOffset - offsetModifierValue - clientOffset;
+            var tetherMax = offset + maxOffset - offsetModifierValue;
+            var preventedOffset = (0, _utils_within_js__WEBPACK_IMPORTED_MODULE_8__.within)(tether ? (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_10__.min)(min, tetherMin) : min, offset, tether ? (0, _utils_math_js__WEBPACK_IMPORTED_MODULE_10__.max)(max, tetherMax) : max);
+            popperOffsets[mainAxis] = preventedOffset;
+            data[mainAxis] = preventedOffset - offset;
+          }
+
+          if (checkAltAxis) {
+            var _offsetModifierState$2;
+
+            var _mainSide = mainAxis === 'x' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.top : _enums_js__WEBPACK_IMPORTED_MODULE_5__.left;
+
+            var _altSide = mainAxis === 'x' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_5__.right;
+
+            var _offset = popperOffsets[altAxis];
+
+            var _len = altAxis === 'y' ? 'height' : 'width';
+
+            var _min = _offset + overflow[_mainSide];
+
+            var _max = _offset - overflow[_altSide];
+
+            var isOriginSide = [_enums_js__WEBPACK_IMPORTED_MODULE_5__.top, _enums_js__WEBPACK_IMPORTED_MODULE_5__.left].indexOf(basePlacement) !== -1;
+
+            var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
+
+            var _tetherMin = isOriginSide ? _min : _offset - referenceRect[_len] - popperRect[_len] - _offsetModifierValue + normalizedTetherOffsetValue.altAxis;
+
+            var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
+
+            var _preventedOffset = tether && isOriginSide ? (0, _utils_within_js__WEBPACK_IMPORTED_MODULE_8__.withinMaxClamp)(_tetherMin, _offset, _tetherMax) : (0, _utils_within_js__WEBPACK_IMPORTED_MODULE_8__.within)(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
+
+            popperOffsets[altAxis] = _preventedOffset;
+            data[altAxis] = _preventedOffset - _offset;
+          }
+
+          state.modifiersData[name] = data;
+        } // eslint-disable-next-line import/no-unused-modules
+
+
+        /* harmony default export */
+        const __WEBPACK_DEFAULT_EXPORT__ = ({
+          name: 'preventOverflow',
+          enabled: true,
+          phase: 'main',
+          fn: preventOverflow,
+          requiresIfExists: ['offset']
+        });
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/popper-lite.js":
+      /*!********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/popper-lite.js ***!
+        \********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "createPopper": () => ( /* binding */ createPopper),
+          /* harmony export */
+          "defaultModifiers": () => ( /* binding */ defaultModifiers),
+          /* harmony export */
+          "detectOverflow": () => ( /* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_5__["default"]),
+          /* harmony export */
+          "popperGenerator": () => ( /* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_4__.popperGenerator)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _createPopper_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/createPopper.js");
+        /* harmony import */
+        var _createPopper_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+        /* harmony import */
+        var _modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./modifiers/eventListeners.js */ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js");
+        /* harmony import */
+        var _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./modifiers/popperOffsets.js */ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js");
+        /* harmony import */
+        var _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./modifiers/computeStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js");
+        /* harmony import */
+        var _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./modifiers/applyStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js");
+
+
+
+
+
+        var defaultModifiers = [_modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__["default"], _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__["default"], _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__["default"], _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__["default"]];
+        var createPopper = /*#__PURE__*/ (0, _createPopper_js__WEBPACK_IMPORTED_MODULE_4__.popperGenerator)({
+          defaultModifiers: defaultModifiers
+        }); // eslint-disable-next-line import/no-unused-modules
+
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/popper.js":
+      /*!***************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/popper.js ***!
+        \***************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "applyStyles": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.applyStyles),
+          /* harmony export */
+          "arrow": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.arrow),
+          /* harmony export */
+          "computeStyles": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.computeStyles),
+          /* harmony export */
+          "createPopper": () => ( /* binding */ createPopper),
+          /* harmony export */
+          "createPopperLite": () => ( /* reexport safe */ _popper_lite_js__WEBPACK_IMPORTED_MODULE_11__.createPopper),
+          /* harmony export */
+          "defaultModifiers": () => ( /* binding */ defaultModifiers),
+          /* harmony export */
+          "detectOverflow": () => ( /* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_10__["default"]),
+          /* harmony export */
+          "eventListeners": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.eventListeners),
+          /* harmony export */
+          "flip": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.flip),
+          /* harmony export */
+          "hide": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.hide),
+          /* harmony export */
+          "offset": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.offset),
+          /* harmony export */
+          "popperGenerator": () => ( /* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_9__.popperGenerator),
+          /* harmony export */
+          "popperOffsets": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.popperOffsets),
+          /* harmony export */
+          "preventOverflow": () => ( /* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.preventOverflow)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _createPopper_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__( /*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/createPopper.js");
+        /* harmony import */
+        var _createPopper_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__( /*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+        /* harmony import */
+        var _modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./modifiers/eventListeners.js */ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js");
+        /* harmony import */
+        var _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./modifiers/popperOffsets.js */ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js");
+        /* harmony import */
+        var _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./modifiers/computeStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js");
+        /* harmony import */
+        var _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./modifiers/applyStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js");
+        /* harmony import */
+        var _modifiers_offset_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ./modifiers/offset.js */ "./node_modules/@popperjs/core/lib/modifiers/offset.js");
+        /* harmony import */
+        var _modifiers_flip_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ./modifiers/flip.js */ "./node_modules/@popperjs/core/lib/modifiers/flip.js");
+        /* harmony import */
+        var _modifiers_preventOverflow_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ./modifiers/preventOverflow.js */ "./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js");
+        /* harmony import */
+        var _modifiers_arrow_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ./modifiers/arrow.js */ "./node_modules/@popperjs/core/lib/modifiers/arrow.js");
+        /* harmony import */
+        var _modifiers_hide_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__( /*! ./modifiers/hide.js */ "./node_modules/@popperjs/core/lib/modifiers/hide.js");
+        /* harmony import */
+        var _popper_lite_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__( /*! ./popper-lite.js */ "./node_modules/@popperjs/core/lib/popper-lite.js");
+        /* harmony import */
+        var _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__( /*! ./modifiers/index.js */ "./node_modules/@popperjs/core/lib/modifiers/index.js");
+
+
+
+
+
+
+
+
+
+
+        var defaultModifiers = [_modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__["default"], _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__["default"], _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__["default"], _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__["default"], _modifiers_offset_js__WEBPACK_IMPORTED_MODULE_4__["default"], _modifiers_flip_js__WEBPACK_IMPORTED_MODULE_5__["default"], _modifiers_preventOverflow_js__WEBPACK_IMPORTED_MODULE_6__["default"], _modifiers_arrow_js__WEBPACK_IMPORTED_MODULE_7__["default"], _modifiers_hide_js__WEBPACK_IMPORTED_MODULE_8__["default"]];
+        var createPopper = /*#__PURE__*/ (0, _createPopper_js__WEBPACK_IMPORTED_MODULE_9__.popperGenerator)({
+          defaultModifiers: defaultModifiers
+        }); // eslint-disable-next-line import/no-unused-modules
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        // eslint-disable-next-line import/no-unused-modules
+
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js":
+      /*!***********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js ***!
+        \***********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ computeAutoPlacement)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getVariation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _detectOverflow_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+        /* harmony import */
+        var _getBasePlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+
+
+
+
+        function computeAutoPlacement(state, options) {
+          if (options === void 0) {
+            options = {};
+          }
+
+          var _options = options,
+            placement = _options.placement,
+            boundary = _options.boundary,
+            rootBoundary = _options.rootBoundary,
+            padding = _options.padding,
+            flipVariations = _options.flipVariations,
+            _options$allowedAutoP = _options.allowedAutoPlacements,
+            allowedAutoPlacements = _options$allowedAutoP === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.placements : _options$allowedAutoP;
+          var variation = (0, _getVariation_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement);
+          var placements = variation ? flipVariations ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.variationPlacements : _enums_js__WEBPACK_IMPORTED_MODULE_0__.variationPlacements.filter(function (placement) {
+            return (0, _getVariation_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement) === variation;
+          }) : _enums_js__WEBPACK_IMPORTED_MODULE_0__.basePlacements;
+          var allowedPlacements = placements.filter(function (placement) {
+            return allowedAutoPlacements.indexOf(placement) >= 0;
+          });
+
+          if (allowedPlacements.length === 0) {
+            allowedPlacements = placements;
+
+            if (true) {
+              console.error(['Popper: The `allowedAutoPlacements` option did not allow any', 'placements. Ensure the `placement` option matches the variation', 'of the allowed placements.', 'For example, "auto" cannot be used to allow "bottom-start".', 'Use "auto-start" instead.'].join(' '));
+            }
+          } // $FlowFixMe[incompatible-type]: Flow seems to have problems with two array unions...
+
+
+          var overflows = allowedPlacements.reduce(function (acc, placement) {
+            acc[placement] = (0, _detectOverflow_js__WEBPACK_IMPORTED_MODULE_2__["default"])(state, {
+              placement: placement,
+              boundary: boundary,
+              rootBoundary: rootBoundary,
+              padding: padding
+            })[(0, _getBasePlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(placement)];
+            return acc;
+          }, {});
+          return Object.keys(overflows).sort(function (a, b) {
+            return overflows[a] - overflows[b];
+          });
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/computeOffsets.js":
+      /*!*****************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/computeOffsets.js ***!
+        \*****************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ computeOffsets)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+        /* harmony import */
+        var _getVariation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+        /* harmony import */
+        var _getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ./getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+
+
+
+
+        function computeOffsets(_ref) {
+          var reference = _ref.reference,
+            element = _ref.element,
+            placement = _ref.placement;
+          var basePlacement = placement ? (0, _getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement) : null;
+          var variation = placement ? (0, _getVariation_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement) : null;
+          var commonX = reference.x + reference.width / 2 - element.width / 2;
+          var commonY = reference.y + reference.height / 2 - element.height / 2;
+          var offsets;
+
+          switch (basePlacement) {
+            case _enums_js__WEBPACK_IMPORTED_MODULE_2__.top:
+              offsets = {
+                x: commonX,
+                y: reference.y - element.height
+              };
+              break;
+
+            case _enums_js__WEBPACK_IMPORTED_MODULE_2__.bottom:
+              offsets = {
+                x: commonX,
+                y: reference.y + reference.height
+              };
+              break;
+
+            case _enums_js__WEBPACK_IMPORTED_MODULE_2__.right:
+              offsets = {
+                x: reference.x + reference.width,
+                y: commonY
+              };
+              break;
+
+            case _enums_js__WEBPACK_IMPORTED_MODULE_2__.left:
+              offsets = {
+                x: reference.x - element.width,
+                y: commonY
+              };
+              break;
+
+            default:
+              offsets = {
+                x: reference.x,
+                y: reference.y
+              };
+          }
+
+          var mainAxis = basePlacement ? (0, _getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(basePlacement) : null;
+
+          if (mainAxis != null) {
+            var len = mainAxis === 'y' ? 'height' : 'width';
+
+            switch (variation) {
+              case _enums_js__WEBPACK_IMPORTED_MODULE_2__.start:
+                offsets[mainAxis] = offsets[mainAxis] - (reference[len] / 2 - element[len] / 2);
+                break;
+
+              case _enums_js__WEBPACK_IMPORTED_MODULE_2__.end:
+                offsets[mainAxis] = offsets[mainAxis] + (reference[len] / 2 - element[len] / 2);
+                break;
+
+              default:
+            }
+          }
+
+          return offsets;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/debounce.js":
+      /*!***********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/debounce.js ***!
+        \***********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ debounce)
+          /* harmony export */
+        });
+
+        function debounce(fn) {
+          var pending;
+          return function () {
+            if (!pending) {
+              pending = new Promise(function (resolve) {
+                Promise.resolve().then(function () {
+                  pending = undefined;
+                  resolve(fn());
+                });
+              });
+            }
+
+            return pending;
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/detectOverflow.js":
+      /*!*****************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/detectOverflow.js ***!
+        \*****************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ detectOverflow)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _dom_utils_getClippingRect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__( /*! ../dom-utils/getClippingRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js");
+        /* harmony import */
+        var _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__( /*! ../dom-utils/getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+        /* harmony import */
+        var _dom_utils_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__( /*! ../dom-utils/getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+        /* harmony import */
+        var _computeOffsets_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__( /*! ./computeOffsets.js */ "./node_modules/@popperjs/core/lib/utils/computeOffsets.js");
+        /* harmony import */
+        var _rectToClientRect_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__( /*! ./rectToClientRect.js */ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        /* harmony import */
+        var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__( /*! ../dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+        /* harmony import */
+        var _mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ./mergePaddingObject.js */ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js");
+        /* harmony import */
+        var _expandToHashMap_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__( /*! ./expandToHashMap.js */ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js");
+
+
+
+
+
+
+
+
+        // eslint-disable-next-line import/no-unused-modules
+
+        function detectOverflow(state, options) {
+          if (options === void 0) {
+            options = {};
+          }
+
+          var _options = options,
+            _options$placement = _options.placement,
+            placement = _options$placement === void 0 ? state.placement : _options$placement,
+            _options$boundary = _options.boundary,
+            boundary = _options$boundary === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.clippingParents : _options$boundary,
+            _options$rootBoundary = _options.rootBoundary,
+            rootBoundary = _options$rootBoundary === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.viewport : _options$rootBoundary,
+            _options$elementConte = _options.elementContext,
+            elementContext = _options$elementConte === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper : _options$elementConte,
+            _options$altBoundary = _options.altBoundary,
+            altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary,
+            _options$padding = _options.padding,
+            padding = _options$padding === void 0 ? 0 : _options$padding;
+          var paddingObject = (0, _mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(typeof padding !== 'number' ? padding : (0, _expandToHashMap_js__WEBPACK_IMPORTED_MODULE_2__["default"])(padding, _enums_js__WEBPACK_IMPORTED_MODULE_0__.basePlacements));
+          var altContext = elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.reference : _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper;
+          var popperRect = state.rects.popper;
+          var element = state.elements[altBoundary ? altContext : elementContext];
+          var clippingClientRect = (0, _dom_utils_getClippingRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])((0, _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(element) ? element : element.contextElement || (0, _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__["default"])(state.elements.popper), boundary, rootBoundary);
+          var referenceClientRect = (0, _dom_utils_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state.elements.reference);
+          var popperOffsets = (0, _computeOffsets_js__WEBPACK_IMPORTED_MODULE_7__["default"])({
+            reference: referenceClientRect,
+            element: popperRect,
+            strategy: 'absolute',
+            placement: placement
+          });
+          var popperClientRect = (0, _rectToClientRect_js__WEBPACK_IMPORTED_MODULE_8__["default"])(Object.assign({}, popperRect, popperOffsets));
+          var elementClientRect = elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
+          // 0 or negative = within the clipping rect
+
+          var overflowOffsets = {
+            top: clippingClientRect.top - elementClientRect.top + paddingObject.top,
+            bottom: elementClientRect.bottom - clippingClientRect.bottom + paddingObject.bottom,
+            left: clippingClientRect.left - elementClientRect.left + paddingObject.left,
+            right: elementClientRect.right - clippingClientRect.right + paddingObject.right
+          };
+          var offsetData = state.modifiersData.offset; // Offsets can be applied only to the popper element
+
+          if (elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper && offsetData) {
+            var offset = offsetData[placement];
+            Object.keys(overflowOffsets).forEach(function (key) {
+              var multiply = [_enums_js__WEBPACK_IMPORTED_MODULE_0__.right, _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom].indexOf(key) >= 0 ? 1 : -1;
+              var axis = [_enums_js__WEBPACK_IMPORTED_MODULE_0__.top, _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom].indexOf(key) >= 0 ? 'y' : 'x';
+              overflowOffsets[key] += offset[axis] * multiply;
+            });
+          }
+
+          return overflowOffsets;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js":
+      /*!******************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/expandToHashMap.js ***!
+        \******************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ expandToHashMap)
+          /* harmony export */
+        });
+
+        function expandToHashMap(value, keys) {
+          return keys.reduce(function (hashMap, key) {
+            hashMap[key] = value;
+            return hashMap;
+          }, {});
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/format.js":
+      /*!*********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/format.js ***!
+        \*********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ format)
+          /* harmony export */
+        });
+
+        function format(str) {
+          for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+            args[_key - 1] = arguments[_key];
+          }
+
+          return [].concat(args).reduce(function (p, c) {
+            return p.replace(/%s/, c);
+          }, str);
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/getAltAxis.js":
+      /*!*************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/getAltAxis.js ***!
+        \*************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getAltAxis)
+          /* harmony export */
+        });
+
+        function getAltAxis(axis) {
+          return axis === 'x' ? 'y' : 'x';
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js":
+      /*!*******************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/getBasePlacement.js ***!
+        \*******************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getBasePlacement)
+          /* harmony export */
+        });
+
+        function getBasePlacement(placement) {
+          return placement.split('-')[0];
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js":
+      /*!*********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js ***!
+        \*********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getFreshSideObject)
+          /* harmony export */
+        });
+
+        function getFreshSideObject() {
+          return {
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0
+          };
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js":
+      /*!***************************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js ***!
+        \***************************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getMainAxisFromPlacement)
+          /* harmony export */
+        });
+
+        function getMainAxisFromPlacement(placement) {
+          return ['top', 'bottom'].indexOf(placement) >= 0 ? 'x' : 'y';
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js":
+      /*!***********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js ***!
+        \***********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getOppositePlacement)
+          /* harmony export */
+        });
+        var hash = {
+          left: 'right',
+          right: 'left',
+          bottom: 'top',
+          top: 'bottom'
+        };
+
+        function getOppositePlacement(placement) {
+          return placement.replace(/left|right|bottom|top/g, function (matched) {
+            return hash[matched];
+          });
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js":
+      /*!********************************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js ***!
+        \********************************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getOppositeVariationPlacement)
+          /* harmony export */
+        });
+        var hash = {
+          start: 'end',
+          end: 'start'
+        };
+
+        function getOppositeVariationPlacement(placement) {
+          return placement.replace(/start|end/g, function (matched) {
+            return hash[matched];
+          });
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/getVariation.js":
+      /*!***************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/getVariation.js ***!
+        \***************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ getVariation)
+          /* harmony export */
+        });
+
+        function getVariation(placement) {
+          return placement.split('-')[1];
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/math.js":
+      /*!*******************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/math.js ***!
+        \*******************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "max": () => ( /* binding */ max),
+          /* harmony export */
+          "min": () => ( /* binding */ min),
+          /* harmony export */
+          "round": () => ( /* binding */ round)
+          /* harmony export */
+        });
+        var max = Math.max;
+        var min = Math.min;
+        var round = Math.round;
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/mergeByName.js":
+      /*!**************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/mergeByName.js ***!
+        \**************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ mergeByName)
+          /* harmony export */
+        });
+
+        function mergeByName(modifiers) {
+          var merged = modifiers.reduce(function (merged, current) {
+            var existing = merged[current.name];
+            merged[current.name] = existing ? Object.assign({}, existing, current, {
+              options: Object.assign({}, existing.options, current.options),
+              data: Object.assign({}, existing.data, current.data)
+            }) : current;
+            return merged;
+          }, {}); // IE11 does not support Object.values
+
+          return Object.keys(merged).map(function (key) {
+            return merged[key];
+          });
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js":
+      /*!*********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js ***!
+        \*********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ mergePaddingObject)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./getFreshSideObject.js */ "./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js");
+
+        function mergePaddingObject(paddingObject) {
+          return Object.assign({}, (0, _getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(), paddingObject);
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/orderModifiers.js":
+      /*!*****************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/orderModifiers.js ***!
+        \*****************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ orderModifiers)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+        // source: https://stackoverflow.com/questions/49875255
+
+        function order(modifiers) {
+          var map = new Map();
+          var visited = new Set();
+          var result = [];
+          modifiers.forEach(function (modifier) {
+            map.set(modifier.name, modifier);
+          }); // On visiting object, check for its dependencies and visit them recursively
+
+          function sort(modifier) {
+            visited.add(modifier.name);
+            var requires = [].concat(modifier.requires || [], modifier.requiresIfExists || []);
+            requires.forEach(function (dep) {
+              if (!visited.has(dep)) {
+                var depModifier = map.get(dep);
+
+                if (depModifier) {
+                  sort(depModifier);
+                }
+              }
+            });
+            result.push(modifier);
+          }
+
+          modifiers.forEach(function (modifier) {
+            if (!visited.has(modifier.name)) {
+              // check for visited object
+              sort(modifier);
+            }
+          });
+          return result;
+        }
+
+        function orderModifiers(modifiers) {
+          // order based on dependencies
+          var orderedModifiers = order(modifiers); // order based on phase
+
+          return _enums_js__WEBPACK_IMPORTED_MODULE_0__.modifierPhases.reduce(function (acc, phase) {
+            return acc.concat(orderedModifiers.filter(function (modifier) {
+              return modifier.phase === phase;
+            }));
+          }, []);
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js":
+      /*!*******************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/rectToClientRect.js ***!
+        \*******************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ rectToClientRect)
+          /* harmony export */
+        });
+
+        function rectToClientRect(rect) {
+          return Object.assign({}, rect, {
+            left: rect.x,
+            top: rect.y,
+            right: rect.x + rect.width,
+            bottom: rect.y + rect.height
+          });
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/uniqueBy.js":
+      /*!***********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/uniqueBy.js ***!
+        \***********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ uniqueBy)
+          /* harmony export */
+        });
+
+        function uniqueBy(arr, fn) {
+          var identifiers = new Set();
+          return arr.filter(function (item) {
+            var identifier = fn(item);
+
+            if (!identifiers.has(identifier)) {
+              identifiers.add(identifier);
+              return true;
+            }
+          });
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/validateModifiers.js":
+      /*!********************************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/validateModifiers.js ***!
+        \********************************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "default": () => ( /* binding */ validateModifiers)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _format_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./format.js */ "./node_modules/@popperjs/core/lib/utils/format.js");
+        /* harmony import */
+        var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+
+
+        var INVALID_MODIFIER_ERROR = 'Popper: modifier "%s" provided an invalid %s property, expected %s but got %s';
+        var MISSING_DEPENDENCY_ERROR = 'Popper: modifier "%s" requires "%s", but "%s" modifier is not available';
+        var VALID_PROPERTIES = ['name', 'enabled', 'phase', 'fn', 'effect', 'requires', 'options'];
+
+        function validateModifiers(modifiers) {
+          modifiers.forEach(function (modifier) {
+            [].concat(Object.keys(modifier), VALID_PROPERTIES) // IE11-compatible replacement for `new Set(iterable)`
+              .filter(function (value, index, self) {
+                return self.indexOf(value) === index;
+              }).forEach(function (key) {
+                switch (key) {
+                  case 'name':
+                    if (typeof modifier.name !== 'string') {
+                      console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(INVALID_MODIFIER_ERROR, String(modifier.name), '"name"', '"string"', "\"" + String(modifier.name) + "\""));
+                    }
+
+                    break;
+
+                  case 'enabled':
+                    if (typeof modifier.enabled !== 'boolean') {
+                      console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(INVALID_MODIFIER_ERROR, modifier.name, '"enabled"', '"boolean"', "\"" + String(modifier.enabled) + "\""));
+                    }
+
+                    break;
+
+                  case 'phase':
+                    if (_enums_js__WEBPACK_IMPORTED_MODULE_1__.modifierPhases.indexOf(modifier.phase) < 0) {
+                      console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(INVALID_MODIFIER_ERROR, modifier.name, '"phase"', "either " + _enums_js__WEBPACK_IMPORTED_MODULE_1__.modifierPhases.join(', '), "\"" + String(modifier.phase) + "\""));
+                    }
+
+                    break;
+
+                  case 'fn':
+                    if (typeof modifier.fn !== 'function') {
+                      console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(INVALID_MODIFIER_ERROR, modifier.name, '"fn"', '"function"', "\"" + String(modifier.fn) + "\""));
+                    }
+
+                    break;
+
+                  case 'effect':
+                    if (modifier.effect != null && typeof modifier.effect !== 'function') {
+                      console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(INVALID_MODIFIER_ERROR, modifier.name, '"effect"', '"function"', "\"" + String(modifier.fn) + "\""));
+                    }
+
+                    break;
+
+                  case 'requires':
+                    if (modifier.requires != null && !Array.isArray(modifier.requires)) {
+                      console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(INVALID_MODIFIER_ERROR, modifier.name, '"requires"', '"array"', "\"" + String(modifier.requires) + "\""));
+                    }
+
+                    break;
+
+                  case 'requiresIfExists':
+                    if (!Array.isArray(modifier.requiresIfExists)) {
+                      console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(INVALID_MODIFIER_ERROR, modifier.name, '"requiresIfExists"', '"array"', "\"" + String(modifier.requiresIfExists) + "\""));
+                    }
+
+                    break;
+
+                  case 'options':
+                  case 'data':
+                    break;
+
+                  default:
+                    console.error("PopperJS: an invalid property has been provided to the \"" + modifier.name + "\" modifier, valid properties are " + VALID_PROPERTIES.map(function (s) {
+                      return "\"" + s + "\"";
+                    }).join(', ') + "; but \"" + key + "\" was provided.");
+                }
+
+                modifier.requires && modifier.requires.forEach(function (requirement) {
+                  if (modifiers.find(function (mod) {
+                      return mod.name === requirement;
+                    }) == null) {
+                    console.error((0, _format_js__WEBPACK_IMPORTED_MODULE_0__["default"])(MISSING_DEPENDENCY_ERROR, String(modifier.name), requirement, requirement));
+                  }
+                });
+              });
+          });
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/@popperjs/core/lib/utils/within.js":
+      /*!*********************************************************!*\
+        !*** ./node_modules/@popperjs/core/lib/utils/within.js ***!
+        \*********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "within": () => ( /* binding */ within),
+          /* harmony export */
+          "withinMaxClamp": () => ( /* binding */ withinMaxClamp)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! ./math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+
+        function within(min, value, max) {
+          return (0, _math_js__WEBPACK_IMPORTED_MODULE_0__.max)(min, (0, _math_js__WEBPACK_IMPORTED_MODULE_0__.min)(value, max));
+        }
+
+        function withinMaxClamp(min, value, max) {
+          var v = within(min, value, max);
+          return v > max ? max : v;
+        }
+
+        /***/
+      }),
+
+    /***/
+    "./src/js/min.js":
+      /*!***********************!*\
+        !*** ./src/js/min.js ***!
+        \***********************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony import */
+        var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+        /* harmony import */
+        var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/ __webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+        /* harmony import */
+        var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.esm.js");
+
+
+        function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+          try {
+            var info = gen[key](arg);
+            var value = info.value;
+          } catch (error) {
+            reject(error);
+            return;
+          }
+          if (info.done) {
+            resolve(value);
+          } else {
+            Promise.resolve(value).then(_next, _throw);
+          }
+        }
+
+        function _asyncToGenerator(fn) {
+          return function () {
+            var self = this,
+              args = arguments;
+            return new Promise(function (resolve, reject) {
+              var gen = fn.apply(self, args);
+
+              function _next(value) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+              }
+
+              function _throw(err) {
+                asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+              }
+              _next(undefined);
+            });
+          };
+        }
+
+
+        $(document).ready(function () {
+          $('.js-scroll').on('click', function (e) {
+            var href = $(this).attr('href');
+            var elHref = $(href);
+            $('html, body').animate({
+              scrollTop: elHref.offset().top - 50
+            }, 1000, 'easeInOutExpo');
+            e.preventDefault();
+          });
+          $('#contactPopover').popover({
+            html: true,
+            title: 'Contact Info',
+            content: "<p>Please <strong>confirm</strong> reCAPTCHA to enable send button</p><p>Your message will be send to my email <strong>edwardevbert@gmail.com</strong></p><p><a href=\"mailto:edwardevbert@gmail.com\">Click here</a> to send from your email apps.</p>",
+            toggle: 'popover',
+            trigger: 'focus'
+          });
+          $(window).scroll(function () {
+            var wScroll = $(this).scrollTop();
+
+            if (wScroll > $('.welcome').offset().top - 100) {
+              $(".scrollTop").addClass("showScrollTop");
+            } else {
+              $(".scrollTop").removeClass("showScrollTop");
+            }
+
+            if (wScroll > 10) {
+              $('#navbar').removeClass('bg-transparent');
+              $('#navbar').addClass('bg-nav-scroll');
+            } else {
+              $('#navbar').removeClass('bg-nav-scroll');
+              $('#navbar').addClass('bg-transparent');
+            }
+
+            if (wScroll > $('.welcome').offset().top) {
+              var welcomeDesc = $('.welcomeDesc');
+              welcomeDesc.addClass('welcomeDescShow');
+            }
+
+            if (wScroll < $('.welcome').offset().top - 100) {
+              var _welcomeDesc = $('.welcomeDesc');
+
+              _welcomeDesc.removeClass('welcomeDescShow');
+            }
+
+            if (wScroll > $('#aboutSection').offset().top - 100) {
+              var aboutText = $('.aboutText');
+              aboutText.addClass('aboutTextShow');
+            }
+
+            if (wScroll > $('#skillSection').offset().top - 100) {
+              $('.skillsRight').addClass('skillsRightShow');
+              $('.skillsLeft').addClass('skillsLeftShow');
+            }
+
+            if (wScroll < $('#skillSection').offset().top - 100) {
+              $('.skillsRight').removeClass('skillsRightShow');
+              $('.skillsLeft').removeClass('skillsLeftShow');
+            }
+
+            if (wScroll > $('#portofolioSection').offset().top - 250) {
+              var portofolioContent = $('.portofolioContent');
+              portofolioContent.addClass('portofolioContentShow');
+            }
+
+            if (wScroll > $('.portofolio-side-image').offset().top - 300) {
+              var portofolioDesc = $('.portofolioDesc');
+              portofolioDesc.addClass('portofolioDescShow');
+            }
+
+            if (wScroll < $('.portofolio-side-image').offset().top - 300) {
+              var _portofolioDesc = $('.portofolioDesc');
+
+              _portofolioDesc.removeClass('portofolioDescShow');
+            }
+
+            // if (wScroll > $('#coursesSection').offset().top - 400) {
+            //   var coursesList = $('.coursesList');
+            //   coursesList.each(function (indexList) {
+            //     setTimeout(function () {
+            //       coursesList.eq(indexList).addClass('coursesListShow');
+            //     }, 500 * (indexList + 1));
+            //   });
+            // }
+          });
+        });
+        $('body').css('overflow', 'hidden');
+        $(window).on('load', /*#__PURE__*/ _asyncToGenerator( /*#__PURE__*/ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+          return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+            while (1) {
+              switch (_context.prev = _context.next) {
+                case 0:
+                  _context.next = 2;
+                  return $('.preloader').fadeOut('slow', function () {
+                    $('.myNameHeader').addClass('myNameHeaderShow');
+                    $('body').css('overflow', 'visible');
+                  });
+
+                case 2:
+                case "end":
+                  return _context.stop();
+              }
+            }
+          }, _callee);
+        })));
+        $(function ($) {
+          var followScroll = $('.followScroll'),
+            originalY = followScroll.offset().top - 50,
+            topMargin = 20;
+          followScroll.css('position', 'relative');
+
+          if ($(window).width() > 768) {
+            $(window).on('scroll', function (event) {
+              var scrollTop = $(this).scrollTop();
+
+              if (scrollTop > originalY) {
+                followScroll.stop(true, true).animate({
+                  top: scrollTop < originalY ? 0 : scrollTop - originalY + topMargin
+                });
+              }
+
+              if (scrollTop > 2150) {
+                followScroll.stop();
+              }
+            });
+          }
+        });
+        $('document').ready(function () {
+          $('body').materializeInputs();
+        });
+
+        $.fn.materializeInputs = function (selectors) {
+          if (typeof selectors === 'undefined') selectors = "input, textarea, select";
+
+          function setInputValueAttr(element) {
+            element.setAttribute('value', element.value);
+          }
+
+          this.find(selectors).each(function () {
+            setInputValueAttr(this);
+          });
+          this.on("keyup change", selectors, function () {
+            setInputValueAttr(this);
+          });
+        };
+
+        $('form').on('submit', /*#__PURE__*/ function () {
+          var _ref2 = _asyncToGenerator( /*#__PURE__*/ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(e) {
+            var input, url, data, i;
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    e.preventDefault();
+                    removeValidationElem();
+                    input = document.getElementsByClassName('form-control'), url = 'https://edwardemailapi.herokuapp.com/api/contact', data = {};
+
+                    for (i = 0; i < input.length; i++) {
+                      data[input[i].name] = input[i].value;
+                    }
+
+                    _context2.next = 6;
+                    return doAjax(data, url);
+
+                  case 6:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2);
+          }));
+
+          return function (_x) {
+            return _ref2.apply(this, arguments);
+          };
+        }());
+
+        var doAjax = function doAjax(data, url) {
+          $.ajax({
+            type: 'post',
+            url: url,
+            data: data,
+            dataType: 'json',
+            beforeSend: function beforeSend() {
+              requestPreLoader();
+            },
+            success: function () {
+              var _success = _asyncToGenerator( /*#__PURE__*/ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(res) {
+                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+                  while (1) {
+                    switch (_context3.prev = _context3.next) {
+                      case 0:
+                        _context3.next = 2;
+                        return console.log(res.message);
+
+                      case 2:
+                        _context3.next = 4;
+                        return successAlert(res.message);
+
+                      case 4:
+                        _context3.next = 6;
+                        return requestPreLoaderRemove();
+
+                      case 6:
+                        _context3.next = 8;
+                        return resetContactForm(res);
+
+                      case 8:
+                      case "end":
+                        return _context3.stop();
+                    }
+                  }
+                }, _callee3);
+              }));
+
+              function success(_x2) {
+                return _success.apply(this, arguments);
+              }
+
+              return success;
+            }(),
+            error: function () {
+              var _error = _asyncToGenerator( /*#__PURE__*/ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4(xhr) {
+                return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+                  while (1) {
+                    switch (_context4.prev = _context4.next) {
+                      case 0:
+                        _context4.next = 2;
+                        return console.log(xhr.responseText);
+
+                      case 2:
+                        if (!(xhr.status == 422)) {
+                          _context4.next = 7;
+                          break;
+                        }
+
+                        _context4.next = 5;
+                        return warningAlert(xhr);
+
+                      case 5:
+                        _context4.next = 9;
+                        break;
+
+                      case 7:
+                        _context4.next = 9;
+                        return serverTimeOut();
+
+                      case 9:
+                        _context4.next = 11;
+                        return requestPreLoaderRemove();
+
+                      case 11:
+                      case "end":
+                        return _context4.stop();
+                    }
+                  }
+                }, _callee4);
+              }));
+
+              function error(_x3) {
+                return _error.apply(this, arguments);
+              }
+
+              return error;
+            }()
+          });
+        };
+
+        var successAlert = function successAlert(msg) {
+          Swal.fire({
+            icon: 'success',
+            iconColor: '#3F3D56',
+            title: msg,
+            html: "Your message has been send!",
+            customClass: {
+              confirmButton: 'btn btn-dark px-5'
+            },
+            buttonsStyling: false
+          });
+        };
+
+        var warningAlert = function warningAlert(xhr) {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops.. something error!',
+            text: xhr.responseJSON.message
+          }).then(function () {
+            formValidationShow(xhr);
+          });
+        };
+
+        var serverTimeOut = function serverTimeOut() {
+          Swal.fire({
+            icon: 'error',
+            title: 'Server lost connection!',
+            text: 'Please try again later'
+          });
+          $('input[name=captcha]').val(null);
+        };
+
+        var formValidationShow = function formValidationShow(xhr) {
+          var res = xhr.responseJSON;
+          var keys = "";
+
+          if ($.isEmptyObject(res) == false) {
+            $.each(res.errors, function (key, value) {
+              if (key.indexOf(".") != -1) {
+                var arr = key.split(".");
+                keys = $("#".concat(arr[0]));
+              } else {
+                keys = $("#".concat(key));
+              }
+
+              keys.closest('.form-control').addClass('is-invalid');
+              keys.closest('.form-group').append("<div class=\"invalid-feedback\" style=\"position: absolute;\">".concat(value, "</div>"));
+            });
+          }
+        };
+
+        var resetContactForm = /*#__PURE__*/ function () {
+          var _ref3 = _asyncToGenerator( /*#__PURE__*/ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5(res) {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    _context5.next = 2;
+                    return $.each(res.data, function (key) {
+                      $("#".concat(key)).closest('.form-control').val(null);
+                    });
+
+                  case 2:
+                    _context5.next = 4;
+                    return $('body').materializeInputs();
+
+                  case 4:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5);
+          }));
+
+          return function resetContactForm(_x4) {
+            return _ref3.apply(this, arguments);
+          };
+        }();
+
+        var removeValidationElem = function removeValidationElem() {
+          var form = $('#contact-form');
+          form.find('.invalid-feedback').remove();
+          form.find('.form-control').removeClass('is-invalid');
+        };
+
+        var requestPreLoader = /*#__PURE__*/ function () {
+          var _ref4 = _asyncToGenerator( /*#__PURE__*/ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    _context6.next = 2;
+                    return $('#btn-submit').prop('disabled', true);
+
+                  case 2:
+                    _context6.next = 4;
+                    return $('#btn-submit').css('cursor', 'not-allowed');
+
+                  case 4:
+                    _context6.next = 6;
+                    return $('#btn-submit').html(" <span class=\"spinner-grow spinner-grow-sm\" role=\"status\" aria-hidden=\"true\"></span>\n\t\tLoading...");
+
+                  case 6:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6);
+          }));
+
+          return function requestPreLoader() {
+            return _ref4.apply(this, arguments);
+          };
+        }();
+
+        var requestPreLoaderRemove = /*#__PURE__*/ function () {
+          var _ref5 = _asyncToGenerator( /*#__PURE__*/ _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
+            return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _context7.next = 2;
+                    return $('#btn-submit').html("<i class=\"far fa-paper-plane\"></i> Send");
+
+                  case 2:
+                    _context7.next = 4;
+                    return grecaptcha.reset();
+
+                  case 4:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7);
+          }));
+
+          return function requestPreLoaderRemove() {
+            return _ref5.apply(this, arguments);
+          };
+        }();
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/bootstrap/dist/js/bootstrap.esm.js":
+      /*!*********************************************************!*\
+        !*** ./node_modules/bootstrap/dist/js/bootstrap.esm.js ***!
+        \*********************************************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        /* harmony export */
+        __webpack_require__.d(__webpack_exports__, {
+          /* harmony export */
+          "Alert": () => ( /* binding */ Alert),
+          /* harmony export */
+          "Button": () => ( /* binding */ Button),
+          /* harmony export */
+          "Carousel": () => ( /* binding */ Carousel),
+          /* harmony export */
+          "Collapse": () => ( /* binding */ Collapse),
+          /* harmony export */
+          "Dropdown": () => ( /* binding */ Dropdown),
+          /* harmony export */
+          "Modal": () => ( /* binding */ Modal),
+          /* harmony export */
+          "Offcanvas": () => ( /* binding */ Offcanvas),
+          /* harmony export */
+          "Popover": () => ( /* binding */ Popover),
+          /* harmony export */
+          "ScrollSpy": () => ( /* binding */ ScrollSpy),
+          /* harmony export */
+          "Tab": () => ( /* binding */ Tab),
+          /* harmony export */
+          "Toast": () => ( /* binding */ Toast),
+          /* harmony export */
+          "Tooltip": () => ( /* binding */ Tooltip)
+          /* harmony export */
+        });
+        /* harmony import */
+        var _popperjs_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__( /*! @popperjs/core */ "./node_modules/@popperjs/core/lib/index.js");
+        /* harmony import */
+        var _popperjs_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__( /*! @popperjs/core */ "./node_modules/@popperjs/core/lib/popper.js");
+        /*!
+         * Bootstrap v5.1.3 (https://getbootstrap.com/)
+         * Copyright 2011-2021 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         */
+
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): util/index.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        const MAX_UID = 1000000;
+        const MILLISECONDS_MULTIPLIER = 1000;
+        const TRANSITION_END = 'transitionend'; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
+
+        const toType = obj => {
+          if (obj === null || obj === undefined) {
+            return `${obj}`;
+          }
+
+          return {}.toString.call(obj).match(/\s([a-z]+)/i)[1].toLowerCase();
+        };
+        /**
+         * --------------------------------------------------------------------------
+         * Public Util Api
+         * --------------------------------------------------------------------------
+         */
+
+
+        const getUID = prefix => {
+          do {
+            prefix += Math.floor(Math.random() * MAX_UID);
+          } while (document.getElementById(prefix));
+
+          return prefix;
+        };
+
+        const getSelector = element => {
+          let selector = element.getAttribute('data-bs-target');
+
+          if (!selector || selector === '#') {
+            let hrefAttr = element.getAttribute('href'); // The only valid content that could double as a selector are IDs or classes,
+            // so everything starting with `#` or `.`. If a "real" URL is used as the selector,
+            // `document.querySelector` will rightfully complain it is invalid.
+            // See https://github.com/twbs/bootstrap/issues/32273
+
+            if (!hrefAttr || !hrefAttr.includes('#') && !hrefAttr.startsWith('.')) {
+              return null;
+            } // Just in case some CMS puts out a full URL with the anchor appended
+
+
+            if (hrefAttr.includes('#') && !hrefAttr.startsWith('#')) {
+              hrefAttr = `#${hrefAttr.split('#')[1]}`;
+            }
+
+            selector = hrefAttr && hrefAttr !== '#' ? hrefAttr.trim() : null;
+          }
+
+          return selector;
+        };
+
+        const getSelectorFromElement = element => {
+          const selector = getSelector(element);
+
+          if (selector) {
+            return document.querySelector(selector) ? selector : null;
+          }
+
+          return null;
+        };
+
+        const getElementFromSelector = element => {
+          const selector = getSelector(element);
+          return selector ? document.querySelector(selector) : null;
+        };
+
+        const getTransitionDurationFromElement = element => {
+          if (!element) {
+            return 0;
+          } // Get transition-duration of the element
+
+
+          let {
+            transitionDuration,
+            transitionDelay
+          } = window.getComputedStyle(element);
+          const floatTransitionDuration = Number.parseFloat(transitionDuration);
+          const floatTransitionDelay = Number.parseFloat(transitionDelay); // Return 0 if element or transition duration is not found
+
+          if (!floatTransitionDuration && !floatTransitionDelay) {
+            return 0;
+          } // If multiple durations are defined, take the first
+
+
+          transitionDuration = transitionDuration.split(',')[0];
+          transitionDelay = transitionDelay.split(',')[0];
+          return (Number.parseFloat(transitionDuration) + Number.parseFloat(transitionDelay)) * MILLISECONDS_MULTIPLIER;
+        };
+
+        const triggerTransitionEnd = element => {
+          element.dispatchEvent(new Event(TRANSITION_END));
+        };
+
+        const isElement = obj => {
+          if (!obj || typeof obj !== 'object') {
+            return false;
+          }
+
+          if (typeof obj.jquery !== 'undefined') {
+            obj = obj[0];
+          }
+
+          return typeof obj.nodeType !== 'undefined';
+        };
+
+        const getElement = obj => {
+          if (isElement(obj)) {
+            // it's a jQuery object or a node element
+            return obj.jquery ? obj[0] : obj;
+          }
+
+          if (typeof obj === 'string' && obj.length > 0) {
+            return document.querySelector(obj);
+          }
+
+          return null;
+        };
+
+        const typeCheckConfig = (componentName, config, configTypes) => {
+          Object.keys(configTypes).forEach(property => {
+            const expectedTypes = configTypes[property];
+            const value = config[property];
+            const valueType = value && isElement(value) ? 'element' : toType(value);
+
+            if (!new RegExp(expectedTypes).test(valueType)) {
+              throw new TypeError(`${componentName.toUpperCase()}: Option "${property}" provided type "${valueType}" but expected type "${expectedTypes}".`);
+            }
+          });
+        };
+
+        const isVisible = element => {
+          if (!isElement(element) || element.getClientRects().length === 0) {
+            return false;
+          }
+
+          return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
+        };
+
+        const isDisabled = element => {
+          if (!element || element.nodeType !== Node.ELEMENT_NODE) {
+            return true;
+          }
+
+          if (element.classList.contains('disabled')) {
+            return true;
+          }
+
+          if (typeof element.disabled !== 'undefined') {
+            return element.disabled;
+          }
+
+          return element.hasAttribute('disabled') && element.getAttribute('disabled') !== 'false';
+        };
+
+        const findShadowRoot = element => {
+          if (!document.documentElement.attachShadow) {
+            return null;
+          } // Can find the shadow root otherwise it'll return the document
+
+
+          if (typeof element.getRootNode === 'function') {
+            const root = element.getRootNode();
+            return root instanceof ShadowRoot ? root : null;
+          }
+
+          if (element instanceof ShadowRoot) {
+            return element;
+          } // when we don't find a shadow root
+
+
+          if (!element.parentNode) {
+            return null;
+          }
+
+          return findShadowRoot(element.parentNode);
+        };
+
+        const noop = () => {};
+        /**
+         * Trick to restart an element's animation
+         *
+         * @param {HTMLElement} element
+         * @return void
+         *
+         * @see https://www.charistheo.io/blog/2021/02/restart-a-css-animation-with-javascript/#restarting-a-css-animation
+         */
+
+
+        const reflow = element => {
+          // eslint-disable-next-line no-unused-expressions
+          element.offsetHeight;
+        };
+
+        const getjQuery = () => {
+          const {
+            jQuery
+          } = window;
+
+          if (jQuery && !document.body.hasAttribute('data-bs-no-jquery')) {
+            return jQuery;
+          }
+
+          return null;
+        };
+
+        const DOMContentLoadedCallbacks = [];
+
+        const onDOMContentLoaded = callback => {
+          if (document.readyState === 'loading') {
+            // add listener on the first call when the document is in loading state
+            if (!DOMContentLoadedCallbacks.length) {
+              document.addEventListener('DOMContentLoaded', () => {
+                DOMContentLoadedCallbacks.forEach(callback => callback());
+              });
+            }
+
+            DOMContentLoadedCallbacks.push(callback);
+          } else {
+            callback();
+          }
+        };
+
+        const isRTL = () => document.documentElement.dir === 'rtl';
+
+        const defineJQueryPlugin = plugin => {
+          onDOMContentLoaded(() => {
+            const $ = getjQuery();
+            /* istanbul ignore if */
+
+            if ($) {
+              const name = plugin.NAME;
+              const JQUERY_NO_CONFLICT = $.fn[name];
+              $.fn[name] = plugin.jQueryInterface;
+              $.fn[name].Constructor = plugin;
+
+              $.fn[name].noConflict = () => {
+                $.fn[name] = JQUERY_NO_CONFLICT;
+                return plugin.jQueryInterface;
+              };
+            }
+          });
+        };
+
+        const execute = callback => {
+          if (typeof callback === 'function') {
+            callback();
+          }
+        };
+
+        const executeAfterTransition = (callback, transitionElement, waitForTransition = true) => {
+          if (!waitForTransition) {
+            execute(callback);
+            return;
+          }
+
+          const durationPadding = 5;
+          const emulatedDuration = getTransitionDurationFromElement(transitionElement) + durationPadding;
+          let called = false;
+
+          const handler = ({
+            target
+          }) => {
+            if (target !== transitionElement) {
+              return;
+            }
+
+            called = true;
+            transitionElement.removeEventListener(TRANSITION_END, handler);
+            execute(callback);
+          };
+
+          transitionElement.addEventListener(TRANSITION_END, handler);
+          setTimeout(() => {
+            if (!called) {
+              triggerTransitionEnd(transitionElement);
+            }
+          }, emulatedDuration);
+        };
+        /**
+         * Return the previous/next element of a list.
+         *
+         * @param {array} list    The list of elements
+         * @param activeElement   The active element
+         * @param shouldGetNext   Choose to get next or previous element
+         * @param isCycleAllowed
+         * @return {Element|elem} The proper element
+         */
+
+
+        const getNextActiveElement = (list, activeElement, shouldGetNext, isCycleAllowed) => {
+          let index = list.indexOf(activeElement); // if the element does not exist in the list return an element depending on the direction and if cycle is allowed
+
+          if (index === -1) {
+            return list[!shouldGetNext && isCycleAllowed ? list.length - 1 : 0];
+          }
+
+          const listLength = list.length;
+          index += shouldGetNext ? 1 : -1;
+
+          if (isCycleAllowed) {
+            index = (index + listLength) % listLength;
+          }
+
+          return list[Math.max(0, Math.min(index, listLength - 1))];
+        };
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): dom/event-handler.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const namespaceRegex = /[^.]*(?=\..*)\.|.*/;
+        const stripNameRegex = /\..*/;
+        const stripUidRegex = /::\d+$/;
+        const eventRegistry = {}; // Events storage
+
+        let uidEvent = 1;
+        const customEvents = {
+          mouseenter: 'mouseover',
+          mouseleave: 'mouseout'
+        };
+        const customEventsRegex = /^(mouseenter|mouseleave)/i;
+        const nativeEvents = new Set(['click', 'dblclick', 'mouseup', 'mousedown', 'contextmenu', 'mousewheel', 'DOMMouseScroll', 'mouseover', 'mouseout', 'mousemove', 'selectstart', 'selectend', 'keydown', 'keypress', 'keyup', 'orientationchange', 'touchstart', 'touchmove', 'touchend', 'touchcancel', 'pointerdown', 'pointermove', 'pointerup', 'pointerleave', 'pointercancel', 'gesturestart', 'gesturechange', 'gestureend', 'focus', 'blur', 'change', 'reset', 'select', 'submit', 'focusin', 'focusout', 'load', 'unload', 'beforeunload', 'resize', 'move', 'DOMContentLoaded', 'readystatechange', 'error', 'abort', 'scroll']);
+        /**
+         * ------------------------------------------------------------------------
+         * Private methods
+         * ------------------------------------------------------------------------
+         */
+
+        function getUidEvent(element, uid) {
+          return uid && `${uid}::${uidEvent++}` || element.uidEvent || uidEvent++;
+        }
+
+        function getEvent(element) {
+          const uid = getUidEvent(element);
+          element.uidEvent = uid;
+          eventRegistry[uid] = eventRegistry[uid] || {};
+          return eventRegistry[uid];
+        }
+
+        function bootstrapHandler(element, fn) {
+          return function handler(event) {
+            event.delegateTarget = element;
+
+            if (handler.oneOff) {
+              EventHandler.off(element, event.type, fn);
+            }
+
+            return fn.apply(element, [event]);
+          };
+        }
+
+        function bootstrapDelegationHandler(element, selector, fn) {
+          return function handler(event) {
+            const domElements = element.querySelectorAll(selector);
+
+            for (let {
+                target
+              } = event; target && target !== this; target = target.parentNode) {
+              for (let i = domElements.length; i--;) {
+                if (domElements[i] === target) {
+                  event.delegateTarget = target;
+
+                  if (handler.oneOff) {
+                    EventHandler.off(element, event.type, selector, fn);
+                  }
+
+                  return fn.apply(target, [event]);
+                }
+              }
+            } // To please ESLint
+
+
+            return null;
+          };
+        }
+
+        function findHandler(events, handler, delegationSelector = null) {
+          const uidEventList = Object.keys(events);
+
+          for (let i = 0, len = uidEventList.length; i < len; i++) {
+            const event = events[uidEventList[i]];
+
+            if (event.originalHandler === handler && event.delegationSelector === delegationSelector) {
+              return event;
+            }
+          }
+
+          return null;
+        }
+
+        function normalizeParams(originalTypeEvent, handler, delegationFn) {
+          const delegation = typeof handler === 'string';
+          const originalHandler = delegation ? delegationFn : handler;
+          let typeEvent = getTypeEvent(originalTypeEvent);
+          const isNative = nativeEvents.has(typeEvent);
+
+          if (!isNative) {
+            typeEvent = originalTypeEvent;
+          }
+
+          return [delegation, originalHandler, typeEvent];
+        }
+
+        function addHandler(element, originalTypeEvent, handler, delegationFn, oneOff) {
+          if (typeof originalTypeEvent !== 'string' || !element) {
+            return;
+          }
+
+          if (!handler) {
+            handler = delegationFn;
+            delegationFn = null;
+          } // in case of mouseenter or mouseleave wrap the handler within a function that checks for its DOM position
+          // this prevents the handler from being dispatched the same way as mouseover or mouseout does
+
+
+          if (customEventsRegex.test(originalTypeEvent)) {
+            const wrapFn = fn => {
+              return function (event) {
+                if (!event.relatedTarget || event.relatedTarget !== event.delegateTarget && !event.delegateTarget.contains(event.relatedTarget)) {
+                  return fn.call(this, event);
+                }
+              };
+            };
+
+            if (delegationFn) {
+              delegationFn = wrapFn(delegationFn);
+            } else {
+              handler = wrapFn(handler);
+            }
+          }
+
+          const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn);
+          const events = getEvent(element);
+          const handlers = events[typeEvent] || (events[typeEvent] = {});
+          const previousFn = findHandler(handlers, originalHandler, delegation ? handler : null);
+
+          if (previousFn) {
+            previousFn.oneOff = previousFn.oneOff && oneOff;
+            return;
+          }
+
+          const uid = getUidEvent(originalHandler, originalTypeEvent.replace(namespaceRegex, ''));
+          const fn = delegation ? bootstrapDelegationHandler(element, handler, delegationFn) : bootstrapHandler(element, handler);
+          fn.delegationSelector = delegation ? handler : null;
+          fn.originalHandler = originalHandler;
+          fn.oneOff = oneOff;
+          fn.uidEvent = uid;
+          handlers[uid] = fn;
+          element.addEventListener(typeEvent, fn, delegation);
+        }
+
+        function removeHandler(element, events, typeEvent, handler, delegationSelector) {
+          const fn = findHandler(events[typeEvent], handler, delegationSelector);
+
+          if (!fn) {
+            return;
+          }
+
+          element.removeEventListener(typeEvent, fn, Boolean(delegationSelector));
+          delete events[typeEvent][fn.uidEvent];
+        }
+
+        function removeNamespacedHandlers(element, events, typeEvent, namespace) {
+          const storeElementEvent = events[typeEvent] || {};
+          Object.keys(storeElementEvent).forEach(handlerKey => {
+            if (handlerKey.includes(namespace)) {
+              const event = storeElementEvent[handlerKey];
+              removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
+            }
+          });
+        }
+
+        function getTypeEvent(event) {
+          // allow to get the native events from namespaced events ('click.bs.button' --> 'click')
+          event = event.replace(stripNameRegex, '');
+          return customEvents[event] || event;
+        }
+
+        const EventHandler = {
+          on(element, event, handler, delegationFn) {
+            addHandler(element, event, handler, delegationFn, false);
+          },
+
+          one(element, event, handler, delegationFn) {
+            addHandler(element, event, handler, delegationFn, true);
+          },
+
+          off(element, originalTypeEvent, handler, delegationFn) {
+            if (typeof originalTypeEvent !== 'string' || !element) {
+              return;
+            }
+
+            const [delegation, originalHandler, typeEvent] = normalizeParams(originalTypeEvent, handler, delegationFn);
+            const inNamespace = typeEvent !== originalTypeEvent;
+            const events = getEvent(element);
+            const isNamespace = originalTypeEvent.startsWith('.');
+
+            if (typeof originalHandler !== 'undefined') {
+              // Simplest case: handler is passed, remove that listener ONLY.
+              if (!events || !events[typeEvent]) {
+                return;
+              }
+
+              removeHandler(element, events, typeEvent, originalHandler, delegation ? handler : null);
+              return;
+            }
+
+            if (isNamespace) {
+              Object.keys(events).forEach(elementEvent => {
+                removeNamespacedHandlers(element, events, elementEvent, originalTypeEvent.slice(1));
+              });
+            }
+
+            const storeElementEvent = events[typeEvent] || {};
+            Object.keys(storeElementEvent).forEach(keyHandlers => {
+              const handlerKey = keyHandlers.replace(stripUidRegex, '');
+
+              if (!inNamespace || originalTypeEvent.includes(handlerKey)) {
+                const event = storeElementEvent[keyHandlers];
+                removeHandler(element, events, typeEvent, event.originalHandler, event.delegationSelector);
+              }
+            });
+          },
+
+          trigger(element, event, args) {
+            if (typeof event !== 'string' || !element) {
+              return null;
+            }
+
+            const $ = getjQuery();
+            const typeEvent = getTypeEvent(event);
+            const inNamespace = event !== typeEvent;
+            const isNative = nativeEvents.has(typeEvent);
+            let jQueryEvent;
+            let bubbles = true;
+            let nativeDispatch = true;
+            let defaultPrevented = false;
+            let evt = null;
+
+            if (inNamespace && $) {
+              jQueryEvent = $.Event(event, args);
+              $(element).trigger(jQueryEvent);
+              bubbles = !jQueryEvent.isPropagationStopped();
+              nativeDispatch = !jQueryEvent.isImmediatePropagationStopped();
+              defaultPrevented = jQueryEvent.isDefaultPrevented();
+            }
+
+            if (isNative) {
+              evt = document.createEvent('HTMLEvents');
+              evt.initEvent(typeEvent, bubbles, true);
+            } else {
+              evt = new CustomEvent(event, {
+                bubbles,
+                cancelable: true
+              });
+            } // merge custom information in our event
+
+
+            if (typeof args !== 'undefined') {
+              Object.keys(args).forEach(key => {
+                Object.defineProperty(evt, key, {
+                  get() {
+                    return args[key];
+                  }
+
+                });
+              });
+            }
+
+            if (defaultPrevented) {
+              evt.preventDefault();
+            }
+
+            if (nativeDispatch) {
+              element.dispatchEvent(evt);
+            }
+
+            if (evt.defaultPrevented && typeof jQueryEvent !== 'undefined') {
+              jQueryEvent.preventDefault();
+            }
+
+            return evt;
+          }
+
+        };
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): dom/data.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+        const elementMap = new Map();
+        const Data = {
+          set(element, key, instance) {
+            if (!elementMap.has(element)) {
+              elementMap.set(element, new Map());
+            }
+
+            const instanceMap = elementMap.get(element); // make it clear we only want one instance per element
+            // can be removed later when multiple key/instances are fine to be used
+
+            if (!instanceMap.has(key) && instanceMap.size !== 0) {
+              // eslint-disable-next-line no-console
+              console.error(`Bootstrap doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`);
+              return;
+            }
+
+            instanceMap.set(key, instance);
+          },
+
+          get(element, key) {
+            if (elementMap.has(element)) {
+              return elementMap.get(element).get(key) || null;
+            }
+
+            return null;
+          },
+
+          remove(element, key) {
+            if (!elementMap.has(element)) {
+              return;
+            }
+
+            const instanceMap = elementMap.get(element);
+            instanceMap.delete(key); // free up element references if there are no instances left for an element
+
+            if (instanceMap.size === 0) {
+              elementMap.delete(element);
+            }
+          }
+
+        };
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): base-component.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const VERSION = '5.1.3';
+
+        class BaseComponent {
+          constructor(element) {
+            element = getElement(element);
+
+            if (!element) {
+              return;
+            }
+
+            this._element = element;
+            Data.set(this._element, this.constructor.DATA_KEY, this);
+          }
+
+          dispose() {
+            Data.remove(this._element, this.constructor.DATA_KEY);
+            EventHandler.off(this._element, this.constructor.EVENT_KEY);
+            Object.getOwnPropertyNames(this).forEach(propertyName => {
+              this[propertyName] = null;
+            });
+          }
+
+          _queueCallback(callback, element, isAnimated = true) {
+            executeAfterTransition(callback, element, isAnimated);
+          }
+          /** Static */
+
+
+          static getInstance(element) {
+            return Data.get(getElement(element), this.DATA_KEY);
+          }
+
+          static getOrCreateInstance(element, config = {}) {
+            return this.getInstance(element) || new this(element, typeof config === 'object' ? config : null);
+          }
+
+          static get VERSION() {
+            return VERSION;
+          }
+
+          static get NAME() {
+            throw new Error('You have to implement the static method "NAME", for each component!');
+          }
+
+          static get DATA_KEY() {
+            return `bs.${this.NAME}`;
+          }
+
+          static get EVENT_KEY() {
+            return `.${this.DATA_KEY}`;
+          }
+
+        }
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): util/component-functions.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+
+        const enableDismissTrigger = (component, method = 'hide') => {
+          const clickEvent = `click.dismiss${component.EVENT_KEY}`;
+          const name = component.NAME;
+          EventHandler.on(document, clickEvent, `[data-bs-dismiss="${name}"]`, function (event) {
+            if (['A', 'AREA'].includes(this.tagName)) {
+              event.preventDefault();
+            }
+
+            if (isDisabled(this)) {
+              return;
+            }
+
+            const target = getElementFromSelector(this) || this.closest(`.${name}`);
+            const instance = component.getOrCreateInstance(target); // Method argument is left, for Alert and only, as it doesn't implement the 'hide' method
+
+            instance[method]();
+          });
+        };
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): alert.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$d = 'alert';
+        const DATA_KEY$c = 'bs.alert';
+        const EVENT_KEY$c = `.${DATA_KEY$c}`;
+        const EVENT_CLOSE = `close${EVENT_KEY$c}`;
+        const EVENT_CLOSED = `closed${EVENT_KEY$c}`;
+        const CLASS_NAME_FADE$5 = 'fade';
+        const CLASS_NAME_SHOW$8 = 'show';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Alert extends BaseComponent {
+          // Getters
+          static get NAME() {
+            return NAME$d;
+          } // Public
+
+
+          close() {
+            const closeEvent = EventHandler.trigger(this._element, EVENT_CLOSE);
+
+            if (closeEvent.defaultPrevented) {
+              return;
+            }
+
+            this._element.classList.remove(CLASS_NAME_SHOW$8);
+
+            const isAnimated = this._element.classList.contains(CLASS_NAME_FADE$5);
+
+            this._queueCallback(() => this._destroyElement(), this._element, isAnimated);
+          } // Private
+
+
+          _destroyElement() {
+            this._element.remove();
+
+            EventHandler.trigger(this._element, EVENT_CLOSED);
+            this.dispose();
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Alert.getOrCreateInstance(this);
+
+              if (typeof config !== 'string') {
+                return;
+              }
+
+              if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+                throw new TypeError(`No method named "${config}"`);
+              }
+
+              data[config](this);
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        enableDismissTrigger(Alert, 'close');
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Alert to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Alert);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): button.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$c = 'button';
+        const DATA_KEY$b = 'bs.button';
+        const EVENT_KEY$b = `.${DATA_KEY$b}`;
+        const DATA_API_KEY$7 = '.data-api';
+        const CLASS_NAME_ACTIVE$3 = 'active';
+        const SELECTOR_DATA_TOGGLE$5 = '[data-bs-toggle="button"]';
+        const EVENT_CLICK_DATA_API$6 = `click${EVENT_KEY$b}${DATA_API_KEY$7}`;
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Button extends BaseComponent {
+          // Getters
+          static get NAME() {
+            return NAME$c;
+          } // Public
+
+
+          toggle() {
+            // Toggle class and sync the `aria-pressed` attribute with the return value of the `.toggle()` method
+            this._element.setAttribute('aria-pressed', this._element.classList.toggle(CLASS_NAME_ACTIVE$3));
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Button.getOrCreateInstance(this);
+
+              if (config === 'toggle') {
+                data[config]();
+              }
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(document, EVENT_CLICK_DATA_API$6, SELECTOR_DATA_TOGGLE$5, event => {
+          event.preventDefault();
+          const button = event.target.closest(SELECTOR_DATA_TOGGLE$5);
+          const data = Button.getOrCreateInstance(button);
+          data.toggle();
+        });
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Button to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Button);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): dom/manipulator.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        function normalizeData(val) {
+          if (val === 'true') {
+            return true;
+          }
+
+          if (val === 'false') {
+            return false;
+          }
+
+          if (val === Number(val).toString()) {
+            return Number(val);
+          }
+
+          if (val === '' || val === 'null') {
+            return null;
+          }
+
+          return val;
+        }
+
+        function normalizeDataKey(key) {
+          return key.replace(/[A-Z]/g, chr => `-${chr.toLowerCase()}`);
+        }
+
+        const Manipulator = {
+          setDataAttribute(element, key, value) {
+            element.setAttribute(`data-bs-${normalizeDataKey(key)}`, value);
+          },
+
+          removeDataAttribute(element, key) {
+            element.removeAttribute(`data-bs-${normalizeDataKey(key)}`);
+          },
+
+          getDataAttributes(element) {
+            if (!element) {
+              return {};
+            }
+
+            const attributes = {};
+            Object.keys(element.dataset).filter(key => key.startsWith('bs')).forEach(key => {
+              let pureKey = key.replace(/^bs/, '');
+              pureKey = pureKey.charAt(0).toLowerCase() + pureKey.slice(1, pureKey.length);
+              attributes[pureKey] = normalizeData(element.dataset[key]);
+            });
+            return attributes;
+          },
+
+          getDataAttribute(element, key) {
+            return normalizeData(element.getAttribute(`data-bs-${normalizeDataKey(key)}`));
+          },
+
+          offset(element) {
+            const rect = element.getBoundingClientRect();
+            return {
+              top: rect.top + window.pageYOffset,
+              left: rect.left + window.pageXOffset
+            };
+          },
+
+          position(element) {
+            return {
+              top: element.offsetTop,
+              left: element.offsetLeft
+            };
+          }
+
+        };
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): dom/selector-engine.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        const NODE_TEXT = 3;
+        const SelectorEngine = {
+          find(selector, element = document.documentElement) {
+            return [].concat(...Element.prototype.querySelectorAll.call(element, selector));
+          },
+
+          findOne(selector, element = document.documentElement) {
+            return Element.prototype.querySelector.call(element, selector);
+          },
+
+          children(element, selector) {
+            return [].concat(...element.children).filter(child => child.matches(selector));
+          },
+
+          parents(element, selector) {
+            const parents = [];
+            let ancestor = element.parentNode;
+
+            while (ancestor && ancestor.nodeType === Node.ELEMENT_NODE && ancestor.nodeType !== NODE_TEXT) {
+              if (ancestor.matches(selector)) {
+                parents.push(ancestor);
+              }
+
+              ancestor = ancestor.parentNode;
+            }
+
+            return parents;
+          },
+
+          prev(element, selector) {
+            let previous = element.previousElementSibling;
+
+            while (previous) {
+              if (previous.matches(selector)) {
+                return [previous];
+              }
+
+              previous = previous.previousElementSibling;
+            }
+
+            return [];
+          },
+
+          next(element, selector) {
+            let next = element.nextElementSibling;
+
+            while (next) {
+              if (next.matches(selector)) {
+                return [next];
+              }
+
+              next = next.nextElementSibling;
+            }
+
+            return [];
+          },
+
+          focusableChildren(element) {
+            const focusables = ['a', 'button', 'input', 'textarea', 'select', 'details', '[tabindex]', '[contenteditable="true"]'].map(selector => `${selector}:not([tabindex^="-"])`).join(', ');
+            return this.find(focusables, element).filter(el => !isDisabled(el) && isVisible(el));
+          }
+
+        };
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): carousel.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$b = 'carousel';
+        const DATA_KEY$a = 'bs.carousel';
+        const EVENT_KEY$a = `.${DATA_KEY$a}`;
+        const DATA_API_KEY$6 = '.data-api';
+        const ARROW_LEFT_KEY = 'ArrowLeft';
+        const ARROW_RIGHT_KEY = 'ArrowRight';
+        const TOUCHEVENT_COMPAT_WAIT = 500; // Time for mouse compat events to fire after touch
+
+        const SWIPE_THRESHOLD = 40;
+        const Default$a = {
+          interval: 5000,
+          keyboard: true,
+          slide: false,
+          pause: 'hover',
+          wrap: true,
+          touch: true
+        };
+        const DefaultType$a = {
+          interval: '(number|boolean)',
+          keyboard: 'boolean',
+          slide: '(boolean|string)',
+          pause: '(string|boolean)',
+          wrap: 'boolean',
+          touch: 'boolean'
+        };
+        const ORDER_NEXT = 'next';
+        const ORDER_PREV = 'prev';
+        const DIRECTION_LEFT = 'left';
+        const DIRECTION_RIGHT = 'right';
+        const KEY_TO_DIRECTION = {
+          [ARROW_LEFT_KEY]: DIRECTION_RIGHT,
+          [ARROW_RIGHT_KEY]: DIRECTION_LEFT
+        };
+        const EVENT_SLIDE = `slide${EVENT_KEY$a}`;
+        const EVENT_SLID = `slid${EVENT_KEY$a}`;
+        const EVENT_KEYDOWN = `keydown${EVENT_KEY$a}`;
+        const EVENT_MOUSEENTER = `mouseenter${EVENT_KEY$a}`;
+        const EVENT_MOUSELEAVE = `mouseleave${EVENT_KEY$a}`;
+        const EVENT_TOUCHSTART = `touchstart${EVENT_KEY$a}`;
+        const EVENT_TOUCHMOVE = `touchmove${EVENT_KEY$a}`;
+        const EVENT_TOUCHEND = `touchend${EVENT_KEY$a}`;
+        const EVENT_POINTERDOWN = `pointerdown${EVENT_KEY$a}`;
+        const EVENT_POINTERUP = `pointerup${EVENT_KEY$a}`;
+        const EVENT_DRAG_START = `dragstart${EVENT_KEY$a}`;
+        const EVENT_LOAD_DATA_API$2 = `load${EVENT_KEY$a}${DATA_API_KEY$6}`;
+        const EVENT_CLICK_DATA_API$5 = `click${EVENT_KEY$a}${DATA_API_KEY$6}`;
+        const CLASS_NAME_CAROUSEL = 'carousel';
+        const CLASS_NAME_ACTIVE$2 = 'active';
+        const CLASS_NAME_SLIDE = 'slide';
+        const CLASS_NAME_END = 'carousel-item-end';
+        const CLASS_NAME_START = 'carousel-item-start';
+        const CLASS_NAME_NEXT = 'carousel-item-next';
+        const CLASS_NAME_PREV = 'carousel-item-prev';
+        const CLASS_NAME_POINTER_EVENT = 'pointer-event';
+        const SELECTOR_ACTIVE$1 = '.active';
+        const SELECTOR_ACTIVE_ITEM = '.active.carousel-item';
+        const SELECTOR_ITEM = '.carousel-item';
+        const SELECTOR_ITEM_IMG = '.carousel-item img';
+        const SELECTOR_NEXT_PREV = '.carousel-item-next, .carousel-item-prev';
+        const SELECTOR_INDICATORS = '.carousel-indicators';
+        const SELECTOR_INDICATOR = '[data-bs-target]';
+        const SELECTOR_DATA_SLIDE = '[data-bs-slide], [data-bs-slide-to]';
+        const SELECTOR_DATA_RIDE = '[data-bs-ride="carousel"]';
+        const POINTER_TYPE_TOUCH = 'touch';
+        const POINTER_TYPE_PEN = 'pen';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Carousel extends BaseComponent {
+          constructor(element, config) {
+            super(element);
+            this._items = null;
+            this._interval = null;
+            this._activeElement = null;
+            this._isPaused = false;
+            this._isSliding = false;
+            this.touchTimeout = null;
+            this.touchStartX = 0;
+            this.touchDeltaX = 0;
+            this._config = this._getConfig(config);
+            this._indicatorsElement = SelectorEngine.findOne(SELECTOR_INDICATORS, this._element);
+            this._touchSupported = 'ontouchstart' in document.documentElement || navigator.maxTouchPoints > 0;
+            this._pointerEvent = Boolean(window.PointerEvent);
+
+            this._addEventListeners();
+          } // Getters
+
+
+          static get Default() {
+            return Default$a;
+          }
+
+          static get NAME() {
+            return NAME$b;
+          } // Public
+
+
+          next() {
+            this._slide(ORDER_NEXT);
+          }
+
+          nextWhenVisible() {
+            // Don't call next when the page isn't visible
+            // or the carousel or its parent isn't visible
+            if (!document.hidden && isVisible(this._element)) {
+              this.next();
+            }
+          }
+
+          prev() {
+            this._slide(ORDER_PREV);
+          }
+
+          pause(event) {
+            if (!event) {
+              this._isPaused = true;
+            }
+
+            if (SelectorEngine.findOne(SELECTOR_NEXT_PREV, this._element)) {
+              triggerTransitionEnd(this._element);
+              this.cycle(true);
+            }
+
+            clearInterval(this._interval);
+            this._interval = null;
+          }
+
+          cycle(event) {
+            if (!event) {
+              this._isPaused = false;
+            }
+
+            if (this._interval) {
+              clearInterval(this._interval);
+              this._interval = null;
+            }
+
+            if (this._config && this._config.interval && !this._isPaused) {
+              this._updateInterval();
+
+              this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
+            }
+          }
+
+          to(index) {
+            this._activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+
+            const activeIndex = this._getItemIndex(this._activeElement);
+
+            if (index > this._items.length - 1 || index < 0) {
+              return;
+            }
+
+            if (this._isSliding) {
+              EventHandler.one(this._element, EVENT_SLID, () => this.to(index));
+              return;
+            }
+
+            if (activeIndex === index) {
+              this.pause();
+              this.cycle();
+              return;
+            }
+
+            const order = index > activeIndex ? ORDER_NEXT : ORDER_PREV;
+
+            this._slide(order, this._items[index]);
+          } // Private
+
+
+          _getConfig(config) {
+            config = {
+              ...Default$a,
+              ...Manipulator.getDataAttributes(this._element),
+              ...(typeof config === 'object' ? config : {})
+            };
+            typeCheckConfig(NAME$b, config, DefaultType$a);
+            return config;
+          }
+
+          _handleSwipe() {
+            const absDeltax = Math.abs(this.touchDeltaX);
+
+            if (absDeltax <= SWIPE_THRESHOLD) {
+              return;
+            }
+
+            const direction = absDeltax / this.touchDeltaX;
+            this.touchDeltaX = 0;
+
+            if (!direction) {
+              return;
+            }
+
+            this._slide(direction > 0 ? DIRECTION_RIGHT : DIRECTION_LEFT);
+          }
+
+          _addEventListeners() {
+            if (this._config.keyboard) {
+              EventHandler.on(this._element, EVENT_KEYDOWN, event => this._keydown(event));
+            }
+
+            if (this._config.pause === 'hover') {
+              EventHandler.on(this._element, EVENT_MOUSEENTER, event => this.pause(event));
+              EventHandler.on(this._element, EVENT_MOUSELEAVE, event => this.cycle(event));
+            }
+
+            if (this._config.touch && this._touchSupported) {
+              this._addTouchEventListeners();
+            }
+          }
+
+          _addTouchEventListeners() {
+            const hasPointerPenTouch = event => {
+              return this._pointerEvent && (event.pointerType === POINTER_TYPE_PEN || event.pointerType === POINTER_TYPE_TOUCH);
+            };
+
+            const start = event => {
+              if (hasPointerPenTouch(event)) {
+                this.touchStartX = event.clientX;
+              } else if (!this._pointerEvent) {
+                this.touchStartX = event.touches[0].clientX;
+              }
+            };
+
+            const move = event => {
+              // ensure swiping with one touch and not pinching
+              this.touchDeltaX = event.touches && event.touches.length > 1 ? 0 : event.touches[0].clientX - this.touchStartX;
+            };
+
+            const end = event => {
+              if (hasPointerPenTouch(event)) {
+                this.touchDeltaX = event.clientX - this.touchStartX;
+              }
+
+              this._handleSwipe();
+
+              if (this._config.pause === 'hover') {
+                // If it's a touch-enabled device, mouseenter/leave are fired as
+                // part of the mouse compatibility events on first tap - the carousel
+                // would stop cycling until user tapped out of it;
+                // here, we listen for touchend, explicitly pause the carousel
+                // (as if it's the second time we tap on it, mouseenter compat event
+                // is NOT fired) and after a timeout (to allow for mouse compatibility
+                // events to fire) we explicitly restart cycling
+                this.pause();
+
+                if (this.touchTimeout) {
+                  clearTimeout(this.touchTimeout);
+                }
+
+                this.touchTimeout = setTimeout(event => this.cycle(event), TOUCHEVENT_COMPAT_WAIT + this._config.interval);
+              }
+            };
+
+            SelectorEngine.find(SELECTOR_ITEM_IMG, this._element).forEach(itemImg => {
+              EventHandler.on(itemImg, EVENT_DRAG_START, event => event.preventDefault());
+            });
+
+            if (this._pointerEvent) {
+              EventHandler.on(this._element, EVENT_POINTERDOWN, event => start(event));
+              EventHandler.on(this._element, EVENT_POINTERUP, event => end(event));
+
+              this._element.classList.add(CLASS_NAME_POINTER_EVENT);
+            } else {
+              EventHandler.on(this._element, EVENT_TOUCHSTART, event => start(event));
+              EventHandler.on(this._element, EVENT_TOUCHMOVE, event => move(event));
+              EventHandler.on(this._element, EVENT_TOUCHEND, event => end(event));
+            }
+          }
+
+          _keydown(event) {
+            if (/input|textarea/i.test(event.target.tagName)) {
+              return;
+            }
+
+            const direction = KEY_TO_DIRECTION[event.key];
+
+            if (direction) {
+              event.preventDefault();
+
+              this._slide(direction);
+            }
+          }
+
+          _getItemIndex(element) {
+            this._items = element && element.parentNode ? SelectorEngine.find(SELECTOR_ITEM, element.parentNode) : [];
+            return this._items.indexOf(element);
+          }
+
+          _getItemByOrder(order, activeElement) {
+            const isNext = order === ORDER_NEXT;
+            return getNextActiveElement(this._items, activeElement, isNext, this._config.wrap);
+          }
+
+          _triggerSlideEvent(relatedTarget, eventDirectionName) {
+            const targetIndex = this._getItemIndex(relatedTarget);
+
+            const fromIndex = this._getItemIndex(SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element));
+
+            return EventHandler.trigger(this._element, EVENT_SLIDE, {
+              relatedTarget,
+              direction: eventDirectionName,
+              from: fromIndex,
+              to: targetIndex
+            });
+          }
+
+          _setActiveIndicatorElement(element) {
+            if (this._indicatorsElement) {
+              const activeIndicator = SelectorEngine.findOne(SELECTOR_ACTIVE$1, this._indicatorsElement);
+              activeIndicator.classList.remove(CLASS_NAME_ACTIVE$2);
+              activeIndicator.removeAttribute('aria-current');
+              const indicators = SelectorEngine.find(SELECTOR_INDICATOR, this._indicatorsElement);
+
+              for (let i = 0; i < indicators.length; i++) {
+                if (Number.parseInt(indicators[i].getAttribute('data-bs-slide-to'), 10) === this._getItemIndex(element)) {
+                  indicators[i].classList.add(CLASS_NAME_ACTIVE$2);
+                  indicators[i].setAttribute('aria-current', 'true');
+                  break;
+                }
+              }
+            }
+          }
+
+          _updateInterval() {
+            const element = this._activeElement || SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+
+            if (!element) {
+              return;
+            }
+
+            const elementInterval = Number.parseInt(element.getAttribute('data-bs-interval'), 10);
+
+            if (elementInterval) {
+              this._config.defaultInterval = this._config.defaultInterval || this._config.interval;
+              this._config.interval = elementInterval;
+            } else {
+              this._config.interval = this._config.defaultInterval || this._config.interval;
+            }
+          }
+
+          _slide(directionOrOrder, element) {
+            const order = this._directionToOrder(directionOrOrder);
+
+            const activeElement = SelectorEngine.findOne(SELECTOR_ACTIVE_ITEM, this._element);
+
+            const activeElementIndex = this._getItemIndex(activeElement);
+
+            const nextElement = element || this._getItemByOrder(order, activeElement);
+
+            const nextElementIndex = this._getItemIndex(nextElement);
+
+            const isCycling = Boolean(this._interval);
+            const isNext = order === ORDER_NEXT;
+            const directionalClassName = isNext ? CLASS_NAME_START : CLASS_NAME_END;
+            const orderClassName = isNext ? CLASS_NAME_NEXT : CLASS_NAME_PREV;
+
+            const eventDirectionName = this._orderToDirection(order);
+
+            if (nextElement && nextElement.classList.contains(CLASS_NAME_ACTIVE$2)) {
+              this._isSliding = false;
+              return;
+            }
+
+            if (this._isSliding) {
+              return;
+            }
+
+            const slideEvent = this._triggerSlideEvent(nextElement, eventDirectionName);
+
+            if (slideEvent.defaultPrevented) {
+              return;
+            }
+
+            if (!activeElement || !nextElement) {
+              // Some weirdness is happening, so we bail
+              return;
+            }
+
+            this._isSliding = true;
+
+            if (isCycling) {
+              this.pause();
+            }
+
+            this._setActiveIndicatorElement(nextElement);
+
+            this._activeElement = nextElement;
+
+            const triggerSlidEvent = () => {
+              EventHandler.trigger(this._element, EVENT_SLID, {
+                relatedTarget: nextElement,
+                direction: eventDirectionName,
+                from: activeElementIndex,
+                to: nextElementIndex
+              });
+            };
+
+            if (this._element.classList.contains(CLASS_NAME_SLIDE)) {
+              nextElement.classList.add(orderClassName);
+              reflow(nextElement);
+              activeElement.classList.add(directionalClassName);
+              nextElement.classList.add(directionalClassName);
+
+              const completeCallBack = () => {
+                nextElement.classList.remove(directionalClassName, orderClassName);
+                nextElement.classList.add(CLASS_NAME_ACTIVE$2);
+                activeElement.classList.remove(CLASS_NAME_ACTIVE$2, orderClassName, directionalClassName);
+                this._isSliding = false;
+                setTimeout(triggerSlidEvent, 0);
+              };
+
+              this._queueCallback(completeCallBack, activeElement, true);
+            } else {
+              activeElement.classList.remove(CLASS_NAME_ACTIVE$2);
+              nextElement.classList.add(CLASS_NAME_ACTIVE$2);
+              this._isSliding = false;
+              triggerSlidEvent();
+            }
+
+            if (isCycling) {
+              this.cycle();
+            }
+          }
+
+          _directionToOrder(direction) {
+            if (![DIRECTION_RIGHT, DIRECTION_LEFT].includes(direction)) {
+              return direction;
+            }
+
+            if (isRTL()) {
+              return direction === DIRECTION_LEFT ? ORDER_PREV : ORDER_NEXT;
+            }
+
+            return direction === DIRECTION_LEFT ? ORDER_NEXT : ORDER_PREV;
+          }
+
+          _orderToDirection(order) {
+            if (![ORDER_NEXT, ORDER_PREV].includes(order)) {
+              return order;
+            }
+
+            if (isRTL()) {
+              return order === ORDER_PREV ? DIRECTION_LEFT : DIRECTION_RIGHT;
+            }
+
+            return order === ORDER_PREV ? DIRECTION_RIGHT : DIRECTION_LEFT;
+          } // Static
+
+
+          static carouselInterface(element, config) {
+            const data = Carousel.getOrCreateInstance(element, config);
+            let {
+              _config
+            } = data;
+
+            if (typeof config === 'object') {
+              _config = {
+                ..._config,
+                ...config
+              };
+            }
+
+            const action = typeof config === 'string' ? config : _config.slide;
+
+            if (typeof config === 'number') {
+              data.to(config);
+            } else if (typeof action === 'string') {
+              if (typeof data[action] === 'undefined') {
+                throw new TypeError(`No method named "${action}"`);
+              }
+
+              data[action]();
+            } else if (_config.interval && _config.ride) {
+              data.pause();
+              data.cycle();
+            }
+          }
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              Carousel.carouselInterface(this, config);
+            });
+          }
+
+          static dataApiClickHandler(event) {
+            const target = getElementFromSelector(this);
+
+            if (!target || !target.classList.contains(CLASS_NAME_CAROUSEL)) {
+              return;
+            }
+
+            const config = {
+              ...Manipulator.getDataAttributes(target),
+              ...Manipulator.getDataAttributes(this)
+            };
+            const slideIndex = this.getAttribute('data-bs-slide-to');
+
+            if (slideIndex) {
+              config.interval = false;
+            }
+
+            Carousel.carouselInterface(target, config);
+
+            if (slideIndex) {
+              Carousel.getInstance(target).to(slideIndex);
+            }
+
+            event.preventDefault();
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(document, EVENT_CLICK_DATA_API$5, SELECTOR_DATA_SLIDE, Carousel.dataApiClickHandler);
+        EventHandler.on(window, EVENT_LOAD_DATA_API$2, () => {
+          const carousels = SelectorEngine.find(SELECTOR_DATA_RIDE);
+
+          for (let i = 0, len = carousels.length; i < len; i++) {
+            Carousel.carouselInterface(carousels[i], Carousel.getInstance(carousels[i]));
+          }
+        });
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Carousel to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Carousel);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): collapse.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$a = 'collapse';
+        const DATA_KEY$9 = 'bs.collapse';
+        const EVENT_KEY$9 = `.${DATA_KEY$9}`;
+        const DATA_API_KEY$5 = '.data-api';
+        const Default$9 = {
+          toggle: true,
+          parent: null
+        };
+        const DefaultType$9 = {
+          toggle: 'boolean',
+          parent: '(null|element)'
+        };
+        const EVENT_SHOW$5 = `show${EVENT_KEY$9}`;
+        const EVENT_SHOWN$5 = `shown${EVENT_KEY$9}`;
+        const EVENT_HIDE$5 = `hide${EVENT_KEY$9}`;
+        const EVENT_HIDDEN$5 = `hidden${EVENT_KEY$9}`;
+        const EVENT_CLICK_DATA_API$4 = `click${EVENT_KEY$9}${DATA_API_KEY$5}`;
+        const CLASS_NAME_SHOW$7 = 'show';
+        const CLASS_NAME_COLLAPSE = 'collapse';
+        const CLASS_NAME_COLLAPSING = 'collapsing';
+        const CLASS_NAME_COLLAPSED = 'collapsed';
+        const CLASS_NAME_DEEPER_CHILDREN = `:scope .${CLASS_NAME_COLLAPSE} .${CLASS_NAME_COLLAPSE}`;
+        const CLASS_NAME_HORIZONTAL = 'collapse-horizontal';
+        const WIDTH = 'width';
+        const HEIGHT = 'height';
+        const SELECTOR_ACTIVES = '.collapse.show, .collapse.collapsing';
+        const SELECTOR_DATA_TOGGLE$4 = '[data-bs-toggle="collapse"]';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Collapse extends BaseComponent {
+          constructor(element, config) {
+            super(element);
+            this._isTransitioning = false;
+            this._config = this._getConfig(config);
+            this._triggerArray = [];
+            const toggleList = SelectorEngine.find(SELECTOR_DATA_TOGGLE$4);
+
+            for (let i = 0, len = toggleList.length; i < len; i++) {
+              const elem = toggleList[i];
+              const selector = getSelectorFromElement(elem);
+              const filterElement = SelectorEngine.find(selector).filter(foundElem => foundElem === this._element);
+
+              if (selector !== null && filterElement.length) {
+                this._selector = selector;
+
+                this._triggerArray.push(elem);
+              }
+            }
+
+            this._initializeChildren();
+
+            if (!this._config.parent) {
+              this._addAriaAndCollapsedClass(this._triggerArray, this._isShown());
+            }
+
+            if (this._config.toggle) {
+              this.toggle();
+            }
+          } // Getters
+
+
+          static get Default() {
+            return Default$9;
+          }
+
+          static get NAME() {
+            return NAME$a;
+          } // Public
+
+
+          toggle() {
+            if (this._isShown()) {
+              this.hide();
+            } else {
+              this.show();
+            }
+          }
+
+          show() {
+            if (this._isTransitioning || this._isShown()) {
+              return;
+            }
+
+            let actives = [];
+            let activesData;
+
+            if (this._config.parent) {
+              const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent);
+              actives = SelectorEngine.find(SELECTOR_ACTIVES, this._config.parent).filter(elem => !children.includes(elem)); // remove children if greater depth
+            }
+
+            const container = SelectorEngine.findOne(this._selector);
+
+            if (actives.length) {
+              const tempActiveData = actives.find(elem => container !== elem);
+              activesData = tempActiveData ? Collapse.getInstance(tempActiveData) : null;
+
+              if (activesData && activesData._isTransitioning) {
+                return;
+              }
+            }
+
+            const startEvent = EventHandler.trigger(this._element, EVENT_SHOW$5);
+
+            if (startEvent.defaultPrevented) {
+              return;
+            }
+
+            actives.forEach(elemActive => {
+              if (container !== elemActive) {
+                Collapse.getOrCreateInstance(elemActive, {
+                  toggle: false
+                }).hide();
+              }
+
+              if (!activesData) {
+                Data.set(elemActive, DATA_KEY$9, null);
+              }
+            });
+
+            const dimension = this._getDimension();
+
+            this._element.classList.remove(CLASS_NAME_COLLAPSE);
+
+            this._element.classList.add(CLASS_NAME_COLLAPSING);
+
+            this._element.style[dimension] = 0;
+
+            this._addAriaAndCollapsedClass(this._triggerArray, true);
+
+            this._isTransitioning = true;
+
+            const complete = () => {
+              this._isTransitioning = false;
+
+              this._element.classList.remove(CLASS_NAME_COLLAPSING);
+
+              this._element.classList.add(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
+
+              this._element.style[dimension] = '';
+              EventHandler.trigger(this._element, EVENT_SHOWN$5);
+            };
+
+            const capitalizedDimension = dimension[0].toUpperCase() + dimension.slice(1);
+            const scrollSize = `scroll${capitalizedDimension}`;
+
+            this._queueCallback(complete, this._element, true);
+
+            this._element.style[dimension] = `${this._element[scrollSize]}px`;
+          }
+
+          hide() {
+            if (this._isTransitioning || !this._isShown()) {
+              return;
+            }
+
+            const startEvent = EventHandler.trigger(this._element, EVENT_HIDE$5);
+
+            if (startEvent.defaultPrevented) {
+              return;
+            }
+
+            const dimension = this._getDimension();
+
+            this._element.style[dimension] = `${this._element.getBoundingClientRect()[dimension]}px`;
+            reflow(this._element);
+
+            this._element.classList.add(CLASS_NAME_COLLAPSING);
+
+            this._element.classList.remove(CLASS_NAME_COLLAPSE, CLASS_NAME_SHOW$7);
+
+            const triggerArrayLength = this._triggerArray.length;
+
+            for (let i = 0; i < triggerArrayLength; i++) {
+              const trigger = this._triggerArray[i];
+              const elem = getElementFromSelector(trigger);
+
+              if (elem && !this._isShown(elem)) {
+                this._addAriaAndCollapsedClass([trigger], false);
+              }
+            }
+
+            this._isTransitioning = true;
+
+            const complete = () => {
+              this._isTransitioning = false;
+
+              this._element.classList.remove(CLASS_NAME_COLLAPSING);
+
+              this._element.classList.add(CLASS_NAME_COLLAPSE);
+
+              EventHandler.trigger(this._element, EVENT_HIDDEN$5);
+            };
+
+            this._element.style[dimension] = '';
+
+            this._queueCallback(complete, this._element, true);
+          }
+
+          _isShown(element = this._element) {
+            return element.classList.contains(CLASS_NAME_SHOW$7);
+          } // Private
+
+
+          _getConfig(config) {
+            config = {
+              ...Default$9,
+              ...Manipulator.getDataAttributes(this._element),
+              ...config
+            };
+            config.toggle = Boolean(config.toggle); // Coerce string values
+
+            config.parent = getElement(config.parent);
+            typeCheckConfig(NAME$a, config, DefaultType$9);
+            return config;
+          }
+
+          _getDimension() {
+            return this._element.classList.contains(CLASS_NAME_HORIZONTAL) ? WIDTH : HEIGHT;
+          }
+
+          _initializeChildren() {
+            if (!this._config.parent) {
+              return;
+            }
+
+            const children = SelectorEngine.find(CLASS_NAME_DEEPER_CHILDREN, this._config.parent);
+            SelectorEngine.find(SELECTOR_DATA_TOGGLE$4, this._config.parent).filter(elem => !children.includes(elem)).forEach(element => {
+              const selected = getElementFromSelector(element);
+
+              if (selected) {
+                this._addAriaAndCollapsedClass([element], this._isShown(selected));
+              }
+            });
+          }
+
+          _addAriaAndCollapsedClass(triggerArray, isOpen) {
+            if (!triggerArray.length) {
+              return;
+            }
+
+            triggerArray.forEach(elem => {
+              if (isOpen) {
+                elem.classList.remove(CLASS_NAME_COLLAPSED);
+              } else {
+                elem.classList.add(CLASS_NAME_COLLAPSED);
+              }
+
+              elem.setAttribute('aria-expanded', isOpen);
+            });
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const _config = {};
+
+              if (typeof config === 'string' && /show|hide/.test(config)) {
+                _config.toggle = false;
+              }
+
+              const data = Collapse.getOrCreateInstance(this, _config);
+
+              if (typeof config === 'string') {
+                if (typeof data[config] === 'undefined') {
+                  throw new TypeError(`No method named "${config}"`);
+                }
+
+                data[config]();
+              }
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(document, EVENT_CLICK_DATA_API$4, SELECTOR_DATA_TOGGLE$4, function (event) {
+          // preventDefault only for <a> elements (which change the URL) not inside the collapsible element
+          if (event.target.tagName === 'A' || event.delegateTarget && event.delegateTarget.tagName === 'A') {
+            event.preventDefault();
+          }
+
+          const selector = getSelectorFromElement(this);
+          const selectorElements = SelectorEngine.find(selector);
+          selectorElements.forEach(element => {
+            Collapse.getOrCreateInstance(element, {
+              toggle: false
+            }).toggle();
+          });
+        });
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Collapse to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Collapse);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): dropdown.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$9 = 'dropdown';
+        const DATA_KEY$8 = 'bs.dropdown';
+        const EVENT_KEY$8 = `.${DATA_KEY$8}`;
+        const DATA_API_KEY$4 = '.data-api';
+        const ESCAPE_KEY$2 = 'Escape';
+        const SPACE_KEY = 'Space';
+        const TAB_KEY$1 = 'Tab';
+        const ARROW_UP_KEY = 'ArrowUp';
+        const ARROW_DOWN_KEY = 'ArrowDown';
+        const RIGHT_MOUSE_BUTTON = 2; // MouseEvent.button value for the secondary button, usually the right button
+
+        const REGEXP_KEYDOWN = new RegExp(`${ARROW_UP_KEY}|${ARROW_DOWN_KEY}|${ESCAPE_KEY$2}`);
+        const EVENT_HIDE$4 = `hide${EVENT_KEY$8}`;
+        const EVENT_HIDDEN$4 = `hidden${EVENT_KEY$8}`;
+        const EVENT_SHOW$4 = `show${EVENT_KEY$8}`;
+        const EVENT_SHOWN$4 = `shown${EVENT_KEY$8}`;
+        const EVENT_CLICK_DATA_API$3 = `click${EVENT_KEY$8}${DATA_API_KEY$4}`;
+        const EVENT_KEYDOWN_DATA_API = `keydown${EVENT_KEY$8}${DATA_API_KEY$4}`;
+        const EVENT_KEYUP_DATA_API = `keyup${EVENT_KEY$8}${DATA_API_KEY$4}`;
+        const CLASS_NAME_SHOW$6 = 'show';
+        const CLASS_NAME_DROPUP = 'dropup';
+        const CLASS_NAME_DROPEND = 'dropend';
+        const CLASS_NAME_DROPSTART = 'dropstart';
+        const CLASS_NAME_NAVBAR = 'navbar';
+        const SELECTOR_DATA_TOGGLE$3 = '[data-bs-toggle="dropdown"]';
+        const SELECTOR_MENU = '.dropdown-menu';
+        const SELECTOR_NAVBAR_NAV = '.navbar-nav';
+        const SELECTOR_VISIBLE_ITEMS = '.dropdown-menu .dropdown-item:not(.disabled):not(:disabled)';
+        const PLACEMENT_TOP = isRTL() ? 'top-end' : 'top-start';
+        const PLACEMENT_TOPEND = isRTL() ? 'top-start' : 'top-end';
+        const PLACEMENT_BOTTOM = isRTL() ? 'bottom-end' : 'bottom-start';
+        const PLACEMENT_BOTTOMEND = isRTL() ? 'bottom-start' : 'bottom-end';
+        const PLACEMENT_RIGHT = isRTL() ? 'left-start' : 'right-start';
+        const PLACEMENT_LEFT = isRTL() ? 'right-start' : 'left-start';
+        const Default$8 = {
+          offset: [0, 2],
+          boundary: 'clippingParents',
+          reference: 'toggle',
+          display: 'dynamic',
+          popperConfig: null,
+          autoClose: true
+        };
+        const DefaultType$8 = {
+          offset: '(array|string|function)',
+          boundary: '(string|element)',
+          reference: '(string|element|object)',
+          display: 'string',
+          popperConfig: '(null|object|function)',
+          autoClose: '(boolean|string)'
+        };
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Dropdown extends BaseComponent {
+          constructor(element, config) {
+            super(element);
+            this._popper = null;
+            this._config = this._getConfig(config);
+            this._menu = this._getMenuElement();
+            this._inNavbar = this._detectNavbar();
+          } // Getters
+
+
+          static get Default() {
+            return Default$8;
+          }
+
+          static get DefaultType() {
+            return DefaultType$8;
+          }
+
+          static get NAME() {
+            return NAME$9;
+          } // Public
+
+
+          toggle() {
+            return this._isShown() ? this.hide() : this.show();
+          }
+
+          show() {
+            if (isDisabled(this._element) || this._isShown(this._menu)) {
+              return;
+            }
+
+            const relatedTarget = {
+              relatedTarget: this._element
+            };
+            const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$4, relatedTarget);
+
+            if (showEvent.defaultPrevented) {
+              return;
+            }
+
+            const parent = Dropdown.getParentFromElement(this._element); // Totally disable Popper for Dropdowns in Navbar
+
+            if (this._inNavbar) {
+              Manipulator.setDataAttribute(this._menu, 'popper', 'none');
+            } else {
+              this._createPopper(parent);
+            } // If this is a touch-enabled device we add extra
+            // empty mouseover listeners to the body's immediate children;
+            // only needed because of broken event delegation on iOS
+            // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+
+
+            if ('ontouchstart' in document.documentElement && !parent.closest(SELECTOR_NAVBAR_NAV)) {
+              [].concat(...document.body.children).forEach(elem => EventHandler.on(elem, 'mouseover', noop));
+            }
+
+            this._element.focus();
+
+            this._element.setAttribute('aria-expanded', true);
+
+            this._menu.classList.add(CLASS_NAME_SHOW$6);
+
+            this._element.classList.add(CLASS_NAME_SHOW$6);
+
+            EventHandler.trigger(this._element, EVENT_SHOWN$4, relatedTarget);
+          }
+
+          hide() {
+            if (isDisabled(this._element) || !this._isShown(this._menu)) {
+              return;
+            }
+
+            const relatedTarget = {
+              relatedTarget: this._element
+            };
+
+            this._completeHide(relatedTarget);
+          }
+
+          dispose() {
+            if (this._popper) {
+              this._popper.destroy();
+            }
+
+            super.dispose();
+          }
+
+          update() {
+            this._inNavbar = this._detectNavbar();
+
+            if (this._popper) {
+              this._popper.update();
+            }
+          } // Private
+
+
+          _completeHide(relatedTarget) {
+            const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$4, relatedTarget);
+
+            if (hideEvent.defaultPrevented) {
+              return;
+            } // If this is a touch-enabled device we remove the extra
+            // empty mouseover listeners we added for iOS support
+
+
+            if ('ontouchstart' in document.documentElement) {
+              [].concat(...document.body.children).forEach(elem => EventHandler.off(elem, 'mouseover', noop));
+            }
+
+            if (this._popper) {
+              this._popper.destroy();
+            }
+
+            this._menu.classList.remove(CLASS_NAME_SHOW$6);
+
+            this._element.classList.remove(CLASS_NAME_SHOW$6);
+
+            this._element.setAttribute('aria-expanded', 'false');
+
+            Manipulator.removeDataAttribute(this._menu, 'popper');
+            EventHandler.trigger(this._element, EVENT_HIDDEN$4, relatedTarget);
+          }
+
+          _getConfig(config) {
+            config = {
+              ...this.constructor.Default,
+              ...Manipulator.getDataAttributes(this._element),
+              ...config
+            };
+            typeCheckConfig(NAME$9, config, this.constructor.DefaultType);
+
+            if (typeof config.reference === 'object' && !isElement(config.reference) && typeof config.reference.getBoundingClientRect !== 'function') {
+              // Popper virtual elements require a getBoundingClientRect method
+              throw new TypeError(`${NAME$9.toUpperCase()}: Option "reference" provided type "object" without a required "getBoundingClientRect" method.`);
+            }
+
+            return config;
+          }
+
+          _createPopper(parent) {
+            if (typeof _popperjs_core__WEBPACK_IMPORTED_MODULE_0__ === 'undefined') {
+              throw new TypeError('Bootstrap\'s dropdowns require Popper (https://popper.js.org)');
+            }
+
+            let referenceElement = this._element;
+
+            if (this._config.reference === 'parent') {
+              referenceElement = parent;
+            } else if (isElement(this._config.reference)) {
+              referenceElement = getElement(this._config.reference);
+            } else if (typeof this._config.reference === 'object') {
+              referenceElement = this._config.reference;
+            }
+
+            const popperConfig = this._getPopperConfig();
+
+            const isDisplayStatic = popperConfig.modifiers.find(modifier => modifier.name === 'applyStyles' && modifier.enabled === false);
+            this._popper = _popperjs_core__WEBPACK_IMPORTED_MODULE_1__.createPopper(referenceElement, this._menu, popperConfig);
+
+            if (isDisplayStatic) {
+              Manipulator.setDataAttribute(this._menu, 'popper', 'static');
+            }
+          }
+
+          _isShown(element = this._element) {
+            return element.classList.contains(CLASS_NAME_SHOW$6);
+          }
+
+          _getMenuElement() {
+            return SelectorEngine.next(this._element, SELECTOR_MENU)[0];
+          }
+
+          _getPlacement() {
+            const parentDropdown = this._element.parentNode;
+
+            if (parentDropdown.classList.contains(CLASS_NAME_DROPEND)) {
+              return PLACEMENT_RIGHT;
+            }
+
+            if (parentDropdown.classList.contains(CLASS_NAME_DROPSTART)) {
+              return PLACEMENT_LEFT;
+            } // We need to trim the value because custom properties can also include spaces
+
+
+            const isEnd = getComputedStyle(this._menu).getPropertyValue('--bs-position').trim() === 'end';
+
+            if (parentDropdown.classList.contains(CLASS_NAME_DROPUP)) {
+              return isEnd ? PLACEMENT_TOPEND : PLACEMENT_TOP;
+            }
+
+            return isEnd ? PLACEMENT_BOTTOMEND : PLACEMENT_BOTTOM;
+          }
+
+          _detectNavbar() {
+            return this._element.closest(`.${CLASS_NAME_NAVBAR}`) !== null;
+          }
+
+          _getOffset() {
+            const {
+              offset
+            } = this._config;
+
+            if (typeof offset === 'string') {
+              return offset.split(',').map(val => Number.parseInt(val, 10));
+            }
+
+            if (typeof offset === 'function') {
+              return popperData => offset(popperData, this._element);
+            }
+
+            return offset;
+          }
+
+          _getPopperConfig() {
+            const defaultBsPopperConfig = {
+              placement: this._getPlacement(),
+              modifiers: [{
+                name: 'preventOverflow',
+                options: {
+                  boundary: this._config.boundary
+                }
+              }, {
+                name: 'offset',
+                options: {
+                  offset: this._getOffset()
+                }
+              }]
+            }; // Disable Popper if we have a static display
+
+            if (this._config.display === 'static') {
+              defaultBsPopperConfig.modifiers = [{
+                name: 'applyStyles',
+                enabled: false
+              }];
+            }
+
+            return {
+              ...defaultBsPopperConfig,
+              ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+            };
+          }
+
+          _selectMenuItem({
+            key,
+            target
+          }) {
+            const items = SelectorEngine.find(SELECTOR_VISIBLE_ITEMS, this._menu).filter(isVisible);
+
+            if (!items.length) {
+              return;
+            } // if target isn't included in items (e.g. when expanding the dropdown)
+            // allow cycling to get the last item in case key equals ARROW_UP_KEY
+
+
+            getNextActiveElement(items, target, key === ARROW_DOWN_KEY, !items.includes(target)).focus();
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Dropdown.getOrCreateInstance(this, config);
+
+              if (typeof config !== 'string') {
+                return;
+              }
+
+              if (typeof data[config] === 'undefined') {
+                throw new TypeError(`No method named "${config}"`);
+              }
+
+              data[config]();
+            });
+          }
+
+          static clearMenus(event) {
+            if (event && (event.button === RIGHT_MOUSE_BUTTON || event.type === 'keyup' && event.key !== TAB_KEY$1)) {
+              return;
+            }
+
+            const toggles = SelectorEngine.find(SELECTOR_DATA_TOGGLE$3);
+
+            for (let i = 0, len = toggles.length; i < len; i++) {
+              const context = Dropdown.getInstance(toggles[i]);
+
+              if (!context || context._config.autoClose === false) {
+                continue;
+              }
+
+              if (!context._isShown()) {
+                continue;
+              }
+
+              const relatedTarget = {
+                relatedTarget: context._element
+              };
+
+              if (event) {
+                const composedPath = event.composedPath();
+                const isMenuTarget = composedPath.includes(context._menu);
+
+                if (composedPath.includes(context._element) || context._config.autoClose === 'inside' && !isMenuTarget || context._config.autoClose === 'outside' && isMenuTarget) {
+                  continue;
+                } // Tab navigation through the dropdown menu or events from contained inputs shouldn't close the menu
+
+
+                if (context._menu.contains(event.target) && (event.type === 'keyup' && event.key === TAB_KEY$1 || /input|select|option|textarea|form/i.test(event.target.tagName))) {
+                  continue;
+                }
+
+                if (event.type === 'click') {
+                  relatedTarget.clickEvent = event;
+                }
+              }
+
+              context._completeHide(relatedTarget);
+            }
+          }
+
+          static getParentFromElement(element) {
+            return getElementFromSelector(element) || element.parentNode;
+          }
+
+          static dataApiKeydownHandler(event) {
+            // If not input/textarea:
+            //  - And not a key in REGEXP_KEYDOWN => not a dropdown command
+            // If input/textarea:
+            //  - If space key => not a dropdown command
+            //  - If key is other than escape
+            //    - If key is not up or down => not a dropdown command
+            //    - If trigger inside the menu => not a dropdown command
+            if (/input|textarea/i.test(event.target.tagName) ? event.key === SPACE_KEY || event.key !== ESCAPE_KEY$2 && (event.key !== ARROW_DOWN_KEY && event.key !== ARROW_UP_KEY || event.target.closest(SELECTOR_MENU)) : !REGEXP_KEYDOWN.test(event.key)) {
+              return;
+            }
+
+            const isActive = this.classList.contains(CLASS_NAME_SHOW$6);
+
+            if (!isActive && event.key === ESCAPE_KEY$2) {
+              return;
+            }
+
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (isDisabled(this)) {
+              return;
+            }
+
+            const getToggleButton = this.matches(SELECTOR_DATA_TOGGLE$3) ? this : SelectorEngine.prev(this, SELECTOR_DATA_TOGGLE$3)[0];
+            const instance = Dropdown.getOrCreateInstance(getToggleButton);
+
+            if (event.key === ESCAPE_KEY$2) {
+              instance.hide();
+              return;
+            }
+
+            if (event.key === ARROW_UP_KEY || event.key === ARROW_DOWN_KEY) {
+              if (!isActive) {
+                instance.show();
+              }
+
+              instance._selectMenuItem(event);
+
+              return;
+            }
+
+            if (!isActive || event.key === SPACE_KEY) {
+              Dropdown.clearMenus();
+            }
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_DATA_TOGGLE$3, Dropdown.dataApiKeydownHandler);
+        EventHandler.on(document, EVENT_KEYDOWN_DATA_API, SELECTOR_MENU, Dropdown.dataApiKeydownHandler);
+        EventHandler.on(document, EVENT_CLICK_DATA_API$3, Dropdown.clearMenus);
+        EventHandler.on(document, EVENT_KEYUP_DATA_API, Dropdown.clearMenus);
+        EventHandler.on(document, EVENT_CLICK_DATA_API$3, SELECTOR_DATA_TOGGLE$3, function (event) {
+          event.preventDefault();
+          Dropdown.getOrCreateInstance(this).toggle();
+        });
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Dropdown to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Dropdown);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): util/scrollBar.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        const SELECTOR_FIXED_CONTENT = '.fixed-top, .fixed-bottom, .is-fixed, .sticky-top';
+        const SELECTOR_STICKY_CONTENT = '.sticky-top';
+
+        class ScrollBarHelper {
+          constructor() {
+            this._element = document.body;
+          }
+
+          getWidth() {
+            // https://developer.mozilla.org/en-US/docs/Web/API/Window/innerWidth#usage_notes
+            const documentWidth = document.documentElement.clientWidth;
+            return Math.abs(window.innerWidth - documentWidth);
+          }
+
+          hide() {
+            const width = this.getWidth();
+
+            this._disableOverFlow(); // give padding to element to balance the hidden scrollbar width
+
+
+            this._setElementAttributes(this._element, 'paddingRight', calculatedValue => calculatedValue + width); // trick: We adjust positive paddingRight and negative marginRight to sticky-top elements to keep showing fullwidth
+
+
+            this._setElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight', calculatedValue => calculatedValue + width);
+
+            this._setElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight', calculatedValue => calculatedValue - width);
+          }
+
+          _disableOverFlow() {
+            this._saveInitialAttribute(this._element, 'overflow');
+
+            this._element.style.overflow = 'hidden';
+          }
+
+          _setElementAttributes(selector, styleProp, callback) {
+            const scrollbarWidth = this.getWidth();
+
+            const manipulationCallBack = element => {
+              if (element !== this._element && window.innerWidth > element.clientWidth + scrollbarWidth) {
+                return;
+              }
+
+              this._saveInitialAttribute(element, styleProp);
+
+              const calculatedValue = window.getComputedStyle(element)[styleProp];
+              element.style[styleProp] = `${callback(Number.parseFloat(calculatedValue))}px`;
+            };
+
+            this._applyManipulationCallback(selector, manipulationCallBack);
+          }
+
+          reset() {
+            this._resetElementAttributes(this._element, 'overflow');
+
+            this._resetElementAttributes(this._element, 'paddingRight');
+
+            this._resetElementAttributes(SELECTOR_FIXED_CONTENT, 'paddingRight');
+
+            this._resetElementAttributes(SELECTOR_STICKY_CONTENT, 'marginRight');
+          }
+
+          _saveInitialAttribute(element, styleProp) {
+            const actualValue = element.style[styleProp];
+
+            if (actualValue) {
+              Manipulator.setDataAttribute(element, styleProp, actualValue);
+            }
+          }
+
+          _resetElementAttributes(selector, styleProp) {
+            const manipulationCallBack = element => {
+              const value = Manipulator.getDataAttribute(element, styleProp);
+
+              if (typeof value === 'undefined') {
+                element.style.removeProperty(styleProp);
+              } else {
+                Manipulator.removeDataAttribute(element, styleProp);
+                element.style[styleProp] = value;
+              }
+            };
+
+            this._applyManipulationCallback(selector, manipulationCallBack);
+          }
+
+          _applyManipulationCallback(selector, callBack) {
+            if (isElement(selector)) {
+              callBack(selector);
+            } else {
+              SelectorEngine.find(selector, this._element).forEach(callBack);
+            }
+          }
+
+          isOverflowing() {
+            return this.getWidth() > 0;
+          }
+
+        }
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): util/backdrop.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        const Default$7 = {
+          className: 'modal-backdrop',
+          isVisible: true,
+          // if false, we use the backdrop helper without adding any element to the dom
+          isAnimated: false,
+          rootElement: 'body',
+          // give the choice to place backdrop under different elements
+          clickCallback: null
+        };
+        const DefaultType$7 = {
+          className: 'string',
+          isVisible: 'boolean',
+          isAnimated: 'boolean',
+          rootElement: '(element|string)',
+          clickCallback: '(function|null)'
+        };
+        const NAME$8 = 'backdrop';
+        const CLASS_NAME_FADE$4 = 'fade';
+        const CLASS_NAME_SHOW$5 = 'show';
+        const EVENT_MOUSEDOWN = `mousedown.bs.${NAME$8}`;
+
+        class Backdrop {
+          constructor(config) {
+            this._config = this._getConfig(config);
+            this._isAppended = false;
+            this._element = null;
+          }
+
+          show(callback) {
+            if (!this._config.isVisible) {
+              execute(callback);
+              return;
+            }
+
+            this._append();
+
+            if (this._config.isAnimated) {
+              reflow(this._getElement());
+            }
+
+            this._getElement().classList.add(CLASS_NAME_SHOW$5);
+
+            this._emulateAnimation(() => {
+              execute(callback);
+            });
+          }
+
+          hide(callback) {
+            if (!this._config.isVisible) {
+              execute(callback);
+              return;
+            }
+
+            this._getElement().classList.remove(CLASS_NAME_SHOW$5);
+
+            this._emulateAnimation(() => {
+              this.dispose();
+              execute(callback);
+            });
+          } // Private
+
+
+          _getElement() {
+            if (!this._element) {
+              const backdrop = document.createElement('div');
+              backdrop.className = this._config.className;
+
+              if (this._config.isAnimated) {
+                backdrop.classList.add(CLASS_NAME_FADE$4);
+              }
+
+              this._element = backdrop;
+            }
+
+            return this._element;
+          }
+
+          _getConfig(config) {
+            config = {
+              ...Default$7,
+              ...(typeof config === 'object' ? config : {})
+            }; // use getElement() with the default "body" to get a fresh Element on each instantiation
+
+            config.rootElement = getElement(config.rootElement);
+            typeCheckConfig(NAME$8, config, DefaultType$7);
+            return config;
+          }
+
+          _append() {
+            if (this._isAppended) {
+              return;
+            }
+
+            this._config.rootElement.append(this._getElement());
+
+            EventHandler.on(this._getElement(), EVENT_MOUSEDOWN, () => {
+              execute(this._config.clickCallback);
+            });
+            this._isAppended = true;
+          }
+
+          dispose() {
+            if (!this._isAppended) {
+              return;
+            }
+
+            EventHandler.off(this._element, EVENT_MOUSEDOWN);
+
+            this._element.remove();
+
+            this._isAppended = false;
+          }
+
+          _emulateAnimation(callback) {
+            executeAfterTransition(callback, this._getElement(), this._config.isAnimated);
+          }
+
+        }
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): util/focustrap.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        const Default$6 = {
+          trapElement: null,
+          // The element to trap focus inside of
+          autofocus: true
+        };
+        const DefaultType$6 = {
+          trapElement: 'element',
+          autofocus: 'boolean'
+        };
+        const NAME$7 = 'focustrap';
+        const DATA_KEY$7 = 'bs.focustrap';
+        const EVENT_KEY$7 = `.${DATA_KEY$7}`;
+        const EVENT_FOCUSIN$1 = `focusin${EVENT_KEY$7}`;
+        const EVENT_KEYDOWN_TAB = `keydown.tab${EVENT_KEY$7}`;
+        const TAB_KEY = 'Tab';
+        const TAB_NAV_FORWARD = 'forward';
+        const TAB_NAV_BACKWARD = 'backward';
+
+        class FocusTrap {
+          constructor(config) {
+            this._config = this._getConfig(config);
+            this._isActive = false;
+            this._lastTabNavDirection = null;
+          }
+
+          activate() {
+            const {
+              trapElement,
+              autofocus
+            } = this._config;
+
+            if (this._isActive) {
+              return;
+            }
+
+            if (autofocus) {
+              trapElement.focus();
+            }
+
+            EventHandler.off(document, EVENT_KEY$7); // guard against infinite focus loop
+
+            EventHandler.on(document, EVENT_FOCUSIN$1, event => this._handleFocusin(event));
+            EventHandler.on(document, EVENT_KEYDOWN_TAB, event => this._handleKeydown(event));
+            this._isActive = true;
+          }
+
+          deactivate() {
+            if (!this._isActive) {
+              return;
+            }
+
+            this._isActive = false;
+            EventHandler.off(document, EVENT_KEY$7);
+          } // Private
+
+
+          _handleFocusin(event) {
+            const {
+              target
+            } = event;
+            const {
+              trapElement
+            } = this._config;
+
+            if (target === document || target === trapElement || trapElement.contains(target)) {
+              return;
+            }
+
+            const elements = SelectorEngine.focusableChildren(trapElement);
+
+            if (elements.length === 0) {
+              trapElement.focus();
+            } else if (this._lastTabNavDirection === TAB_NAV_BACKWARD) {
+              elements[elements.length - 1].focus();
+            } else {
+              elements[0].focus();
+            }
+          }
+
+          _handleKeydown(event) {
+            if (event.key !== TAB_KEY) {
+              return;
+            }
+
+            this._lastTabNavDirection = event.shiftKey ? TAB_NAV_BACKWARD : TAB_NAV_FORWARD;
+          }
+
+          _getConfig(config) {
+            config = {
+              ...Default$6,
+              ...(typeof config === 'object' ? config : {})
+            };
+            typeCheckConfig(NAME$7, config, DefaultType$6);
+            return config;
+          }
+
+        }
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): modal.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$6 = 'modal';
+        const DATA_KEY$6 = 'bs.modal';
+        const EVENT_KEY$6 = `.${DATA_KEY$6}`;
+        const DATA_API_KEY$3 = '.data-api';
+        const ESCAPE_KEY$1 = 'Escape';
+        const Default$5 = {
+          backdrop: true,
+          keyboard: true,
+          focus: true
+        };
+        const DefaultType$5 = {
+          backdrop: '(boolean|string)',
+          keyboard: 'boolean',
+          focus: 'boolean'
+        };
+        const EVENT_HIDE$3 = `hide${EVENT_KEY$6}`;
+        const EVENT_HIDE_PREVENTED = `hidePrevented${EVENT_KEY$6}`;
+        const EVENT_HIDDEN$3 = `hidden${EVENT_KEY$6}`;
+        const EVENT_SHOW$3 = `show${EVENT_KEY$6}`;
+        const EVENT_SHOWN$3 = `shown${EVENT_KEY$6}`;
+        const EVENT_RESIZE = `resize${EVENT_KEY$6}`;
+        const EVENT_CLICK_DISMISS = `click.dismiss${EVENT_KEY$6}`;
+        const EVENT_KEYDOWN_DISMISS$1 = `keydown.dismiss${EVENT_KEY$6}`;
+        const EVENT_MOUSEUP_DISMISS = `mouseup.dismiss${EVENT_KEY$6}`;
+        const EVENT_MOUSEDOWN_DISMISS = `mousedown.dismiss${EVENT_KEY$6}`;
+        const EVENT_CLICK_DATA_API$2 = `click${EVENT_KEY$6}${DATA_API_KEY$3}`;
+        const CLASS_NAME_OPEN = 'modal-open';
+        const CLASS_NAME_FADE$3 = 'fade';
+        const CLASS_NAME_SHOW$4 = 'show';
+        const CLASS_NAME_STATIC = 'modal-static';
+        const OPEN_SELECTOR$1 = '.modal.show';
+        const SELECTOR_DIALOG = '.modal-dialog';
+        const SELECTOR_MODAL_BODY = '.modal-body';
+        const SELECTOR_DATA_TOGGLE$2 = '[data-bs-toggle="modal"]';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Modal extends BaseComponent {
+          constructor(element, config) {
+            super(element);
+            this._config = this._getConfig(config);
+            this._dialog = SelectorEngine.findOne(SELECTOR_DIALOG, this._element);
+            this._backdrop = this._initializeBackDrop();
+            this._focustrap = this._initializeFocusTrap();
+            this._isShown = false;
+            this._ignoreBackdropClick = false;
+            this._isTransitioning = false;
+            this._scrollBar = new ScrollBarHelper();
+          } // Getters
+
+
+          static get Default() {
+            return Default$5;
+          }
+
+          static get NAME() {
+            return NAME$6;
+          } // Public
+
+
+          toggle(relatedTarget) {
+            return this._isShown ? this.hide() : this.show(relatedTarget);
+          }
+
+          show(relatedTarget) {
+            if (this._isShown || this._isTransitioning) {
+              return;
+            }
+
+            const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$3, {
+              relatedTarget
+            });
+
+            if (showEvent.defaultPrevented) {
+              return;
+            }
+
+            this._isShown = true;
+
+            if (this._isAnimated()) {
+              this._isTransitioning = true;
+            }
+
+            this._scrollBar.hide();
+
+            document.body.classList.add(CLASS_NAME_OPEN);
+
+            this._adjustDialog();
+
+            this._setEscapeEvent();
+
+            this._setResizeEvent();
+
+            EventHandler.on(this._dialog, EVENT_MOUSEDOWN_DISMISS, () => {
+              EventHandler.one(this._element, EVENT_MOUSEUP_DISMISS, event => {
+                if (event.target === this._element) {
+                  this._ignoreBackdropClick = true;
+                }
+              });
+            });
+
+            this._showBackdrop(() => this._showElement(relatedTarget));
+          }
+
+          hide() {
+            if (!this._isShown || this._isTransitioning) {
+              return;
+            }
+
+            const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$3);
+
+            if (hideEvent.defaultPrevented) {
+              return;
+            }
+
+            this._isShown = false;
+
+            const isAnimated = this._isAnimated();
+
+            if (isAnimated) {
+              this._isTransitioning = true;
+            }
+
+            this._setEscapeEvent();
+
+            this._setResizeEvent();
+
+            this._focustrap.deactivate();
+
+            this._element.classList.remove(CLASS_NAME_SHOW$4);
+
+            EventHandler.off(this._element, EVENT_CLICK_DISMISS);
+            EventHandler.off(this._dialog, EVENT_MOUSEDOWN_DISMISS);
+
+            this._queueCallback(() => this._hideModal(), this._element, isAnimated);
+          }
+
+          dispose() {
+            [window, this._dialog].forEach(htmlElement => EventHandler.off(htmlElement, EVENT_KEY$6));
+
+            this._backdrop.dispose();
+
+            this._focustrap.deactivate();
+
+            super.dispose();
+          }
+
+          handleUpdate() {
+            this._adjustDialog();
+          } // Private
+
+
+          _initializeBackDrop() {
+            return new Backdrop({
+              isVisible: Boolean(this._config.backdrop),
+              // 'static' option will be translated to true, and booleans will keep their value
+              isAnimated: this._isAnimated()
+            });
+          }
+
+          _initializeFocusTrap() {
+            return new FocusTrap({
+              trapElement: this._element
+            });
+          }
+
+          _getConfig(config) {
+            config = {
+              ...Default$5,
+              ...Manipulator.getDataAttributes(this._element),
+              ...(typeof config === 'object' ? config : {})
+            };
+            typeCheckConfig(NAME$6, config, DefaultType$5);
+            return config;
+          }
+
+          _showElement(relatedTarget) {
+            const isAnimated = this._isAnimated();
+
+            const modalBody = SelectorEngine.findOne(SELECTOR_MODAL_BODY, this._dialog);
+
+            if (!this._element.parentNode || this._element.parentNode.nodeType !== Node.ELEMENT_NODE) {
+              // Don't move modal's DOM position
+              document.body.append(this._element);
+            }
+
+            this._element.style.display = 'block';
+
+            this._element.removeAttribute('aria-hidden');
+
+            this._element.setAttribute('aria-modal', true);
+
+            this._element.setAttribute('role', 'dialog');
+
+            this._element.scrollTop = 0;
+
+            if (modalBody) {
+              modalBody.scrollTop = 0;
+            }
+
+            if (isAnimated) {
+              reflow(this._element);
+            }
+
+            this._element.classList.add(CLASS_NAME_SHOW$4);
+
+            const transitionComplete = () => {
+              if (this._config.focus) {
+                this._focustrap.activate();
+              }
+
+              this._isTransitioning = false;
+              EventHandler.trigger(this._element, EVENT_SHOWN$3, {
+                relatedTarget
+              });
+            };
+
+            this._queueCallback(transitionComplete, this._dialog, isAnimated);
+          }
+
+          _setEscapeEvent() {
+            if (this._isShown) {
+              EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS$1, event => {
+                if (this._config.keyboard && event.key === ESCAPE_KEY$1) {
+                  event.preventDefault();
+                  this.hide();
+                } else if (!this._config.keyboard && event.key === ESCAPE_KEY$1) {
+                  this._triggerBackdropTransition();
+                }
+              });
+            } else {
+              EventHandler.off(this._element, EVENT_KEYDOWN_DISMISS$1);
+            }
+          }
+
+          _setResizeEvent() {
+            if (this._isShown) {
+              EventHandler.on(window, EVENT_RESIZE, () => this._adjustDialog());
+            } else {
+              EventHandler.off(window, EVENT_RESIZE);
+            }
+          }
+
+          _hideModal() {
+            this._element.style.display = 'none';
+
+            this._element.setAttribute('aria-hidden', true);
+
+            this._element.removeAttribute('aria-modal');
+
+            this._element.removeAttribute('role');
+
+            this._isTransitioning = false;
+
+            this._backdrop.hide(() => {
+              document.body.classList.remove(CLASS_NAME_OPEN);
+
+              this._resetAdjustments();
+
+              this._scrollBar.reset();
+
+              EventHandler.trigger(this._element, EVENT_HIDDEN$3);
+            });
+          }
+
+          _showBackdrop(callback) {
+            EventHandler.on(this._element, EVENT_CLICK_DISMISS, event => {
+              if (this._ignoreBackdropClick) {
+                this._ignoreBackdropClick = false;
+                return;
+              }
+
+              if (event.target !== event.currentTarget) {
+                return;
+              }
+
+              if (this._config.backdrop === true) {
+                this.hide();
+              } else if (this._config.backdrop === 'static') {
+                this._triggerBackdropTransition();
+              }
+            });
+
+            this._backdrop.show(callback);
+          }
+
+          _isAnimated() {
+            return this._element.classList.contains(CLASS_NAME_FADE$3);
+          }
+
+          _triggerBackdropTransition() {
+            const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE_PREVENTED);
+
+            if (hideEvent.defaultPrevented) {
+              return;
+            }
+
+            const {
+              classList,
+              scrollHeight,
+              style
+            } = this._element;
+            const isModalOverflowing = scrollHeight > document.documentElement.clientHeight; // return if the following background transition hasn't yet completed
+
+            if (!isModalOverflowing && style.overflowY === 'hidden' || classList.contains(CLASS_NAME_STATIC)) {
+              return;
+            }
+
+            if (!isModalOverflowing) {
+              style.overflowY = 'hidden';
+            }
+
+            classList.add(CLASS_NAME_STATIC);
+
+            this._queueCallback(() => {
+              classList.remove(CLASS_NAME_STATIC);
+
+              if (!isModalOverflowing) {
+                this._queueCallback(() => {
+                  style.overflowY = '';
+                }, this._dialog);
+              }
+            }, this._dialog);
+
+            this._element.focus();
+          } // ----------------------------------------------------------------------
+          // the following methods are used to handle overflowing modals
+          // ----------------------------------------------------------------------
+
+
+          _adjustDialog() {
+            const isModalOverflowing = this._element.scrollHeight > document.documentElement.clientHeight;
+
+            const scrollbarWidth = this._scrollBar.getWidth();
+
+            const isBodyOverflowing = scrollbarWidth > 0;
+
+            if (!isBodyOverflowing && isModalOverflowing && !isRTL() || isBodyOverflowing && !isModalOverflowing && isRTL()) {
+              this._element.style.paddingLeft = `${scrollbarWidth}px`;
+            }
+
+            if (isBodyOverflowing && !isModalOverflowing && !isRTL() || !isBodyOverflowing && isModalOverflowing && isRTL()) {
+              this._element.style.paddingRight = `${scrollbarWidth}px`;
+            }
+          }
+
+          _resetAdjustments() {
+            this._element.style.paddingLeft = '';
+            this._element.style.paddingRight = '';
+          } // Static
+
+
+          static jQueryInterface(config, relatedTarget) {
+            return this.each(function () {
+              const data = Modal.getOrCreateInstance(this, config);
+
+              if (typeof config !== 'string') {
+                return;
+              }
+
+              if (typeof data[config] === 'undefined') {
+                throw new TypeError(`No method named "${config}"`);
+              }
+
+              data[config](relatedTarget);
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(document, EVENT_CLICK_DATA_API$2, SELECTOR_DATA_TOGGLE$2, function (event) {
+          const target = getElementFromSelector(this);
+
+          if (['A', 'AREA'].includes(this.tagName)) {
+            event.preventDefault();
+          }
+
+          EventHandler.one(target, EVENT_SHOW$3, showEvent => {
+            if (showEvent.defaultPrevented) {
+              // only register focus restorer if modal will actually get shown
+              return;
+            }
+
+            EventHandler.one(target, EVENT_HIDDEN$3, () => {
+              if (isVisible(this)) {
+                this.focus();
+              }
+            });
+          }); // avoid conflict when clicking moddal toggler while another one is open
+
+          const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR$1);
+
+          if (allReadyOpen) {
+            Modal.getInstance(allReadyOpen).hide();
+          }
+
+          const data = Modal.getOrCreateInstance(target);
+          data.toggle(this);
+        });
+        enableDismissTrigger(Modal);
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Modal to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Modal);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): offcanvas.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$5 = 'offcanvas';
+        const DATA_KEY$5 = 'bs.offcanvas';
+        const EVENT_KEY$5 = `.${DATA_KEY$5}`;
+        const DATA_API_KEY$2 = '.data-api';
+        const EVENT_LOAD_DATA_API$1 = `load${EVENT_KEY$5}${DATA_API_KEY$2}`;
+        const ESCAPE_KEY = 'Escape';
+        const Default$4 = {
+          backdrop: true,
+          keyboard: true,
+          scroll: false
+        };
+        const DefaultType$4 = {
+          backdrop: 'boolean',
+          keyboard: 'boolean',
+          scroll: 'boolean'
+        };
+        const CLASS_NAME_SHOW$3 = 'show';
+        const CLASS_NAME_BACKDROP = 'offcanvas-backdrop';
+        const OPEN_SELECTOR = '.offcanvas.show';
+        const EVENT_SHOW$2 = `show${EVENT_KEY$5}`;
+        const EVENT_SHOWN$2 = `shown${EVENT_KEY$5}`;
+        const EVENT_HIDE$2 = `hide${EVENT_KEY$5}`;
+        const EVENT_HIDDEN$2 = `hidden${EVENT_KEY$5}`;
+        const EVENT_CLICK_DATA_API$1 = `click${EVENT_KEY$5}${DATA_API_KEY$2}`;
+        const EVENT_KEYDOWN_DISMISS = `keydown.dismiss${EVENT_KEY$5}`;
+        const SELECTOR_DATA_TOGGLE$1 = '[data-bs-toggle="offcanvas"]';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Offcanvas extends BaseComponent {
+          constructor(element, config) {
+            super(element);
+            this._config = this._getConfig(config);
+            this._isShown = false;
+            this._backdrop = this._initializeBackDrop();
+            this._focustrap = this._initializeFocusTrap();
+
+            this._addEventListeners();
+          } // Getters
+
+
+          static get NAME() {
+            return NAME$5;
+          }
+
+          static get Default() {
+            return Default$4;
+          } // Public
+
+
+          toggle(relatedTarget) {
+            return this._isShown ? this.hide() : this.show(relatedTarget);
+          }
+
+          show(relatedTarget) {
+            if (this._isShown) {
+              return;
+            }
+
+            const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$2, {
+              relatedTarget
+            });
+
+            if (showEvent.defaultPrevented) {
+              return;
+            }
+
+            this._isShown = true;
+            this._element.style.visibility = 'visible';
+
+            this._backdrop.show();
+
+            if (!this._config.scroll) {
+              new ScrollBarHelper().hide();
+            }
+
+            this._element.removeAttribute('aria-hidden');
+
+            this._element.setAttribute('aria-modal', true);
+
+            this._element.setAttribute('role', 'dialog');
+
+            this._element.classList.add(CLASS_NAME_SHOW$3);
+
+            const completeCallBack = () => {
+              if (!this._config.scroll) {
+                this._focustrap.activate();
+              }
+
+              EventHandler.trigger(this._element, EVENT_SHOWN$2, {
+                relatedTarget
+              });
+            };
+
+            this._queueCallback(completeCallBack, this._element, true);
+          }
+
+          hide() {
+            if (!this._isShown) {
+              return;
+            }
+
+            const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE$2);
+
+            if (hideEvent.defaultPrevented) {
+              return;
+            }
+
+            this._focustrap.deactivate();
+
+            this._element.blur();
+
+            this._isShown = false;
+
+            this._element.classList.remove(CLASS_NAME_SHOW$3);
+
+            this._backdrop.hide();
+
+            const completeCallback = () => {
+              this._element.setAttribute('aria-hidden', true);
+
+              this._element.removeAttribute('aria-modal');
+
+              this._element.removeAttribute('role');
+
+              this._element.style.visibility = 'hidden';
+
+              if (!this._config.scroll) {
+                new ScrollBarHelper().reset();
+              }
+
+              EventHandler.trigger(this._element, EVENT_HIDDEN$2);
+            };
+
+            this._queueCallback(completeCallback, this._element, true);
+          }
+
+          dispose() {
+            this._backdrop.dispose();
+
+            this._focustrap.deactivate();
+
+            super.dispose();
+          } // Private
+
+
+          _getConfig(config) {
+            config = {
+              ...Default$4,
+              ...Manipulator.getDataAttributes(this._element),
+              ...(typeof config === 'object' ? config : {})
+            };
+            typeCheckConfig(NAME$5, config, DefaultType$4);
+            return config;
+          }
+
+          _initializeBackDrop() {
+            return new Backdrop({
+              className: CLASS_NAME_BACKDROP,
+              isVisible: this._config.backdrop,
+              isAnimated: true,
+              rootElement: this._element.parentNode,
+              clickCallback: () => this.hide()
+            });
+          }
+
+          _initializeFocusTrap() {
+            return new FocusTrap({
+              trapElement: this._element
+            });
+          }
+
+          _addEventListeners() {
+            EventHandler.on(this._element, EVENT_KEYDOWN_DISMISS, event => {
+              if (this._config.keyboard && event.key === ESCAPE_KEY) {
+                this.hide();
+              }
+            });
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Offcanvas.getOrCreateInstance(this, config);
+
+              if (typeof config !== 'string') {
+                return;
+              }
+
+              if (data[config] === undefined || config.startsWith('_') || config === 'constructor') {
+                throw new TypeError(`No method named "${config}"`);
+              }
+
+              data[config](this);
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(document, EVENT_CLICK_DATA_API$1, SELECTOR_DATA_TOGGLE$1, function (event) {
+          const target = getElementFromSelector(this);
+
+          if (['A', 'AREA'].includes(this.tagName)) {
+            event.preventDefault();
+          }
+
+          if (isDisabled(this)) {
+            return;
+          }
+
+          EventHandler.one(target, EVENT_HIDDEN$2, () => {
+            // focus on trigger when it is closed
+            if (isVisible(this)) {
+              this.focus();
+            }
+          }); // avoid conflict when clicking a toggler of an offcanvas, while another is open
+
+          const allReadyOpen = SelectorEngine.findOne(OPEN_SELECTOR);
+
+          if (allReadyOpen && allReadyOpen !== target) {
+            Offcanvas.getInstance(allReadyOpen).hide();
+          }
+
+          const data = Offcanvas.getOrCreateInstance(target);
+          data.toggle(this);
+        });
+        EventHandler.on(window, EVENT_LOAD_DATA_API$1, () => SelectorEngine.find(OPEN_SELECTOR).forEach(el => Offcanvas.getOrCreateInstance(el).show()));
+        enableDismissTrigger(Offcanvas);
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         */
+
+        defineJQueryPlugin(Offcanvas);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): util/sanitizer.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        const uriAttributes = new Set(['background', 'cite', 'href', 'itemtype', 'longdesc', 'poster', 'src', 'xlink:href']);
+        const ARIA_ATTRIBUTE_PATTERN = /^aria-[\w-]*$/i;
+        /**
+         * A pattern that recognizes a commonly useful subset of URLs that are safe.
+         *
+         * Shoutout to Angular https://github.com/angular/angular/blob/12.2.x/packages/core/src/sanitization/url_sanitizer.ts
+         */
+
+        const SAFE_URL_PATTERN = /^(?:(?:https?|mailto|ftp|tel|file|sms):|[^#&/:?]*(?:[#/?]|$))/i;
+        /**
+         * A pattern that matches safe data URLs. Only matches image, video and audio types.
+         *
+         * Shoutout to Angular https://github.com/angular/angular/blob/12.2.x/packages/core/src/sanitization/url_sanitizer.ts
+         */
+
+        const DATA_URL_PATTERN = /^data:(?:image\/(?:bmp|gif|jpeg|jpg|png|tiff|webp)|video\/(?:mpeg|mp4|ogg|webm)|audio\/(?:mp3|oga|ogg|opus));base64,[\d+/a-z]+=*$/i;
+
+        const allowedAttribute = (attribute, allowedAttributeList) => {
+          const attributeName = attribute.nodeName.toLowerCase();
+
+          if (allowedAttributeList.includes(attributeName)) {
+            if (uriAttributes.has(attributeName)) {
+              return Boolean(SAFE_URL_PATTERN.test(attribute.nodeValue) || DATA_URL_PATTERN.test(attribute.nodeValue));
+            }
+
+            return true;
+          }
+
+          const regExp = allowedAttributeList.filter(attributeRegex => attributeRegex instanceof RegExp); // Check if a regular expression validates the attribute.
+
+          for (let i = 0, len = regExp.length; i < len; i++) {
+            if (regExp[i].test(attributeName)) {
+              return true;
+            }
+          }
+
+          return false;
+        };
+
+        const DefaultAllowlist = {
+          // Global attributes allowed on any supplied element below.
+          '*': ['class', 'dir', 'id', 'lang', 'role', ARIA_ATTRIBUTE_PATTERN],
+          a: ['target', 'href', 'title', 'rel'],
+          area: [],
+          b: [],
+          br: [],
+          col: [],
+          code: [],
+          div: [],
+          em: [],
+          hr: [],
+          h1: [],
+          h2: [],
+          h3: [],
+          h4: [],
+          h5: [],
+          h6: [],
+          i: [],
+          img: ['src', 'srcset', 'alt', 'title', 'width', 'height'],
+          li: [],
+          ol: [],
+          p: [],
+          pre: [],
+          s: [],
+          small: [],
+          span: [],
+          sub: [],
+          sup: [],
+          strong: [],
+          u: [],
+          ul: []
+        };
+
+        function sanitizeHtml(unsafeHtml, allowList, sanitizeFn) {
+          if (!unsafeHtml.length) {
+            return unsafeHtml;
+          }
+
+          if (sanitizeFn && typeof sanitizeFn === 'function') {
+            return sanitizeFn(unsafeHtml);
+          }
+
+          const domParser = new window.DOMParser();
+          const createdDocument = domParser.parseFromString(unsafeHtml, 'text/html');
+          const elements = [].concat(...createdDocument.body.querySelectorAll('*'));
+
+          for (let i = 0, len = elements.length; i < len; i++) {
+            const element = elements[i];
+            const elementName = element.nodeName.toLowerCase();
+
+            if (!Object.keys(allowList).includes(elementName)) {
+              element.remove();
+              continue;
+            }
+
+            const attributeList = [].concat(...element.attributes);
+            const allowedAttributes = [].concat(allowList['*'] || [], allowList[elementName] || []);
+            attributeList.forEach(attribute => {
+              if (!allowedAttribute(attribute, allowedAttributes)) {
+                element.removeAttribute(attribute.nodeName);
+              }
+            });
+          }
+
+          return createdDocument.body.innerHTML;
+        }
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): tooltip.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$4 = 'tooltip';
+        const DATA_KEY$4 = 'bs.tooltip';
+        const EVENT_KEY$4 = `.${DATA_KEY$4}`;
+        const CLASS_PREFIX$1 = 'bs-tooltip';
+        const DISALLOWED_ATTRIBUTES = new Set(['sanitize', 'allowList', 'sanitizeFn']);
+        const DefaultType$3 = {
+          animation: 'boolean',
+          template: 'string',
+          title: '(string|element|function)',
+          trigger: 'string',
+          delay: '(number|object)',
+          html: 'boolean',
+          selector: '(string|boolean)',
+          placement: '(string|function)',
+          offset: '(array|string|function)',
+          container: '(string|element|boolean)',
+          fallbackPlacements: 'array',
+          boundary: '(string|element)',
+          customClass: '(string|function)',
+          sanitize: 'boolean',
+          sanitizeFn: '(null|function)',
+          allowList: 'object',
+          popperConfig: '(null|object|function)'
+        };
+        const AttachmentMap = {
+          AUTO: 'auto',
+          TOP: 'top',
+          RIGHT: isRTL() ? 'left' : 'right',
+          BOTTOM: 'bottom',
+          LEFT: isRTL() ? 'right' : 'left'
+        };
+        const Default$3 = {
+          animation: true,
+          template: '<div class="tooltip" role="tooltip">' + '<div class="tooltip-arrow"></div>' + '<div class="tooltip-inner"></div>' + '</div>',
+          trigger: 'hover focus',
+          title: '',
+          delay: 0,
+          html: false,
+          selector: false,
+          placement: 'top',
+          offset: [0, 0],
+          container: false,
+          fallbackPlacements: ['top', 'right', 'bottom', 'left'],
+          boundary: 'clippingParents',
+          customClass: '',
+          sanitize: true,
+          sanitizeFn: null,
+          allowList: DefaultAllowlist,
+          popperConfig: null
+        };
+        const Event$2 = {
+          HIDE: `hide${EVENT_KEY$4}`,
+          HIDDEN: `hidden${EVENT_KEY$4}`,
+          SHOW: `show${EVENT_KEY$4}`,
+          SHOWN: `shown${EVENT_KEY$4}`,
+          INSERTED: `inserted${EVENT_KEY$4}`,
+          CLICK: `click${EVENT_KEY$4}`,
+          FOCUSIN: `focusin${EVENT_KEY$4}`,
+          FOCUSOUT: `focusout${EVENT_KEY$4}`,
+          MOUSEENTER: `mouseenter${EVENT_KEY$4}`,
+          MOUSELEAVE: `mouseleave${EVENT_KEY$4}`
+        };
+        const CLASS_NAME_FADE$2 = 'fade';
+        const CLASS_NAME_MODAL = 'modal';
+        const CLASS_NAME_SHOW$2 = 'show';
+        const HOVER_STATE_SHOW = 'show';
+        const HOVER_STATE_OUT = 'out';
+        const SELECTOR_TOOLTIP_INNER = '.tooltip-inner';
+        const SELECTOR_MODAL = `.${CLASS_NAME_MODAL}`;
+        const EVENT_MODAL_HIDE = 'hide.bs.modal';
+        const TRIGGER_HOVER = 'hover';
+        const TRIGGER_FOCUS = 'focus';
+        const TRIGGER_CLICK = 'click';
+        const TRIGGER_MANUAL = 'manual';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Tooltip extends BaseComponent {
+          constructor(element, config) {
+            if (typeof _popperjs_core__WEBPACK_IMPORTED_MODULE_0__ === 'undefined') {
+              throw new TypeError('Bootstrap\'s tooltips require Popper (https://popper.js.org)');
+            }
+
+            super(element); // private
+
+            this._isEnabled = true;
+            this._timeout = 0;
+            this._hoverState = '';
+            this._activeTrigger = {};
+            this._popper = null; // Protected
+
+            this._config = this._getConfig(config);
+            this.tip = null;
+
+            this._setListeners();
+          } // Getters
+
+
+          static get Default() {
+            return Default$3;
+          }
+
+          static get NAME() {
+            return NAME$4;
+          }
+
+          static get Event() {
+            return Event$2;
+          }
+
+          static get DefaultType() {
+            return DefaultType$3;
+          } // Public
+
+
+          enable() {
+            this._isEnabled = true;
+          }
+
+          disable() {
+            this._isEnabled = false;
+          }
+
+          toggleEnabled() {
+            this._isEnabled = !this._isEnabled;
+          }
+
+          toggle(event) {
+            if (!this._isEnabled) {
+              return;
+            }
+
+            if (event) {
+              const context = this._initializeOnDelegatedTarget(event);
+
+              context._activeTrigger.click = !context._activeTrigger.click;
+
+              if (context._isWithActiveTrigger()) {
+                context._enter(null, context);
+              } else {
+                context._leave(null, context);
+              }
+            } else {
+              if (this.getTipElement().classList.contains(CLASS_NAME_SHOW$2)) {
+                this._leave(null, this);
+
+                return;
+              }
+
+              this._enter(null, this);
+            }
+          }
+
+          dispose() {
+            clearTimeout(this._timeout);
+            EventHandler.off(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
+
+            if (this.tip) {
+              this.tip.remove();
+            }
+
+            this._disposePopper();
+
+            super.dispose();
+          }
+
+          show() {
+            if (this._element.style.display === 'none') {
+              throw new Error('Please use show on visible elements');
+            }
+
+            if (!(this.isWithContent() && this._isEnabled)) {
+              return;
+            }
+
+            const showEvent = EventHandler.trigger(this._element, this.constructor.Event.SHOW);
+            const shadowRoot = findShadowRoot(this._element);
+            const isInTheDom = shadowRoot === null ? this._element.ownerDocument.documentElement.contains(this._element) : shadowRoot.contains(this._element);
+
+            if (showEvent.defaultPrevented || !isInTheDom) {
+              return;
+            } // A trick to recreate a tooltip in case a new title is given by using the NOT documented `data-bs-original-title`
+            // This will be removed later in favor of a `setContent` method
+
+
+            if (this.constructor.NAME === 'tooltip' && this.tip && this.getTitle() !== this.tip.querySelector(SELECTOR_TOOLTIP_INNER).innerHTML) {
+              this._disposePopper();
+
+              this.tip.remove();
+              this.tip = null;
+            }
+
+            const tip = this.getTipElement();
+            const tipId = getUID(this.constructor.NAME);
+            tip.setAttribute('id', tipId);
+
+            this._element.setAttribute('aria-describedby', tipId);
+
+            if (this._config.animation) {
+              tip.classList.add(CLASS_NAME_FADE$2);
+            }
+
+            const placement = typeof this._config.placement === 'function' ? this._config.placement.call(this, tip, this._element) : this._config.placement;
+
+            const attachment = this._getAttachment(placement);
+
+            this._addAttachmentClass(attachment);
+
+            const {
+              container
+            } = this._config;
+            Data.set(tip, this.constructor.DATA_KEY, this);
+
+            if (!this._element.ownerDocument.documentElement.contains(this.tip)) {
+              container.append(tip);
+              EventHandler.trigger(this._element, this.constructor.Event.INSERTED);
+            }
+
+            if (this._popper) {
+              this._popper.update();
+            } else {
+              this._popper = _popperjs_core__WEBPACK_IMPORTED_MODULE_1__.createPopper(this._element, tip, this._getPopperConfig(attachment));
+            }
+
+            tip.classList.add(CLASS_NAME_SHOW$2);
+
+            const customClass = this._resolvePossibleFunction(this._config.customClass);
+
+            if (customClass) {
+              tip.classList.add(...customClass.split(' '));
+            } // If this is a touch-enabled device we add extra
+            // empty mouseover listeners to the body's immediate children;
+            // only needed because of broken event delegation on iOS
+            // https://www.quirksmode.org/blog/archives/2014/02/mouse_event_bub.html
+
+
+            if ('ontouchstart' in document.documentElement) {
+              [].concat(...document.body.children).forEach(element => {
+                EventHandler.on(element, 'mouseover', noop);
+              });
+            }
+
+            const complete = () => {
+              const prevHoverState = this._hoverState;
+              this._hoverState = null;
+              EventHandler.trigger(this._element, this.constructor.Event.SHOWN);
+
+              if (prevHoverState === HOVER_STATE_OUT) {
+                this._leave(null, this);
+              }
+            };
+
+            const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE$2);
+
+            this._queueCallback(complete, this.tip, isAnimated);
+          }
+
+          hide() {
+            if (!this._popper) {
+              return;
+            }
+
+            const tip = this.getTipElement();
+
+            const complete = () => {
+              if (this._isWithActiveTrigger()) {
+                return;
+              }
+
+              if (this._hoverState !== HOVER_STATE_SHOW) {
+                tip.remove();
+              }
+
+              this._cleanTipClass();
+
+              this._element.removeAttribute('aria-describedby');
+
+              EventHandler.trigger(this._element, this.constructor.Event.HIDDEN);
+
+              this._disposePopper();
+            };
+
+            const hideEvent = EventHandler.trigger(this._element, this.constructor.Event.HIDE);
+
+            if (hideEvent.defaultPrevented) {
+              return;
+            }
+
+            tip.classList.remove(CLASS_NAME_SHOW$2); // If this is a touch-enabled device we remove the extra
+            // empty mouseover listeners we added for iOS support
+
+            if ('ontouchstart' in document.documentElement) {
+              [].concat(...document.body.children).forEach(element => EventHandler.off(element, 'mouseover', noop));
+            }
+
+            this._activeTrigger[TRIGGER_CLICK] = false;
+            this._activeTrigger[TRIGGER_FOCUS] = false;
+            this._activeTrigger[TRIGGER_HOVER] = false;
+            const isAnimated = this.tip.classList.contains(CLASS_NAME_FADE$2);
+
+            this._queueCallback(complete, this.tip, isAnimated);
+
+            this._hoverState = '';
+          }
+
+          update() {
+            if (this._popper !== null) {
+              this._popper.update();
+            }
+          } // Protected
+
+
+          isWithContent() {
+            return Boolean(this.getTitle());
+          }
+
+          getTipElement() {
+            if (this.tip) {
+              return this.tip;
+            }
+
+            const element = document.createElement('div');
+            element.innerHTML = this._config.template;
+            const tip = element.children[0];
+            this.setContent(tip);
+            tip.classList.remove(CLASS_NAME_FADE$2, CLASS_NAME_SHOW$2);
+            this.tip = tip;
+            return this.tip;
+          }
+
+          setContent(tip) {
+            this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TOOLTIP_INNER);
+          }
+
+          _sanitizeAndSetContent(template, content, selector) {
+            const templateElement = SelectorEngine.findOne(selector, template);
+
+            if (!content && templateElement) {
+              templateElement.remove();
+              return;
+            } // we use append for html objects to maintain js events
+
+
+            this.setElementContent(templateElement, content);
+          }
+
+          setElementContent(element, content) {
+            if (element === null) {
+              return;
+            }
+
+            if (isElement(content)) {
+              content = getElement(content); // content is a DOM node or a jQuery
+
+              if (this._config.html) {
+                if (content.parentNode !== element) {
+                  element.innerHTML = '';
+                  element.append(content);
+                }
+              } else {
+                element.textContent = content.textContent;
+              }
+
+              return;
+            }
+
+            if (this._config.html) {
+              if (this._config.sanitize) {
+                content = sanitizeHtml(content, this._config.allowList, this._config.sanitizeFn);
+              }
+
+              element.innerHTML = content;
+            } else {
+              element.textContent = content;
+            }
+          }
+
+          getTitle() {
+            const title = this._element.getAttribute('data-bs-original-title') || this._config.title;
+
+            return this._resolvePossibleFunction(title);
+          }
+
+          updateAttachment(attachment) {
+            if (attachment === 'right') {
+              return 'end';
+            }
+
+            if (attachment === 'left') {
+              return 'start';
+            }
+
+            return attachment;
+          } // Private
+
+
+          _initializeOnDelegatedTarget(event, context) {
+            return context || this.constructor.getOrCreateInstance(event.delegateTarget, this._getDelegateConfig());
+          }
+
+          _getOffset() {
+            const {
+              offset
+            } = this._config;
+
+            if (typeof offset === 'string') {
+              return offset.split(',').map(val => Number.parseInt(val, 10));
+            }
+
+            if (typeof offset === 'function') {
+              return popperData => offset(popperData, this._element);
+            }
+
+            return offset;
+          }
+
+          _resolvePossibleFunction(content) {
+            return typeof content === 'function' ? content.call(this._element) : content;
+          }
+
+          _getPopperConfig(attachment) {
+            const defaultBsPopperConfig = {
+              placement: attachment,
+              modifiers: [{
+                name: 'flip',
+                options: {
+                  fallbackPlacements: this._config.fallbackPlacements
+                }
+              }, {
+                name: 'offset',
+                options: {
+                  offset: this._getOffset()
+                }
+              }, {
+                name: 'preventOverflow',
+                options: {
+                  boundary: this._config.boundary
+                }
+              }, {
+                name: 'arrow',
+                options: {
+                  element: `.${this.constructor.NAME}-arrow`
+                }
+              }, {
+                name: 'onChange',
+                enabled: true,
+                phase: 'afterWrite',
+                fn: data => this._handlePopperPlacementChange(data)
+              }],
+              onFirstUpdate: data => {
+                if (data.options.placement !== data.placement) {
+                  this._handlePopperPlacementChange(data);
+                }
+              }
+            };
+            return {
+              ...defaultBsPopperConfig,
+              ...(typeof this._config.popperConfig === 'function' ? this._config.popperConfig(defaultBsPopperConfig) : this._config.popperConfig)
+            };
+          }
+
+          _addAttachmentClass(attachment) {
+            this.getTipElement().classList.add(`${this._getBasicClassPrefix()}-${this.updateAttachment(attachment)}`);
+          }
+
+          _getAttachment(placement) {
+            return AttachmentMap[placement.toUpperCase()];
+          }
+
+          _setListeners() {
+            const triggers = this._config.trigger.split(' ');
+
+            triggers.forEach(trigger => {
+              if (trigger === 'click') {
+                EventHandler.on(this._element, this.constructor.Event.CLICK, this._config.selector, event => this.toggle(event));
+              } else if (trigger !== TRIGGER_MANUAL) {
+                const eventIn = trigger === TRIGGER_HOVER ? this.constructor.Event.MOUSEENTER : this.constructor.Event.FOCUSIN;
+                const eventOut = trigger === TRIGGER_HOVER ? this.constructor.Event.MOUSELEAVE : this.constructor.Event.FOCUSOUT;
+                EventHandler.on(this._element, eventIn, this._config.selector, event => this._enter(event));
+                EventHandler.on(this._element, eventOut, this._config.selector, event => this._leave(event));
+              }
+            });
+
+            this._hideModalHandler = () => {
+              if (this._element) {
+                this.hide();
+              }
+            };
+
+            EventHandler.on(this._element.closest(SELECTOR_MODAL), EVENT_MODAL_HIDE, this._hideModalHandler);
+
+            if (this._config.selector) {
+              this._config = {
+                ...this._config,
+                trigger: 'manual',
+                selector: ''
+              };
+            } else {
+              this._fixTitle();
+            }
+          }
+
+          _fixTitle() {
+            const title = this._element.getAttribute('title');
+
+            const originalTitleType = typeof this._element.getAttribute('data-bs-original-title');
+
+            if (title || originalTitleType !== 'string') {
+              this._element.setAttribute('data-bs-original-title', title || '');
+
+              if (title && !this._element.getAttribute('aria-label') && !this._element.textContent) {
+                this._element.setAttribute('aria-label', title);
+              }
+
+              this._element.setAttribute('title', '');
+            }
+          }
+
+          _enter(event, context) {
+            context = this._initializeOnDelegatedTarget(event, context);
+
+            if (event) {
+              context._activeTrigger[event.type === 'focusin' ? TRIGGER_FOCUS : TRIGGER_HOVER] = true;
+            }
+
+            if (context.getTipElement().classList.contains(CLASS_NAME_SHOW$2) || context._hoverState === HOVER_STATE_SHOW) {
+              context._hoverState = HOVER_STATE_SHOW;
+              return;
+            }
+
+            clearTimeout(context._timeout);
+            context._hoverState = HOVER_STATE_SHOW;
+
+            if (!context._config.delay || !context._config.delay.show) {
+              context.show();
+              return;
+            }
+
+            context._timeout = setTimeout(() => {
+              if (context._hoverState === HOVER_STATE_SHOW) {
+                context.show();
+              }
+            }, context._config.delay.show);
+          }
+
+          _leave(event, context) {
+            context = this._initializeOnDelegatedTarget(event, context);
+
+            if (event) {
+              context._activeTrigger[event.type === 'focusout' ? TRIGGER_FOCUS : TRIGGER_HOVER] = context._element.contains(event.relatedTarget);
+            }
+
+            if (context._isWithActiveTrigger()) {
+              return;
+            }
+
+            clearTimeout(context._timeout);
+            context._hoverState = HOVER_STATE_OUT;
+
+            if (!context._config.delay || !context._config.delay.hide) {
+              context.hide();
+              return;
+            }
+
+            context._timeout = setTimeout(() => {
+              if (context._hoverState === HOVER_STATE_OUT) {
+                context.hide();
+              }
+            }, context._config.delay.hide);
+          }
+
+          _isWithActiveTrigger() {
+            for (const trigger in this._activeTrigger) {
+              if (this._activeTrigger[trigger]) {
+                return true;
+              }
+            }
+
+            return false;
+          }
+
+          _getConfig(config) {
+            const dataAttributes = Manipulator.getDataAttributes(this._element);
+            Object.keys(dataAttributes).forEach(dataAttr => {
+              if (DISALLOWED_ATTRIBUTES.has(dataAttr)) {
+                delete dataAttributes[dataAttr];
+              }
+            });
+            config = {
+              ...this.constructor.Default,
+              ...dataAttributes,
+              ...(typeof config === 'object' && config ? config : {})
+            };
+            config.container = config.container === false ? document.body : getElement(config.container);
+
+            if (typeof config.delay === 'number') {
+              config.delay = {
+                show: config.delay,
+                hide: config.delay
+              };
+            }
+
+            if (typeof config.title === 'number') {
+              config.title = config.title.toString();
+            }
+
+            if (typeof config.content === 'number') {
+              config.content = config.content.toString();
+            }
+
+            typeCheckConfig(NAME$4, config, this.constructor.DefaultType);
+
+            if (config.sanitize) {
+              config.template = sanitizeHtml(config.template, config.allowList, config.sanitizeFn);
+            }
+
+            return config;
+          }
+
+          _getDelegateConfig() {
+            const config = {};
+
+            for (const key in this._config) {
+              if (this.constructor.Default[key] !== this._config[key]) {
+                config[key] = this._config[key];
+              }
+            } // In the future can be replaced with:
+            // const keysWithDifferentValues = Object.entries(this._config).filter(entry => this.constructor.Default[entry[0]] !== this._config[entry[0]])
+            // `Object.fromEntries(keysWithDifferentValues)`
+
+
+            return config;
+          }
+
+          _cleanTipClass() {
+            const tip = this.getTipElement();
+            const basicClassPrefixRegex = new RegExp(`(^|\\s)${this._getBasicClassPrefix()}\\S+`, 'g');
+            const tabClass = tip.getAttribute('class').match(basicClassPrefixRegex);
+
+            if (tabClass !== null && tabClass.length > 0) {
+              tabClass.map(token => token.trim()).forEach(tClass => tip.classList.remove(tClass));
+            }
+          }
+
+          _getBasicClassPrefix() {
+            return CLASS_PREFIX$1;
+          }
+
+          _handlePopperPlacementChange(popperData) {
+            const {
+              state
+            } = popperData;
+
+            if (!state) {
+              return;
+            }
+
+            this.tip = state.elements.popper;
+
+            this._cleanTipClass();
+
+            this._addAttachmentClass(this._getAttachment(state.placement));
+          }
+
+          _disposePopper() {
+            if (this._popper) {
+              this._popper.destroy();
+
+              this._popper = null;
+            }
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Tooltip.getOrCreateInstance(this, config);
+
+              if (typeof config === 'string') {
+                if (typeof data[config] === 'undefined') {
+                  throw new TypeError(`No method named "${config}"`);
+                }
+
+                data[config]();
+              }
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Tooltip to jQuery only if jQuery is present
+         */
+
+
+        defineJQueryPlugin(Tooltip);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): popover.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$3 = 'popover';
+        const DATA_KEY$3 = 'bs.popover';
+        const EVENT_KEY$3 = `.${DATA_KEY$3}`;
+        const CLASS_PREFIX = 'bs-popover';
+        const Default$2 = {
+          ...Tooltip.Default,
+          placement: 'right',
+          offset: [0, 8],
+          trigger: 'click',
+          content: '',
+          template: '<div class="popover" role="tooltip">' + '<div class="popover-arrow"></div>' + '<h3 class="popover-header"></h3>' + '<div class="popover-body"></div>' + '</div>'
+        };
+        const DefaultType$2 = {
+          ...Tooltip.DefaultType,
+          content: '(string|element|function)'
+        };
+        const Event$1 = {
+          HIDE: `hide${EVENT_KEY$3}`,
+          HIDDEN: `hidden${EVENT_KEY$3}`,
+          SHOW: `show${EVENT_KEY$3}`,
+          SHOWN: `shown${EVENT_KEY$3}`,
+          INSERTED: `inserted${EVENT_KEY$3}`,
+          CLICK: `click${EVENT_KEY$3}`,
+          FOCUSIN: `focusin${EVENT_KEY$3}`,
+          FOCUSOUT: `focusout${EVENT_KEY$3}`,
+          MOUSEENTER: `mouseenter${EVENT_KEY$3}`,
+          MOUSELEAVE: `mouseleave${EVENT_KEY$3}`
+        };
+        const SELECTOR_TITLE = '.popover-header';
+        const SELECTOR_CONTENT = '.popover-body';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Popover extends Tooltip {
+          // Getters
+          static get Default() {
+            return Default$2;
+          }
+
+          static get NAME() {
+            return NAME$3;
+          }
+
+          static get Event() {
+            return Event$1;
+          }
+
+          static get DefaultType() {
+            return DefaultType$2;
+          } // Overrides
+
+
+          isWithContent() {
+            return this.getTitle() || this._getContent();
+          }
+
+          setContent(tip) {
+            this._sanitizeAndSetContent(tip, this.getTitle(), SELECTOR_TITLE);
+
+            this._sanitizeAndSetContent(tip, this._getContent(), SELECTOR_CONTENT);
+          } // Private
+
+
+          _getContent() {
+            return this._resolvePossibleFunction(this._config.content);
+          }
+
+          _getBasicClassPrefix() {
+            return CLASS_PREFIX;
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Popover.getOrCreateInstance(this, config);
+
+              if (typeof config === 'string') {
+                if (typeof data[config] === 'undefined') {
+                  throw new TypeError(`No method named "${config}"`);
+                }
+
+                data[config]();
+              }
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Popover to jQuery only if jQuery is present
+         */
+
+
+        defineJQueryPlugin(Popover);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): scrollspy.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$2 = 'scrollspy';
+        const DATA_KEY$2 = 'bs.scrollspy';
+        const EVENT_KEY$2 = `.${DATA_KEY$2}`;
+        const DATA_API_KEY$1 = '.data-api';
+        const Default$1 = {
+          offset: 10,
+          method: 'auto',
+          target: ''
+        };
+        const DefaultType$1 = {
+          offset: 'number',
+          method: 'string',
+          target: '(string|element)'
+        };
+        const EVENT_ACTIVATE = `activate${EVENT_KEY$2}`;
+        const EVENT_SCROLL = `scroll${EVENT_KEY$2}`;
+        const EVENT_LOAD_DATA_API = `load${EVENT_KEY$2}${DATA_API_KEY$1}`;
+        const CLASS_NAME_DROPDOWN_ITEM = 'dropdown-item';
+        const CLASS_NAME_ACTIVE$1 = 'active';
+        const SELECTOR_DATA_SPY = '[data-bs-spy="scroll"]';
+        const SELECTOR_NAV_LIST_GROUP$1 = '.nav, .list-group';
+        const SELECTOR_NAV_LINKS = '.nav-link';
+        const SELECTOR_NAV_ITEMS = '.nav-item';
+        const SELECTOR_LIST_ITEMS = '.list-group-item';
+        const SELECTOR_LINK_ITEMS = `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}, .${CLASS_NAME_DROPDOWN_ITEM}`;
+        const SELECTOR_DROPDOWN$1 = '.dropdown';
+        const SELECTOR_DROPDOWN_TOGGLE$1 = '.dropdown-toggle';
+        const METHOD_OFFSET = 'offset';
+        const METHOD_POSITION = 'position';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class ScrollSpy extends BaseComponent {
+          constructor(element, config) {
+            super(element);
+            this._scrollElement = this._element.tagName === 'BODY' ? window : this._element;
+            this._config = this._getConfig(config);
+            this._offsets = [];
+            this._targets = [];
+            this._activeTarget = null;
+            this._scrollHeight = 0;
+            EventHandler.on(this._scrollElement, EVENT_SCROLL, () => this._process());
+            this.refresh();
+
+            this._process();
+          } // Getters
+
+
+          static get Default() {
+            return Default$1;
+          }
+
+          static get NAME() {
+            return NAME$2;
+          } // Public
+
+
+          refresh() {
+            const autoMethod = this._scrollElement === this._scrollElement.window ? METHOD_OFFSET : METHOD_POSITION;
+            const offsetMethod = this._config.method === 'auto' ? autoMethod : this._config.method;
+            const offsetBase = offsetMethod === METHOD_POSITION ? this._getScrollTop() : 0;
+            this._offsets = [];
+            this._targets = [];
+            this._scrollHeight = this._getScrollHeight();
+            const targets = SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target);
+            targets.map(element => {
+              const targetSelector = getSelectorFromElement(element);
+              const target = targetSelector ? SelectorEngine.findOne(targetSelector) : null;
+
+              if (target) {
+                const targetBCR = target.getBoundingClientRect();
+
+                if (targetBCR.width || targetBCR.height) {
+                  return [Manipulator[offsetMethod](target).top + offsetBase, targetSelector];
+                }
+              }
+
+              return null;
+            }).filter(item => item).sort((a, b) => a[0] - b[0]).forEach(item => {
+              this._offsets.push(item[0]);
+
+              this._targets.push(item[1]);
+            });
+          }
+
+          dispose() {
+            EventHandler.off(this._scrollElement, EVENT_KEY$2);
+            super.dispose();
+          } // Private
+
+
+          _getConfig(config) {
+            config = {
+              ...Default$1,
+              ...Manipulator.getDataAttributes(this._element),
+              ...(typeof config === 'object' && config ? config : {})
+            };
+            config.target = getElement(config.target) || document.documentElement;
+            typeCheckConfig(NAME$2, config, DefaultType$1);
+            return config;
+          }
+
+          _getScrollTop() {
+            return this._scrollElement === window ? this._scrollElement.pageYOffset : this._scrollElement.scrollTop;
+          }
+
+          _getScrollHeight() {
+            return this._scrollElement.scrollHeight || Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+          }
+
+          _getOffsetHeight() {
+            return this._scrollElement === window ? window.innerHeight : this._scrollElement.getBoundingClientRect().height;
+          }
+
+          _process() {
+            const scrollTop = this._getScrollTop() + this._config.offset;
+
+            const scrollHeight = this._getScrollHeight();
+
+            const maxScroll = this._config.offset + scrollHeight - this._getOffsetHeight();
+
+            if (this._scrollHeight !== scrollHeight) {
+              this.refresh();
+            }
+
+            if (scrollTop >= maxScroll) {
+              const target = this._targets[this._targets.length - 1];
+
+              if (this._activeTarget !== target) {
+                this._activate(target);
+              }
+
+              return;
+            }
+
+            if (this._activeTarget && scrollTop < this._offsets[0] && this._offsets[0] > 0) {
+              this._activeTarget = null;
+
+              this._clear();
+
+              return;
+            }
+
+            for (let i = this._offsets.length; i--;) {
+              const isActiveTarget = this._activeTarget !== this._targets[i] && scrollTop >= this._offsets[i] && (typeof this._offsets[i + 1] === 'undefined' || scrollTop < this._offsets[i + 1]);
+
+              if (isActiveTarget) {
+                this._activate(this._targets[i]);
+              }
+            }
+          }
+
+          _activate(target) {
+            this._activeTarget = target;
+
+            this._clear();
+
+            const queries = SELECTOR_LINK_ITEMS.split(',').map(selector => `${selector}[data-bs-target="${target}"],${selector}[href="${target}"]`);
+            const link = SelectorEngine.findOne(queries.join(','), this._config.target);
+            link.classList.add(CLASS_NAME_ACTIVE$1);
+
+            if (link.classList.contains(CLASS_NAME_DROPDOWN_ITEM)) {
+              SelectorEngine.findOne(SELECTOR_DROPDOWN_TOGGLE$1, link.closest(SELECTOR_DROPDOWN$1)).classList.add(CLASS_NAME_ACTIVE$1);
+            } else {
+              SelectorEngine.parents(link, SELECTOR_NAV_LIST_GROUP$1).forEach(listGroup => {
+                // Set triggered links parents as active
+                // With both <ul> and <nav> markup a parent is the previous sibling of any nav ancestor
+                SelectorEngine.prev(listGroup, `${SELECTOR_NAV_LINKS}, ${SELECTOR_LIST_ITEMS}`).forEach(item => item.classList.add(CLASS_NAME_ACTIVE$1)); // Handle special case when .nav-link is inside .nav-item
+
+                SelectorEngine.prev(listGroup, SELECTOR_NAV_ITEMS).forEach(navItem => {
+                  SelectorEngine.children(navItem, SELECTOR_NAV_LINKS).forEach(item => item.classList.add(CLASS_NAME_ACTIVE$1));
+                });
+              });
+            }
+
+            EventHandler.trigger(this._scrollElement, EVENT_ACTIVATE, {
+              relatedTarget: target
+            });
+          }
+
+          _clear() {
+            SelectorEngine.find(SELECTOR_LINK_ITEMS, this._config.target).filter(node => node.classList.contains(CLASS_NAME_ACTIVE$1)).forEach(node => node.classList.remove(CLASS_NAME_ACTIVE$1));
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = ScrollSpy.getOrCreateInstance(this, config);
+
+              if (typeof config !== 'string') {
+                return;
+              }
+
+              if (typeof data[config] === 'undefined') {
+                throw new TypeError(`No method named "${config}"`);
+              }
+
+              data[config]();
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(window, EVENT_LOAD_DATA_API, () => {
+          SelectorEngine.find(SELECTOR_DATA_SPY).forEach(spy => new ScrollSpy(spy));
+        });
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .ScrollSpy to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(ScrollSpy);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): tab.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME$1 = 'tab';
+        const DATA_KEY$1 = 'bs.tab';
+        const EVENT_KEY$1 = `.${DATA_KEY$1}`;
+        const DATA_API_KEY = '.data-api';
+        const EVENT_HIDE$1 = `hide${EVENT_KEY$1}`;
+        const EVENT_HIDDEN$1 = `hidden${EVENT_KEY$1}`;
+        const EVENT_SHOW$1 = `show${EVENT_KEY$1}`;
+        const EVENT_SHOWN$1 = `shown${EVENT_KEY$1}`;
+        const EVENT_CLICK_DATA_API = `click${EVENT_KEY$1}${DATA_API_KEY}`;
+        const CLASS_NAME_DROPDOWN_MENU = 'dropdown-menu';
+        const CLASS_NAME_ACTIVE = 'active';
+        const CLASS_NAME_FADE$1 = 'fade';
+        const CLASS_NAME_SHOW$1 = 'show';
+        const SELECTOR_DROPDOWN = '.dropdown';
+        const SELECTOR_NAV_LIST_GROUP = '.nav, .list-group';
+        const SELECTOR_ACTIVE = '.active';
+        const SELECTOR_ACTIVE_UL = ':scope > li > .active';
+        const SELECTOR_DATA_TOGGLE = '[data-bs-toggle="tab"], [data-bs-toggle="pill"], [data-bs-toggle="list"]';
+        const SELECTOR_DROPDOWN_TOGGLE = '.dropdown-toggle';
+        const SELECTOR_DROPDOWN_ACTIVE_CHILD = ':scope > .dropdown-menu .active';
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Tab extends BaseComponent {
+          // Getters
+          static get NAME() {
+            return NAME$1;
+          } // Public
+
+
+          show() {
+            if (this._element.parentNode && this._element.parentNode.nodeType === Node.ELEMENT_NODE && this._element.classList.contains(CLASS_NAME_ACTIVE)) {
+              return;
+            }
+
+            let previous;
+            const target = getElementFromSelector(this._element);
+
+            const listElement = this._element.closest(SELECTOR_NAV_LIST_GROUP);
+
+            if (listElement) {
+              const itemSelector = listElement.nodeName === 'UL' || listElement.nodeName === 'OL' ? SELECTOR_ACTIVE_UL : SELECTOR_ACTIVE;
+              previous = SelectorEngine.find(itemSelector, listElement);
+              previous = previous[previous.length - 1];
+            }
+
+            const hideEvent = previous ? EventHandler.trigger(previous, EVENT_HIDE$1, {
+              relatedTarget: this._element
+            }) : null;
+            const showEvent = EventHandler.trigger(this._element, EVENT_SHOW$1, {
+              relatedTarget: previous
+            });
+
+            if (showEvent.defaultPrevented || hideEvent !== null && hideEvent.defaultPrevented) {
+              return;
+            }
+
+            this._activate(this._element, listElement);
+
+            const complete = () => {
+              EventHandler.trigger(previous, EVENT_HIDDEN$1, {
+                relatedTarget: this._element
+              });
+              EventHandler.trigger(this._element, EVENT_SHOWN$1, {
+                relatedTarget: previous
+              });
+            };
+
+            if (target) {
+              this._activate(target, target.parentNode, complete);
+            } else {
+              complete();
+            }
+          } // Private
+
+
+          _activate(element, container, callback) {
+            const activeElements = container && (container.nodeName === 'UL' || container.nodeName === 'OL') ? SelectorEngine.find(SELECTOR_ACTIVE_UL, container) : SelectorEngine.children(container, SELECTOR_ACTIVE);
+            const active = activeElements[0];
+            const isTransitioning = callback && active && active.classList.contains(CLASS_NAME_FADE$1);
+
+            const complete = () => this._transitionComplete(element, active, callback);
+
+            if (active && isTransitioning) {
+              active.classList.remove(CLASS_NAME_SHOW$1);
+
+              this._queueCallback(complete, element, true);
+            } else {
+              complete();
+            }
+          }
+
+          _transitionComplete(element, active, callback) {
+            if (active) {
+              active.classList.remove(CLASS_NAME_ACTIVE);
+              const dropdownChild = SelectorEngine.findOne(SELECTOR_DROPDOWN_ACTIVE_CHILD, active.parentNode);
+
+              if (dropdownChild) {
+                dropdownChild.classList.remove(CLASS_NAME_ACTIVE);
+              }
+
+              if (active.getAttribute('role') === 'tab') {
+                active.setAttribute('aria-selected', false);
+              }
+            }
+
+            element.classList.add(CLASS_NAME_ACTIVE);
+
+            if (element.getAttribute('role') === 'tab') {
+              element.setAttribute('aria-selected', true);
+            }
+
+            reflow(element);
+
+            if (element.classList.contains(CLASS_NAME_FADE$1)) {
+              element.classList.add(CLASS_NAME_SHOW$1);
+            }
+
+            let parent = element.parentNode;
+
+            if (parent && parent.nodeName === 'LI') {
+              parent = parent.parentNode;
+            }
+
+            if (parent && parent.classList.contains(CLASS_NAME_DROPDOWN_MENU)) {
+              const dropdownElement = element.closest(SELECTOR_DROPDOWN);
+
+              if (dropdownElement) {
+                SelectorEngine.find(SELECTOR_DROPDOWN_TOGGLE, dropdownElement).forEach(dropdown => dropdown.classList.add(CLASS_NAME_ACTIVE));
+              }
+
+              element.setAttribute('aria-expanded', true);
+            }
+
+            if (callback) {
+              callback();
+            }
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Tab.getOrCreateInstance(this);
+
+              if (typeof config === 'string') {
+                if (typeof data[config] === 'undefined') {
+                  throw new TypeError(`No method named "${config}"`);
+                }
+
+                data[config]();
+              }
+            });
+          }
+
+        }
+        /**
+         * ------------------------------------------------------------------------
+         * Data Api implementation
+         * ------------------------------------------------------------------------
+         */
+
+
+        EventHandler.on(document, EVENT_CLICK_DATA_API, SELECTOR_DATA_TOGGLE, function (event) {
+          if (['A', 'AREA'].includes(this.tagName)) {
+            event.preventDefault();
+          }
+
+          if (isDisabled(this)) {
+            return;
+          }
+
+          const data = Tab.getOrCreateInstance(this);
+          data.show();
+        });
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Tab to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Tab);
+
+        /**
+         * --------------------------------------------------------------------------
+         * Bootstrap (v5.1.3): toast.js
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+         * --------------------------------------------------------------------------
+         */
+        /**
+         * ------------------------------------------------------------------------
+         * Constants
+         * ------------------------------------------------------------------------
+         */
+
+        const NAME = 'toast';
+        const DATA_KEY = 'bs.toast';
+        const EVENT_KEY = `.${DATA_KEY}`;
+        const EVENT_MOUSEOVER = `mouseover${EVENT_KEY}`;
+        const EVENT_MOUSEOUT = `mouseout${EVENT_KEY}`;
+        const EVENT_FOCUSIN = `focusin${EVENT_KEY}`;
+        const EVENT_FOCUSOUT = `focusout${EVENT_KEY}`;
+        const EVENT_HIDE = `hide${EVENT_KEY}`;
+        const EVENT_HIDDEN = `hidden${EVENT_KEY}`;
+        const EVENT_SHOW = `show${EVENT_KEY}`;
+        const EVENT_SHOWN = `shown${EVENT_KEY}`;
+        const CLASS_NAME_FADE = 'fade';
+        const CLASS_NAME_HIDE = 'hide'; // @deprecated - kept here only for backwards compatibility
+
+        const CLASS_NAME_SHOW = 'show';
+        const CLASS_NAME_SHOWING = 'showing';
+        const DefaultType = {
+          animation: 'boolean',
+          autohide: 'boolean',
+          delay: 'number'
+        };
+        const Default = {
+          animation: true,
+          autohide: true,
+          delay: 5000
+        };
+        /**
+         * ------------------------------------------------------------------------
+         * Class Definition
+         * ------------------------------------------------------------------------
+         */
+
+        class Toast extends BaseComponent {
+          constructor(element, config) {
+            super(element);
+            this._config = this._getConfig(config);
+            this._timeout = null;
+            this._hasMouseInteraction = false;
+            this._hasKeyboardInteraction = false;
+
+            this._setListeners();
+          } // Getters
+
+
+          static get DefaultType() {
+            return DefaultType;
+          }
+
+          static get Default() {
+            return Default;
+          }
+
+          static get NAME() {
+            return NAME;
+          } // Public
+
+
+          show() {
+            const showEvent = EventHandler.trigger(this._element, EVENT_SHOW);
+
+            if (showEvent.defaultPrevented) {
+              return;
+            }
+
+            this._clearTimeout();
+
+            if (this._config.animation) {
+              this._element.classList.add(CLASS_NAME_FADE);
+            }
+
+            const complete = () => {
+              this._element.classList.remove(CLASS_NAME_SHOWING);
+
+              EventHandler.trigger(this._element, EVENT_SHOWN);
+
+              this._maybeScheduleHide();
+            };
+
+            this._element.classList.remove(CLASS_NAME_HIDE); // @deprecated
+
+
+            reflow(this._element);
+
+            this._element.classList.add(CLASS_NAME_SHOW);
+
+            this._element.classList.add(CLASS_NAME_SHOWING);
+
+            this._queueCallback(complete, this._element, this._config.animation);
+          }
+
+          hide() {
+            if (!this._element.classList.contains(CLASS_NAME_SHOW)) {
+              return;
+            }
+
+            const hideEvent = EventHandler.trigger(this._element, EVENT_HIDE);
+
+            if (hideEvent.defaultPrevented) {
+              return;
+            }
+
+            const complete = () => {
+              this._element.classList.add(CLASS_NAME_HIDE); // @deprecated
+
+
+              this._element.classList.remove(CLASS_NAME_SHOWING);
+
+              this._element.classList.remove(CLASS_NAME_SHOW);
+
+              EventHandler.trigger(this._element, EVENT_HIDDEN);
+            };
+
+            this._element.classList.add(CLASS_NAME_SHOWING);
+
+            this._queueCallback(complete, this._element, this._config.animation);
+          }
+
+          dispose() {
+            this._clearTimeout();
+
+            if (this._element.classList.contains(CLASS_NAME_SHOW)) {
+              this._element.classList.remove(CLASS_NAME_SHOW);
+            }
+
+            super.dispose();
+          } // Private
+
+
+          _getConfig(config) {
+            config = {
+              ...Default,
+              ...Manipulator.getDataAttributes(this._element),
+              ...(typeof config === 'object' && config ? config : {})
+            };
+            typeCheckConfig(NAME, config, this.constructor.DefaultType);
+            return config;
+          }
+
+          _maybeScheduleHide() {
+            if (!this._config.autohide) {
+              return;
+            }
+
+            if (this._hasMouseInteraction || this._hasKeyboardInteraction) {
+              return;
+            }
+
+            this._timeout = setTimeout(() => {
+              this.hide();
+            }, this._config.delay);
+          }
+
+          _onInteraction(event, isInteracting) {
+            switch (event.type) {
+              case 'mouseover':
+              case 'mouseout':
+                this._hasMouseInteraction = isInteracting;
+                break;
+
+              case 'focusin':
+              case 'focusout':
+                this._hasKeyboardInteraction = isInteracting;
+                break;
+            }
+
+            if (isInteracting) {
+              this._clearTimeout();
+
+              return;
+            }
+
+            const nextElement = event.relatedTarget;
+
+            if (this._element === nextElement || this._element.contains(nextElement)) {
+              return;
+            }
+
+            this._maybeScheduleHide();
+          }
+
+          _setListeners() {
+            EventHandler.on(this._element, EVENT_MOUSEOVER, event => this._onInteraction(event, true));
+            EventHandler.on(this._element, EVENT_MOUSEOUT, event => this._onInteraction(event, false));
+            EventHandler.on(this._element, EVENT_FOCUSIN, event => this._onInteraction(event, true));
+            EventHandler.on(this._element, EVENT_FOCUSOUT, event => this._onInteraction(event, false));
+          }
+
+          _clearTimeout() {
+            clearTimeout(this._timeout);
+            this._timeout = null;
+          } // Static
+
+
+          static jQueryInterface(config) {
+            return this.each(function () {
+              const data = Toast.getOrCreateInstance(this, config);
+
+              if (typeof config === 'string') {
+                if (typeof data[config] === 'undefined') {
+                  throw new TypeError(`No method named "${config}"`);
+                }
+
+                data[config](this);
+              }
+            });
+          }
+
+        }
+
+        enableDismissTrigger(Toast);
+        /**
+         * ------------------------------------------------------------------------
+         * jQuery
+         * ------------------------------------------------------------------------
+         * add .Toast to jQuery only if jQuery is present
+         */
+
+        defineJQueryPlugin(Toast);
+
+
+        //# sourceMappingURL=bootstrap.esm.js.map
+
+
+        /***/
+      }),
+
+    /***/
+    "./src/sass/min.scss":
+      /*!***************************!*\
+        !*** ./src/sass/min.scss ***!
+        \***************************/
+      /***/
+      ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+        "use strict";
+        __webpack_require__.r(__webpack_exports__);
+        // extracted by mini-css-extract-plugin
+
+
+        /***/
+      }),
+
+    /***/
+    "./node_modules/regenerator-runtime/runtime.js":
+      /*!*****************************************************!*\
+        !*** ./node_modules/regenerator-runtime/runtime.js ***!
+        \*****************************************************/
+      /***/
+      ((module) => {
+
+        /**
+         * Copyright (c) 2014-present, Facebook, Inc.
+         *
+         * This source code is licensed under the MIT license found in the
+         * LICENSE file in the root directory of this source tree.
+         */
+
+        var runtime = (function (exports) {
+          "use strict";
+
+          var Op = Object.prototype;
+          var hasOwn = Op.hasOwnProperty;
+          var undefined; // More compressible than void 0.
+          var $Symbol = typeof Symbol === "function" ? Symbol : {};
+          var iteratorSymbol = $Symbol.iterator || "@@iterator";
+          var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
+          var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+          function define(obj, key, value) {
+            Object.defineProperty(obj, key, {
+              value: value,
+              enumerable: true,
+              configurable: true,
+              writable: true
+            });
+            return obj[key];
+          }
+          try {
+            // IE 8 has a broken Object.defineProperty that only works on DOM objects.
+            define({}, "");
+          } catch (err) {
+            define = function (obj, key, value) {
+              return obj[key] = value;
+            };
+          }
+
+          function wrap(innerFn, outerFn, self, tryLocsList) {
+            // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
+            var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator;
+            var generator = Object.create(protoGenerator.prototype);
+            var context = new Context(tryLocsList || []);
+
+            // The ._invoke method unifies the implementations of the .next,
+            // .throw, and .return methods.
+            generator._invoke = makeInvokeMethod(innerFn, self, context);
+
+            return generator;
+          }
+          exports.wrap = wrap;
+
+          // Try/catch helper to minimize deoptimizations. Returns a completion
+          // record like context.tryEntries[i].completion. This interface could
+          // have been (and was previously) designed to take a closure to be
+          // invoked without arguments, but in all the cases we care about we
+          // already have an existing method we want to call, so there's no need
+          // to create a new function object. We can even get away with assuming
+          // the method takes exactly one argument, since that happens to be true
+          // in every case, so we don't have to touch the arguments object. The
+          // only additional allocation required is the completion record, which
+          // has a stable shape and so hopefully should be cheap to allocate.
+          function tryCatch(fn, obj, arg) {
+            try {
+              return {
+                type: "normal",
+                arg: fn.call(obj, arg)
+              };
+            } catch (err) {
+              return {
+                type: "throw",
+                arg: err
+              };
+            }
+          }
+
+          var GenStateSuspendedStart = "suspendedStart";
+          var GenStateSuspendedYield = "suspendedYield";
+          var GenStateExecuting = "executing";
+          var GenStateCompleted = "completed";
+
+          // Returning this object from the innerFn has the same effect as
+          // breaking out of the dispatch switch statement.
+          var ContinueSentinel = {};
+
+          // Dummy constructor functions that we use as the .constructor and
+          // .constructor.prototype properties for functions that return Generator
+          // objects. For full spec compliance, you may wish to configure your
+          // minifier not to mangle the names of these two functions.
+          function Generator() {}
+
+          function GeneratorFunction() {}
+
+          function GeneratorFunctionPrototype() {}
+
+          // This is a polyfill for %IteratorPrototype% for environments that
+          // don't natively support it.
+          var IteratorPrototype = {};
+          define(IteratorPrototype, iteratorSymbol, function () {
+            return this;
+          });
+
+          var getProto = Object.getPrototypeOf;
+          var NativeIteratorPrototype = getProto && getProto(getProto(values([])));
+          if (NativeIteratorPrototype &&
+            NativeIteratorPrototype !== Op &&
+            hasOwn.call(NativeIteratorPrototype, iteratorSymbol)) {
+            // This environment has a native %IteratorPrototype%; use it instead
+            // of the polyfill.
+            IteratorPrototype = NativeIteratorPrototype;
+          }
+
+          var Gp = GeneratorFunctionPrototype.prototype =
+            Generator.prototype = Object.create(IteratorPrototype);
+          GeneratorFunction.prototype = GeneratorFunctionPrototype;
+          define(Gp, "constructor", GeneratorFunctionPrototype);
+          define(GeneratorFunctionPrototype, "constructor", GeneratorFunction);
+          GeneratorFunction.displayName = define(
+            GeneratorFunctionPrototype,
+            toStringTagSymbol,
+            "GeneratorFunction"
+          );
+
+          // Helper for defining the .next, .throw, and .return methods of the
+          // Iterator interface in terms of a single ._invoke method.
+          function defineIteratorMethods(prototype) {
+            ["next", "throw", "return"].forEach(function (method) {
+              define(prototype, method, function (arg) {
+                return this._invoke(method, arg);
+              });
+            });
+          }
+
+          exports.isGeneratorFunction = function (genFun) {
+            var ctor = typeof genFun === "function" && genFun.constructor;
+            return ctor ?
+              ctor === GeneratorFunction ||
+              // For the native GeneratorFunction constructor, the best we can
+              // do is to check its .name property.
+              (ctor.displayName || ctor.name) === "GeneratorFunction" :
+              false;
+          };
+
+          exports.mark = function (genFun) {
+            if (Object.setPrototypeOf) {
+              Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
+            } else {
+              genFun.__proto__ = GeneratorFunctionPrototype;
+              define(genFun, toStringTagSymbol, "GeneratorFunction");
+            }
+            genFun.prototype = Object.create(Gp);
+            return genFun;
+          };
+
+          // Within the body of any async function, `await x` is transformed to
+          // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
+          // `hasOwn.call(value, "__await")` to determine if the yielded value is
+          // meant to be awaited.
+          exports.awrap = function (arg) {
+            return {
+              __await: arg
+            };
+          };
+
+          function AsyncIterator(generator, PromiseImpl) {
+            function invoke(method, arg, resolve, reject) {
+              var record = tryCatch(generator[method], generator, arg);
+              if (record.type === "throw") {
+                reject(record.arg);
+              } else {
+                var result = record.arg;
+                var value = result.value;
+                if (value &&
+                  typeof value === "object" &&
+                  hasOwn.call(value, "__await")) {
+                  return PromiseImpl.resolve(value.__await).then(function (value) {
+                    invoke("next", value, resolve, reject);
+                  }, function (err) {
+                    invoke("throw", err, resolve, reject);
+                  });
+                }
+
+                return PromiseImpl.resolve(value).then(function (unwrapped) {
+                  // When a yielded Promise is resolved, its final value becomes
+                  // the .value of the Promise<{value,done}> result for the
+                  // current iteration.
+                  result.value = unwrapped;
+                  resolve(result);
+                }, function (error) {
+                  // If a rejected Promise was yielded, throw the rejection back
+                  // into the async generator function so it can be handled there.
+                  return invoke("throw", error, resolve, reject);
+                });
+              }
+            }
+
+            var previousPromise;
+
+            function enqueue(method, arg) {
+              function callInvokeWithMethodAndArg() {
+                return new PromiseImpl(function (resolve, reject) {
+                  invoke(method, arg, resolve, reject);
+                });
+              }
+
+              return previousPromise =
+                // If enqueue has been called before, then we want to wait until
+                // all previous Promises have been resolved before calling invoke,
+                // so that results are always delivered in the correct order. If
+                // enqueue has not been called before, then it is important to
+                // call invoke immediately, without waiting on a callback to fire,
+                // so that the async generator function has the opportunity to do
+                // any necessary setup in a predictable way. This predictability
+                // is why the Promise constructor synchronously invokes its
+                // executor callback, and why async functions synchronously
+                // execute code before the first await. Since we implement simple
+                // async functions in terms of async generators, it is especially
+                // important to get this right, even though it requires care.
+                previousPromise ? previousPromise.then(
+                  callInvokeWithMethodAndArg,
+                  // Avoid propagating failures to Promises returned by later
+                  // invocations of the iterator.
+                  callInvokeWithMethodAndArg
+                ) : callInvokeWithMethodAndArg();
+            }
+
+            // Define the unified helper method that is used to implement .next,
+            // .throw, and .return (see defineIteratorMethods).
+            this._invoke = enqueue;
+          }
+
+          defineIteratorMethods(AsyncIterator.prototype);
+          define(AsyncIterator.prototype, asyncIteratorSymbol, function () {
+            return this;
+          });
+          exports.AsyncIterator = AsyncIterator;
+
+          // Note that simple async functions are implemented on top of
+          // AsyncIterator objects; they just return a Promise for the value of
+          // the final result produced by the iterator.
+          exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) {
+            if (PromiseImpl === void 0) PromiseImpl = Promise;
+
+            var iter = new AsyncIterator(
+              wrap(innerFn, outerFn, self, tryLocsList),
+              PromiseImpl
+            );
+
+            return exports.isGeneratorFunction(outerFn) ?
+              iter // If outerFn is a generator, return the full iterator.
+              :
+              iter.next().then(function (result) {
+                return result.done ? result.value : iter.next();
+              });
+          };
+
+          function makeInvokeMethod(innerFn, self, context) {
+            var state = GenStateSuspendedStart;
+
+            return function invoke(method, arg) {
+              if (state === GenStateExecuting) {
+                throw new Error("Generator is already running");
+              }
+
+              if (state === GenStateCompleted) {
+                if (method === "throw") {
+                  throw arg;
+                }
+
+                // Be forgiving, per 25.3.3.3.3 of the spec:
+                // https://people.mozilla.org/~jorendorff/es6-draft.html#sec-generatorresume
+                return doneResult();
+              }
+
+              context.method = method;
+              context.arg = arg;
+
+              while (true) {
+                var delegate = context.delegate;
+                if (delegate) {
+                  var delegateResult = maybeInvokeDelegate(delegate, context);
+                  if (delegateResult) {
+                    if (delegateResult === ContinueSentinel) continue;
+                    return delegateResult;
+                  }
+                }
+
+                if (context.method === "next") {
+                  // Setting context._sent for legacy support of Babel's
+                  // function.sent implementation.
+                  context.sent = context._sent = context.arg;
+
+                } else if (context.method === "throw") {
+                  if (state === GenStateSuspendedStart) {
+                    state = GenStateCompleted;
+                    throw context.arg;
+                  }
+
+                  context.dispatchException(context.arg);
+
+                } else if (context.method === "return") {
+                  context.abrupt("return", context.arg);
+                }
+
+                state = GenStateExecuting;
+
+                var record = tryCatch(innerFn, self, context);
+                if (record.type === "normal") {
+                  // If an exception is thrown from innerFn, we leave state ===
+                  // GenStateExecuting and loop back for another invocation.
+                  state = context.done ?
+                    GenStateCompleted :
+                    GenStateSuspendedYield;
+
+                  if (record.arg === ContinueSentinel) {
+                    continue;
+                  }
+
+                  return {
+                    value: record.arg,
+                    done: context.done
+                  };
+
+                } else if (record.type === "throw") {
+                  state = GenStateCompleted;
+                  // Dispatch the exception by looping back around to the
+                  // context.dispatchException(context.arg) call above.
+                  context.method = "throw";
+                  context.arg = record.arg;
+                }
+              }
+            };
+          }
+
+          // Call delegate.iterator[context.method](context.arg) and handle the
+          // result, either by returning a { value, done } result from the
+          // delegate iterator, or by modifying context.method and context.arg,
+          // setting context.delegate to null, and returning the ContinueSentinel.
+          function maybeInvokeDelegate(delegate, context) {
+            var method = delegate.iterator[context.method];
+            if (method === undefined) {
+              // A .throw or .return when the delegate iterator has no .throw
+              // method always terminates the yield* loop.
+              context.delegate = null;
+
+              if (context.method === "throw") {
+                // Note: ["return"] must be used for ES3 parsing compatibility.
+                if (delegate.iterator["return"]) {
+                  // If the delegate iterator has a return method, give it a
+                  // chance to clean up.
+                  context.method = "return";
+                  context.arg = undefined;
+                  maybeInvokeDelegate(delegate, context);
+
+                  if (context.method === "throw") {
+                    // If maybeInvokeDelegate(context) changed context.method from
+                    // "return" to "throw", let that override the TypeError below.
+                    return ContinueSentinel;
+                  }
+                }
+
+                context.method = "throw";
+                context.arg = new TypeError(
+                  "The iterator does not provide a 'throw' method");
+              }
+
+              return ContinueSentinel;
+            }
+
+            var record = tryCatch(method, delegate.iterator, context.arg);
+
+            if (record.type === "throw") {
+              context.method = "throw";
+              context.arg = record.arg;
+              context.delegate = null;
+              return ContinueSentinel;
+            }
+
+            var info = record.arg;
+
+            if (!info) {
+              context.method = "throw";
+              context.arg = new TypeError("iterator result is not an object");
+              context.delegate = null;
+              return ContinueSentinel;
+            }
+
+            if (info.done) {
+              // Assign the result of the finished delegate to the temporary
+              // variable specified by delegate.resultName (see delegateYield).
+              context[delegate.resultName] = info.value;
+
+              // Resume execution at the desired location (see delegateYield).
+              context.next = delegate.nextLoc;
+
+              // If context.method was "throw" but the delegate handled the
+              // exception, let the outer generator proceed normally. If
+              // context.method was "next", forget context.arg since it has been
+              // "consumed" by the delegate iterator. If context.method was
+              // "return", allow the original .return call to continue in the
+              // outer generator.
+              if (context.method !== "return") {
+                context.method = "next";
+                context.arg = undefined;
+              }
+
+            } else {
+              // Re-yield the result returned by the delegate method.
+              return info;
+            }
+
+            // The delegate iterator is finished, so forget it and continue with
+            // the outer generator.
+            context.delegate = null;
+            return ContinueSentinel;
+          }
+
+          // Define Generator.prototype.{next,throw,return} in terms of the
+          // unified ._invoke helper method.
+          defineIteratorMethods(Gp);
+
+          define(Gp, toStringTagSymbol, "Generator");
+
+          // A Generator should always return itself as the iterator object when the
+          // @@iterator function is called on it. Some browsers' implementations of the
+          // iterator prototype chain incorrectly implement this, causing the Generator
+          // object to not be returned from this call. This ensures that doesn't happen.
+          // See https://github.com/facebook/regenerator/issues/274 for more details.
+          define(Gp, iteratorSymbol, function () {
+            return this;
+          });
+
+          define(Gp, "toString", function () {
+            return "[object Generator]";
+          });
+
+          function pushTryEntry(locs) {
+            var entry = {
+              tryLoc: locs[0]
+            };
+
+            if (1 in locs) {
+              entry.catchLoc = locs[1];
+            }
+
+            if (2 in locs) {
+              entry.finallyLoc = locs[2];
+              entry.afterLoc = locs[3];
+            }
+
+            this.tryEntries.push(entry);
+          }
+
+          function resetTryEntry(entry) {
+            var record = entry.completion || {};
+            record.type = "normal";
+            delete record.arg;
+            entry.completion = record;
+          }
+
+          function Context(tryLocsList) {
+            // The root entry object (effectively a try statement without a catch
+            // or a finally block) gives us a place to store values thrown from
+            // locations where there is no enclosing try statement.
+            this.tryEntries = [{
+              tryLoc: "root"
+            }];
+            tryLocsList.forEach(pushTryEntry, this);
+            this.reset(true);
+          }
+
+          exports.keys = function (object) {
+            var keys = [];
+            for (var key in object) {
+              keys.push(key);
+            }
+            keys.reverse();
+
+            // Rather than returning an object with a next method, we keep
+            // things simple and return the next function itself.
+            return function next() {
+              while (keys.length) {
+                var key = keys.pop();
+                if (key in object) {
+                  next.value = key;
+                  next.done = false;
+                  return next;
+                }
+              }
+
+              // To avoid creating an additional object, we just hang the .value
+              // and .done properties off the next function object itself. This
+              // also ensures that the minifier will not anonymize the function.
+              next.done = true;
+              return next;
+            };
+          };
+
+          function values(iterable) {
+            if (iterable) {
+              var iteratorMethod = iterable[iteratorSymbol];
+              if (iteratorMethod) {
+                return iteratorMethod.call(iterable);
+              }
+
+              if (typeof iterable.next === "function") {
+                return iterable;
+              }
+
+              if (!isNaN(iterable.length)) {
+                var i = -1,
+                  next = function next() {
+                    while (++i < iterable.length) {
+                      if (hasOwn.call(iterable, i)) {
+                        next.value = iterable[i];
+                        next.done = false;
+                        return next;
+                      }
+                    }
+
+                    next.value = undefined;
+                    next.done = true;
+
+                    return next;
+                  };
+
+                return next.next = next;
+              }
+            }
+
+            // Return an iterator with no values.
+            return {
+              next: doneResult
+            };
+          }
+          exports.values = values;
+
+          function doneResult() {
+            return {
+              value: undefined,
+              done: true
+            };
+          }
+
+          Context.prototype = {
+            constructor: Context,
+
+            reset: function (skipTempReset) {
+              this.prev = 0;
+              this.next = 0;
+              // Resetting context._sent for legacy support of Babel's
+              // function.sent implementation.
+              this.sent = this._sent = undefined;
+              this.done = false;
+              this.delegate = null;
+
+              this.method = "next";
+              this.arg = undefined;
+
+              this.tryEntries.forEach(resetTryEntry);
+
+              if (!skipTempReset) {
+                for (var name in this) {
+                  // Not sure about the optimal order of these conditions:
+                  if (name.charAt(0) === "t" &&
+                    hasOwn.call(this, name) &&
+                    !isNaN(+name.slice(1))) {
+                    this[name] = undefined;
+                  }
+                }
+              }
+            },
+
+            stop: function () {
+              this.done = true;
+
+              var rootEntry = this.tryEntries[0];
+              var rootRecord = rootEntry.completion;
+              if (rootRecord.type === "throw") {
+                throw rootRecord.arg;
+              }
+
+              return this.rval;
+            },
+
+            dispatchException: function (exception) {
+              if (this.done) {
+                throw exception;
+              }
+
+              var context = this;
+
+              function handle(loc, caught) {
+                record.type = "throw";
+                record.arg = exception;
+                context.next = loc;
+
+                if (caught) {
+                  // If the dispatched exception was caught by a catch block,
+                  // then let that catch block handle the exception normally.
+                  context.method = "next";
+                  context.arg = undefined;
+                }
+
+                return !!caught;
+              }
+
+              for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                var entry = this.tryEntries[i];
+                var record = entry.completion;
+
+                if (entry.tryLoc === "root") {
+                  // Exception thrown outside of any try block that could handle
+                  // it, so set the completion value of the entire function to
+                  // throw the exception.
+                  return handle("end");
+                }
+
+                if (entry.tryLoc <= this.prev) {
+                  var hasCatch = hasOwn.call(entry, "catchLoc");
+                  var hasFinally = hasOwn.call(entry, "finallyLoc");
+
+                  if (hasCatch && hasFinally) {
+                    if (this.prev < entry.catchLoc) {
+                      return handle(entry.catchLoc, true);
+                    } else if (this.prev < entry.finallyLoc) {
+                      return handle(entry.finallyLoc);
+                    }
+
+                  } else if (hasCatch) {
+                    if (this.prev < entry.catchLoc) {
+                      return handle(entry.catchLoc, true);
+                    }
+
+                  } else if (hasFinally) {
+                    if (this.prev < entry.finallyLoc) {
+                      return handle(entry.finallyLoc);
+                    }
+
+                  } else {
+                    throw new Error("try statement without catch or finally");
+                  }
+                }
+              }
+            },
+
+            abrupt: function (type, arg) {
+              for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                var entry = this.tryEntries[i];
+                if (entry.tryLoc <= this.prev &&
+                  hasOwn.call(entry, "finallyLoc") &&
+                  this.prev < entry.finallyLoc) {
+                  var finallyEntry = entry;
+                  break;
+                }
+              }
+
+              if (finallyEntry &&
+                (type === "break" ||
+                  type === "continue") &&
+                finallyEntry.tryLoc <= arg &&
+                arg <= finallyEntry.finallyLoc) {
+                // Ignore the finally entry if control is not jumping to a
+                // location outside the try/catch block.
+                finallyEntry = null;
+              }
+
+              var record = finallyEntry ? finallyEntry.completion : {};
+              record.type = type;
+              record.arg = arg;
+
+              if (finallyEntry) {
+                this.method = "next";
+                this.next = finallyEntry.finallyLoc;
+                return ContinueSentinel;
+              }
+
+              return this.complete(record);
+            },
+
+            complete: function (record, afterLoc) {
+              if (record.type === "throw") {
+                throw record.arg;
+              }
+
+              if (record.type === "break" ||
+                record.type === "continue") {
+                this.next = record.arg;
+              } else if (record.type === "return") {
+                this.rval = this.arg = record.arg;
+                this.method = "return";
+                this.next = "end";
+              } else if (record.type === "normal" && afterLoc) {
+                this.next = afterLoc;
+              }
+
+              return ContinueSentinel;
+            },
+
+            finish: function (finallyLoc) {
+              for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                var entry = this.tryEntries[i];
+                if (entry.finallyLoc === finallyLoc) {
+                  this.complete(entry.completion, entry.afterLoc);
+                  resetTryEntry(entry);
+                  return ContinueSentinel;
+                }
+              }
+            },
+
+            "catch": function (tryLoc) {
+              for (var i = this.tryEntries.length - 1; i >= 0; --i) {
+                var entry = this.tryEntries[i];
+                if (entry.tryLoc === tryLoc) {
+                  var record = entry.completion;
+                  if (record.type === "throw") {
+                    var thrown = record.arg;
+                    resetTryEntry(entry);
+                  }
+                  return thrown;
+                }
+              }
+
+              // The context.catch method must only be called with a location
+              // argument that corresponds to a known catch block.
+              throw new Error("illegal catch attempt");
+            },
+
+            delegateYield: function (iterable, resultName, nextLoc) {
+              this.delegate = {
+                iterator: values(iterable),
+                resultName: resultName,
+                nextLoc: nextLoc
+              };
+
+              if (this.method === "next") {
+                // Deliberately forget the last sent value so that we don't
+                // accidentally pass it on to the delegate.
+                this.arg = undefined;
+              }
+
+              return ContinueSentinel;
+            }
+          };
+
+          // Regardless of whether this script is executing as a CommonJS module
+          // or not, return the runtime object so that we can declare the variable
+          // regeneratorRuntime in the outer scope, which allows this module to be
+          // injected easily by `bin/regenerator --include-runtime script.js`.
+          return exports;
+
+        }(
+          // If this script is executing as a CommonJS module, use module.exports
+          // as the regeneratorRuntime namespace. Otherwise create a new empty
+          // object. Either way, the resulting object will be used to initialize
+          // the regeneratorRuntime variable at the top of this file.
+          true ? module.exports : 0
+        ));
+
+        try {
+          regeneratorRuntime = runtime;
+        } catch (accidentalStrictMode) {
+          // This module should not be running in strict mode, so the above
+          // assignment should always work unless something is misconfigured. Just
+          // in case runtime.js accidentally runs in strict mode, in modern engines
+          // we can explicitly access globalThis. In older engines we can escape
+          // strict mode using a global Function call. This could conceivably fail
+          // if a Content Security Policy forbids using Function, but in that case
+          // the proper solution is to fix the accidental strict mode problem. If
+          // you've misconfigured your bundler to force strict mode and applied a
+          // CSP to forbid Function, and you're not willing to fix either of those
+          // problems, please detail your unique predicament in a GitHub issue.
+          if (typeof globalThis === "object") {
+            globalThis.regeneratorRuntime = runtime;
+          } else {
+            Function("r", "regeneratorRuntime = r")(runtime);
+          }
+        }
+
+
+        /***/
+      })
+
+    /******/
+  });
+  /************************************************************************/
+  /******/ // The module cache
+  /******/
+  var __webpack_module_cache__ = {};
+  /******/
+  /******/ // The require function
+  /******/
+  function __webpack_require__(moduleId) {
+    /******/ // Check if module is in cache
+    /******/
+    var cachedModule = __webpack_module_cache__[moduleId];
+    /******/
+    if (cachedModule !== undefined) {
+      /******/
+      return cachedModule.exports;
+      /******/
+    }
+    /******/ // Create a new module (and put it into the cache)
+    /******/
+    var module = __webpack_module_cache__[moduleId] = {
+      /******/ // no module.id needed
+      /******/ // no module.loaded needed
+      /******/
+      exports: {}
+      /******/
+    };
+    /******/
+    /******/ // Execute the module function
+    /******/
+    __webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+    /******/
+    /******/ // Return the exports of the module
+    /******/
+    return module.exports;
+    /******/
+  }
+  /******/
+  /******/ // expose the modules object (__webpack_modules__)
+  /******/
+  __webpack_require__.m = __webpack_modules__;
+  /******/
+  /************************************************************************/
+  /******/
+  /* webpack/runtime/chunk loaded */
+  /******/
+  (() => {
+    /******/
+    var deferred = [];
+    /******/
+    __webpack_require__.O = (result, chunkIds, fn, priority) => {
+      /******/
+      if (chunkIds) {
+        /******/
+        priority = priority || 0;
+        /******/
+        for (var i = deferred.length; i > 0 && deferred[i - 1][2] > priority; i--) deferred[i] = deferred[i - 1];
+        /******/
+        deferred[i] = [chunkIds, fn, priority];
+        /******/
+        return;
+        /******/
+      }
+      /******/
+      var notFulfilled = Infinity;
+      /******/
+      for (var i = 0; i < deferred.length; i++) {
+        /******/
+        var [chunkIds, fn, priority] = deferred[i];
+        /******/
+        var fulfilled = true;
+        /******/
+        for (var j = 0; j < chunkIds.length; j++) {
+          /******/
+          if ((priority & 1 === 0 || notFulfilled >= priority) && Object.keys(__webpack_require__.O).every((key) => (__webpack_require__.O[key](chunkIds[j])))) {
+            /******/
+            chunkIds.splice(j--, 1);
+            /******/
+          } else {
+            /******/
+            fulfilled = false;
+            /******/
+            if (priority < notFulfilled) notFulfilled = priority;
+            /******/
+          }
+          /******/
+        }
+        /******/
+        if (fulfilled) {
+          /******/
+          deferred.splice(i--, 1)
+          /******/
+          var r = fn();
+          /******/
+          if (r !== undefined) result = r;
+          /******/
+        }
+        /******/
+      }
+      /******/
+      return result;
+      /******/
+    };
+    /******/
+  })();
+  /******/
+  /******/
+  /* webpack/runtime/compat get default export */
+  /******/
+  (() => {
+    /******/ // getDefaultExport function for compatibility with non-harmony modules
+    /******/
+    __webpack_require__.n = (module) => {
+      /******/
+      var getter = module && module.__esModule ?
+        /******/
+        () => (module['default']) :
+        /******/
+        () => (module);
+      /******/
+      __webpack_require__.d(getter, {
+        a: getter
+      });
+      /******/
+      return getter;
+      /******/
+    };
+    /******/
+  })();
+  /******/
+  /******/
+  /* webpack/runtime/define property getters */
+  /******/
+  (() => {
+    /******/ // define getter functions for harmony exports
+    /******/
+    __webpack_require__.d = (exports, definition) => {
+      /******/
+      for (var key in definition) {
+        /******/
+        if (__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
+          /******/
+          Object.defineProperty(exports, key, {
+            enumerable: true,
+            get: definition[key]
+          });
+          /******/
+        }
+        /******/
+      }
+      /******/
+    };
+    /******/
+  })();
+  /******/
+  /******/
+  /* webpack/runtime/hasOwnProperty shorthand */
+  /******/
+  (() => {
+    /******/
+    __webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
+    /******/
+  })();
+  /******/
+  /******/
+  /* webpack/runtime/make namespace object */
+  /******/
+  (() => {
+    /******/ // define __esModule on exports
+    /******/
+    __webpack_require__.r = (exports) => {
+      /******/
+      if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+        /******/
+        Object.defineProperty(exports, Symbol.toStringTag, {
+          value: 'Module'
+        });
+        /******/
+      }
+      /******/
+      Object.defineProperty(exports, '__esModule', {
+        value: true
+      });
+      /******/
+    };
+    /******/
+  })();
+  /******/
+  /******/
+  /* webpack/runtime/jsonp chunk loading */
+  /******/
+  (() => {
+    /******/ // no baseURI
+    /******/
+    /******/ // object to store loaded and loading chunks
+    /******/ // undefined = chunk not loaded, null = chunk preloaded/prefetched
+    /******/ // [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
+    /******/
+    var installedChunks = {
+      /******/
+      "/assets/js/min": 0,
+      /******/
+      "public/assets/css/min": 0
+      /******/
+    };
+    /******/
+    /******/ // no chunk on demand loading
+    /******/
+    /******/ // no prefetching
+    /******/
+    /******/ // no preloaded
+    /******/
+    /******/ // no HMR
+    /******/
+    /******/ // no HMR manifest
+    /******/
+    /******/
+    __webpack_require__.O.j = (chunkId) => (installedChunks[chunkId] === 0);
+    /******/
+    /******/ // install a JSONP callback for chunk loading
+    /******/
+    var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
+      /******/
+      var [chunkIds, moreModules, runtime] = data;
+      /******/ // add "moreModules" to the modules object,
+      /******/ // then flag all "chunkIds" as loaded and fire callback
+      /******/
+      var moduleId, chunkId, i = 0;
+      /******/
+      if (chunkIds.some((id) => (installedChunks[id] !== 0))) {
+        /******/
+        for (moduleId in moreModules) {
+          /******/
+          if (__webpack_require__.o(moreModules, moduleId)) {
+            /******/
+            __webpack_require__.m[moduleId] = moreModules[moduleId];
+            /******/
+          }
+          /******/
+        }
+        /******/
+        if (runtime) var result = runtime(__webpack_require__);
+        /******/
+      }
+      /******/
+      if (parentChunkLoadingFunction) parentChunkLoadingFunction(data);
+      /******/
+      for (; i < chunkIds.length; i++) {
+        /******/
+        chunkId = chunkIds[i];
+        /******/
+        if (__webpack_require__.o(installedChunks, chunkId) && installedChunks[chunkId]) {
+          /******/
+          installedChunks[chunkId][0]();
+          /******/
+        }
+        /******/
+        installedChunks[chunkId] = 0;
+        /******/
+      }
+      /******/
+      return __webpack_require__.O(result);
+      /******/
+    }
+    /******/
+    /******/
+    var chunkLoadingGlobal = self["webpackChunkedwardevbert"] = self["webpackChunkedwardevbert"] || [];
+    /******/
+    chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
+    /******/
+    chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
+    /******/
+  })();
+  /******/
+  /************************************************************************/
+  /******/
+  /******/ // startup
+  /******/ // Load entry module and return exports
+  /******/ // This entry module depends on other loaded chunks and execution need to be delayed
+  /******/
+  __webpack_require__.O(undefined, ["public/assets/css/min"], () => (__webpack_require__("./src/js/min.js")))
+  /******/
+  var __webpack_exports__ = __webpack_require__.O(undefined, ["public/assets/css/min"], () => (__webpack_require__("./src/sass/min.scss")))
+  /******/
+  __webpack_exports__ = __webpack_require__.O(__webpack_exports__);
+  /******/
+  /******/
+})();
