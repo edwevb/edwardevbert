@@ -25,7 +25,7 @@ body{
 }
 
 .bg-nav-scroll{
-	background-color: rgba(0, 0, 0, 0.65)!important;
+	background-color: rgba(80, 80, 80, 0.65)!important;
 }
 
 .navbar-toggler,
@@ -93,6 +93,7 @@ nav, p, li, h6, th, td, .mantra, footer small{
 
 .navbar a, .nav-link{
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+	font-weight: bold;
 	color: #f8f9fa;
 	letter-spacing: 1px;
 	-webkit-transition: 0.3s;
@@ -102,7 +103,7 @@ nav, p, li, h6, th, td, .mantra, footer small{
 	transition: .3s;
 }
 
-.navbar a:hover{
+.navbar a:hover, .navbar a:focus{
 	color: #E0E0E0;
 }
 
@@ -148,6 +149,11 @@ header{
 .responsive-img{
 	max-width: 100%;
 	height: auto;
+}
+
+.img-wrap{
+	object-fit: cover;
+	object-position: center;
 }
 
 .pageBackground{
@@ -223,16 +229,26 @@ header{
 	background-repeat: no-repeat;
 }
 
-.portofolio .card:hover{
+.portofolio .card img:hover{
 	color: #343A40;
 	cursor: pointer;
 	-webkit-transform: scale(0.9);
 	-moz-transform: scale(0.9);
 	-o-transform: scale(0.9);
-	transform: scale(0.9);
+	transform: scale(1.1);
 }
 
-.portofolio .card{
+
+.portofolio .canvas{
+	height: 250px;
+	overflow: hidden;
+	object-fit: cover;
+	object-position: center;
+}
+
+.portofolio .card img{
+	width: 100%;
+	height: 100%;
 	-webkit-transition: 0.3s;
 	-moz-transition: 0.3s;
 	-ms-transition: 0.3s;
