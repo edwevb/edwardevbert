@@ -120,7 +120,8 @@ footer small {
 #page-logo{
   height: auto;
   max-height: 50px;
-  width: 100%;
+  width: auto;
+  max-width: 75px;
 }
 
 .shadow-card {
